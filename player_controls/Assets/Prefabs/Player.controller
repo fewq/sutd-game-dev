@@ -40,7 +40,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Horizonal
     m_Mirror: 0
-  m_BlendParameter: Horizonal
+  m_BlendParameter: Horizontal
   m_BlendParameterY: Vertical
   m_MinThreshold: -1
   m_MaxThreshold: 5
@@ -56,7 +56,7 @@ AnimatorController:
   m_Name: Player
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Horizonal
+  - m_Name: Horizontal
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
