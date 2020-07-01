@@ -1,19 +1,58 @@
 fileFormatVersion: 2
-guid: 4f0c69e4e30ccf84e841a2bf87ea9bff
+guid: 5eaddb049a4a67b41b476bb845d0a60c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6266826460088475592
-    second: Char_4_sides_0
+      213: 8413524966899149440
+    second: spr_fire_0
   - first:
-      213: -4418403556150121136
-    second: Char_4_sides_1
+      213: -7775951286009921636
+    second: spr_fire_1
   - first:
-      213: 7896079621355848688
-    second: Char_4_sides_2
+      213: 367122233160922384
+    second: spr_fire_2
   - first:
-      213: -9204526993402539756
-    second: Char_4_sides_3
+      213: -4776095100134659929
+    second: spr_fire_3
+  - first:
+      213: 2321771705433649505
+    second: spr_fire_4
+  - first:
+      213: 1136811905554861313
+    second: spr_fire_5
+  - first:
+      213: 7705433092580663304
+    second: spr_fire_6
+  - first:
+      213: -5966329361993548618
+    second: spr_fire_7
+  - first:
+      213: -1511803514419109274
+    second: spr_fire_8
+  - first:
+      213: -775865916625067137
+    second: spr_fire_9
+  - first:
+      213: 4061472950149924939
+    second: spr_fire_10
+  - first:
+      213: 5289108269305637237
+    second: spr_fire_11
+  - first:
+      213: 6279385268392389351
+    second: spr_fire_12
+  - first:
+      213: -4392481253284063292
+    second: spr_fire_13
+  - first:
+      213: 324438195889262809
+    second: spr_fire_14
+  - first:
+      213: 1301547248896664059
+    second: spr_fire_15
+  - first:
+      213: -6574032145001669416
+    second: spr_fire_16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -57,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,13 +150,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Char_4_sides_0
+      name: spr_fire_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 16
-        height: 16
+        y: 8
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,41 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8306861a982c709a0800000000000000
-      internalID: -6266826460088475592
+      spriteID: 08a67e07168d2c470800000000000000
+      internalID: 8413524966899149440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_4_sides_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 05d6959106daea2c0800000000000000
-      internalID: -4418403556150121136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Char_4_sides_2
+      name: spr_fire_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
-        width: 16
-        height: 16
+        y: 8
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f3cd159492849d60800000000000000
-      internalID: 7896079621355848688
+      spriteID: c9ff2ae0185461490800000000000000
+      internalID: -7775951286009921636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_4_sides_3
+      name: spr_fire_2
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
+        x: 64
+        y: 8
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,8 +206,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4115fb89773f24080800000000000000
-      internalID: -9204526993402539756
+      spriteID: 01574b8d9b7481500800000000000000
+      internalID: 367122233160922384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_fire_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 8
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a86dfeafc6e7bdb0800000000000000
+      internalID: -4776095100134659929
       vertices: []
       indices: 
       edges: []

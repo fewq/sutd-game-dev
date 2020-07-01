@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 4f0c69e4e30ccf84e841a2bf87ea9bff
+guid: cd0353236ff3913449a293ff58bf516d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6266826460088475592
-    second: Char_4_sides_0
+      213: 3875445415307327507
+    second: boulders_0
   - first:
-      213: -4418403556150121136
-    second: Char_4_sides_1
-  - first:
-      213: 7896079621355848688
-    second: Char_4_sides_2
-  - first:
-      213: -9204526993402539756
-    second: Char_4_sides_3
+      213: -2732865190186730795
+    second: boulders_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -57,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Char_4_sides_0
+      name: boulders_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8306861a982c709a0800000000000000
-      internalID: -6266826460088475592
+      spriteID: 3183fcd721958c530800000000000000
+      internalID: 3875445415307327507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_4_sides_1
+      name: boulders_1
       rect:
         serializedVersion: 2
         x: 16
         y: 0
         width: 16
-        height: 16
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,50 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05d6959106daea2c0800000000000000
-      internalID: -4418403556150121136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Char_4_sides_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f3cd159492849d60800000000000000
-      internalID: 7896079621355848688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Char_4_sides_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4115fb89773f24080800000000000000
-      internalID: -9204526993402539756
+      spriteID: 5dab3efb699e21ad0800000000000000
+      internalID: -2732865190186730795
       vertices: []
       indices: 
       edges: []
