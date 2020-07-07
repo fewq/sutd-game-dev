@@ -11,7 +11,7 @@ public class Monster : MonsterType
 
     private int index = 0;
 
-    public Monster(items type, int amount, float speed) : base(type, speed)
+    public Monster(Monsters type, int amount, float speed) : base(type, speed)
     {
         this.amount = amount;
         monsters = new GameObject[amount];

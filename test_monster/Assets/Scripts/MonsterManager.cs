@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Manages the spawning of monsters */
 public class MonsterManager : MonoBehaviour
 {
     private Monster goblinMonster;
     public GameObject GoblinPrefab;
+    public float lookRadius = 5f;
 
     public GameObject Background;
     private float rangeX, rangeY;
@@ -13,11 +15,11 @@ public class MonsterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        goblinMonster = new Monster(MonsterType.items.GREENMONSTER, Random.Range(1, 10), 100);
+        goblinMonster = new Monster(MonsterType.Monsters.GREENMONSTER, Random.Range(1, 10), 100);
 
         // rangeX = Background.GetComponent<Grid>().sprite.bounds.extents.x*0.8f;
         // rangeY = Background.GetComponent<Grid>().sprite.bounds.extents.y*0.8f;
-        
+
         rangeX = 1 * 0.8f;
         rangeY = 2 * 0.8f;
 
@@ -25,13 +27,14 @@ public class MonsterManager : MonoBehaviour
 
     }
 
-    private void instantiate(){
-    //instantiate
-    for (int i = 0; i< goblinMonster.amount; i++){
-        goblinMonster.add(Instantiate(GoblinPrefab, new Vector2(Random.Range(-rangeX, rangeX), Random.Range(-rangeY, rangeY)), Quaternion.identity));
+    private void instantiate()
+    {
+        //instantiate
+        for (int i = 0; i < goblinMonster.amount; i++)
+        {
+            goblinMonster.add(Instantiate(GoblinPrefab, new Vector2(Random.Range(-rangeX, rangeX), Random.Range(-rangeY, rangeY)), Quaternion.identity));
+        }
+
     }
-
-   }
-
 
 }

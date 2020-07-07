@@ -8,14 +8,16 @@ public class MonsterType
 {
     public float speed{get; private set;}
 
-    public items type{get; private set;}
+    public Monsters type{get; private set;}
 
-    public enum items {
+    public enum Monsters {
         GREENMONSTER = 0,
+        YELLOWMONSTER = 1,
+        REDMONSTER = 3
     }
 
 
-    public MonsterType(items type, float speed){
+    public MonsterType(Monsters type, float speed){
         this.type = type;
         this.speed = speed;
     }

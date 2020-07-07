@@ -5,6 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    #region Singleton
+    public static Player instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
+    #endregion
+
+    public GameObject player;
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
@@ -29,7 +40,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
-        Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
+        // Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
     }
 
     void FixedUpdate()
