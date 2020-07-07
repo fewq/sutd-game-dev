@@ -5,10 +5,13 @@ using UnityEngine;
 public class Player : Movement
 {
 
-    // public float moveSpeed = 5f;
+    public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
     Vector2 movement;
+
+    public LayerMask layer;
+
 
     private int xVal;
 
@@ -24,6 +27,9 @@ public class Player : Movement
     {
         base.Start();
         // walls = GameObject.FindGameObjectWithTag("Wall").GetComponent<BoxCollider2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        
+
     }
 
     // Update is called once per frame
@@ -92,27 +98,16 @@ public class Player : Movement
             // Debug.Log
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
-            Debug.Log(movement.sqrMagnitude);
             animator.SetFloat("Speed", Mathf.Max(1,movement.sqrMagnitude));
             Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
-
+            
+            
         }
-    }
-
-    public bool playerMovement(float x, float y, out RaycastHit2D hit){
+        else{
+            Debug.Log("Cant move");
+        }
         
-        var edgeCollider = gameObject.GetComponent<BoxCollider2D>();
-        edgeCollider.enabled = false; //set current object's collider to be false so that it doesnt intefere with line
-
-
-        hit = Physics2D.Linecast(transform.position, transform.position + new Vector3(x,y), layerMask);
-
-        edgeCollider.enabled = true;
-
-        if(hit.transform == null){
-            gameObject.transform.Translate(movement);
-            return true;
-        }
-        return false;
     }
+
+
 }
