@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : Movement
 {
 
-    public float moveSpeed = 5f;
+    // public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
     Vector2 movement;
@@ -13,45 +13,64 @@ public class Player : Movement
     private int xVal;
 
     private int yVal;
+    private bool playerMoving;
 
-    private RaycastHit2D hit;
-    private BoxCollider2D walls;
+    private EdgeCollider2D walls;
+    public float tileMovement;
 
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        walls = GameObject.FindGameObjectWithTag("Wall").GetComponent<BoxCollider2D>();
+        // walls = GameObject.FindGameObjectWithTag("Wall").GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
+    private void FixedUpdate() {
+        
+
+        // xVal = (int) (movement.x);
+        // yVal = (int) (movement.y);
+    }
     void Update()
     {
-        // get inputs from user
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-
-        xVal = (int) movement.x;
-        yVal = (int) movement.y;
-
-        if(xVal != 0){
+        // get inputs from user
+        
+        if(movement.x != 0){
+            Debug.Log("X movement");
             movement.y = 0.0f;
             yVal = 0;
-            // checkMove<BoxCollider2D>(xVal, yVal);
+            if(movement.x > 0){
+                movement.x = tileMovement;    
+            }
+            else{
+                movement.x = -tileMovement;
+            }
+            // movement.x = 0.3f;
         }
 
-        if(yVal != 0){
+        if(movement.y != 0){
+            Debug.Log("Y movement");
             movement.x = 0.0f;
             xVal = 0;
-        }
-
-        if (xVal != 0 || yVal != 0){
-            checkMove<BoxCollider2D>(xVal, yVal);
+            if(movement.y > 0){
+                movement.y = tileMovement;    
+            }
+            else{
+                movement.y = -tileMovement;
+            }
             
         }
 
-        if(xVal == 0 && yVal == 0)
+        if (movement.x != 0 || movement.y != 0){
+            movementController(movement.x, movement.y);   
+            
+        }
+
+        if(movement.x == 0 && movement.y == 0)
         {
             animator.SetFloat("Speed", movement.sqrMagnitude);
         }
@@ -61,28 +80,39 @@ public class Player : Movement
         
     }
 
-    // void FixedUpdate()
-    // {
-    //     // actual movement
-    //     rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-    // }
-
     /// <summary>
     /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
     /// </summary>
-    protected override void checkMove<T>(int x, int y)
+    public void movementController(float x, float y)
     {
-        base.checkMove<T>(x,y);
-
-        if(Move(xVal, yVal, out hit)){
+        // base.checkMove<T>(x,y);
+        RaycastHit2D hit;
+        if(playerMovement(x, y, out hit)){
             // base.Move(xVal, yVal, out hit);
-            Debug.Log("Moving");
+            // Debug.Log
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
             Debug.Log(movement.sqrMagnitude);
-            animator.SetFloat("Speed", movement.sqrMagnitude);
+            animator.SetFloat("Speed", Mathf.Max(1,movement.sqrMagnitude));
             Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
-            
+
         }
+    }
+
+    public bool playerMovement(float x, float y, out RaycastHit2D hit){
+        
+        var edgeCollider = gameObject.GetComponent<BoxCollider2D>();
+        edgeCollider.enabled = false; //set current object's collider to be false so that it doesnt intefere with line
+
+
+        hit = Physics2D.Linecast(transform.position, transform.position + new Vector3(x,y), layerMask);
+
+        edgeCollider.enabled = true;
+
+        if(hit.transform == null){
+            gameObject.transform.Translate(movement);
+            return true;
+        }
+        return false;
     }
 }
