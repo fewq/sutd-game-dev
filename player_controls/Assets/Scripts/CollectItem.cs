@@ -11,10 +11,32 @@ public class CollectItem : MonoBehaviour
 
     // List to store the GameObejct that have been picked up
     public List<GameObject> ItemList = new List<GameObject>();
+
+    // dictionary to store the GameObjects
+    public Dictionary<string, int> itemDict;
+
     // Start is called before the first frame update
     void Start()
     {
         playerCollider = gameObject.GetComponent<BoxCollider2D>();
+        itemDict = new Dictionary<string, int>(){
+            {"Fire", 0},
+            {"Water", 0},
+            {"CupricChloride", 0},
+            {"LithiumChloride", 0},
+            {"CalciumChloride", 0},
+            {"PotassiumChloride", 0},
+            {"SodiumChloride", 0},
+            {"Caesium", 0},
+            {"CalciumOxide", 0},
+            {"Bomb", 0},
+            {"BlueLight", 0},
+            {"RedLight", 0},
+            {"OrangeLight", 0},
+            {"PurpleLight", 0},
+            {"YellowLight", 0},
+            {"CalciumHydroxide", 0}
+        };
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -46,11 +68,14 @@ public class CollectItem : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 Debug.Log("picked up " + pickupItem.name);
+                // add to ItemList
                 ItemList.Add(pickupItem);
+                // also add to dictionary for now
+                itemDict[pickupItem.name] += 1;
+                Debug.Log("itemDict entry -> " + pickupItem.name + ": " + itemDict[pickupItem.name]);
                 pickupItem.SetActive(false);
                 pickupItem = null;
             }
-
         }
 
     }
