@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Adding this allows us to access members of the UI namespace including Text.
+using UnityEngine.UI;
+
 public class CollectItem : MonoBehaviour
 {
     // variable to hold GameObject to pick up
@@ -15,10 +18,22 @@ public class CollectItem : MonoBehaviour
     // dictionary to store the GameObjects
     public Dictionary<string, int> itemDict;
 
+    // boolean for inventory state
+    public bool inventoryState = false;
+
+    // inventory canvas
+    public Canvas inventoryCanvas;
+
+    // canvas text
+    public Text inventoryText;
+
+
     // Start is called before the first frame update
     void Start()
     {
         playerCollider = gameObject.GetComponent<BoxCollider2D>();
+
+        // create empty dicitonary to store items
         itemDict = new Dictionary<string, int>(){
             {"Fire", 0},
             {"Water", 0},
@@ -37,6 +52,10 @@ public class CollectItem : MonoBehaviour
             {"YellowLight", 0},
             {"CalciumHydroxide", 0}
         };
+        // get inventoryText Reference
+        inventoryText = GameObject.Find("InventoryText").GetComponent<Text>();
+        // get inventoryCanvas reference
+        inventoryCanvas = GameObject.Find("InventoryCanvas").GetComponent<Canvas>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -77,11 +96,62 @@ public class CollectItem : MonoBehaviour
                 pickupItem = null;
             }
         }
-
     }
+
+    void ToggleInventory()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventoryState = !inventoryState;
+        }
+        if (inventoryState)
+        {
+            inventoryCanvas.GetComponent<Canvas>().enabled = true;
+            inventoryText.text = string.Format(@"Inventory: 
+Fire: {0}
+Water: {1}
+CupricChloride: {2} 
+LithiumCloride: {3}
+CalciumChloride: {4}
+PotassiumChloride: {5}
+SodiumCloride: {6}
+Caesium: {7}
+CalciumOxide: {8}
+Bomb: {9}
+BlueLight: {10}
+RedLight: {11}
+OrangeLight: {12}
+PurpleLight: {13}
+YellowLight: {14}
+CalciumHydroxide: {15}
+", itemDict["Fire"],
+itemDict["Water"],
+itemDict["CupricChloride"],
+itemDict["LithiumChloride"],
+itemDict["CalciumChloride"],
+itemDict["PotassiumChloride"],
+itemDict["SodiumChloride"],
+itemDict["Caesium"],
+itemDict["CalciumOxide"],
+itemDict["Bomb"],
+itemDict["BlueLight"],
+itemDict["RedLight"],
+itemDict["OrangeLight"],
+itemDict["PurpleLight"],
+itemDict["YellowLight"],
+itemDict["CalciumHydroxide"]
+);
+        }
+        else
+        {
+            inventoryCanvas.GetComponent<Canvas>().enabled = false;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         PickObject();
+        ToggleInventory();
     }
 }
