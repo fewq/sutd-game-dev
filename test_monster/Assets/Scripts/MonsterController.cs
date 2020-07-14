@@ -7,6 +7,8 @@ using UnityEngine.AI;
 public class MonsterController : MonoBehaviour
 {
     public Transform m_SpawnPoint;
+
+    public GameObject gameobject;
     public Animator animator;
     public float lookRadius = 3f;
     public float moveSpeed = 5f;
@@ -25,6 +27,10 @@ public class MonsterController : MonoBehaviour
     {
         player = Player.instance.player.transform;
         rigidbody = GetComponent<Rigidbody2D>();
+
+        GameObject child = gameobject.transform.GetChild(0).gameObject;
+
+        child.SetActive(false);
 
     }
 
@@ -54,10 +60,16 @@ public class MonsterController : MonoBehaviour
             if (playerDistance <= lookRadius)
             {
                 ChaseTarget(player);
+                GameObject child = gameobject.transform.GetChild(0).gameObject;
+                child.SetActive(true);
             }
+            
+            else {
+                GameObject child = gameobject.transform.GetChild(0).gameObject;
+                child.SetActive(false);
 
+            }
         }
-
     }
 
     void WatchFlame()
