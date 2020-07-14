@@ -3172,12 +3172,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SpawnPoint: {fileID: 1928830571}
   gameobject: {fileID: 1928830566}
-  animator: {fileID: 0}
-  lookRadius: 2
+  animator: {fileID: 1928830568}
+  lookRadius: 3
   moveSpeed: 5
   monsterType: 0
   torch: {fileID: 706004309}
-  finishBurning: 0
+  finishBurning: 1
+--- !u!95 &1928830568 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 800080216313234089, guid: f528574c2cfda4518872e0cb1f795d39,
+    type: 3}
+  m_PrefabInstance: {fileID: 2108696247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1928830571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 800080216313234084, guid: f528574c2cfda4518872e0cb1f795d39,
@@ -4031,7 +4037,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 8271161831141653196, guid: e2986814c9f7b6749a992a3dbd9c0799,
+      objectReference: {fileID: -706687240173666330, guid: 5f5de88d2b96b4541ae38524876d1a60,
         type: 3}
     - target: {fileID: 3014202340340153317, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}
