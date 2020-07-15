@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 800080216313234086}
   - component: {fileID: 800080216313234089}
   - component: {fileID: 5326621723832920810}
+  - component: {fileID: 6523094400663635069}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -145,3 +146,22 @@ MonoBehaviour:
   monsterType: 0
   torch: {fileID: 0}
   finishBurning: 0
+--- !u!114 &6523094400663635069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800080216313234088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f466f3abe3e05624f832a34ce37a49c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 11400000, guid: 41b2fe0943488f84683c2f9176648268, type: 2}
+  eyes: {fileID: 800080216313234084}
+  remainState: {fileID: 11400000, guid: 97ab876966b0d334cb052d6d774540ab, type: 2}
+  transitionStateChanged: 0
+  wayPointList: []
+  nextWayPoint: 0
+  chaseTarget: {fileID: 0}
