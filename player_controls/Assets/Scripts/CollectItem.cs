@@ -120,41 +120,23 @@ public class CollectItem : MonoBehaviour
         if (inventoryState)
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
-            inventoryText.text = string.Format(@"Inventory: 
-Fire: {0}
-Water: {1}
-CupricChloride: {2} 
-LithiumCloride: {3}
-CalciumChloride: {4}
-PotassiumChloride: {5}
-SodiumCloride: {6}
-Caesium: {7}
-CalciumOxide: {8}
-Bomb: {9}
-BlueLight: {10}
-RedLight: {11}
-OrangeLight: {12}
-PurpleLight: {13}
-YellowLight: {14}
-CalciumHydroxide: {15}
-",
-inventoryDict["Fire"],
-inventoryDict["Water"],
-inventoryDict["CupricChloride"],
-inventoryDict["LithiumChloride"],
-inventoryDict["CalciumChloride"],
-inventoryDict["PotassiumChloride"],
-inventoryDict["SodiumChloride"],
-inventoryDict["Caesium"],
-inventoryDict["CalciumOxide"],
-inventoryDict["Bomb"],
-inventoryDict["BlueLight"],
-inventoryDict["RedLight"],
-inventoryDict["OrangeLight"],
-inventoryDict["PurpleLight"],
-inventoryDict["YellowLight"],
-inventoryDict["CalciumHydroxide"]
-);
+            inventoryText.text = $@"Inventory: 
+Fire: {inventoryDict["Fire"]}
+Water: {inventoryDict["Water"]}
+CupricChloride: {inventoryDict["CupricChloride"]} 
+LithiumCloride: {inventoryDict["LithiumChloride"]}
+CalciumChloride: {inventoryDict["CalciumChloride"]}
+PotassiumChloride: {inventoryDict["PotassiumChloride"]}
+SodiumCloride: {inventoryDict["SodiumChloride"]}
+Caesium: {inventoryDict["Caesium"]}
+CalciumOxide: {inventoryDict["CalciumOxide"]}
+Bomb: {inventoryDict["Bomb"]}
+BlueLight: {inventoryDict["BlueLight"]}
+RedLight: {inventoryDict["RedLight"]}
+OrangeLight: {inventoryDict["OrangeLight"]}
+PurpleLight: {inventoryDict["PurpleLight"]}
+YellowLight: {inventoryDict["YellowLight"]}
+CalciumHydroxide: {inventoryDict["CalciumHydroxide"]}";
         }
         else
         {
