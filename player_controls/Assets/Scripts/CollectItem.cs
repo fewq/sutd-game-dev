@@ -2,15 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD
-public class CollectItem : MonoBehaviour
-{
-    private GameObject item;
-
-    private BoxCollider2D playerCollider ;
-
-    public List<GameObject> ItemList = new List<GameObject>();
-=======
 //Adding this allows us to access members of the UI namespace including Text.
 using UnityEngine.UI;
 
@@ -37,39 +28,10 @@ public class CollectItem : MonoBehaviour
     public Text inventoryText;
 
 
->>>>>>> upstream/master
     // Start is called before the first frame update
     void Start()
     {
         playerCollider = gameObject.GetComponent<BoxCollider2D>();
-<<<<<<< HEAD
-    }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        
-        if(item == null){
-            item = other.gameObject;
-        }
-        else{
-            item = null;
-            item = other.gameObject;
-        }
-    }
-
-    void PickObject(){
-        if(item != null){
-            
-            if(Input.GetKey(KeyCode.E)){
-                Debug.Log(item);
-                ItemList.Add(item);
-                item.SetActive(false);
-                item = null;
-            }
-            
-        }
-        
-    }
-=======
 
         // create empty dicitonary to store items
         itemDict = new Dictionary<string, int>(){
@@ -186,14 +148,10 @@ itemDict["CalciumHydroxide"]
         }
     }
 
->>>>>>> upstream/master
     // Update is called once per frame
     void Update()
     {
         PickObject();
-<<<<<<< HEAD
-=======
         ToggleInventory();
->>>>>>> upstream/master
     }
 }
