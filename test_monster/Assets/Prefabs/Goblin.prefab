@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 800080216313234087}
   - component: {fileID: 800080216313234086}
   - component: {fileID: 800080216313234089}
+  - component: {fileID: 5326621723832920810}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -124,3 +125,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5326621723832920810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800080216313234088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153085f26b1c89440a3bc447a0d6df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpawnPoint: {fileID: 0}
+  gameobject: {fileID: 0}
+  animator: {fileID: 0}
+  lookRadius: 3
+  moveSpeed: 5
+  monsterType: 0
+  torch: {fileID: 0}
+  finishBurning: 0
