@@ -84,6 +84,9 @@ public class MonsterController : MonoBehaviour
         Vector2 direction = (target.position - transform.position).normalized;
         FacePlayer(direction);
         rigidbody.MovePosition(rigidbody.position + direction * moveSpeed * Time.deltaTime);
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Speed", direction.sqrMagnitude);
     }
 
     void FacePlayer(Vector2 direction)
