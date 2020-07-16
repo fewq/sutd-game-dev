@@ -13,9 +13,9 @@ public class Player : Movement
     public LayerMask layer;
 
 
-    private int xVal;
+    // private int xVal;
 
-    private int yVal;
+    // private int yVal;
     private bool playerMoving;
 
     private EdgeCollider2D walls;
@@ -28,13 +28,14 @@ public class Player : Movement
         base.Start();
         // walls = GameObject.FindGameObjectWithTag("Wall").GetComponent<BoxCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        
+
 
     }
 
     // Update is called once per frame
-    private void FixedUpdate() {
-        
+    private void FixedUpdate()
+    {
+
 
         // xVal = (int) (movement.x);
         // yVal = (int) (movement.y);
@@ -44,46 +45,53 @@ public class Player : Movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         // get inputs from user
-        
-        if(movement.x != 0){
+
+        if (movement.x != 0)
+        {
             Debug.Log("X movement");
             movement.y = 0.0f;
-            yVal = 0;
-            if(movement.x > 0){
-                movement.x = tileMovement;    
+            // yVal = 0;
+            if (movement.x > 0)
+            {
+                movement.x = tileMovement;
             }
-            else{
+            else
+            {
                 movement.x = -tileMovement;
             }
             // movement.x = 0.3f;
         }
 
-        if(movement.y != 0){
+        if (movement.y != 0)
+        {
             Debug.Log("Y movement");
             movement.x = 0.0f;
-            xVal = 0;
-            if(movement.y > 0){
-                movement.y = tileMovement;    
+            // xVal = 0;
+            if (movement.y > 0)
+            {
+                movement.y = tileMovement;
             }
-            else{
+            else
+            {
                 movement.y = -tileMovement;
             }
-            
+
         }
 
-        if (movement.x != 0 || movement.y != 0){
-            movementController(movement.x, movement.y);   
-            
+        if (movement.x != 0 || movement.y != 0)
+        {
+            movementController(movement.x, movement.y);
+
         }
 
-        if(movement.x == 0 && movement.y == 0)
+        if (movement.x == 0 && movement.y == 0)
         {
             animator.SetFloat("Speed", movement.sqrMagnitude);
         }
         // this is used to update the player animation
         // this is passed into the animator parameters, which is then used to update the blend tree
-        
-        
+
+
     }
 
     /// <summary>
@@ -93,20 +101,22 @@ public class Player : Movement
     {
         // base.checkMove<T>(x,y);
         RaycastHit2D hit;
-        if(playerMovement(x, y, out hit)){
+        if (playerMovement(x, y, out hit))
+        {
             // base.Move(xVal, yVal, out hit);
             // Debug.Log
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
-            animator.SetFloat("Speed", Mathf.Max(1,movement.sqrMagnitude));
+            animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
             Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
-            
-            
+
+
         }
-        else{
+        else
+        {
             Debug.Log("Cant move");
         }
-        
+
     }
 
 
