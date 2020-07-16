@@ -158,6 +158,27 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
         }
     }
 
+    // takes in 2 raw materials (order doesn't matter) and performs crafting
+    void Craft(string rawItem1, string rawItem2)
+    {
+        string craftedItem = null;
+        // loop through recipe dictionary and get final item
+        foreach (KeyValuePair<string, (string, string)> recipe in recipeDict)
+        {
+            if (recipe.Value == (rawItem1, rawItem2) || recipe.Value == (rawItem2, rawItem1))
+            {
+                craftedItem = recipe.Key;
+            }
+        }
+        // check if there is enough raw materials and if crafted item is valid
+        if (inventoryDict[rawItem1] > 0 && inventoryDict[rawItem2] > 0 && craftedItem != null)
+        {
+            inventoryDict[rawItem1]--;
+            inventoryDict[rawItem2]--;
+            inventoryDict[craftedItem]++;
+        }
+    }
+
     // manages the crafting and placing hotkeys for the game
     void HotkeyManager()
     {
