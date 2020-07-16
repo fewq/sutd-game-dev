@@ -16,7 +16,10 @@ public class CollectItem : MonoBehaviour
     public List<GameObject> ItemList = new List<GameObject>();
 
     // dictionary to store the GameObjects
-    public Dictionary<string, int> itemDict;
+    public Dictionary<string, int> inventoryDict;
+
+    // dictionary to store crafting recepies
+    public Dictionary<string, (string, string)> recipeDict;
 
     // boolean for inventory state
     public bool inventoryState = false;
@@ -33,24 +36,34 @@ public class CollectItem : MonoBehaviour
     {
         playerCollider = gameObject.GetComponent<BoxCollider2D>();
 
-        // create empty dicitonary to store items
-        itemDict = new Dictionary<string, int>(){
-            {"Fire", 0},
-            {"Water", 0},
-            {"CupricChloride", 0},
-            {"LithiumChloride", 0},
-            {"CalciumChloride", 0},
-            {"PotassiumChloride", 0},
-            {"SodiumChloride", 0},
-            {"Caesium", 0},
-            {"CalciumOxide", 0},
-            {"Bomb", 0},
-            {"BlueLight", 0},
-            {"RedLight", 0},
-            {"OrangeLight", 0},
-            {"PurpleLight", 0},
-            {"YellowLight", 0},
-            {"CalciumHydroxide", 0}
+        // create dicitonary to store items with sample numbers
+        inventoryDict = new Dictionary<string, int>(){
+            {"Fire", 5},
+            {"Water", 2},
+            {"CupricChloride", 1},
+            {"LithiumChloride", 1},
+            {"CalciumChloride", 1},
+            {"PotassiumChloride", 1},
+            {"SodiumChloride", 1},
+            {"Caesium", 1},
+            {"CalciumOxide", 1},
+            {"Bomb", 1},
+            {"BlueLight", 1},
+            {"RedLight", 1},
+            {"OrangeLight", 1},
+            {"PurpleLight", 1},
+            {"YellowLight", 1},
+            {"CalciumHydroxide", 1}
+        };
+        // create crafting recepie dict
+        recipeDict = new Dictionary<string, (string, string)>{
+            {"Bomb", ("Water", "Caesium")},
+            {"BlueLight", ("Fire", "CupricChloride")},
+            {"RedLight", ("Fire", "LithiumChloride")},
+            {"OrangeLight", ("Fire", "CalciumChloride")},
+            {"PurpleLight", ("Fire", "PotassiumChloride")},
+            {"YellowLight", ("Fire", "SodiumChloride")},
+            {"CalciumHydroxide", ("Water", "CalciumOxide")}
         };
         // get inventoryText Reference
         inventoryText = GameObject.Find("InventoryText").GetComponent<Text>();
@@ -90,8 +103,8 @@ public class CollectItem : MonoBehaviour
                 // add to ItemList
                 ItemList.Add(pickupItem);
                 // also add to dictionary for now
-                itemDict[pickupItem.name] += 1;
-                Debug.Log("itemDict entry -> " + pickupItem.name + ": " + itemDict[pickupItem.name]);
+                inventoryDict[pickupItem.name] += 1;
+                Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);
                 pickupItem.SetActive(false);
                 pickupItem = null;
             }
@@ -100,47 +113,30 @@ public class CollectItem : MonoBehaviour
 
     void ToggleInventory()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             inventoryState = !inventoryState;
         }
         if (inventoryState)
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
-            inventoryText.text = string.Format(@"Inventory: 
-Fire: {0}
-Water: {1}
-CupricChloride: {2} 
-LithiumCloride: {3}
-CalciumChloride: {4}
-PotassiumChloride: {5}
-SodiumCloride: {6}
-Caesium: {7}
-CalciumOxide: {8}
-Bomb: {9}
-BlueLight: {10}
-RedLight: {11}
-OrangeLight: {12}
-PurpleLight: {13}
-YellowLight: {14}
-CalciumHydroxide: {15}
-", itemDict["Fire"],
-itemDict["Water"],
-itemDict["CupricChloride"],
-itemDict["LithiumChloride"],
-itemDict["CalciumChloride"],
-itemDict["PotassiumChloride"],
-itemDict["SodiumChloride"],
-itemDict["Caesium"],
-itemDict["CalciumOxide"],
-itemDict["Bomb"],
-itemDict["BlueLight"],
-itemDict["RedLight"],
-itemDict["OrangeLight"],
-itemDict["PurpleLight"],
-itemDict["YellowLight"],
-itemDict["CalciumHydroxide"]
-);
+            inventoryText.text = $@"Inventory: 
+Fire: {inventoryDict["Fire"]}
+Water: {inventoryDict["Water"]}
+CupricChloride: {inventoryDict["CupricChloride"]} 
+LithiumCloride: {inventoryDict["LithiumChloride"]}
+CalciumChloride: {inventoryDict["CalciumChloride"]}
+PotassiumChloride: {inventoryDict["PotassiumChloride"]}
+SodiumCloride: {inventoryDict["SodiumChloride"]}
+Caesium: {inventoryDict["Caesium"]}
+CalciumOxide: {inventoryDict["CalciumOxide"]}
+Bomb: {inventoryDict["Bomb"]} (Craft: T)
+BlueLight: {inventoryDict["BlueLight"]} (Craft: Y)
+RedLight: {inventoryDict["RedLight"]} (Craft: U)
+OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I)
+PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O)
+YellowLight: {inventoryDict["YellowLight"]} (Craft: P)
+CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
         }
         else
         {
@@ -148,10 +144,39 @@ itemDict["CalciumHydroxide"]
         }
     }
 
+    // takes in a string of the desired item to craft
+    // checks if there is enough raw materials, then crafts it
+    void Craft(string craftedItem)
+    {
+        string rawItem1 = recipeDict[craftedItem].Item1;
+        string rawItem2 = recipeDict[craftedItem].Item2;
+        if (inventoryDict[rawItem1] > 0 && inventoryDict[rawItem2] > 0)
+        {
+            inventoryDict[rawItem1]--;
+            inventoryDict[rawItem2]--;
+            inventoryDict[craftedItem]++;
+        }
+    }
+
+    // manages the crafting and placing hotkeys for the game
+    void HotkeyManager()
+    {
+        if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
+        else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
+        else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
+        else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
+        else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
+        else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
+        else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
+
+        // soon to come: placing hotkeys
+    }
+
     // Update is called once per frame
     void Update()
     {
         PickObject();
         ToggleInventory();
+        HotkeyManager();
     }
 }
