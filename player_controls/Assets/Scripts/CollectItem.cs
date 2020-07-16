@@ -30,6 +30,8 @@ public class CollectItem : MonoBehaviour
     // canvas text
     public Text inventoryText;
 
+    public GameObject itemPrefab;
+
 
     // Start is called before the first frame update
     void Start()
@@ -130,13 +132,13 @@ PotassiumChloride: {inventoryDict["PotassiumChloride"]}
 SodiumCloride: {inventoryDict["SodiumChloride"]}
 Caesium: {inventoryDict["Caesium"]}
 CalciumOxide: {inventoryDict["CalciumOxide"]}
-Bomb: {inventoryDict["Bomb"]} (Craft: T)
-BlueLight: {inventoryDict["BlueLight"]} (Craft: Y)
-RedLight: {inventoryDict["RedLight"]} (Craft: U)
-OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I)
-PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O)
-YellowLight: {inventoryDict["YellowLight"]} (Craft: P)
-CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
+Bomb: {inventoryDict["Bomb"]} (Craft: T; Place: F)
+BlueLight: {inventoryDict["BlueLight"]} (Craft: Y; Place: G)
+RedLight: {inventoryDict["RedLight"]} (Craft: U; Place: H)
+OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I; Place: J)
+PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O; Place: K)
+YellowLight: {inventoryDict["YellowLight"]} (Craft: P; Place: L)
+CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         }
         else
         {
@@ -179,9 +181,24 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
         }
     }
 
+    void Place(string craftedItem)
+    {
+        if (inventoryDict[craftedItem] > 0)
+        {
+            GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
+            // set the tag
+            item.tag = "item";
+            // set the name
+            item.name = craftedItem;
+            // TODO: set the sprite
+            inventoryDict[craftedItem]--;
+        }
+    }
+
     // manages the crafting and placing hotkeys for the game
     void HotkeyManager()
     {
+        // crafting hotkeys
         if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
         else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
         else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
@@ -189,8 +206,14 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
         else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
         else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
         else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
-
-        // soon to come: placing hotkeys
+        // placing hotkeys
+        else if (Input.GetKeyDown(KeyCode.F)) { Place("Bomb"); }
+        else if (Input.GetKeyDown(KeyCode.G)) { Place("BlueLight"); }
+        else if (Input.GetKeyDown(KeyCode.H)) { Place("RedLight"); }
+        else if (Input.GetKeyDown(KeyCode.J)) { Place("OrangeLight"); }
+        else if (Input.GetKeyDown(KeyCode.K)) { Place("PurpleLight"); }
+        else if (Input.GetKeyDown(KeyCode.L)) { Place("YellowLight"); }
+        else if (Input.GetKeyDown(KeyCode.Semicolon)) { Place("CalciumHydroxide"); }
     }
 
     // Update is called once per frame

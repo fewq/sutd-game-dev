@@ -988,6 +988,8 @@ MonoBehaviour:
   inventoryState: 0
   inventoryCanvas: {fileID: 0}
   inventoryText: {fileID: 0}
+  itemPrefab: {fileID: 7716883765634680467, guid: 3d76ce53c0c4e804ca73daee32e0dc7e,
+    type: 3}
 --- !u!1 &857116897
 GameObject:
   m_ObjectHideFlags: 0
