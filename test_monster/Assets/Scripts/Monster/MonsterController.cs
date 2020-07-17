@@ -20,7 +20,7 @@ public class MonsterController : MonoBehaviour
     private float torchDistance; // TODO: account for multiple torches
     private bool distracted = false;
     public bool finishBurning = false; // FOR POC, REMOVE LATER
-
+    private Vector2 direction;
 
     // Start is called before the first frame update
     void Start()
@@ -81,9 +81,22 @@ public class MonsterController : MonoBehaviour
 
     void ChaseTarget(Transform target)
     {
-        Vector2 direction = (target.position - transform.position).normalized;
+        // direction = normalize(playerPos - enemyPos);
+        // playerPos = playerPos + direction * velocity;
+        // prevents diagonal movement
+
+        direction = (target.position - transform.position);
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) 
+        {
+            direction.y = 0f;
+        } else {
+            direction.x = 0f;
+        }
+        direction.Normalize();
+        transform.Translate(direction*Time.deltaTime*moveSpeed);
+
         FacePlayer(direction);
-        rigidbody.MovePosition(rigidbody.position + direction * moveSpeed * Time.deltaTime);
+        // rigidbody.MovePosition(rigidbody.position + direction * moveSpeed * Time.deltaTime);
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
         animator.SetFloat("Speed", direction.sqrMagnitude);
@@ -106,7 +119,7 @@ public class MonsterController : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            Debug.Log("Kill!");
+            Debug.Log("Kill");
         }
     }
 }
