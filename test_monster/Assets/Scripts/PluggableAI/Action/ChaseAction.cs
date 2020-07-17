@@ -13,7 +13,7 @@ public class ChaseAction : Action
     private void Chase(StateController controller)
     {
         target = Player.instance.transform;
-		controller.monsterController.ChaseTarget(target);
+		MonsterController.Instance.ChaseTarget(target);
     }
 
 }

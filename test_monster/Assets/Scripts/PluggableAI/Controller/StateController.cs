@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class StateController : MonoBehaviour {
 
-	public MonsterController monsterController;
 	public Transform eyes;
 	public State currentState;
 	public State remainState;
