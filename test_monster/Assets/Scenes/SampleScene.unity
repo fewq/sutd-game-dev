@@ -3304,11 +3304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToPool:
   - prefab: {fileID: 1966237321}
-    vector: {x: 2, y: 2}
-  - prefab: {fileID: 1966237321}
-    vector: {x: 5, y: 5}
-  pooledObjects: []
-  pooledObjectsTransform: []
+    transform: {fileID: 0}
 --- !u!4 &1845259307
 Transform:
   m_ObjectHideFlags: 0
