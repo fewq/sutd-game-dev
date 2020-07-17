@@ -20,6 +20,7 @@ TagManager:
   - CraftItem1
   - CraftItem2
   - Inventory
+  - Bar
   layers:
   - Default
   - TransparentFX

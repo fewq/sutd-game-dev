@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     private List<Transform> itemPlaceholders = new List<Transform>();
     private List<Image> inventoryImages = new List<Image>();
     public List<GameObject> itemList = new List<GameObject>();
+
+    private List<GameObject> inventoryItems = new List<GameObject>();
     //Should have an event that tells when an item has been added and then update the inventory.
     private GameObject player;
 
@@ -38,12 +40,14 @@ public class InventoryManager : MonoBehaviour
     
     //algo issue, image gets repeated across all slots, need resize also.
     void SetInventory(){
-        for(int i=0; i<itemList.Count; i++){
-            for(int j=0; j<inventoryImages.Count; j++){
-                if(!inventoryImages[j].IsActive()){
-                    inventoryImages[j].enabled = true;
-                    inventoryImages[j].sprite = itemList[i].transform.GetComponent<SpriteRenderer>().sprite;
-                }
+        for(int j=0; j<inventoryImages.Count; j++){
+            if(!inventoryImages[j].IsActive()){
+                inventoryImages[j].enabled = true;
+                inventoryImages[j].transform.localScale *= 3f;
+                var toAdd = itemList[itemList.Count - 1];
+                inventoryImages[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
+                inventoryItems.Add(toAdd.gameObject);
+                break;
             }
         }
     }
@@ -56,5 +60,6 @@ public class InventoryManager : MonoBehaviour
         if(itemAdded){
             SetInventory();
         }
+        player.GetComponent<CollectItem>().itemAdded = false;
     }
 }

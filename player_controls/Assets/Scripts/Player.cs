@@ -46,7 +46,6 @@ public class Player : Movement
         // get inputs from user
         
         if(movement.x != 0){
-            Debug.Log("X movement");
             movement.y = 0.0f;
             yVal = 0;
             if(movement.x > 0){
@@ -59,7 +58,6 @@ public class Player : Movement
         }
 
         if(movement.y != 0){
-            Debug.Log("Y movement");
             movement.x = 0.0f;
             xVal = 0;
             if(movement.y > 0){
@@ -99,12 +97,12 @@ public class Player : Movement
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
             animator.SetFloat("Speed", Mathf.Max(1,movement.sqrMagnitude));
-            Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
+            // Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
             
             
         }
         else{
-            Debug.Log("Cant move");
+            // Debug.Log("Cant move");
         }
         
     }
