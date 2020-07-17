@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 /* Determines monster movement logic */
-public class MonsterController : GenericSingletonClass<MonsterController>
+public class MonsterController : MonoBehaviour
 {
     public Transform m_SpawnPoint;
     public Animator animator;
@@ -16,20 +16,11 @@ public class MonsterController : GenericSingletonClass<MonsterController>
     public bool finishBurning = false; // FOR POC, REMOVE LATER
     private Vector2 direction;
 
-    public delegate void Detect();
-    public static event Detect playerDetected;
-    public static event Detect flameDetected; 
+
     // Start is called before the first frame update
     void Start() {}
 
     void Update() {}
-
-    public void PlayerDetected()
-    {
-
-    }
-
-
 
     public void ChaseTarget(Transform target)
     {
