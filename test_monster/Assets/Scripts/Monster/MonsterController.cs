@@ -45,6 +45,6 @@ public class MonsterController : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, lookRadius);
+        Gizmos.DrawWireCube(transform.position, new Vector3(lookRadius, lookRadius, lookRadius));
     }
 }

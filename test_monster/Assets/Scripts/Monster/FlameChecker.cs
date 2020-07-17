@@ -13,11 +13,9 @@ public class FlameChecker : MonoBehaviour
 
     public favColors favColor;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collision.gameObject.tag);
-        Debug.Log(favColor+"Flame");
-        if (collision.gameObject.tag == favColor+"Flame")
+        if (collider.gameObject.CompareTag(favColor+"Flame"))
         {
             // invoke event?
             Debug.Log("Flame in range");
