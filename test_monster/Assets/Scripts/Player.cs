@@ -48,4 +48,13 @@ public class Player : MonoBehaviour
         // actual movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Enemy")
+        {
+            Debug.Log("enemy caught you!");
+            Time.timeScale=0f;
+        }
+    }
 }

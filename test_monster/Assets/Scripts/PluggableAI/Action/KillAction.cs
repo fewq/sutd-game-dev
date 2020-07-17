@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/* 
+NOT IN USE
+*/
 [CreateAssetMenu(menuName = "PluggableAI/Actions/Kill")]
 public class KillAction : Action
 {

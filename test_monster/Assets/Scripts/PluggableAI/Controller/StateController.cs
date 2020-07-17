@@ -5,15 +5,11 @@ using UnityEngine.AI;
 
 public class StateController : MonoBehaviour {
 
-	public State currentState;
-	public Transform spawnLocation;
+	public MonsterController monsterController;
 	public Transform eyes;
+	public State currentState;
 	public State remainState;
 	public bool transitionStateChanged = false;
-
-	[HideInInspector] public List<Transform> wayPointList;
-	[HideInInspector] public int nextWayPoint;
-	[HideInInspector] public Transform chaseTarget;
 
 	public void TransitionToState(State nextState)
 	{

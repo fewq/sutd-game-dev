@@ -15,7 +15,7 @@ public class LookAction : Action
 		// TODO: check if player present in a 5x5 radius
 		// move towards the flame/player is true
 		// play either exclaim (player) or heart animation (flame)
-		Debug.Log("Check surroundings");
+		// Debug.Log("Check surroundings");
 	}
 
 }
