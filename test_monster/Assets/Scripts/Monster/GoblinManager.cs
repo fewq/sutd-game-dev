@@ -8,12 +8,12 @@ public class GoblinManager : MonoBehaviour
     void Start()
     {   
 
-        List<Vector2> list = ObjectPooler.SharedInstance.GetTransformObject();
+        List<Transform> list = ObjectPooler.SharedInstance.GetTransformObject();
 
         for (int i = 0; i < ObjectPooler.SharedInstance.PooledLength(); i++) 
         {
             GameObject goblin = ObjectPooler.SharedInstance.GetPooledObject();
-            goblin.transform.position = list[i];
+            goblin.transform.position = list[i].position;
             goblin.SetActive(true);
         }        
     }

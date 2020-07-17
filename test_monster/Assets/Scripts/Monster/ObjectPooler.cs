@@ -8,7 +8,7 @@ public class ObjectPooler : MonoBehaviour
     public class ObjectPoolItem {
         public GameObject prefab;
 
-        public Vector2 vector;
+        public Transform transform;
 
     }
 
@@ -16,20 +16,20 @@ public class ObjectPooler : MonoBehaviour
     public List<ObjectPoolItem> itemsToPool;
     public List<GameObject> pooledObjects;
 
-    public List<Vector2> pooledObjectsTransform;
+    public List<Transform> pooledObjectsTransform;
 
     void Awake()
     {
         SharedInstance = this;
         pooledObjects = new List<GameObject>();
-        pooledObjectsTransform = new List<Vector2>();
+        pooledObjectsTransform = new List<Transform>();
 
         foreach (ObjectPoolItem item in itemsToPool)
         {   
             GameObject goblin = (GameObject)Instantiate(item.prefab);
             goblin.SetActive(false);
             pooledObjects.Add(goblin);
-            pooledObjectsTransform.Add(item.vector);
+            pooledObjectsTransform.Add(item.transform);
 
         }
     }
@@ -51,7 +51,7 @@ public class ObjectPooler : MonoBehaviour
         return pooledObjects.Count;
     }
 
-    public List<Vector2> GetTransformObject()
+    public List<Transform> GetTransformObject()
     {
         return pooledObjectsTransform;
     }
