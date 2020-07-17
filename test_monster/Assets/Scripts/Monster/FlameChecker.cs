@@ -10,15 +10,31 @@ public class FlameChecker : MonoBehaviour
         Red = 3,
         Orange= 4
     }
-
     public favColors favColor;
+    private MonsterController monsterController;
+    private string flameTag;
+
+    void Start()
+    {
+        flameTag = favColor+"Flame";
+        monsterController = GetComponentInParent<MonsterController>();
+    }
+
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag(favColor+"Flame"))
+        if (collider.gameObject.CompareTag(flameTag));
         {
-            // invoke event?
             Debug.Log("Flame in range");
+            monsterController.ChaseFlame(collider.gameObject.transform);
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag(flameTag)) 
+        {
+            Debug.Log("Flame no longer in range");
+            monsterController.flameInRange = false;
         }
     }
 }

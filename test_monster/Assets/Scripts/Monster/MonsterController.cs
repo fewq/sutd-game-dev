@@ -10,24 +10,48 @@ public class MonsterController : MonoBehaviour
     public Animator animator;
     public GameObject exclaimation;
     // public GameObject heartExclaimation;
-    public float lookRadius = 3f;
     public float moveSpeed = 5f;
     private Rigidbody2D rigidbody;
-    public bool finishBurning = false; // FOR POC, REMOVE LATER
     private Vector2 direction;
-    public delegate void Detect();
-    public static event Detect playerDetected;
-    public static event Detect flameDetected;
+    private Transform flameLocation;
+    public bool flameInRange { get; set; }
+    public bool playerInRange { get; set; }
 
     // Start is called before the first frame update
-    void Start() {}
+    void Start()
+    {
+        flameInRange = false;
+        playerInRange = false;
+    }
 
-    void Update() {}
+    void Update()
+    {
+        if (flameInRange)
+        {
+            ChaseTarget(flameLocation);
+        }
+
+        else if (playerInRange)
+        {
+            ChasePlayer();
+        }
+    }
+
+    public void ChaseFlame(Transform flame)
+    {
+        flameLocation = flame;
+        flameInRange = true;
+    }
+
+    public void ChasePlayer()
+    {
+        ChaseTarget(Player.instance.transform);
+    }
 
     public void ChaseTarget(Transform target)
     {
-        // prevents interpolation between left/right/up/down movement
         direction = (target.position - transform.position);
+        // prevents interpolation between left/right/up/down movement
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
             direction.y = 0f;
@@ -42,11 +66,6 @@ public class MonsterController : MonoBehaviour
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
         animator.SetFloat("Speed", direction.sqrMagnitude);
-    }
 
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, new Vector3(lookRadius, lookRadius, lookRadius));
     }
 }
