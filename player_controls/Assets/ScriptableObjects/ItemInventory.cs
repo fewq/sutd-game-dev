@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item Inventory", menuName = "Player Inventory", order = 51)]
 public class ItemInventory : ScriptableObject
 {
+
     // [SerializeField]
     // private List<GameObject> item1;
     // [SerializeField]
@@ -14,6 +15,7 @@ public class ItemInventory : ScriptableObject
     //     get{
     //         return item1;
     //     }
+
 
     // }
 

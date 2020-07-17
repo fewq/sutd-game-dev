@@ -8,6 +8,19 @@ TagManager:
   - Boulder
   - Item
   - Floor
+  - Item1
+  - Item2
+  - Item3
+  - Item4
+  - Item5
+  - Item6
+  - Item7
+  - Item8
+  - CraftedItem
+  - CraftItem1
+  - CraftItem2
+  - Inventory
+  - Bar
   layers:
   - Default
   - TransparentFX
@@ -59,4 +72,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2401359663
+    locked: 0
+  - name: Inventory
+    uniqueID: 2534303979
     locked: 0

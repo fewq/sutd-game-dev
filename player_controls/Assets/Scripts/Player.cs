@@ -45,10 +45,9 @@ public class Player : Movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         // get inputs from user
+        
+        if(movement.x != 0){
 
-        if (movement.x != 0)
-        {
-            Debug.Log("X movement");
             movement.y = 0.0f;
             // yVal = 0;
             if (movement.x > 0)
@@ -62,9 +61,8 @@ public class Player : Movement
             // movement.x = 0.3f;
         }
 
-        if (movement.y != 0)
-        {
-            Debug.Log("Y movement");
+
+        if(movement.y != 0){
             movement.x = 0.0f;
             // xVal = 0;
             if (movement.y > 0)
@@ -107,14 +105,13 @@ public class Player : Movement
             // Debug.Log
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
-            animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
-            Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
-
-
+            animator.SetFloat("Speed", Mathf.Max(1,movement.sqrMagnitude));
+            // Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
+            
+            
         }
-        else
-        {
-            Debug.Log("Cant move");
+        else{
+            // Debug.Log("Cant move");
         }
 
     }

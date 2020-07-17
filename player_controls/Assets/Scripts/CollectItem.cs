@@ -13,6 +13,7 @@ public class CollectItem : MonoBehaviour
     private BoxCollider2D playerCollider;
 
     // List to store the GameObejct that have been picked up
+
     public List<GameObject> ItemList = new List<GameObject>();
 
     // dictionary to store the GameObjects
@@ -30,7 +31,11 @@ public class CollectItem : MonoBehaviour
     // canvas text
     public Text inventoryText;
 
+
     public GameObject itemPrefab;
+
+    public bool itemAdded = false;
+
 
 
     // Start is called before the first frame update
@@ -72,6 +77,10 @@ public class CollectItem : MonoBehaviour
         // get inventoryCanvas reference
         inventoryCanvas = GameObject.Find("InventoryCanvas").GetComponent<Canvas>();
     }
+    
+    public List<GameObject> GetItems(){
+        return ItemList;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -112,6 +121,7 @@ public class CollectItem : MonoBehaviour
                 // destroy item instead
                 // Destroy(pickupItem);
                 pickupItem = null;
+                itemAdded = true;
             }
         }
     }

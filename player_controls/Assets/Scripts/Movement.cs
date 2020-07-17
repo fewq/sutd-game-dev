@@ -30,7 +30,6 @@ public abstract class Movement : MonoBehaviour
         
 
         hit = Physics2D.Linecast(transform.position, transform.position + new Vector3(x,y), layerMask);
-        Debug.Log("Hit " + hit.ToString());
 
         boxCollider.enabled = true;
 
@@ -38,7 +37,6 @@ public abstract class Movement : MonoBehaviour
             rb2d.MovePosition(transform.position + new Vector3(x,y));
             return true;
         }
-        Debug.Log("Cant move");
         return false;
     }
 
