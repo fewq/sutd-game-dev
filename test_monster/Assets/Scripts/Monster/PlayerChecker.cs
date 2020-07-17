@@ -15,6 +15,7 @@ public class PlayerChecker : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Player in range");
             monsterController.playerInRange = true;
         }
     }
@@ -23,6 +24,7 @@ public class PlayerChecker : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) 
         {
+            Debug.Log("Player out of range");
             monsterController.playerInRange = false;
         }
     }
