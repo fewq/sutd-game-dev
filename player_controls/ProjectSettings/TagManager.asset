@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Wall
   - Boulder
-  - Silver
   - Item
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -44,6 +44,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 837064505
     locked: 0
   - name: Floor
     uniqueID: 919305333

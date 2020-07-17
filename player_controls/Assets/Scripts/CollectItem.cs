@@ -107,7 +107,10 @@ public class CollectItem : MonoBehaviour
                 // also add to dictionary for now
                 inventoryDict[pickupItem.name] += 1;
                 Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);
+                // deactivate item
                 pickupItem.SetActive(false);
+                // destroy item instead
+                // Destroy(pickupItem);
                 pickupItem = null;
             }
         }
@@ -187,7 +190,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         {
             GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
             // set the tag
-            item.tag = "item";
+            item.tag = "Item";
             // set the name
             item.name = craftedItem;
             // TODO: set the sprite
