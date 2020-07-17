@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3647793272902080445}
   - component: {fileID: 8189658652064662878}
   - component: {fileID: 779263272060784521}
+  - component: {fileID: -5604690787943770569}
   m_Layer: 0
   m_Name: Item
   m_TagString: Item
@@ -71,8 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 1803688185
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8413524966899149440, guid: 5eaddb049a4a67b41b476bb845d0a60c,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &779263272060784521
@@ -109,3 +109,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
+--- !u!114 &-5604690787943770569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7716883765634680467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d6e5b6a014dcf4f9f50e8690ede272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 8189658652064662878}
+  bombSprite: {fileID: 21300000, guid: 3fe0ae2da8de5eb4dba899c3ffaabb96, type: 3}
+  blueLightSprite: {fileID: -3571507994421708620, guid: 5a5b55a53c8843241b1b4e524d96e19a,
+    type: 3}
+  redLightSprite: {fileID: -474184230181243279, guid: 604f0aca254f8694cb14c8f0151648b8,
+    type: 3}
+  orangeLightSprite: {fileID: 5166608728908515687, guid: bcf099610e1092543a26b8c26de94e8c,
+    type: 3}
+  purpleLightSprite: {fileID: 1314322830994256539, guid: 0b737a6c852fc144a979158b3b87668f,
+    type: 3}
+  yellowLightSprite: {fileID: -5991136222262614521, guid: b98d46d4304ebf7409677efd265ded09,
+    type: 3}
+  calciumHydroxideSprite: {fileID: -4983145085590012425, guid: 099f5b3b6e9dcec4ba6c9f78c3f80159,
+    type: 3}
