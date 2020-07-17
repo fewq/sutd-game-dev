@@ -23,7 +23,7 @@ public class FlameChecker : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag(flameTag));
+        if (collider.gameObject.CompareTag(flameTag))
         {
             Debug.Log("Flame in range");
             monsterController.ChaseFlame(collider.gameObject.transform);

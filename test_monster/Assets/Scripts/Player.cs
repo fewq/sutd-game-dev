@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         if (col.gameObject.tag == "Enemy")
         {
             Debug.Log("enemy caught you!");
-            Time.timeScale=0f;
+            // Time.timeScale=0f;
         }
     }
 }
