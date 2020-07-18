@@ -18,11 +18,13 @@ public class Torch : MonoBehaviour
     private SpriteRenderer flameRenderer;
     private AnimateController flameAniController;
     private List<MonsterController> attractedMonsters;
+    private List<string> monsterNames;
     private Animator flameAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
+        monsterNames = new List<string>();
         attractedMonsters = new List<MonsterController>();
         flameRenderer = GetComponent<SpriteRenderer>();
         flameAniController = GetComponent<AnimateController>();
@@ -70,6 +72,7 @@ public class Torch : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        Debug.Log("trigger enter");
         // only carry out checks if flame is lit
         if (flameLit)
         {
@@ -90,11 +93,12 @@ public class Torch : MonoBehaviour
         // only carry out checks if flame is lit
         if (flameLit)
         {
-            Debug.Log(gameObject.tag);
-
+            // TODO: check if monster name already in list, if so, don't carry out procedures
             if (col.gameObject.CompareTag("Untagged"))
             {
+
                 CheckAndActivateEnemyProcedures(col.transform.parent.gameObject);
+
             }
             else
             {
@@ -105,9 +109,14 @@ public class Torch : MonoBehaviour
 
     private void CheckAndActivateEnemyProcedures(GameObject gameObject)
     {
+        if (monsterNames.Contains(gameObject.name))
+        {
+            return;
+        }
         Debug.Log(gameObject.tag);
         if (gameObject.CompareTag("Enemy"))
         {
+            monsterNames.Add(gameObject.name);
             Debug.Log("Mesmerise");
             Debug.Log(gameObject.GetComponent<MonsterController>());
             attractedMonsters.Add(gameObject.GetComponent<MonsterController>());

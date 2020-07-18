@@ -34,16 +34,16 @@ public class MonsterController : MonoBehaviour
 
     void Update()
     {
-        if (flameInRange && !stare)
+        if (flameInRange)
         {
-            Debug.Log("Chase Flame");
-            if (distanceCloserThan(flameLocation.position, 0.8f))
+            if (!distanceCloserThan(flameLocation.position, 1.5f)) 
+            {
+                Debug.Log("Chase Flame");
+                ChaseTarget(flameLocation.position);
+            }
+            else if (!stare) 
             {
                 Stare();
-            }
-            else
-            {
-                ChaseTarget(flameLocation.position);
             }
         }
 
@@ -111,15 +111,11 @@ public class MonsterController : MonoBehaviour
         animator.SetFloat("Speed", direction.sqrMagnitude);
     }
 
-    IEnumerator Stare()
+    void Stare()
     {
         Debug.Log("Start to stare");
         stare = true;
         animator.SetFloat("Speed", 0);
-        while (stare)
-        {
-            yield return new WaitForSeconds(0.5f);
-        }
     }
 
     void ReturnToSpawnPoint()
