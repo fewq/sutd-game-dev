@@ -13,6 +13,7 @@ public class FlameChecker : MonoBehaviour
     public favColors favColor;
     private MonsterController monsterController;
     private string flameTag;
+    private bool chasing;
 
     void Start()
     {
@@ -29,12 +30,26 @@ public class FlameChecker : MonoBehaviour
             monsterController.ChaseFlame(collider.gameObject.transform);
         }
     }
+
+    void OnTriggerStay2D(Collider2D other) {
+        // make sure unlit torches that are in range get registered when they're lit
+        if (!chasing && other.gameObject.CompareTag("UnlitFlame")){ 
+            other.gameObject.GetComponent<Rigidbody2D>().WakeUp();
+        }
+        else if (!chasing && other.gameObject.CompareTag(flameTag))
+        {
+            chasing = true;
+            Debug.Log("Flame in range");
+            monsterController.ChaseFlame(other.gameObject.transform);
+        }
+    }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(flameTag)) 
         {
             Debug.Log("Flame no longer in range");
             monsterController.flameInRange = false;
+            monsterController.heartExclaimation.SetActive(false);
         }
     }
 }

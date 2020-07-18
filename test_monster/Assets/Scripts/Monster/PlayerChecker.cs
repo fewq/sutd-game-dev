@@ -26,6 +26,7 @@ public class PlayerChecker : MonoBehaviour
         {
             Debug.Log("Player out of range");
             monsterController.playerInRange = false;
+            monsterController.exclaimation.SetActive(false);
         }
     }
 }

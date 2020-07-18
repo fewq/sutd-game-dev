@@ -22,6 +22,7 @@ public class Torch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        attractedMonsters = new List<MonsterController>();
         flameRenderer = GetComponent<SpriteRenderer>();
         flameAniController = GetComponent<AnimateController>();
         flameAnimator = GetComponent<Animator>();
@@ -56,13 +57,52 @@ public class Torch : MonoBehaviour
         foreach (var monster in attractedMonsters)
         {
             monster.flameInRange = false;
+            monster.stare = false;
+            monster.heartExclaimation.SetActive(false);  
+        }
+        attractedMonsters.Clear();
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        // only carry out checks if flame is lit
+        if (flameLit)
+        {
+            if (col.gameObject.CompareTag("Untagged"))
+            {
+                CheckAndActivateEnemyProcedures(col.transform.parent.gameObject);
+            }
+            else
+            {
+                CheckAndActivateEnemyProcedures(col.gameObject);
+            }
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerStay2D(Collider2D col) 
     {
-        attractedMonsters.Add(col.gameObject.GetComponent<MonsterController>());
-        attractedMonsters[attractedMonsters.Count-1].Stare();
+        // only carry out checks if flame is lit
+        if (flameLit)
+        {
+            if (col.gameObject.CompareTag("Untagged"))
+            {
+                CheckAndActivateEnemyProcedures(col.transform.parent.gameObject);
+            }
+            else
+            {
+                CheckAndActivateEnemyProcedures(col.gameObject);
+            }
+        }
     }
 
+    private void CheckAndActivateEnemyProcedures(GameObject gameObject)
+    {
+        if (gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Mesmerise");
+            Debug.Log(gameObject.GetComponent<MonsterController>());
+            attractedMonsters.Add(gameObject.GetComponent<MonsterController>());
+            attractedMonsters[attractedMonsters.Count-1].Stare();
+        }
+    }
 }
