@@ -3,37 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
+public class DragHandler : MonoBehaviour , IPointerDownHandler, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
 
     RectTransform rectTransform;
     [SerializeField]
     private Canvas canvas;
+    Vector2 localpoint;
+    
     private void Awake(){
         rectTransform = GetComponent<RectTransform>();
+        Debug.Log("Awake");
+        
+    }
+
+    // public void updatePosition(){
+        
+    //     RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, Input.mousePosition, null, out localpoint);
+    //     rectTransform.anchoredPosition = localpoint;
+    // }
+    public void OnPointerDown(PointerEventData pointer){
+        Debug.Log("Pointer down");
     }
     public void OnDrag(PointerEventData pointer){
+        // rectTransform.localPosition += Input.mousePosition;
         rectTransform.anchoredPosition += pointer.delta/canvas.scaleFactor;
+        Debug.Log(rectTransform.anchoredPosition.ToString());
     }
 
-    // public void OnBeginDrag(PointerEventData pointer){
-        
-    // }
+    public void OnBeginDrag(PointerEventData pointer){
+        Debug.Log("On Begin");
+    }
 
     public void OnEndDrag(PointerEventData pointer){
-        // transform.localPosition = Vector3.zero;
-        Debug.Log("Helo");
+        transform.localPosition = Vector3.zero;
+        // Debug.Log("Helo");
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private void Update() {
+        // updatePosition();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

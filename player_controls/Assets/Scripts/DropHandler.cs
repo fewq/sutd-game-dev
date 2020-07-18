@@ -21,6 +21,6 @@ public class DropHandler : MonoBehaviour, IDropHandler
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("hsjdajd");
     }
 }

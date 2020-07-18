@@ -71,7 +71,7 @@ public class CollectItem : MonoBehaviour
         // get inventoryText Reference
         inventoryText = GameObject.Find("InventoryText").GetComponent<Text>();
         // get inventoryCanvas reference
-        inventoryCanvas = GameObject.Find("InventoryCanvas").GetComponent<Canvas>();
+        inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
     }
     
     public List<GameObject> GetItems(){
@@ -126,6 +126,7 @@ public class CollectItem : MonoBehaviour
             inventoryState = !inventoryState;
         }
         if (inventoryState)
+        
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
             inventoryText.text = $@"Inventory: 

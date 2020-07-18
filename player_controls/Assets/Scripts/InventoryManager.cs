@@ -16,7 +16,7 @@ public class InventoryManager : MonoBehaviour
     private bool itemAdded;
     Transform inventory;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         for(int i=1; i<9; i++){
             itemPlaceholders.Add(GameObject.FindGameObjectWithTag("Item"+i.ToString()).transform);
@@ -38,7 +38,6 @@ public class InventoryManager : MonoBehaviour
 
     }
     
-    //algo issue, image gets repeated across all slots, need resize also.
     void SetInventory(){
         for(int j=0; j<inventoryImages.Count; j++){
             if(!inventoryImages[j].IsActive()){

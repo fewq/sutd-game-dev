@@ -70,6 +70,6 @@ TagManager:
   - name: Player
     uniqueID: 2401359663
     locked: 0
-  - name: Inventory
+  - name: InventoryLayer
     uniqueID: 2534303979
     locked: 0
