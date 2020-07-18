@@ -14,9 +14,9 @@ public class ObjectPooler : MonoBehaviour
 
     public static ObjectPooler SharedInstance;
     public List<ObjectPoolItem> itemsToPool;
-    public List<GameObject> pooledObjects;
+    private List<GameObject> pooledObjects;
 
-    public List<Transform> pooledObjectsTransform;
+    private List<Transform> pooledObjectsTransform;
 
     void Awake()
     {
