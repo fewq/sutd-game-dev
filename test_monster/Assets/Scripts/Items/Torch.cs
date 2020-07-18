@@ -55,16 +55,20 @@ public class Torch : MonoBehaviour
         flameRenderer.sprite = flameAniController.spriteSet[0];
         flameAnimator.enabled = false;
         flameLit = false;
+        Debug.Log(attractedMonsters.Count);
         foreach (var monster in attractedMonsters)
         {
+            Debug.Log("In here");
             monster.flameInRange = false;
             monster.stare = false;
+            Debug.Log(monster.stare);
             monster.heartExclaimation.SetActive(false);
         }
+        gameObject.tag = "UnlitTorch";
         attractedMonsters.Clear();
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         // only carry out checks if flame is lit
         if (flameLit)
@@ -80,7 +84,7 @@ public class Torch : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
 
         // only carry out checks if flame is lit

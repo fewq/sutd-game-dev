@@ -33,7 +33,7 @@ public class FlameChecker : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other) {
         // make sure unlit torches that are in range get registered when they're lit
-        if (!chasing && other.gameObject.CompareTag("UnlitFlame")){ 
+        if (!chasing && other.gameObject.CompareTag("UnlitTorch")){ 
             other.gameObject.GetComponent<Rigidbody2D>().WakeUp();
         }
         else if (!chasing && other.gameObject.CompareTag(flameTag))

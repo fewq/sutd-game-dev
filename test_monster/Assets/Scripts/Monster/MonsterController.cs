@@ -57,7 +57,10 @@ public class MonsterController : MonoBehaviour
         }
         else
         {
+            // Idle down
             animator.SetFloat("Speed", 0);
+            animator.SetFloat("Horizontal", 0f);
+            animator.SetFloat("Vertical", -1f);
         }
     }
 
@@ -113,8 +116,7 @@ public class MonsterController : MonoBehaviour
         Debug.Log("Start to stare");
         stare = true;
         animator.SetFloat("Speed", 0);
-        animator.Play("Goblin_Idle");
-        while(stare)
+        while (stare)
         {
             yield return new WaitForSeconds(0.5f);
         }
