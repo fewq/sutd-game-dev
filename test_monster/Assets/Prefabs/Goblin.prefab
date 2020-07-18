@@ -148,7 +148,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 8299097387826194568, guid: 2ba5ab07405864f1695551ce3750c0aa,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,7 +157,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &800080216313234086
@@ -217,6 +218,7 @@ MonoBehaviour:
   exclaimation: {fileID: 3333822372866640360}
   heartExclaimation: {fileID: 6947704044575209085}
   moveSpeed: 8
+  useAiPathTest: 0
   stare: 0
 --- !u!1 &3333822372866640360
 GameObject:

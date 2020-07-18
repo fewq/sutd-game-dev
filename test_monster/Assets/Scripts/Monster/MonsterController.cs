@@ -36,16 +36,22 @@ public class MonsterController : MonoBehaviour
     {
         if (flameInRange && !stare)
         {
-            Debug.Log(stare);
             Debug.Log("Chase Flame");
-            ChaseTarget(flameLocation.position);
+            if (distanceCloserThan(flameLocation.position, 0.8f))
+            {
+                Stare();
+            }
+            else
+            {
+                ChaseTarget(flameLocation.position);
+            }
         }
 
         else if (playerInRange)
         {
             ChasePlayer();
         }
-        else if (distanceCloserThan(spawnPoint.position, 0.2f))
+        else if (!distanceCloserThan(spawnPoint.position, 0.2f))
         {
             ReturnToSpawnPoint();
         }
@@ -57,7 +63,7 @@ public class MonsterController : MonoBehaviour
 
     private bool distanceCloserThan(Vector3 target, float distance)
     {
-        return (Mathf.Abs((target - transform.position).magnitude) >= distance);
+        return (Mathf.Abs((target - transform.position).magnitude) <= distance);
     }
 
     public void ChaseFlame(Transform flame)
@@ -102,12 +108,16 @@ public class MonsterController : MonoBehaviour
         animator.SetFloat("Speed", direction.sqrMagnitude);
     }
 
-    public void Stare()
+    IEnumerator Stare()
     {
         Debug.Log("Start to stare");
         stare = true;
         animator.SetFloat("Speed", 0);
         animator.Play("Goblin_Idle");
+        while(stare)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     void ReturnToSpawnPoint()

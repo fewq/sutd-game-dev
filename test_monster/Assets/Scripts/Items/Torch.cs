@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Torch : MonoBehaviour
 {
-    public enum favColors {
+    public enum favColors
+    {
         Blue = 0,
         Yellow = 1,
         Red = 3,
-        Orange= 4
+        Orange = 4
     }
 
     public float flameDuration = 7f;
@@ -18,7 +19,7 @@ public class Torch : MonoBehaviour
     private AnimateController flameAniController;
     private List<MonsterController> attractedMonsters;
     private Animator flameAnimator;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +34,11 @@ public class Torch : MonoBehaviour
     {
         if (lightFlameTest && !flameLit) LightTorch(favColors.Blue);
     }
-    
+
     void LightTorch(favColors favColor)
     {
-        gameObject.tag = favColor+"Flame";
-        flameRenderer.sprite = flameAniController.spriteSet[(int)favColor+1];
+        gameObject.tag = favColor + "Flame";
+        flameRenderer.sprite = flameAniController.spriteSet[(int)favColor + 1];
         //unlit torch has no animation, so it will not be in the animator controller set
         flameAnimator.runtimeAnimatorController = flameAniController.controllerSet[(int)favColor];
         flameAnimator.enabled = true;
@@ -58,12 +59,12 @@ public class Torch : MonoBehaviour
         {
             monster.flameInRange = false;
             monster.stare = false;
-            monster.heartExclaimation.SetActive(false);  
+            monster.heartExclaimation.SetActive(false);
         }
         attractedMonsters.Clear();
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         // only carry out checks if flame is lit
         if (flameLit)
@@ -79,11 +80,14 @@ public class Torch : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D col) 
+    private void OnCollisionStay2D(Collision2D col)
     {
+
         // only carry out checks if flame is lit
         if (flameLit)
         {
+            Debug.Log(gameObject.tag);
+
             if (col.gameObject.CompareTag("Untagged"))
             {
                 CheckAndActivateEnemyProcedures(col.transform.parent.gameObject);
@@ -97,12 +101,12 @@ public class Torch : MonoBehaviour
 
     private void CheckAndActivateEnemyProcedures(GameObject gameObject)
     {
+        Debug.Log(gameObject.tag);
         if (gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Mesmerise");
             Debug.Log(gameObject.GetComponent<MonsterController>());
             attractedMonsters.Add(gameObject.GetComponent<MonsterController>());
-            attractedMonsters[attractedMonsters.Count-1].Stare();
         }
     }
 }
