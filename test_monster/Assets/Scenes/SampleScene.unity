@@ -226,7 +226,7 @@ PrefabInstance:
     - target: {fileID: 5326621723832920810, guid: f528574c2cfda4518872e0cb1f795d39,
         type: 3}
       propertyPath: useAiPathTest
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6330391902364963743, guid: f528574c2cfda4518872e0cb1f795d39,
         type: 3}
@@ -2791,12 +2791,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3014202342180312752}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &925272829 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3014202340340153318, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
-    type: 3}
-  m_PrefabInstance: {fileID: 3014202342180312752}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &926735270
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,6 +3009,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1232039833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6947704044575209085, guid: f528574c2cfda4518872e0cb1f795d39,
+    type: 3}
+  m_PrefabInstance: {fileID: 93408480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1232039836
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232039833}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 628d76b17d09b44a3b5038c2cbdbc46d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1434615680
 GameObject:
   m_ObjectHideFlags: 0
@@ -3125,49 +3144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  data:
-    dataString: UEsDBBQAAAgIAABAIex7+jcWUwIAAPkEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzoWxKR+mtxYI6YHAhHRy8UVYa6xBljySHD4y/PeuZBu7dHJCvH27em935U/CpSkgsUqvNGdrxYD86BF3Jt96bfAZzvSg5I5foeG8c2YzR6Ke80otV4iHLs2oHKzmyU95EI4cIFhKniqdL9kB5spYg3BKhQEMaWVdtkTos0fO+NOfuZQLnoZTd7riaRb0bnhMQFrQLbUhNrSKVcpE0LwA5iS35HA0+F7zo0HkmRL91KRw4NQnSghuajnEXgpvd1dkoMH5ZZyiOy8hHAwRyIAfMuu0drM3aWrA1sI0vSy4xjZVZckvVfUup+ZYqfugonQXTSeVrKro+r94P/ThVKv8ubk3DNwdNuPJ8ZVeEmpsp7ldeNGR7pt0ouJI9wLeM5AvaqVVKRkGrS5damlguGj/3q3NM0iOLV5JfQDL4usROQ837/48Fzzfu9BgVAE7oXzD/QKAxuH8RsF+PUxdAlGn4o+BN3ro7lEdeOLaWAzVLqWTt1eldlSy9D1zbko7V1qC7lYoQFJhL1usYx9n+BD7OuuJuidT317HmpfwkOLhlh8ED6GtOt2nZTJ1WoPJNqUVXELbahd4wUbNlZTVinUtNWm7Uqc06aQdSs7+3S0yC4bRPhxPIKTj2Wgy6UejIIrSCRtPIZmk4ZD45eMSfVKxrYTW7cGxyba4xEVrviS9laaFX3em6WnFr7kyLZPLVO0SDSA3VYW7cNB4Cb5MtmQcG7QDa7n0AyefMREqOQKL74Vi73R5tprGbZWYFPxDWYfEZO4/HTG5kdtfUEsDBBQAAAgIAABAIeyy+ah3bQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrSSpYGRRZKhqVmqYaKppYmZma6FiYGFRZpZiql5arJZmqGRUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAABAIex7+jcWUwIAAPkEAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAABAIeyy+ah3bQAAAHgAAAAJACQAAAAAAAAAAAAAAKACAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAWAMAAAAA
-    upgradeData: 
-    file_cachedStartup: {fileID: 0}
-    data_cachedStartup: 
-    cacheStartup: 0
-  showNavGraphs: 1
-  showUnwalkableNodes: 1
-  debugMode: 0
-  debugFloor: 0
-  debugRoof: 1
-  manualDebugFloorRoof: 0
-  showSearchTree: 0
-  unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
-  maxNearestNodeDistance: 100
-  scanOnStartup: 1
-  fullGetNearestSearch: 0
-  prioritizeGraphs: 0
-  prioritizeGraphsLimit: 1
-  colorSettings:
-    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
-    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
-    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
-    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
-    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
-    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
-    _AreaColors:
-    - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
-  heuristic: 2
-  heuristicScale: 1
-  threadCount: 1
-  maxFrameTime: 1
-  batchGraphUpdates: 0
-  graphUpdateBatchingInterval: 0.2
-  euclideanEmbedding:
-    mode: 0
-    seed: 0
-    pivotPointRoot: {fileID: 0}
-    spreadOutCount: 1
-  showGraphs: 1
 --- !u!4 &1628050756
 Transform:
   m_ObjectHideFlags: 0
@@ -3608,8 +3584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 925272829}
 --- !u!114 &1966237328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3622,30 +3596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 0.8
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 1
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 1
-  targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 2
-  endReachedDistance: 0.2
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
 --- !u!114 &1966237329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3658,22 +3608,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
+--- !u!1 &1976260716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3333822372866640360, guid: f528574c2cfda4518872e0cb1f795d39,
+    type: 3}
+  m_PrefabInstance: {fileID: 93408480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1976260719
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976260716}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82afd66e161494eb0bf9b0b76a8ce029, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2011171934
 GameObject:
   m_ObjectHideFlags: 0
@@ -4301,8 +4260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 925272829}
 --- !u!114 &2098724746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4315,30 +4272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  radius: 0.6
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 0
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 2
-  endReachedDistance: 0.2
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
 --- !u!114 &2098724747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4351,22 +4284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
 --- !u!61 &2098724753
 BoxCollider2D:
   m_ObjectHideFlags: 0
