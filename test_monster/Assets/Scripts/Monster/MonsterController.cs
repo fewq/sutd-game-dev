@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Pathfinding;
+// using Pathfinding;
 
 /* Determines monster movement logic */
 public class MonsterController : MonoBehaviour
 {
-    public AIPath aIPath;
+    // public AIPath aIPath;
     public Transform spawnPoint;
     public Animator animator;
     public GameObject exclaimation;
@@ -81,8 +81,8 @@ public class MonsterController : MonoBehaviour
         exclaimation.SetActive(true);
         if (useAiPathTest)
         {
-            Debug.DrawLine(transform.position, aIPath.GetNextStep(transform.position), Color.white);
-            ChaseTarget(aIPath.GetNextStep(transform.position));
+            // Debug.DrawLine(transform.position, aIPath.GetNextStep(transform.position), Color.white);
+            // ChaseTarget(aIPath.GetNextStep(transform.position));
         }
         else
         {
