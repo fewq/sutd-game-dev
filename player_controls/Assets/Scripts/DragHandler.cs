@@ -3,66 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragHandler : MonoBehaviour , IPointerDownHandler, IDragHandler, IEndDragHandler, IBeginDragHandler
+public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
 
-    RectTransform rectTransform;
+    private RectTransform rectTransform;
     [SerializeField]
     private Canvas canvas;
     Vector3 mOffset;
+
+    Vector2 startPosition;
+
+    private CanvasGroup canvasGroup;
     
     private void Awake(){
         rectTransform = GetComponent<RectTransform>();
         Debug.Log("Awake");
-        
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    // public void updatePosition(){
-        
-    //     RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, Input.mousePosition, null, out localpoint);
-    //     rectTransform.anchoredPosition = localpoint;
-    // }
+
     public void OnPointerDown(PointerEventData pointer){
-        Debug.Log("Pointer down");
+        // Debug.Log("Pointer down");
+        // Debug.Log("Position" + pointer.position);
     }
     public void OnDrag(PointerEventData pointer){
-        // gameObject.transform.localPosition += Input.mousePosition;
-        // this.transform.position = pointer.position;
-        // Debug.Log(canvas.scaleFactor);
-        // Debug.Log(pointer.delta/canvas.scaleFactor);
-        // transform.position = Camera.main.(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-        // Debug.Log(Input.mousePosition);
-        rectTransform.anchoredPosition += pointer.delta / 0.0111f;
-        // Debug.Log(rectTransform.anchoredPosition.ToString());
+        // canvasGroup.alpha = 0.1f;
+        rectTransform.anchoredPosition += pointer.delta / canvas.scaleFactor;
     }
 
     public void OnBeginDrag(PointerEventData pointer){
-        Debug.Log("On Begin");
+        startPosition = pointer.pressPosition;
+        canvasGroup.alpha = 0.5f;
+        Debug.Log(canvasGroup.alpha);
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void OnEndDrag(PointerEventData pointer){
-        transform.localPosition = Vector3.zero;
-        // Debug.Log("Helo");
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
     }
 
-    // void OnMouseDrag(){
-    //     transform.position = GetMousePosition() + mOffset;
+
+    private void Update() {
+        // updatePosition();
+    }
     
-    // }
-
-    // void OnMouseDown()
-    // {
-    //     mOffset = gameObject.transform.position - GetMousePosition();
-    // }
-
-    // private void Update() {
-    //     // updatePosition();
-    // }
-    
-    // private Vector3 GetMousePosition(){
-    //     return Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    // }
-
 
 
 

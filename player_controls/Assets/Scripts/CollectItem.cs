@@ -129,23 +129,23 @@ public class CollectItem : MonoBehaviour
         
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
-            inventoryText.text = $@"Inventory: 
-Fire: {inventoryDict["Fire"]}
-Water: {inventoryDict["Water"]}
-CupricChloride: {inventoryDict["CupricChloride"]} 
-LithiumCloride: {inventoryDict["LithiumChloride"]}
-CalciumChloride: {inventoryDict["CalciumChloride"]}
-PotassiumChloride: {inventoryDict["PotassiumChloride"]}
-SodiumCloride: {inventoryDict["SodiumChloride"]}
-Caesium: {inventoryDict["Caesium"]}
-CalciumOxide: {inventoryDict["CalciumOxide"]}
-Bomb: {inventoryDict["Bomb"]} (Craft: T)
-BlueLight: {inventoryDict["BlueLight"]} (Craft: Y)
-RedLight: {inventoryDict["RedLight"]} (Craft: U)
-OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I)
-PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O)
-YellowLight: {inventoryDict["YellowLight"]} (Craft: P)
-CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
+//             inventoryText.text = $@"Inventory: 
+// Fire: {inventoryDict["Fire"]}
+// Water: {inventoryDict["Water"]}
+// CupricChloride: {inventoryDict["CupricChloride"]} 
+// LithiumCloride: {inventoryDict["LithiumChloride"]}
+// CalciumChloride: {inventoryDict["CalciumChloride"]}
+// PotassiumChloride: {inventoryDict["PotassiumChloride"]}
+// SodiumCloride: {inventoryDict["SodiumChloride"]}
+// Caesium: {inventoryDict["Caesium"]}
+// CalciumOxide: {inventoryDict["CalciumOxide"]}
+// Bomb: {inventoryDict["Bomb"]} (Craft: T)
+// BlueLight: {inventoryDict["BlueLight"]} (Craft: Y)
+// RedLight: {inventoryDict["RedLight"]} (Craft: U)
+// OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I)
+// PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O)
+// YellowLight: {inventoryDict["YellowLight"]} (Craft: P)
+// CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
         }
         else
         {

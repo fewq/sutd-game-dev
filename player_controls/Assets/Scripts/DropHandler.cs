@@ -7,9 +7,8 @@ public class DropHandler : MonoBehaviour, IDropHandler
 {
 
     public void OnDrop(PointerEventData pointerevent){
-        RectTransform invPanel = transform as RectTransform;
-        if(!RectTransformUtility.RectangleContainsScreenPoint(invPanel, Input.mousePosition)){
-            Debug.Log("Drop item");
+        if(pointerevent.pointerDrag != null){
+            pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
         }
     }
     // Start is called before the first frame update
@@ -19,8 +18,4 @@ public class DropHandler : MonoBehaviour, IDropHandler
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        Debug.Log("hsjdajd");
-    }
 }

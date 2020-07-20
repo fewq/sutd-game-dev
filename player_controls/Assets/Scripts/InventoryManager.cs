@@ -25,16 +25,11 @@ public class InventoryManager : MonoBehaviour
         itemList = player.GetComponent<CollectItem>().GetItems();
 
         foreach(Transform slot in itemPlaceholders){
-            Image itemImage = slot.GetChild(0).GetComponent<Image>();
-            // Image itemImage = slot.
-            // Image itemImage = 
-            if(itemImage != null){
-                itemImage.enabled = false;
-            }
-            inventoryImages.Add(itemImage);
-
-
+            Image slotimage = slot.Find("Item").GetComponent<Image>();
+            slotimage.enabled = false;
+            inventoryImages.Add(slotimage);
         }
+        
 
     }
     
@@ -42,7 +37,7 @@ public class InventoryManager : MonoBehaviour
         for(int j=0; j<inventoryImages.Count; j++){
             if(!inventoryImages[j].IsActive()){
                 inventoryImages[j].enabled = true;
-                inventoryImages[j].transform.localScale *= 3f;
+                // inventoryImages[j].transform.localScale *= 3f;
                 var toAdd = itemList[itemList.Count - 1];
                 inventoryImages[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
                 inventoryItems.Add(toAdd.gameObject);
