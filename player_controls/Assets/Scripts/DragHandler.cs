@@ -9,7 +9,7 @@ public class DragHandler : MonoBehaviour , IPointerDownHandler, IDragHandler, IE
     RectTransform rectTransform;
     [SerializeField]
     private Canvas canvas;
-    Vector2 localpoint;
+    Vector3 mOffset;
     
     private void Awake(){
         rectTransform = GetComponent<RectTransform>();
@@ -26,9 +26,14 @@ public class DragHandler : MonoBehaviour , IPointerDownHandler, IDragHandler, IE
         Debug.Log("Pointer down");
     }
     public void OnDrag(PointerEventData pointer){
-        // rectTransform.localPosition += Input.mousePosition;
-        rectTransform.anchoredPosition += pointer.delta/canvas.scaleFactor;
-        Debug.Log(rectTransform.anchoredPosition.ToString());
+        // gameObject.transform.localPosition += Input.mousePosition;
+        // this.transform.position = pointer.position;
+        // Debug.Log(canvas.scaleFactor);
+        // Debug.Log(pointer.delta/canvas.scaleFactor);
+        // transform.position = Camera.main.(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        // Debug.Log(Input.mousePosition);
+        rectTransform.anchoredPosition += pointer.delta / 0.0111f;
+        // Debug.Log(rectTransform.anchoredPosition.ToString());
     }
 
     public void OnBeginDrag(PointerEventData pointer){
@@ -40,9 +45,25 @@ public class DragHandler : MonoBehaviour , IPointerDownHandler, IDragHandler, IE
         // Debug.Log("Helo");
     }
 
-    private void Update() {
-        // updatePosition();
-    }
+    // void OnMouseDrag(){
+    //     transform.position = GetMousePosition() + mOffset;
+    
+    // }
+
+    // void OnMouseDown()
+    // {
+    //     mOffset = gameObject.transform.position - GetMousePosition();
+    // }
+
+    // private void Update() {
+    //     // updatePosition();
+    // }
+    
+    // private Vector3 GetMousePosition(){
+    //     return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    // }
+
+
 
 
 }
