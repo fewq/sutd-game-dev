@@ -7,8 +7,10 @@ public class DropHandler : MonoBehaviour, IDropHandler
 {
 
     public void OnDrop(PointerEventData pointerevent){
+        print("Image " + GetComponent<RectTransform>().anchoredPosition.ToString());
+        print("Drop pointer "+pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition.ToString());
         if(pointerevent.pointerDrag != null){
-            pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponentInParent<RectTransform>().anchoredPosition;
         }
     }
     // Start is called before the first frame update

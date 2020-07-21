@@ -17,7 +17,6 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
     
     private void Awake(){
         rectTransform = GetComponent<RectTransform>();
-        Debug.Log("Awake");
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
@@ -25,10 +24,12 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
     public void OnPointerDown(PointerEventData pointer){
         // Debug.Log("Pointer down");
         // Debug.Log("Position" + pointer.position);
+        print(rectTransform.name);
     }
     public void OnDrag(PointerEventData pointer){
         // canvasGroup.alpha = 0.1f;
         rectTransform.anchoredPosition += pointer.delta / canvas.scaleFactor;
+        print(rectTransform.anchoredPosition);
     }
 
     public void OnBeginDrag(PointerEventData pointer){
