@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance{get; private set;}
     private List<Transform> itemPlaceholders = new List<Transform>();
     private List<Image> inventoryImages = new List<Image>();
     public List<GameObject> itemList = new List<GameObject>();
@@ -25,7 +26,7 @@ public class InventoryManager : MonoBehaviour
         itemList = player.GetComponent<CollectItem>().GetItems();
 
         foreach(Transform slot in itemPlaceholders){
-            Image slotimage = slot.Find("Item").GetComponent<Image>();
+            Image slotimage = slot.GetComponent<Image>();
             slotimage.enabled = false;
             inventoryImages.Add(slotimage);
         }
@@ -45,6 +46,14 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
+    public List<GameObject> getInventory{
+        get{
+            return inventoryItems;
+        }
+    }
+
+
 
     // Update is called once per frame
     void Update()

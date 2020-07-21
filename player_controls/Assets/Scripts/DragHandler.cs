@@ -13,33 +13,44 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
 
     Vector2 startPosition;
 
+    string itemName;
+
     private CanvasGroup canvasGroup;
+
+    private bool dropStatus;
+
+    
     
     private void Awake(){
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        itemName = transform.name;
+        startPosition = rectTransform.anchoredPosition;
+        
     }
 
 
     public void OnPointerDown(PointerEventData pointer){
         // Debug.Log("Pointer down");
         // Debug.Log("Position" + pointer.position);
-        print(rectTransform.name);
     }
     public void OnDrag(PointerEventData pointer){
         // canvasGroup.alpha = 0.1f;
         rectTransform.anchoredPosition += pointer.delta / canvas.scaleFactor;
-        print(rectTransform.anchoredPosition);
+        DropHandler.dropStatus = false;
     }
 
     public void OnBeginDrag(PointerEventData pointer){
-        startPosition = pointer.pressPosition;
+        transform.SetAsLastSibling();
         canvasGroup.alpha = 0.5f;
-        Debug.Log(canvasGroup.alpha);
         canvasGroup.blocksRaycasts = false;
     }
 
     public void OnEndDrag(PointerEventData pointer){
+        
+        if(!DropHandler.dropStatus){
+            rectTransform.anchoredPosition = startPosition;
+        }
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
     }
