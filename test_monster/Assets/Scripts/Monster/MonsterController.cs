@@ -18,8 +18,18 @@ public class MonsterController : MonoBehaviour
     private Transform flameLocation;
     public bool flameInRange { get; set; }
     public bool playerInRange { get; set; }
+    [HideInInspector]
     public bool stare = false;
-    private AIDestinationSetter destinationSetter;
+
+    // Variables for chasing enemy
+    public Transform target;
+    public float nextWaypointDistance = 3f;
+    private float repeatInterval = 0.5f;
+    private Path path;
+    private int currentWaypoint = 0;
+    private bool reachedPlayer = false;
+    private Seeker seeker;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -30,20 +40,38 @@ public class MonsterController : MonoBehaviour
         flameInRange = false;
         playerInRange = false;
         rigidbody = GetComponent<Rigidbody2D>();
-        destinationSetter = GetComponent<AIDestinationSetter>();
-        Debug.Log("destsetter:", destinationSetter);
+
+        seeker = GetComponent<Seeker>();
+        InvokeRepeating("UpdatePath", 0f, repeatInterval);
     }
 
-    void Update()
+    void UpdatePath()
+    {
+        if (seeker.IsDone()) // don't calculate path again if in the middle of calculating
+        {
+            seeker.StartPath(rigidbody.position, target.position, OnPathComplete);
+        }
+    }
+
+    void OnPathComplete(Path p)
+    {
+        if (!p.error)
+        {
+            path = p;
+            currentWaypoint = 0;
+        }
+    }
+
+    void FixedUpdate()
     {
         if (flameInRange)
         {
-            if (!distanceCloserThan(flameLocation.position, 1.5f)) 
+            if (!distanceCloserThan(flameLocation.position, 1.5f))
             {
                 Debug.Log("Chase Flame");
                 ChaseTarget(flameLocation.position);
             }
-            else if (!stare) 
+            else if (!stare)
             {
                 Stare();
             }
@@ -81,13 +109,26 @@ public class MonsterController : MonoBehaviour
     public void ChasePlayer()
     {
         exclaimation.SetActive(true);
-        destinationSetter.enabled = true;
-        // ChaseTarget(Player.instance.transform.position);
-    }
+        if (path == null) return;
+        if (currentWaypoint >= path.vectorPath.Count)
+        {
+            reachedPlayer = true;
+            return;
+        }
+        else
+        {
+            reachedPlayer = false;
+        }
 
-    public void StopChasingPlayer()
-    {
-        destinationSetter.enabled = false;
+        ChaseTarget((Vector3)path.vectorPath[currentWaypoint]);
+
+        // update next waypoint if the current one is reached
+        float distance = Vector2.Distance(rigidbody.position, path.vectorPath[currentWaypoint]);
+
+        if (distance < nextWaypointDistance)
+        {
+            currentWaypoint++;
+        }
     }
 
     public void ChaseTarget(Vector3 targetPos)
@@ -121,7 +162,6 @@ public class MonsterController : MonoBehaviour
     void ReturnToSpawnPoint()
     {
         Debug.Log("Returning to spawn point");
-        StopChasingPlayer();
         // move to spawn point
         ChaseTarget(spawnPoint.position);
 
