@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-// using Pathfinding;
+using Pathfinding;
 
 /* Determines monster movement logic */
 public class MonsterController : MonoBehaviour
@@ -13,13 +13,13 @@ public class MonsterController : MonoBehaviour
     public GameObject exclaimation;
     public GameObject heartExclaimation;
     public float moveSpeed = 5f;
-    public bool useAiPathTest; // FOR DEMO, TO REMOVE
     private Rigidbody2D rigidbody;
     private Vector2 direction;
     private Transform flameLocation;
     public bool flameInRange { get; set; }
     public bool playerInRange { get; set; }
     public bool stare = false;
+    private AIDestinationSetter destinationSetter;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,8 @@ public class MonsterController : MonoBehaviour
         flameInRange = false;
         playerInRange = false;
         rigidbody = GetComponent<Rigidbody2D>();
+        destinationSetter = GetComponent<AIDestinationSetter>();
+        Debug.Log("destsetter:", destinationSetter);
     }
 
     void Update()
@@ -79,15 +81,13 @@ public class MonsterController : MonoBehaviour
     public void ChasePlayer()
     {
         exclaimation.SetActive(true);
-        if (useAiPathTest)
-        {
-            // Debug.DrawLine(transform.position, aIPath.GetNextStep(transform.position), Color.white);
-            // ChaseTarget(aIPath.GetNextStep(transform.position));
-        }
-        else
-        {
-            ChaseTarget(Player.instance.transform.position);
-        }
+        destinationSetter.enabled = true;
+        // ChaseTarget(Player.instance.transform.position);
+    }
+
+    public void StopChasingPlayer()
+    {
+        destinationSetter.enabled = false;
     }
 
     public void ChaseTarget(Vector3 targetPos)
@@ -120,6 +120,8 @@ public class MonsterController : MonoBehaviour
 
     void ReturnToSpawnPoint()
     {
+        Debug.Log("Returning to spawn point");
+        StopChasingPlayer();
         // move to spawn point
         ChaseTarget(spawnPoint.position);
 
