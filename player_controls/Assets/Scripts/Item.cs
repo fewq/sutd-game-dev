@@ -4,6 +4,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "ItemData", order = 1)]
 public class Item : ScriptableObject
 {
-    // Start is called before the first frame update
+
+    private string itemName;
+
+    public string ItemName{
+        get{
+            return itemName;
+        }
+        set{
+            itemName = value;
+        }
+    }
     
 }

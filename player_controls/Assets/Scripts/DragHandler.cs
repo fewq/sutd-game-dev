@@ -19,6 +19,8 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
 
     private bool dropStatus;
 
+    private Item item;
+
     
     
     private void Awake(){
@@ -26,7 +28,7 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         canvasGroup = GetComponent<CanvasGroup>();
         itemName = transform.name;
         startPosition = rectTransform.anchoredPosition;
-        
+        print(itemName.ToString() + startPosition.ToString());
     }
 
 
@@ -44,12 +46,15 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         transform.SetAsLastSibling();
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
+        DropHandler.dropStatus = false;
+        item.ItemName = transform.name;
     }
 
     public void OnEndDrag(PointerEventData pointer){
         
         if(!DropHandler.dropStatus){
             rectTransform.anchoredPosition = startPosition;
+            print("End position" + startPosition.ToString());
         }
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;

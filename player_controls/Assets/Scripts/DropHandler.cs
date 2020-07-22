@@ -6,9 +6,11 @@ using UnityEngine.EventSystems;
 public class DropHandler : MonoBehaviour, IDropHandler
 {
 
-    private List<GameObject> itemList = new List<GameObject>();
+    private List<string> itemList = new List<string>();
 
     public static bool dropStatus = false;
+
+    public Item item;
 
     public void OnDrop(PointerEventData pointerevent){
         print("Image " + GetComponent<RectTransform>().anchoredPosition.ToString());
@@ -16,16 +18,13 @@ public class DropHandler : MonoBehaviour, IDropHandler
         if(pointerevent.pointerDrag != null){
             pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             dropStatus = true;
-        }
-        
+            // EventManager.onCraftClick
+            itemList.Add(item.ItemName);
+        }    
         
     }
 
-    public void craftItem(){
-        if(transform.name == "Craftitem1" || transform.name == "Craftitem2"){
 
-        }
-    }
     // Start is called before the first frame update
     private void Awake()
     {

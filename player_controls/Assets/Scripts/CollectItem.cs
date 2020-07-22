@@ -165,6 +165,7 @@ public class CollectItem : MonoBehaviour
             inventoryDict[rawItem2]--;
             inventoryDict[craftedItem]++;
         }
+        itemAdded = true;
     }
 
     // takes in 2 raw materials (order doesn't matter) and performs crafting
