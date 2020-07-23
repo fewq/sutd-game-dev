@@ -188,8 +188,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
     {
         if (inventoryDict[craftedItem] > 0)
         {
-            Vector3 lastDirection = GameObject.Find("Player").GetComponent<Player>().lastDirection;
-            GameObject item = Instantiate(itemPrefab, transform.position + lastDirection, Quaternion.identity);
+            GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
             // set the tag
             item.tag = "Item";
             // set the name

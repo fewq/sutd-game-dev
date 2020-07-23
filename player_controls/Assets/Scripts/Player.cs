@@ -23,17 +23,12 @@ public class Player : Movement
     // length of the tile to move, set to 0.1 from unity
     public float tileMovement;
 
-    // Vector of last direction the player was facing, defaults to zero or (0,0,0)
-    // useful for placing objects
-    public Vector3 lastDirection;
-
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         // walls = GameObject.FindGameObjectWithTag("Wall").GetComponent<BoxCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        lastDirection = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -58,12 +53,10 @@ public class Player : Movement
             if (movement.x > 0)
             {
                 movement.x = tileMovement;
-                lastDirection = Vector2.right; // set the last direction the player was facing
             }
             else
             {
                 movement.x = -tileMovement;
-                lastDirection = Vector2.left; // set the last direction the player was facing
             }
             // movement.x = 0.3f;
         }
@@ -76,12 +69,10 @@ public class Player : Movement
             if (movement.y > 0)
             {
                 movement.y = tileMovement;
-                lastDirection = Vector2.up; // set the last direction the player was facing
             }
             else
             {
                 movement.y = -tileMovement;
-                lastDirection = Vector2.down; // set the last direction the player was facing
             }
 
         }
