@@ -18,7 +18,7 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
     private CanvasGroup canvasGroup;
 
     private bool dropStatus;
-
+    [SerializeField]
     private Item item;
 
     
@@ -47,12 +47,13 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
         DropHandler.dropStatus = false;
-        item.ItemName = transform.name;
+        item.ItemName = itemName;
     }
 
     public void OnEndDrag(PointerEventData pointer){
         
-        if(!DropHandler.dropStatus){
+        if(!DropHandler.dropStatus)
+        {
             rectTransform.anchoredPosition = startPosition;
             print("End position" + startPosition.ToString());
         }

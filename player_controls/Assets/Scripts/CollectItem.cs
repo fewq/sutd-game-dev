@@ -155,21 +155,21 @@ public class CollectItem : MonoBehaviour
 
     // takes in a string of the desired item to craft
     // checks if there is enough raw materials, then crafts it
-    void Craft(string craftedItem)
-    {
-        string rawItem1 = recipeDict[craftedItem].Item1;
-        string rawItem2 = recipeDict[craftedItem].Item2;
-        if (inventoryDict[rawItem1] > 0 && inventoryDict[rawItem2] > 0)
-        {
-            inventoryDict[rawItem1]--;
-            inventoryDict[rawItem2]--;
-            inventoryDict[craftedItem]++;
-        }
-        itemAdded = true;
-    }
+    // void Craft(string craftedItem)
+    // {
+    //     string rawItem1 = recipeDict[craftedItem].Item1;
+    //     string rawItem2 = recipeDict[craftedItem].Item2;
+    //     if (inventoryDict[rawItem1] > 0 && inventoryDict[rawItem2] > 0)
+    //     {
+    //         inventoryDict[rawItem1]--;
+    //         inventoryDict[rawItem2]--;
+    //         inventoryDict[craftedItem]++;
+    //     }
+        
+    // }
 
     // takes in 2 raw materials (order doesn't matter) and performs crafting
-    void Craft(string rawItem1, string rawItem2)
+    public void Craft(string rawItem1, string rawItem2)
     {
         string craftedItem = null;
         // loop through recipe dictionary and get final item
@@ -187,27 +187,28 @@ public class CollectItem : MonoBehaviour
             inventoryDict[rawItem2]--;
             inventoryDict[craftedItem]++;
         }
+        itemAdded = true;
     }
 
     // manages the crafting and placing hotkeys for the game
-    void HotkeyManager()
-    {
-        if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
-        else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
-        else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
-        else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
-        else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
-        else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
-        else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
+    // void HotkeyManager()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
+    //     else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
 
-        // soon to come: placing hotkeys
-    }
+    //     // soon to come: placing hotkeys
+    // }
 
     // Update is called once per frame
     void Update()
     {
         PickObject();
         ToggleInventory();
-        HotkeyManager();
+        // HotkeyManager();
     }
 }
