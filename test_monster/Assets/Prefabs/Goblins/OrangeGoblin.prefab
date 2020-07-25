@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83dafe64b9880844ca6882553f1c3359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  favColor: 0
+  favColor: 4
 --- !u!61 &8917742356412001100
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 800080216313234089}
   - component: {fileID: 5326621723832920810}
   m_Layer: 0
-  m_Name: Goblin
+  m_Name: OrangeGoblin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8299097387826194568, guid: 2ba5ab07405864f1695551ce3750c0aa,
+  m_Sprite: {fileID: 8004276205994236191, guid: bdb21c912b3624a60b7217a404d95b81,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -212,14 +212,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153085f26b1c89440a3bc447a0d6df7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aIPath: {fileID: 0}
   spawnPoint: {fileID: 0}
   animator: {fileID: 800080216313234089}
   exclaimation: {fileID: 3333822372866640360}
   heartExclaimation: {fileID: 6947704044575209085}
   moveSpeed: 8
-  useAiPathTest: 0
   stare: 0
+  target: {fileID: 0}
+  nextWaypointDistance: 3
+  lookRange: 5
 --- !u!1 &3333822372866640360
 GameObject:
   m_ObjectHideFlags: 0

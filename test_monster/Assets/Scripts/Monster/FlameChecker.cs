@@ -8,7 +8,8 @@ public class FlameChecker : MonoBehaviour
         Blue = 0,
         Yellow = 1,
         Red = 3,
-        Orange= 4
+        Orange= 4,
+        Purple=5
     }
     public favColors favColor;
     private MonsterController monsterController;
