@@ -29,9 +29,6 @@ public class MonsterController : MonoBehaviour
     private bool reachedPlayer = false;
     private Seeker seeker;
     
-    // Variables for checking for player
-    public float lookRange = 5f;
-    private Vector2 sizeOfRaycast;
 
     // Start is called before the first frame update
     void Start()
@@ -64,10 +61,6 @@ public class MonsterController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        playerInRange = PlayerInRange();
-    }
     void FixedUpdate()
     {
         if (flameInRange)
@@ -172,28 +165,4 @@ public class MonsterController : MonoBehaviour
         ChaseTarget(spawnPoint.position);
     }
 
-    private bool PlayerInRange()
-    {
-        RaycastHit2D[] hits;
-        sizeOfRaycast = new Vector2(lookRange,lookRange);
-        
-        hits = Physics2D.BoxCastAll((Vector2)transform.position, sizeOfRaycast, 0, (Vector2)transform.forward, lookRange);
-        Debug.DrawRay(transform.position, transform.forward.normalized * lookRange, Color.red);
-
-        foreach (RaycastHit2D hit in hits)
-        {
-            if (hit != null && hit.collider.CompareTag("Player"))
-            {
-                Debug.Log("spotted player");
-                return true;
-            }
-        }
-        exclaimation.SetActive(false);
-        return false;
-    }
-
-    private void OnDrawGizmos()
-    {
-        // Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
-    }
 }
