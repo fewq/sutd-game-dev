@@ -542,12 +542,12 @@ PrefabInstance:
     - target: {fileID: 800080216313234084, guid: f528574c2cfda4518872e0cb1f795d39,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.26
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: 800080216313234084, guid: f528574c2cfda4518872e0cb1f795d39,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 800080216313234084, guid: f528574c2cfda4518872e0cb1f795d39,
         type: 3}
@@ -623,6 +623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: lookRange
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5326621723832920810, guid: f528574c2cfda4518872e0cb1f795d39,
+        type: 3}
+      propertyPath: tileMovement
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7570079119337115632, guid: f528574c2cfda4518872e0cb1f795d39,
         type: 3}
@@ -2929,6 +2934,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3014202342180312752}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &925272827 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6526515388231481792, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3014202342180312752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &926735270
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,57 +3293,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 556749944}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1529017069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529017068}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 3014202342180312753}
-  range: 0
---- !u!114 &1529017070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529017068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 2
-  radius: 0.5
-  height: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  maxSpeed: 5.74
-  gravity: {x: 0, y: 0, z: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  orientation: 1
-  enableRotation: 0
-  targetCompatibility: {fileID: 0}
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 2
-  endReachedDistance: 0.2
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
 --- !u!114 &1529017071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3787,7 +3747,6 @@ MonoBehaviour:
   stare: 0
   target: {fileID: 0}
   nextWaypointDistance: 3
-  lookRange: 5
 --- !u!50 &1774982209
 Rigidbody2D:
   serializedVersion: 4
@@ -4878,7 +4837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144193362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.89, y: 1.66, z: 0}
+  m_LocalPosition: {x: 2.18, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 117564805}
@@ -5056,6 +5015,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 645937106911008855, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: tileMovement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 645937106911008855, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 925272827}
     - target: {fileID: 864942689823230482, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -5120,12 +5089,12 @@ PrefabInstance:
     - target: {fileID: 3014202340340153318, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.95
+      value: -3.71
       objectReference: {fileID: 0}
     - target: {fileID: 3014202340340153318, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.42
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3014202340340153318, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}

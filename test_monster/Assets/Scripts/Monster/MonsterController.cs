@@ -118,7 +118,7 @@ public class MonsterController : MonoBehaviour
         {
             reachedPlayer = false;
         }
-
+        Debug.DrawLine(rigidbody.position, path.vectorPath[currentWaypoint], Color.white, 0.5f);
         ChaseTarget((Vector3)path.vectorPath[currentWaypoint]);
 
         // update next waypoint if the current one is reached
