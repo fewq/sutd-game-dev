@@ -191,7 +191,7 @@ Animator:
   m_GameObject: {fileID: 800080216313234088}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 06c1dc4a8a11e1e4785e2b744a444310, type: 2}
+  m_Controller: {fileID: 9100000, guid: 083865443d4ae41ae92baa9846cbc716, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -216,11 +216,10 @@ MonoBehaviour:
   animator: {fileID: 800080216313234089}
   exclaimation: {fileID: 3333822372866640360}
   heartExclaimation: {fileID: 6947704044575209085}
-  moveSpeed: 8
+  tileMovement: 0
   stare: 0
   target: {fileID: 0}
   nextWaypointDistance: 3
-  lookRange: 5
 --- !u!1 &3333822372866640360
 GameObject:
   m_ObjectHideFlags: 0

@@ -216,11 +216,10 @@ MonoBehaviour:
   animator: {fileID: 800080216313234089}
   exclaimation: {fileID: 3333822372866640360}
   heartExclaimation: {fileID: 6947704044575209085}
-  moveSpeed: 8
+  tileMovement: 0
   stare: 0
   target: {fileID: 0}
   nextWaypointDistance: 3
-  lookRange: 5
 --- !u!1 &3333822372866640360
 GameObject:
   m_ObjectHideFlags: 0

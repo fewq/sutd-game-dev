@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 800080216313234086}
   - component: {fileID: 800080216313234089}
   - component: {fileID: 5326621723832920810}
+  - component: {fileID: 40870285}
   m_Layer: 0
   m_Name: BlueGoblin
   m_TagString: Enemy
@@ -191,7 +192,7 @@ Animator:
   m_GameObject: {fileID: 800080216313234088}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 06c1dc4a8a11e1e4785e2b744a444310, type: 2}
+  m_Controller: {fileID: 9100000, guid: a557fa12f1ff043eca36b9e8f68405eb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -216,11 +217,38 @@ MonoBehaviour:
   animator: {fileID: 800080216313234089}
   exclaimation: {fileID: 3333822372866640360}
   heartExclaimation: {fileID: 6947704044575209085}
-  moveSpeed: 8
+  tileMovement: 0
   stare: 0
   target: {fileID: 0}
   nextWaypointDistance: 3
-  lookRange: 5
+--- !u!114 &40870285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800080216313234088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &3333822372866640360
 GameObject:
   m_ObjectHideFlags: 0
