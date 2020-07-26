@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class FlameChecker : MonoBehaviour
 {
-    public enum favColors {
+    public enum favColors
+    {
         Blue = 0,
         Yellow = 1,
         Red = 3,
-        Orange= 4
+        Orange = 4,
+        Purple = 5
     }
     public favColors favColor;
     private MonsterController monsterController;
@@ -17,7 +19,7 @@ public class FlameChecker : MonoBehaviour
 
     void Start()
     {
-        flameTag = favColor+"Flame";
+        flameTag = favColor + "Flame";
         monsterController = GetComponentInParent<MonsterController>();
     }
 
@@ -31,9 +33,11 @@ public class FlameChecker : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other)
+    {
         // make sure unlit torches that are in range get registered when they're lit
-        if (!chasing && other.gameObject.CompareTag("UnlitTorch")){ 
+        if (!chasing && other.gameObject.CompareTag("UnlitTorch"))
+        {
             other.gameObject.GetComponent<Rigidbody2D>().WakeUp();
         }
         else if (!chasing && other.gameObject.CompareTag(flameTag))
@@ -45,7 +49,7 @@ public class FlameChecker : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(flameTag)) 
+        if (other.gameObject.CompareTag(flameTag))
         {
             Debug.Log("Flame no longer in range");
             monsterController.flameInRange = false;

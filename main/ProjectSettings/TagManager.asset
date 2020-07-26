@@ -8,6 +8,13 @@ TagManager:
   - Boulder
   - Item
   - Floor
+  - Enemy
+  - UnlitTorch
+  - BlueFlame
+  - OrangeFlame
+  - RedFlame
+  - PurpleFlame
+  - YellowFlame
   layers:
   - Default
   - TransparentFX
