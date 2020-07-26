@@ -4,18 +4,34 @@ using UnityEngine;
 using System;
 
 
-[CreateAssetMenu(fileName="CustomInputMananger", order=51)]
+[CreateAssetMenu(fileName = "CustomInputMananger", order = 51)]
 public class CustomInputManager : ScriptableObject
 {
+    public KeyCode PickUp;
+    public KeyCode Inventory;
+    public KeyCode Drop;
+    public KeyCode Up;
+    public KeyCode Left;
+    public KeyCode Down;
+    public KeyCode Right;
+    public Dictionary<string, KeyCode> keyMappings;
 
-    public static Dictionary<string, KeyCode> keyMappings = new Dictionary<string, KeyCode>
-	{
-		{"PickUp", KeyCode.E},
-		{"Inventory", KeyCode.C},
-		{"Drop", KeyCode.B},
-		{"Up", KeyCode.W},
-		{"Left", KeyCode.A},
-		{"Down", KeyCode.S},
-		{"Right", KeyCode.D},
-	};
+    public void OnEnable()
+    {
+        keyMappings = new Dictionary<string, KeyCode>()
+        {
+            {"PickUp", PickUp},
+            {"Inventory", Inventory},
+            {"Drop", Drop},
+            {"Up", Up},
+            {"Left", Left},
+            {"Down", Down},
+            {"Right", Right}
+		};
+	}
+
+    public bool GetKeyDown(string key)
+    {
+        return Input.GetKeyDown(keyMappings[key]);
+    }
 }

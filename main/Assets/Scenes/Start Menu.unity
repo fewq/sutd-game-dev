@@ -4442,7 +4442,7 @@ GameObject:
   - component: {fileID: 1637415914}
   - component: {fileID: 1637415913}
   m_Layer: 5
-  m_Name: Pickup
+  m_Name: PickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5034,6 +5034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce230a3a358c9fe42a6a396cdd006a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  customInputManager: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b, type: 2}
   up: {fileID: 1769099651}
   left: {fileID: 1124359000}
   down: {fileID: 2061029309}

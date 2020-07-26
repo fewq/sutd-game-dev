@@ -7,26 +7,24 @@ using TMPro;
 
 public class KeyBindScript : MonoBehaviour
 {
-
-    private Dictionary<string, KeyCode> keyMappings = new Dictionary<string, KeyCode>();
+    public CustomInputManager customInputManager;
 
     public TextMeshProUGUI up, left, down, right, pickup, inventory, drop;
     private GameObject currentKey;
 
     void Start()
     {
-        keyMappings = CustomInputManager.keyMappings;
-        UpdateControlTexts();
+        DisplayControlTexts();
     }
-    private void UpdateControlTexts()
+    private void DisplayControlTexts()
     {
-        up.SetText(keyMappings["Up"].ToString());
-        down.SetText(keyMappings["Down"].ToString());
-        left.SetText(keyMappings["Left"].ToString());
-        right.SetText(keyMappings["Right"].ToString());
-        pickup.SetText(keyMappings["PickUp"].ToString());
-        inventory.SetText(keyMappings["Inventory"].ToString());
-        drop.SetText(keyMappings["Drop"].ToString());
+        up.SetText(customInputManager.Up.ToString());
+        down.SetText(customInputManager.Down.ToString());
+        left.SetText(customInputManager.Left.ToString());
+        right.SetText(customInputManager.Right.ToString());
+        pickup.SetText(customInputManager.PickUp.ToString());
+        inventory.SetText(customInputManager.Inventory.ToString());
+        drop.SetText(customInputManager.Drop.ToString());
     }
 
     void OnGUI()
@@ -36,28 +34,42 @@ public class KeyBindScript : MonoBehaviour
             Event e = Event.current;
             if (e.isKey)
             {
-                keyMappings[currentKey.name] = e.keyCode;
                 currentKey.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = e.keyCode.ToString();
+                Debug.Log(currentKey.name);
+                switch (currentKey.name)
+                {
+                    case "Up": 
+                        customInputManager.Up = e.keyCode;
+                        break;
+                    case "Down": 
+                        customInputManager.Down = e.keyCode;
+                        break;
+                    case "Left": 
+                        customInputManager.Left = e.keyCode;
+                        break;
+                    case "Right": 
+                        customInputManager.Right = e.keyCode;
+                        break;
+                    case "PickUp": 
+                        customInputManager.PickUp = e.keyCode;
+                        break;
+                    case "Inventory": 
+                        customInputManager.Inventory = e.keyCode;
+                        break;
+                    case "Drop": 
+                        customInputManager.Drop = e.keyCode;
+                        break;
+                    default: 
+                        Debug.Log("no such key in keymappings" + currentKey.name);
+                        break;
+                }
                 currentKey = null;
-                // CustomInputManager.PickUp = e.keyCode;
-                Debug.Log(e.keyCode);
             }
         }
+
     }
     public void ChangeKey(GameObject clicked)
     {
         currentKey = clicked;
-    }
-
-    public void SetKeyMap(string keyMap, KeyCode key)
-    {
-        if (!keyMappings.ContainsKey(keyMap))
-            throw new ArgumentException("Invalid KeyMap in SetKeyMap: " + keyMap);
-        keyMappings[keyMap] = key;
-    }
-
-    public bool GetKeyDown(string key)
-    {
-        return Input.GetKeyDown(keyMappings[key]);
     }
 }
