@@ -42,7 +42,7 @@ public class Craft : MonoBehaviour
     }
     private IEnumerator FadeOutRoutine()
          { 
-            validCraft.text = "Cannot craft!!";
+            validCraft.text = "INVALID!!";
              
              for (float t = 0.01f; t < 1.5f; t += Time.deltaTime)
              {

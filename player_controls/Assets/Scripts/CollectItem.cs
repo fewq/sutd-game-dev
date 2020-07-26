@@ -33,6 +33,8 @@ public class CollectItem : MonoBehaviour
 
     public bool itemAdded = false;
 
+    public inventoryItems InventoryObject;
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +74,9 @@ public class CollectItem : MonoBehaviour
         inventoryText = GameObject.Find("InventoryText").GetComponent<Text>();
         // get inventoryCanvas reference
         inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
+
+        //set the scriptable object to have the inventory dict that will persist across item slots.
+        InventoryObject.InvItems = inventoryDict;
     }
     
     public List<GameObject> GetItems(){

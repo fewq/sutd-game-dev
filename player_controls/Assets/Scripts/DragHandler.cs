@@ -21,6 +21,8 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
     [SerializeField]
     private Item item;
 
+    private inventoryItems InventoryList;
+
     
     
     private void Awake(){
@@ -28,7 +30,7 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         canvasGroup = GetComponent<CanvasGroup>();
         itemName = transform.name;
         startPosition = rectTransform.anchoredPosition;
-        print(itemName.ToString() + startPosition.ToString());
+
     }
 
 
@@ -64,6 +66,7 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
 
     private void Update() {
         // updatePosition();
+
     }
     
 
