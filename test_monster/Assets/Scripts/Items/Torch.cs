@@ -9,7 +9,8 @@ public class Torch : MonoBehaviour
         Blue = 0,
         Yellow = 1,
         Red = 3,
-        Orange = 4
+        Orange = 4,
+        Purple = 5
     }
 
     public float flameDuration = 7f;
@@ -34,7 +35,7 @@ public class Torch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lightFlameTest && !flameLit) LightTorch(favColors.Blue);
+        if (lightFlameTest && !flameLit) LightTorch(favColors.Orange);
     }
 
     void LightTorch(favColors favColor)
@@ -57,13 +58,10 @@ public class Torch : MonoBehaviour
         flameRenderer.sprite = flameAniController.spriteSet[0];
         flameAnimator.enabled = false;
         flameLit = false;
-        Debug.Log(attractedMonsters.Count);
         foreach (var monster in attractedMonsters)
         {
-            Debug.Log("In here");
             monster.flameInRange = false;
             monster.stare = false;
-            Debug.Log(monster.stare);
             monster.heartExclaimation.SetActive(false);
         }
         gameObject.tag = "UnlitTorch";
@@ -113,12 +111,10 @@ public class Torch : MonoBehaviour
         {
             return;
         }
-        Debug.Log(gameObject.tag);
         if (gameObject.CompareTag("Enemy"))
         {
             monsterNames.Add(gameObject.name);
             Debug.Log("Mesmerise");
-            Debug.Log(gameObject.GetComponent<MonsterController>());
             attractedMonsters.Add(gameObject.GetComponent<MonsterController>());
         }
     }

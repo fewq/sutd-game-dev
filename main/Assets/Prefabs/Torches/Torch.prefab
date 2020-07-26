@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238481633894488236}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.36, y: 1.8, z: 0}
   m_LocalScale: {x: 0.75363946, y: 0.75363946, z: 0.75363946}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f39c16a9e28af124882fd53b3e2c1c02, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f82a3ee4ffafca34596c018bc3fa38a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.75, y: 1.3125}
+  m_Size: {x: 0.12, y: 0.21}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -114,8 +114,16 @@ MonoBehaviour:
   spriteSet:
   - {fileID: 21300000, guid: f82a3ee4ffafca34596c018bc3fa38a2, type: 3}
   - {fileID: -3571507994421708620, guid: bf09203bfe0e64877ad0f99fb51d3faa, type: 3}
+  - {fileID: -5991136222262614521, guid: a74f15bdbaaa747efaa594524e67b46b, type: 3}
+  - {fileID: -474184230181243279, guid: 3b1fe6f1713194014b83886adec231b1, type: 3}
+  - {fileID: 5166608728908515687, guid: 34ca680f6b2ed4666a61415488473c2b, type: 3}
+  - {fileID: 1314322830994256539, guid: a214bca94fa0948c8983f35f224e6099, type: 3}
   controllerSet:
   - {fileID: 9100000, guid: d5fb0bc3dd60847a19ec245e21e21de0, type: 2}
+  - {fileID: 9100000, guid: 6f857e7e29b2640ef9d421eb1a40bb36, type: 2}
+  - {fileID: 9100000, guid: 4887b2737b90b465caacf541d13e01c4, type: 2}
+  - {fileID: 9100000, guid: fb79687942c7947beac6c35d5cd4e9f5, type: 2}
+  - {fileID: 9100000, guid: 24ad27a9df7044f1892b3225d4aa6584, type: 2}
 --- !u!95 &238481633894488233
 Animator:
   serializedVersion: 3
@@ -153,7 +161,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.75, y: 1.3125}
-    newSize: {x: 0.75, y: 1.3125}
+    newSize: {x: 0.12, y: 0.21}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

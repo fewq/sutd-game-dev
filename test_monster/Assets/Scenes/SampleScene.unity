@@ -627,7 +627,7 @@ PrefabInstance:
     - target: {fileID: 5326621723832920810, guid: f528574c2cfda4518872e0cb1f795d39,
         type: 3}
       propertyPath: tileMovement
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7570079119337115632, guid: f528574c2cfda4518872e0cb1f795d39,
         type: 3}
@@ -3743,7 +3743,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   exclaimation: {fileID: 698216736}
   heartExclaimation: {fileID: 141255019}
-  moveSpeed: 8
+  tileMovement: 0
   stare: 0
   target: {fileID: 0}
   nextWaypointDistance: 3
