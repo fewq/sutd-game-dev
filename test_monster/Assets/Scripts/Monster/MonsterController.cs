@@ -11,7 +11,8 @@ public class MonsterController : MonoBehaviour
     public Animator animator;
     public GameObject exclaimation;
     public GameObject heartExclaimation;
-    public float moveSpeed = 5f;
+    // public float moveSpeed = 5f;
+    public float tileMovement;
     private Rigidbody2D rigidbody;
     private Vector2 direction;
     private Transform flameLocation;
@@ -29,7 +30,6 @@ public class MonsterController : MonoBehaviour
     private bool reachedPlayer = false;
     private Seeker seeker;
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -118,9 +118,9 @@ public class MonsterController : MonoBehaviour
         {
             reachedPlayer = false;
         }
-        Debug.DrawLine(rigidbody.position, path.vectorPath[currentWaypoint], Color.white, 0.5f);
-        ChaseTarget((Vector3)path.vectorPath[currentWaypoint]);
 
+        ChaseTarget((Vector3)path.vectorPath[currentWaypoint]);
+        // Debug.Log("dest: " + path.vectorPath[currentWaypoint]);
         // update next waypoint if the current one is reached
         float distance = Vector2.Distance(rigidbody.position, path.vectorPath[currentWaypoint]);
 
@@ -144,11 +144,12 @@ public class MonsterController : MonoBehaviour
             direction.x = 0f;
         }
         direction.Normalize();
-        rigidbody.MovePosition(rigidbody.position + direction * moveSpeed * Time.deltaTime);
+        direction = direction * tileMovement;
+        rigidbody.MovePosition(rigidbody.position + direction);
 
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
-        animator.SetFloat("Speed", direction.sqrMagnitude);
+        animator.SetFloat("Speed", Mathf.Max(1, direction.sqrMagnitude));
     }
 
     void Stare()
@@ -164,5 +165,4 @@ public class MonsterController : MonoBehaviour
         // move to spawn point
         ChaseTarget(spawnPoint.position);
     }
-
 }
