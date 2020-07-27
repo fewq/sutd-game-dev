@@ -14,7 +14,7 @@ public class CollectItem : MonoBehaviour
 
     // List to store the GameObejct that have been picked up
 
-    public List<GameObject> ItemList = new List<GameObject>();
+    public List<GameObject> PickupList = new List<GameObject>();
 
     // dictionary to store the GameObjects
     public Dictionary<string, int> inventoryDict;
@@ -33,7 +33,7 @@ public class CollectItem : MonoBehaviour
 
     public bool itemAdded = false;
 
-    public inventoryItems InventoryObject;
+    public InventoryObject inventoryObject;
 
 
     // Start is called before the first frame update
@@ -76,11 +76,11 @@ public class CollectItem : MonoBehaviour
         inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
 
         //set the scriptable object to have the inventory dict that will persist across item slots.
-        InventoryObject.InvItems = inventoryDict;
+        inventoryObject.Inventory = inventoryDict;
     }
     
     public List<GameObject> GetItems(){
-        return ItemList;
+        return PickupList;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -113,7 +113,7 @@ public class CollectItem : MonoBehaviour
             {
                 Debug.Log("picked up " + pickupItem.name);
                 // add to ItemList
-                ItemList.Add(pickupItem);
+                PickupList.Add(pickupItem);
                 // also add to dictionary for now
                 inventoryDict[pickupItem.name] += 1;
                 Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);

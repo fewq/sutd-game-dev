@@ -1224,6 +1224,7 @@ MonoBehaviour:
   inventoryCanvas: {fileID: 0}
   inventoryText: {fileID: 711949340}
   itemAdded: 0
+  InventoryObject: {fileID: 11400000, guid: 4c9b87a7f0cbb514f816c7cdaa2ccd30, type: 2}
 --- !u!224 &850488018 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6072525772533190895, guid: 137a75e062b7cec419101ab9e898c361,

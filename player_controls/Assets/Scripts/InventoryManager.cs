@@ -8,11 +8,12 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance{get; private set;}
     private List<Transform> itemPlaceholders = new List<Transform>();
     private List<Image> inventoryImages = new List<Image>();
-    public List<GameObject> itemList = new List<GameObject>();
 
     private List<GameObject> inventoryItems = new List<GameObject>();
     //Should have an event that tells when an item has been added and then update the inventory.
     private GameObject player;
+
+    private InventoryObject inventoryObject;
 
     private bool itemAdded;
     Transform inventory;
@@ -23,7 +24,6 @@ public class InventoryManager : MonoBehaviour
             itemPlaceholders.Add(GameObject.FindGameObjectWithTag("Item"+i.ToString()).transform);
         }
         player = GameObject.FindGameObjectWithTag("Player");
-        itemList = player.GetComponent<CollectItem>().GetItems();
 
         foreach(Transform slot in itemPlaceholders){
             Image slotimage = slot.GetComponent<Image>();
@@ -38,8 +38,8 @@ public class InventoryManager : MonoBehaviour
         for(int j=0; j<inventoryImages.Count; j++){
             if(!inventoryImages[j].IsActive()){
                 inventoryImages[j].enabled = true;
-                // inventoryImages[j].transform.localScale *= 3f;
-                var toAdd = itemList[itemList.Count - 1];
+                //Get the most recent object from the list. This is the actual gameobject item, not placeholder image.
+                var toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1];
                 inventoryImages[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
                 inventoryItems.Add(toAdd.gameObject);
                 break;
@@ -58,7 +58,6 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        itemList = player.GetComponent<CollectItem>().GetItems();
         itemAdded = player.GetComponent<CollectItem>().itemAdded;
         if(itemAdded){
             SetInventory();

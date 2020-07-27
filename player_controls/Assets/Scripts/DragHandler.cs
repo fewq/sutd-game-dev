@@ -19,9 +19,10 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
 
     private bool dropStatus;
     [SerializeField]
-    private Item item;
+    private InventoryObject item;
 
-    private inventoryItems InventoryList;
+    private InventoryObject  InventoryList;
+
 
     
     
@@ -30,7 +31,6 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         canvasGroup = GetComponent<CanvasGroup>();
         itemName = transform.name;
         startPosition = rectTransform.anchoredPosition;
-
     }
 
 
@@ -50,6 +50,8 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         canvasGroup.blocksRaycasts = false;
         DropHandler.dropStatus = false;
         item.ItemName = itemName;
+        var itemIndex = System.Convert.ToInt32(itemName.Substring(itemName.Length - 1));
+        
     }
 
     public void OnEndDrag(PointerEventData pointer){

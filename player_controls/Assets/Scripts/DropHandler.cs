@@ -10,7 +10,7 @@ public class DropHandler : MonoBehaviour, IDropHandler
 
     public static bool dropStatus = false;
 
-    public Item item;
+    public InventoryObject item;
 
     public void OnDrop(PointerEventData pointerevent){
         print("Image " + GetComponent<RectTransform>().anchoredPosition.ToString());
