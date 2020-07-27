@@ -76,12 +76,9 @@ public class CollectItem : MonoBehaviour
         inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
 
         //set the scriptable object to have the inventory dict that will persist across item slots.
-        inventoryObject.Inventory = inventoryDict;
+        
     }
     
-    public List<GameObject> GetItems(){
-        return PickupList;
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -121,6 +118,9 @@ public class CollectItem : MonoBehaviour
                 pickupItem = null;
                 itemAdded = true;
             }
+            //update the scriptable object with the lists.
+            inventoryObject.Inventory = inventoryDict;
+            inventoryObject.PickupList = PickupList;
         }
     }
 
@@ -192,7 +192,10 @@ public class CollectItem : MonoBehaviour
             inventoryDict[rawItem2]--;
             inventoryDict[craftedItem]++;
         }
+        inventoryObject.PickupList.Add(GameObject.Find(craftedItem));
         itemAdded = true;
+        //store the updated inventoryDict
+        inventoryObject.Inventory = inventoryDict;
     }
 
     // manages the crafting and placing hotkeys for the game
@@ -215,5 +218,6 @@ public class CollectItem : MonoBehaviour
         PickObject();
         ToggleInventory();
         // HotkeyManager();
+        
     }
 }

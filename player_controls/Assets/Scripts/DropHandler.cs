@@ -13,15 +13,12 @@ public class DropHandler : MonoBehaviour, IDropHandler
     public InventoryObject item;
 
     public void OnDrop(PointerEventData pointerevent){
-        print("Image " + GetComponent<RectTransform>().anchoredPosition.ToString());
-        print("Drop pointer "+pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition.ToString());
         if(pointerevent.pointerDrag != null){
             pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             dropStatus = true;
             // EventManager.onCraftClick
             itemList.Add(item.ItemName);
-        }    
-        
+        }
     }
 
     public static List<string> ItemList{
@@ -29,7 +26,6 @@ public class DropHandler : MonoBehaviour, IDropHandler
             return itemList;
         }
     }
-
 
     // Start is called before the first frame update
     private void Awake()

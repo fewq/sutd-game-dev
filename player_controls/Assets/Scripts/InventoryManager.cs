@@ -7,13 +7,15 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance{get; private set;}
     private List<Transform> itemPlaceholders = new List<Transform>();
+
+    private List<Image> slotPlaceholders = new List<Image>();
     private List<Image> inventoryImages = new List<Image>();
 
     private List<GameObject> inventoryItems = new List<GameObject>();
     //Should have an event that tells when an item has been added and then update the inventory.
     private GameObject player;
 
-    private InventoryObject inventoryObject;
+    public InventoryObject inventoryObject;
 
     private bool itemAdded;
     Transform inventory;
@@ -22,7 +24,11 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i=1; i<9; i++){
             itemPlaceholders.Add(GameObject.FindGameObjectWithTag("Item"+i.ToString()).transform);
+            var image = GameObject.FindGameObjectWithTag("Slot"+i.ToString()).transform.GetChild(0).GetComponent<Image>();
+            image.enabled = false;
+            slotPlaceholders.Add(image);
         }
+        
         player = GameObject.FindGameObjectWithTag("Player");
 
         foreach(Transform slot in itemPlaceholders){
@@ -38,10 +44,14 @@ public class InventoryManager : MonoBehaviour
         for(int j=0; j<inventoryImages.Count; j++){
             if(!inventoryImages[j].IsActive()){
                 inventoryImages[j].enabled = true;
+                slotPlaceholders[j].enabled = true;
                 //Get the most recent object from the list. This is the actual gameobject item, not placeholder image.
+                //Set the new placeholder image 
                 var toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1];
                 inventoryImages[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
+                slotPlaceholders[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
                 inventoryItems.Add(toAdd.gameObject);
+                inventoryObject.PickupList.RemoveAt(inventoryObject.PickupList.Count - 1);
                 break;
             }
         }

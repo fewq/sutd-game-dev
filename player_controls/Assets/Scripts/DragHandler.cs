@@ -19,7 +19,6 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
 
     private bool dropStatus;
     [SerializeField]
-    private InventoryObject item;
 
     private InventoryObject  InventoryList;
 
@@ -44,14 +43,13 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         DropHandler.dropStatus = false;
     }
 
+    //we have to check if the number of items is more than 1 and see if to keep the placeholder.
     public void OnBeginDrag(PointerEventData pointer){
         transform.SetAsLastSibling();
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
         DropHandler.dropStatus = false;
-        item.ItemName = itemName;
-        var itemIndex = System.Convert.ToInt32(itemName.Substring(itemName.Length - 1));
-        
+        InventoryList.ItemName = itemName;
     }
 
     public void OnEndDrag(PointerEventData pointer){

@@ -12,6 +12,8 @@ public class Craft : MonoBehaviour
 
     public Text validCraft;
 
+    InventoryObject inventoryObject;
+
     private List<GameObject> inventoryList = new List<GameObject>();
     Color originalColor;
     void Start(){
@@ -20,6 +22,7 @@ public class Craft : MonoBehaviour
         originalColor = validCraft.color;
     }
     // private Item itemList;
+    //Need to find the count of the items
     public void craft()
     {
         var itemList = DropHandler.ItemList;
