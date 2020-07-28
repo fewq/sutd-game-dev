@@ -175,11 +175,11 @@ public class MonsterController : MonoBehaviour
     private bool PlayerInRange()
     {
         RaycastHit2D[] hits;
-        sizeOfRaycast = new Vector2(lookRange,lookRange);
-        
+        sizeOfRaycast = new Vector2(lookRange, lookRange);
+
         hits = Physics2D.BoxCastAll((Vector2)transform.position, sizeOfRaycast, 0, (Vector2)transform.forward, lookRange);
         Debug.DrawRay(transform.position, transform.forward.normalized * lookRange, Color.red);
-
+        Debug.Log(hits);
         foreach (RaycastHit2D hit in hits)
         {
             if (hit != null && hit.collider.CompareTag("Player"))
@@ -188,12 +188,19 @@ public class MonsterController : MonoBehaviour
                 return true;
             }
         }
+        //if (GameManager.Instance.CheckForPlayer(transform.position))
+        //{
+        //    Debug.Log("spotted player");
+        //    return true;
+        //}
+
+
         exclaimation.SetActive(false);
         return false;
     }
 
     private void OnDrawGizmos()
     {
-        // Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
+        Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
     }
 }

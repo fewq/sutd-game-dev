@@ -8,7 +8,8 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.localScale = GameManager.Instance.gridScale;
+
     }
 
     // Update is called once per frame
@@ -20,7 +21,8 @@ public class Bomb : MonoBehaviour
         {
             Debug.Log("EKUSUPLOSION!");
             //Change GameManager to singleton
-            FindObjectOfType<GameManager>().Explode(transform.position);
+            //FindObjectOfType<GameManager>().Explode(transform.position);
+            GameManager.Instance.Explode(transform.position);
             Destroy(gameObject);
         }
     }

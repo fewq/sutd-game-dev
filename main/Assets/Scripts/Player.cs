@@ -20,14 +20,17 @@ public class Player : Movement
     private EdgeCollider2D walls;
 
     // length of the tile to move, set to 0.1 from unity
-    public float tileMovement;
+    private float tileMovement;
 
     // Start is called before the first frame update
     protected override void Start()
     {
+        //tileMovement = GameManager.Instance.gridScale.x/10;
+        tileMovement = 0.1f;
         base.Start();
         // walls = GameObject.FindGameObjectWithTag("Wall").GetComponent<BoxCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame

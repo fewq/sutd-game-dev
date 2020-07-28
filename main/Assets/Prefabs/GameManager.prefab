@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &580446950353678042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 580446950353678041}
+  - component: {fileID: 580446950353678040}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &580446950353678041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580446950353678042}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &580446950353678040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580446950353678042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7443f97aeb1a5a64199678d5408a1902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 0}
+  tilemap_boulder: {fileID: 0}
+  tilemap_acidriver: {fileID: 0}
+  acidTile: {fileID: 11400000, guid: 713697f2534a643468d896fe0cb944cc, type: 2}
+  boulderTile: {fileID: 11400000, guid: 4bbe336bc4e6ad446b9d8a2fc0603e59, type: 2}
+  caesiumTile: {fileID: 11400000, guid: 6204c899e7e285a4a89b421c9fa37a77, type: 2}
+  CaOTile: {fileID: 11400000, guid: 29bc52130374e2f42bf708b4104e0b7f, type: 2}
+  waterTile: {fileID: 11400000, guid: 01d909e7e9aff9340bd5de6f07e8e3a1, type: 2}
+  bombPrefab: {fileID: 3824321849441702587, guid: f1d7114f9118c4b4799a9577fc229bb2,
+    type: 3}
+  explosionPrefab: {fileID: 6389187618179850839, guid: beee1dbf6cc28574687ab7f2b3ad5423,
+    type: 3}
+  CaOH2Prefab: {fileID: 5521786370850339131, guid: 97ba59a034d12594480ab6a06990fc19,
+    type: 3}
+  gridScale: {x: 0, y: 0, z: 0}

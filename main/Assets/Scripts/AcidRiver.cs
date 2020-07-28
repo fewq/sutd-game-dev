@@ -22,8 +22,8 @@ public class AcidRiver : MonoBehaviour
         {
             Debug.Log("DestroyPlayer");
             //Game over sequence here and destroy player object
-            collision.gameObject.SetActive(false);
-            //Destroy(collision.gameObject);
+            //collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
         }
         //Kills enemy as well
     }

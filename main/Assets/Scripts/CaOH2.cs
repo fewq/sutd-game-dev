@@ -8,7 +8,7 @@ public class CaOH2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,7 +19,8 @@ public class CaOH2 : MonoBehaviour
         {
             Debug.Log("Neutralize!");
             //Change GameManager to singleton
-            FindObjectOfType<GameManager>().Neutralize(transform.position);
+            //FindObjectOfType<GameManager>().Neutralize(transform.position);
+            GameManager.Instance.Neutralize(transform.position);
             Destroy(gameObject);
         }
 
