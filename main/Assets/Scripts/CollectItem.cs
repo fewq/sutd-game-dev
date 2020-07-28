@@ -70,7 +70,7 @@ public class CollectItem : MonoBehaviour
         // get inventoryText Reference
         inventoryText = GameObject.Find("InventoryText").GetComponent<Text>();
         // get inventoryCanvas reference
-        inventoryCanvas = GameObject.Find("InventoryCanvas").GetComponent<Canvas>();
+        inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -121,27 +121,28 @@ public class CollectItem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             inventoryState = !inventoryState;
+            print("InventoryState: " + inventoryState);
         }
         if (inventoryState)
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
-            inventoryText.text = $@"Inventory: 
-Fire: {inventoryDict["Fire"]}
-Water: {inventoryDict["Water"]}
-CupricChloride: {inventoryDict["CupricChloride"]} 
-LithiumCloride: {inventoryDict["LithiumChloride"]}
-CalciumChloride: {inventoryDict["CalciumChloride"]}
-PotassiumChloride: {inventoryDict["PotassiumChloride"]}
-SodiumCloride: {inventoryDict["SodiumChloride"]}
-Caesium: {inventoryDict["Caesium"]}
-CalciumOxide: {inventoryDict["CalciumOxide"]}
-Bomb: {inventoryDict["Bomb"]} (Craft: T; Place: F)
-BlueLight: {inventoryDict["BlueLight"]} (Craft: Y; Place: G)
-RedLight: {inventoryDict["RedLight"]} (Craft: U; Place: H)
-OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I; Place: J)
-PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O; Place: K)
-YellowLight: {inventoryDict["YellowLight"]} (Craft: P; Place: L)
-CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
+            //             inventoryText.text = $@"Inventory: 
+            // Fire: {inventoryDict["Fire"]}
+            // Water: {inventoryDict["Water"]}
+            // CupricChloride: {inventoryDict["CupricChloride"]} 
+            // LithiumCloride: {inventoryDict["LithiumChloride"]}
+            // CalciumChloride: {inventoryDict["CalciumChloride"]}
+            // PotassiumChloride: {inventoryDict["PotassiumChloride"]}
+            // SodiumCloride: {inventoryDict["SodiumChloride"]}
+            // Caesium: {inventoryDict["Caesium"]}
+            // CalciumOxide: {inventoryDict["CalciumOxide"]}
+            // Bomb: {inventoryDict["Bomb"]} (Craft: T; Place: F)
+            // BlueLight: {inventoryDict["BlueLight"]} (Craft: Y; Place: G)
+            // RedLight: {inventoryDict["RedLight"]} (Craft: U; Place: H)
+            // OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I; Place: J)
+            // PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O; Place: K)
+            // YellowLight: {inventoryDict["YellowLight"]} (Craft: P; Place: L)
+            // CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         }
         else
         {
@@ -151,17 +152,17 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
 
     // takes in a string of the desired item to craft
     // checks if there is enough raw materials, then crafts it
-    void Craft(string craftedItem)
-    {
-        string rawItem1 = recipeDict[craftedItem].Item1;
-        string rawItem2 = recipeDict[craftedItem].Item2;
-        if (inventoryDict[rawItem1] > 0 && inventoryDict[rawItem2] > 0)
-        {
-            inventoryDict[rawItem1]--;
-            inventoryDict[rawItem2]--;
-            inventoryDict[craftedItem]++;
-        }
-    }
+    // void Craft(string craftedItem)
+    // {
+    //     string rawItem1 = recipeDict[craftedItem].Item1;
+    //     string rawItem2 = recipeDict[craftedItem].Item2;
+    //     if (inventoryDict[rawItem1] > 0 && inventoryDict[rawItem2] > 0)
+    //     {
+    //         inventoryDict[rawItem1]--;
+    //         inventoryDict[rawItem2]--;
+    //         inventoryDict[craftedItem]++;
+    //     }
+    // }
 
     // takes in 2 raw materials (order doesn't matter) and performs crafting
     void Craft(string rawItem1, string rawItem2)
@@ -199,31 +200,31 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
     }
 
     // manages the crafting and placing hotkeys for the game
-    void HotkeyManager()
-    {
-        // crafting hotkeys
-        if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
-        else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
-        else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
-        else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
-        else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
-        else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
-        else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
-        // placing hotkeys
-        else if (Input.GetKeyDown(KeyCode.F)) { Place("Bomb"); }
-        else if (Input.GetKeyDown(KeyCode.G)) { Place("BlueLight"); }
-        else if (Input.GetKeyDown(KeyCode.H)) { Place("RedLight"); }
-        else if (Input.GetKeyDown(KeyCode.J)) { Place("OrangeLight"); }
-        else if (Input.GetKeyDown(KeyCode.K)) { Place("PurpleLight"); }
-        else if (Input.GetKeyDown(KeyCode.L)) { Place("YellowLight"); }
-        else if (Input.GetKeyDown(KeyCode.Semicolon)) { Place("CalciumHydroxide"); }
-    }
+    // void HotkeyManager()
+    // {
+    //     // crafting hotkeys
+    //     if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
+    //     else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
+    //     // placing hotkeys
+    //     else if (Input.GetKeyDown(KeyCode.F)) { Place("Bomb"); }
+    //     else if (Input.GetKeyDown(KeyCode.G)) { Place("BlueLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.H)) { Place("RedLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.J)) { Place("OrangeLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.K)) { Place("PurpleLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.L)) { Place("YellowLight"); }
+    //     else if (Input.GetKeyDown(KeyCode.Semicolon)) { Place("CalciumHydroxide"); }
+    // }
 
     // Update is called once per frame
     void Update()
     {
         PickObject();
         ToggleInventory();
-        HotkeyManager();
+        // HotkeyManager();
     }
 }
