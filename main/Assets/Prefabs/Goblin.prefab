@@ -212,14 +212,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153085f26b1c89440a3bc447a0d6df7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aIPath: {fileID: 0}
   spawnPoint: {fileID: 0}
   animator: {fileID: 800080216313234089}
   exclaimation: {fileID: 3333822372866640360}
   heartExclaimation: {fileID: 6947704044575209085}
   moveSpeed: 8
-  useAiPathTest: 0
   stare: 0
+  target: {fileID: 0}
+  nextWaypointDistance: 3
+  lookRange: 5
 --- !u!1 &3333822372866640360
 GameObject:
   m_ObjectHideFlags: 0

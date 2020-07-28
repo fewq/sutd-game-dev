@@ -99,6 +99,9 @@ public class Player : Movement
     {
         // base.checkMove<T>(x,y);
         RaycastHit2D hit;
+        //animator.SetFloat("Horizontal", movement.x);
+        //animator.SetFloat("Vertical", movement.y);
+        //animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
         if (playerMovement(x, y, out hit))
         {
             // base.Move(xVal, yVal, out hit);
