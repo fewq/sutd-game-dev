@@ -111,6 +111,7 @@ public class Player : Movement
         }
         else
         {
+            print(hit.transform.name);
             Debug.Log("Cant move");
         }
 

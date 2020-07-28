@@ -13,7 +13,7 @@ public class CollectItem : MonoBehaviour
     private BoxCollider2D playerCollider;
 
     // List to store the GameObejct that have been picked up
-    public List<GameObject> ItemList = new List<GameObject>();
+    public List<GameObject> PickupList = new List<GameObject>();
 
     // dictionary to store the GameObjects
     public Dictionary<string, int> inventoryDict;
@@ -29,6 +29,10 @@ public class CollectItem : MonoBehaviour
 
     // canvas text
     public Text inventoryText;
+
+    public bool itemAdded = false;
+
+    public InventoryObject inventoryObject;
 
     public GameObject itemPrefab;
 
@@ -70,7 +74,7 @@ public class CollectItem : MonoBehaviour
         // get inventoryText Reference
         inventoryText = GameObject.Find("InventoryText").GetComponent<Text>();
         // get inventoryCanvas reference
-        inventoryCanvas = GameObject.Find("InventoryCanvas").GetComponent<Canvas>();
+        inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -102,8 +106,8 @@ public class CollectItem : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 Debug.Log("picked up " + pickupItem.name);
-                // add to ItemList
-                ItemList.Add(pickupItem);
+                // add to PickupList
+                PickupList.Add(pickupItem);
                 // also add to dictionary for now
                 inventoryDict[pickupItem.name] += 1;
                 Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);
@@ -112,7 +116,12 @@ public class CollectItem : MonoBehaviour
                 // destroy item instead
                 // Destroy(pickupItem);
                 pickupItem = null;
+                itemAdded = true;
             }
+
+            //update the scriptable object with the lists.
+            inventoryObject.Inventory = inventoryDict;
+            inventoryObject.PickupList = PickupList;
         }
     }
 
@@ -121,27 +130,28 @@ public class CollectItem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             inventoryState = !inventoryState;
+            print("InventoryState: " + inventoryState);
         }
         if (inventoryState)
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
             inventoryText.text = $@"Inventory: 
-Fire: {inventoryDict["Fire"]}
-Water: {inventoryDict["Water"]}
-CupricChloride: {inventoryDict["CupricChloride"]} 
-LithiumCloride: {inventoryDict["LithiumChloride"]}
-CalciumChloride: {inventoryDict["CalciumChloride"]}
-PotassiumChloride: {inventoryDict["PotassiumChloride"]}
-SodiumCloride: {inventoryDict["SodiumChloride"]}
-Caesium: {inventoryDict["Caesium"]}
-CalciumOxide: {inventoryDict["CalciumOxide"]}
-Bomb: {inventoryDict["Bomb"]} (Craft: T; Place: F)
-BlueLight: {inventoryDict["BlueLight"]} (Craft: Y; Place: G)
-RedLight: {inventoryDict["RedLight"]} (Craft: U; Place: H)
-OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I; Place: J)
-PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O; Place: K)
-YellowLight: {inventoryDict["YellowLight"]} (Craft: P; Place: L)
-CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
+            Fire: {inventoryDict["Fire"]}
+            Water: {inventoryDict["Water"]}
+            CupricChloride: {inventoryDict["CupricChloride"]} 
+            LithiumCloride: {inventoryDict["LithiumChloride"]}
+            CalciumChloride: {inventoryDict["CalciumChloride"]}
+            PotassiumChloride: {inventoryDict["PotassiumChloride"]}
+            SodiumCloride: {inventoryDict["SodiumChloride"]}
+            Caesium: {inventoryDict["Caesium"]}
+            CalciumOxide: {inventoryDict["CalciumOxide"]}
+            Bomb: {inventoryDict["Bomb"]} (Craft: T; Place: F)
+            BlueLight: {inventoryDict["BlueLight"]} (Craft: Y; Place: G)
+            RedLight: {inventoryDict["RedLight"]} (Craft: U; Place: H)
+            OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I; Place: J)
+            PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O; Place: K)
+            YellowLight: {inventoryDict["YellowLight"]} (Craft: P; Place: L)
+            CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         }
         else
         {
@@ -164,7 +174,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
     }
 
     // takes in 2 raw materials (order doesn't matter) and performs crafting
-    void Craft(string rawItem1, string rawItem2)
+    public void Craft(string rawItem1, string rawItem2)
     {
         string craftedItem = null;
         // loop through recipe dictionary and get final item
@@ -184,7 +194,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         }
     }
 
-    void Place(string craftedItem)
+    public void Place(string craftedItem)
     {
         if (inventoryDict[craftedItem] > 0)
         {
