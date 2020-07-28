@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 645937106911008855}
   - component: {fileID: 4170520575121802942}
   - component: {fileID: 6628361843739180480}
-  - component: {fileID: -7259260209785489300}
+  - component: {fileID: 2462933636009501295}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -108,6 +108,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &864942689823230482
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3014202340340153316}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.16, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &645937106911008855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,13 +194,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4dc7eb6d5c27e34482fc645331b5ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemList: []
+  PickupList: []
   inventoryState: 0
   inventoryCanvas: {fileID: 0}
   inventoryText: {fileID: 0}
+  itemAdded: 0
+  inventoryObject: {fileID: 11400000, guid: 3507ebe996d2b6b48bd1c344b18ec6ea, type: 2}
   itemPrefab: {fileID: 7716883765634680467, guid: 3d76ce53c0c4e804ca73daee32e0dc7e,
     type: 3}
---- !u!61 &-7259260209785489300
+--- !u!61 &2462933636009501295
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

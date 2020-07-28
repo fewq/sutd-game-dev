@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEndDragHandler, IBeginDragHandler
+public class DragHandler : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
 
     private RectTransform rectTransform;
@@ -19,11 +19,13 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
 
     private bool dropStatus;
 
-    private Item item;
+    [SerializeField]
+    private InventoryObject item;
 
-    
-    
-    private void Awake(){
+
+
+    private void Awake()
+    {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         itemName = transform.name;
@@ -32,17 +34,20 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
     }
 
 
-    public void OnPointerDown(PointerEventData pointer){
+    public void OnPointerDown(PointerEventData pointer)
+    {
         // Debug.Log("Pointer down");
         // Debug.Log("Position" + pointer.position);
     }
-    public void OnDrag(PointerEventData pointer){
+    public void OnDrag(PointerEventData pointer)
+    {
         // canvasGroup.alpha = 0.1f;
         rectTransform.anchoredPosition += pointer.delta / canvas.scaleFactor;
         DropHandler.dropStatus = false;
     }
 
-    public void OnBeginDrag(PointerEventData pointer){
+    public void OnBeginDrag(PointerEventData pointer)
+    {
         transform.SetAsLastSibling();
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
@@ -50,9 +55,11 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         item.ItemName = transform.name;
     }
 
-    public void OnEndDrag(PointerEventData pointer){
-        
-        if(!DropHandler.dropStatus){
+    public void OnEndDrag(PointerEventData pointer)
+    {
+
+        if (!DropHandler.dropStatus)
+        {
             rectTransform.anchoredPosition = startPosition;
             print("End position" + startPosition.ToString());
         }
@@ -61,10 +68,11 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
     }
 
 
-    private void Update() {
+    private void Update()
+    {
         // updatePosition();
     }
-    
+
 
 
 

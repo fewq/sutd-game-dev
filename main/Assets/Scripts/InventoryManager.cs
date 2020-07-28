@@ -14,6 +14,9 @@ public class InventoryManager : MonoBehaviour
     //Should have an event that tells when an item has been added and then update the inventory.
     private GameObject player;
 
+    public InventoryObject inventoryObject;
+
+
     private bool itemAdded;
     Transform inventory;
     // Start is called before the first frame update
@@ -22,6 +25,9 @@ public class InventoryManager : MonoBehaviour
         for (int i = 1; i < 9; i++)
         {
             itemPlaceholders.Add(GameObject.FindGameObjectWithTag("Item" + i.ToString()).transform);
+            // var image = GameObject.FindGameObjectWithTag("Slot" + i.ToString()).transform.GetChild(0).GetComponent<Image>();
+            // image.enabled = false;
+            // slotPlaceholders.Add(image);
         }
         player = GameObject.FindGameObjectWithTag("Player");
         // TODO: add CollectItem to player prefab
@@ -43,11 +49,24 @@ public class InventoryManager : MonoBehaviour
         {
             if (!inventoryImages[j].IsActive())
             {
+                //  Old code
+                // inventoryImages[j].enabled = true;
+                // // inventoryImages[j].transform.localScale *= 3f;
+                // var toAdd = itemList[itemList.Count - 1];
+                // inventoryImages[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
+                // inventoryItems.Add(toAdd.gameObject);
+
+                // New code
                 inventoryImages[j].enabled = true;
-                // inventoryImages[j].transform.localScale *= 3f;
-                var toAdd = itemList[itemList.Count - 1];
+                // slotPlaceholders[j].enabled = true;
+                //Get the most recent object from the list. This is the actual gameobject item, not placeholder image.
+                //Set the new placeholder image 
+                var toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1];
                 inventoryImages[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
+                // slotPlaceholders[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
                 inventoryItems.Add(toAdd.gameObject);
+                // inventoryObject.PickupList.RemoveAt(inventoryObject.PickupList.Count - 1);
+
                 break;
             }
         }
@@ -69,12 +88,12 @@ public class InventoryManager : MonoBehaviour
         // TODO: add CollectItem to player prefab
         // itemList = player.GetComponent<CollectItem>().GetItems();
         // TODO: add CollectItem to player prefab
-        // itemAdded = player.GetComponent<CollectItem>().itemAdded;
+        itemAdded = player.GetComponent<CollectItem>().itemAdded;
         if (itemAdded)
         {
             SetInventory();
         }
         // TODO: add CollectItem to player prefab
-        // player.GetComponent<CollectItem>().itemAdded = false;
+        player.GetComponent<CollectItem>().itemAdded = false;
     }
 }
