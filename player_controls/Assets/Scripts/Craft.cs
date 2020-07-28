@@ -35,6 +35,7 @@ public class Craft : MonoBehaviour
             
             string item1 = inventoryList[itemIndex1 - 1].name;
             string item2 = inventoryList[itemIndex2 - 1].name;
+
             GameObject.FindGameObjectWithTag("Player").GetComponent<CollectItem>().Craft(item1, item2);
         }
         else{

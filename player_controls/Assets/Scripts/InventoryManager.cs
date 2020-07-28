@@ -11,6 +11,8 @@ public class InventoryManager : MonoBehaviour
     private List<Image> slotPlaceholders = new List<Image>();
     private List<Image> inventoryImages = new List<Image>();
 
+    //list of items that have been added to the inventory
+    //Do you need pickup list or just the items in the inventory?
     private List<GameObject> inventoryItems = new List<GameObject>();
     //Should have an event that tells when an item has been added and then update the inventory.
     private GameObject player;
@@ -50,6 +52,8 @@ public class InventoryManager : MonoBehaviour
                 var toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1];
                 inventoryImages[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
                 slotPlaceholders[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
+
+                //I need something that can remove items from the list when it hits 0 count and add when crafted.
                 inventoryItems.Add(toAdd.gameObject);
                 inventoryObject.PickupList.RemoveAt(inventoryObject.PickupList.Count - 1);
                 break;

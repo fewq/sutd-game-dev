@@ -192,6 +192,20 @@ public class CollectItem : MonoBehaviour
             inventoryDict[rawItem2]--;
             inventoryDict[craftedItem]++;
         }
+        
+        foreach(GameObject item in PickupList){
+            if(item.name == rawItem1){
+                PickupList.Remove(item);
+                break;
+            }
+        }
+        foreach(GameObject item in PickupList){
+            if(item.name == rawItem2){
+                PickupList.Remove(item);
+                break;
+            }
+        }
+        
         inventoryObject.PickupList.Add(GameObject.Find(craftedItem));
         itemAdded = true;
         //store the updated inventoryDict
