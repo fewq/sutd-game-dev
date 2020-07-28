@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class DropHandler : MonoBehaviour, IDropHandler
 {
 
-    private List<string> itemList = new List<string>();
+    private static List<string> itemList = new List<string>();
 
     public static bool dropStatus = false;
 
@@ -26,6 +26,14 @@ public class DropHandler : MonoBehaviour, IDropHandler
 
     }
 
+
+    public static List<string> ItemList
+    {
+        get
+        {
+            return itemList;
+        }
+    }
 
     // Start is called before the first frame update
     private void Awake()
