@@ -10,18 +10,20 @@ public class DropHandler : MonoBehaviour, IDropHandler
 
     public static bool dropStatus = false;
 
-    public Item item;
+    public InventoryObject item;
 
-    public void OnDrop(PointerEventData pointerevent){
+    public void OnDrop(PointerEventData pointerevent)
+    {
         print("Image " + GetComponent<RectTransform>().anchoredPosition.ToString());
-        print("Drop pointer "+pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition.ToString());
-        if(pointerevent.pointerDrag != null){
+        print("Drop pointer " + pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition.ToString());
+        if (pointerevent.pointerDrag != null)
+        {
             pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             dropStatus = true;
             // EventManager.onCraftClick
             itemList.Add(item.ItemName);
-        }    
-        
+        }
+
     }
 
 
@@ -29,7 +31,7 @@ public class DropHandler : MonoBehaviour, IDropHandler
     private void Awake()
     {
         // itemList = InventoryManager.Instance.getInventory;
-        
+
     }
 
     // Update is called once per frame

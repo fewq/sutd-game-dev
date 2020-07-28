@@ -13,7 +13,7 @@ public class CollectItem : MonoBehaviour
     private BoxCollider2D playerCollider;
 
     // List to store the GameObejct that have been picked up
-    public List<GameObject> ItemList = new List<GameObject>();
+    public List<GameObject> PickupList = new List<GameObject>();
 
     // dictionary to store the GameObjects
     public Dictionary<string, int> inventoryDict;
@@ -29,6 +29,10 @@ public class CollectItem : MonoBehaviour
 
     // canvas text
     public Text inventoryText;
+
+    public bool itemAdded = false;
+
+    public InventoryObject inventoryObject;
 
     public GameObject itemPrefab;
 
@@ -102,8 +106,8 @@ public class CollectItem : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 Debug.Log("picked up " + pickupItem.name);
-                // add to ItemList
-                ItemList.Add(pickupItem);
+                // add to PickupList
+                PickupList.Add(pickupItem);
                 // also add to dictionary for now
                 inventoryDict[pickupItem.name] += 1;
                 Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);
@@ -112,7 +116,12 @@ public class CollectItem : MonoBehaviour
                 // destroy item instead
                 // Destroy(pickupItem);
                 pickupItem = null;
+                itemAdded = true;
             }
+
+            //update the scriptable object with the lists.
+            inventoryObject.Inventory = inventoryDict;
+            inventoryObject.PickupList = PickupList;
         }
     }
 
@@ -152,17 +161,17 @@ public class CollectItem : MonoBehaviour
 
     // takes in a string of the desired item to craft
     // checks if there is enough raw materials, then crafts it
-    // void Craft(string craftedItem)
-    // {
-    //     string rawItem1 = recipeDict[craftedItem].Item1;
-    //     string rawItem2 = recipeDict[craftedItem].Item2;
-    //     if (inventoryDict[rawItem1] > 0 && inventoryDict[rawItem2] > 0)
-    //     {
-    //         inventoryDict[rawItem1]--;
-    //         inventoryDict[rawItem2]--;
-    //         inventoryDict[craftedItem]++;
-    //     }
-    // }
+    void Craft(string craftedItem)
+    {
+        string rawItem1 = recipeDict[craftedItem].Item1;
+        string rawItem2 = recipeDict[craftedItem].Item2;
+        if (inventoryDict[rawItem1] > 0 && inventoryDict[rawItem2] > 0)
+        {
+            inventoryDict[rawItem1]--;
+            inventoryDict[rawItem2]--;
+            inventoryDict[craftedItem]++;
+        }
+    }
 
     // takes in 2 raw materials (order doesn't matter) and performs crafting
     void Craft(string rawItem1, string rawItem2)
@@ -200,31 +209,31 @@ public class CollectItem : MonoBehaviour
     }
 
     // manages the crafting and placing hotkeys for the game
-    // void HotkeyManager()
-    // {
-    //     // crafting hotkeys
-    //     if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
-    //     else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
-    //     // placing hotkeys
-    //     else if (Input.GetKeyDown(KeyCode.F)) { Place("Bomb"); }
-    //     else if (Input.GetKeyDown(KeyCode.G)) { Place("BlueLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.H)) { Place("RedLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.J)) { Place("OrangeLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.K)) { Place("PurpleLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.L)) { Place("YellowLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.Semicolon)) { Place("CalciumHydroxide"); }
-    // }
+    void HotkeyManager()
+    {
+        // crafting hotkeys
+        if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
+        else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
+        else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
+        else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
+        else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
+        else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
+        else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
+        // placing hotkeys
+        else if (Input.GetKeyDown(KeyCode.F)) { Place("Bomb"); }
+        else if (Input.GetKeyDown(KeyCode.G)) { Place("BlueLight"); }
+        else if (Input.GetKeyDown(KeyCode.H)) { Place("RedLight"); }
+        else if (Input.GetKeyDown(KeyCode.J)) { Place("OrangeLight"); }
+        else if (Input.GetKeyDown(KeyCode.K)) { Place("PurpleLight"); }
+        else if (Input.GetKeyDown(KeyCode.L)) { Place("YellowLight"); }
+        else if (Input.GetKeyDown(KeyCode.Semicolon)) { Place("CalciumHydroxide"); }
+    }
 
     // Update is called once per frame
     void Update()
     {
         PickObject();
         ToggleInventory();
-        // HotkeyManager();
+        HotkeyManager();
     }
 }
