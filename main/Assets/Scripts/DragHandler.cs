@@ -19,6 +19,7 @@ public class DragHandler : MonoBehaviour, IPointerDownHandler, IDragHandler, IEn
 
     private bool dropStatus;
 
+    [SerializeField]
     private InventoryObject item;
 
 
