@@ -92,10 +92,11 @@ public class GameManager : Singleton<GameManager>
             pos = tilemap_acidriver.GetCellCenterWorld(cell);
         }
 
-        Collider2D objectCollider = Physics2D.OverlapBox(new Vector2(pos.x, pos.y), new Vector2(gridScale.x/2,gridScale.y/2), 0f);
-        if (objectCollider)
+        Collider2D objectCollider = Physics2D.OverlapBox(new Vector2(pos.x, pos.y), new Vector2(gridScale.x,gridScale.y), 0f);
+
+        if (action == "explode")
         {
-            if (action == "explode")
+            if (objectCollider)
             {
                 if (objectCollider.tag == "Item")
                 {
@@ -115,26 +116,30 @@ public class GameManager : Singleton<GameManager>
                 {
                     tilemap_boulder.SetTile(cell, null);
                 }
-                Instantiate(explosionPrefab, pos, Quaternion.identity, grid.transform);
-            }else if(action == "neutralize")
-            {
-                Tile tile = tilemap_acidriver.GetTile<Tile>(cell);
-                if (tile == acidTile)
-                {
-                    tilemap_acidriver.SetTile(cell, null);
-                }
-            }else if(action == "playercheck")
-            {
-                //if detect boulder, return false
-                //If detect player return true, else return false
-            }else if (action == "bouldercheck")
-            {
-                //true if got boulder, false if got no boulder
             }
+
+            Instantiate(explosionPrefab, pos, Quaternion.identity, grid.transform);
+        }
+        else if(action == "neutralize")
+        {
+            Tile tile = tilemap_acidriver.GetTile<Tile>(cell);
+            if (tile == acidTile)
+            {
+                tilemap_acidriver.SetTile(cell, null);
+            }
+        }else if(action == "playercheck")
+        {
+            //if detect boulder, return false
+            //If detect player return true, else return false
+        }else if (action == "bouldercheck")
+        {
+            //true if got boulder, false if got no boulder
         }
         return true;
-        
     }
+
+
+      
 
     public void SetCAOH2()
     {
