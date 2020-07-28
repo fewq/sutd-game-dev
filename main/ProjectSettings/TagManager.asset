@@ -8,6 +8,21 @@ TagManager:
   - Boulder
   - Item
   - Floor
+  - Enemy
+  - UnlitTorch
+  - Inventory
+  - CraftItem2
+  - Item7
+  - Item6
+  - CraftedItem
+  - CraftItem1
+  - Item5
+  - Item3
+  - Item2
+  - Bar
+  - Item8
+  - Item4
+  - Item1
   layers:
   - Default
   - TransparentFX
