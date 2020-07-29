@@ -119,7 +119,6 @@ public class CollectItem : MonoBehaviour
                 itemAdded = true;
             }
             //update the scriptable object with the lists.
-            inventoryObject.Inventory = inventoryDict;
             inventoryObject.PickupList = PickupList;
         }
     }
@@ -209,7 +208,6 @@ public class CollectItem : MonoBehaviour
         inventoryObject.PickupList.Add(GameObject.Find(craftedItem));
         itemAdded = true;
         //store the updated inventoryDict
-        inventoryObject.Inventory = inventoryDict;
     }
 
     // manages the crafting and placing hotkeys for the game

@@ -28,14 +28,5 @@ public class InventoryObject : ScriptableObject
             pickupList = value;
         }
     }
-
-    public Dictionary<string, int> Inventory{
-        get{
-            return inventory;
-        }
-        set{
-            inventory = value;
-        }
-    }
     
 }

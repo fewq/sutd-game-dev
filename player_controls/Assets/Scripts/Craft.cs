@@ -28,7 +28,8 @@ public class Craft : MonoBehaviour
         var itemList = DropHandler.ItemList;
         
 
-        if(itemList.Count == 2){
+        if(itemList.Count == 2)
+        {
             
             var itemIndex1 = System.Convert.ToInt32((itemList[0].Substring(itemList[0].Length - 1)));
             var itemIndex2 = System.Convert.ToInt32((itemList[1].Substring(itemList[1].Length - 1)));
@@ -38,7 +39,8 @@ public class Craft : MonoBehaviour
 
             GameObject.FindGameObjectWithTag("Player").GetComponent<CollectItem>().Craft(item1, item2);
         }
-        else{
+        else
+        {
             StartCoroutine(FadeOutRoutine());
             
         }
