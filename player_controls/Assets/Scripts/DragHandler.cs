@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEndDragHandler, IBeginDragHandler
 {
@@ -9,22 +10,24 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
     private RectTransform rectTransform;
     [SerializeField]
     private Canvas canvas;
-    Vector3 mOffset;
 
     Vector2 startPosition;
+    
+    private Image startImage;
 
     string itemName;
 
     private CanvasGroup canvasGroup;
 
-    private bool dropStatus;
     [SerializeField]
-
     private InventoryObject  InventoryList;
 
+    private CraftItemValues craftItemVals;
+
+    private Dictionary<string, (Image, Vector2)> initVals;
 
     
-    
+
     private void Awake(){
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -50,6 +53,7 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         canvasGroup.blocksRaycasts = false;
         DropHandler.dropStatus = false;
         InventoryList.ItemName = itemName;
+        startImage = pointer.selectedObject.transform.GetComponent<Image>();
     }
 
     public void OnEndDrag(PointerEventData pointer){
@@ -58,6 +62,11 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         {
             rectTransform.anchoredPosition = startPosition;
             print("End position" + startPosition.ToString());
+        }
+        else
+        {
+            initVals.Add(itemName, (startImage, startPosition));
+            craftItemVals.Set(itemName, startImage, startPosition);
         }
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;

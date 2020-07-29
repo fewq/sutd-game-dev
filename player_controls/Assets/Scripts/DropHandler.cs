@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class DropHandler : MonoBehaviour, IDropHandler
 {
 
-    private static List<string> itemList = new List<string>();
+    private static List<GameObject> itemList = new List<GameObject>();
 
     public static bool dropStatus = false;
 
@@ -17,11 +17,11 @@ public class DropHandler : MonoBehaviour, IDropHandler
             pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             dropStatus = true;
             // EventManager.onCraftClick
-            itemList.Add(item.ItemName);
+            itemList.Add(item);
         }
     }
 
-    public static List<string> ItemList{
+    public static List<GameObject> ItemList{
         get{
             return itemList;
         }

@@ -12,6 +12,9 @@ public class Craft : MonoBehaviour
 
     public Text validCraft;
 
+    [SerializeField]
+    private CraftItemValues startVals;
+
     InventoryObject inventoryObject;
 
     private List<GameObject> inventoryList = new List<GameObject>();
@@ -38,6 +41,14 @@ public class Craft : MonoBehaviour
             string item2 = inventoryList[itemIndex2 - 1].name;
 
             GameObject.FindGameObjectWithTag("Player").GetComponent<CollectItem>().Craft(item1, item2);
+
+            //Get the item gameobject, reset the components. Tuples are indexed via Item1, Item2...
+            //Clear the dictionary afterwards
+
+            var val1 = startVals.Get(item1);
+            var val2 = startVals.Get(item2);
+
+            
         }
         else
         {

@@ -11,6 +11,7 @@ public class InventoryObject : ScriptableObject
 
     private Dictionary<string, int> inventory;
 
+    //Do we really want to put these two together? Maybe separating into 2 objects would be better
     public string ItemName{
         get{
             return itemName;
