@@ -37,6 +37,8 @@ public class CollectItem : MonoBehaviour
 
     private InventoryManager invMngr;
 
+    private Canvas InventoryBarCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +79,8 @@ public class CollectItem : MonoBehaviour
         inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
 
         invMngr = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+
+        inventoryCanvas = GameObject.Find("InventoryBar").GetComponent<Canvas>();
 
         //set the scriptable object to have the inventory dict that will persist across item slots.
         
@@ -236,6 +240,11 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
         else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
 
         // soon to come: placing hotkeys
+    }
+
+    void setInventoryBar()
+    {
+
     }
 
     // Update is called once per frame
