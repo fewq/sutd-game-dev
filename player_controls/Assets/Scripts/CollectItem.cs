@@ -117,9 +117,10 @@ public class CollectItem : MonoBehaviour
                 pickupItem.SetActive(false);
                 pickupItem = null;
                 itemAdded = true;
+                inventoryObject.PickupList = PickupList;
             }
             //update the scriptable object with the lists.
-            inventoryObject.PickupList = PickupList;
+            
         }
     }
 

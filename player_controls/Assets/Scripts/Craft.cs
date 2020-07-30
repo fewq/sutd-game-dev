@@ -45,15 +45,15 @@ public class Craft : MonoBehaviour
             //Get the item gameobject, reset the components. Tuples are indexed via Item1, Item2...
             //Clear the dictionary afterwards
 
-            var val1 = startVals.Get(item1);
-            var val2 = startVals.Get(item2);
+            var val1 = startVals.Get(itemList[0].name);
+            var val2 = startVals.Get(itemList[1].name);
             
             var rectTransform1 = val1.Item1;
             var rectTransform2 = val2.Item1;
 
             var startPos1 = val1.Item2;
             var startPos2 = val2.Item2;
-
+            
             rectTransform1.anchoredPosition = startPos1;
             rectTransform2.anchoredPosition = startPos2;
 

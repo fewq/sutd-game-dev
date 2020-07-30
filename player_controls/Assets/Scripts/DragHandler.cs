@@ -21,11 +21,10 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
 
     [SerializeField]
     private InventoryObject  InventoryList;
-    
+
     [SerializeField]
     private CraftItemValues craftItemVals;
 
-    private Dictionary<string, (RectTransform, Vector2)> initVals = new Dictionary<string, (RectTransform, Vector2)>();
 
     
 
@@ -33,7 +32,6 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         item = this.gameObject;
-        print(item.name);
         startPosition = rectTransform.anchoredPosition;
     }
 
@@ -62,11 +60,9 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         if(!DropHandler.dropStatus)
         {
             rectTransform.anchoredPosition = startPosition;
-            print("End position" + startPosition.ToString());
         }
         else
         {
-            initVals.Add(item.name, (rectTransform, startPosition));
             craftItemVals.Set(item.name, rectTransform, startPosition);
         }
         canvasGroup.alpha = 1f;
