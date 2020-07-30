@@ -53,6 +53,9 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         canvasGroup.blocksRaycasts = false;
         DropHandler.dropStatus = false;
         InventoryList.InventoryItem = item;
+        if(DropHandler.ItemList.Contains(item)){
+            DropHandler.ItemList.Remove(item);
+        }
     }
 
     public void OnEndDrag(PointerEventData pointer){

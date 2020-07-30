@@ -20,7 +20,12 @@ public class InventoryManager : MonoBehaviour
     public InventoryObject inventoryObject;
 
     private bool itemAdded;
-    Transform inventory;
+
+    private GameObject toAdd;
+
+    private int itemIndex;
+
+    public Dictionary<string, int> inventoryDict;
     // Start is called before the first frame update
     void Awake()
     {
@@ -39,6 +44,7 @@ public class InventoryManager : MonoBehaviour
             inventoryImages.Add(slotimage);
         }
         
+        inventoryDict = player.GetComponent<CollectItem>().inventoryDict;
 
     }
     
@@ -49,7 +55,8 @@ public class InventoryManager : MonoBehaviour
                 slotPlaceholders[j].enabled = true;
                 //Get the most recent object from the list. This is the actual gameobject item, not placeholder image.
                 //Set the new placeholder image 
-                var toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1];
+                toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1];
+            
                 inventoryImages[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
                 slotPlaceholders[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
 
@@ -59,6 +66,17 @@ public class InventoryManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void deactivateSlot(string itemName)
+    {
+        foreach(GameObject item in inventoryItems){
+            if(item.name == itemName){
+                itemIndex = inventoryItems.IndexOf(item);
+            }
+        }
+        inventoryImages[itemIndex].enabled = false;
+        slotPlaceholders[itemIndex].enabled = false;
     }
 
     public List<GameObject> getInventory{

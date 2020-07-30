@@ -35,6 +35,7 @@ public class CollectItem : MonoBehaviour
 
     public InventoryObject inventoryObject;
 
+    private InventoryManager invMngr;
 
     // Start is called before the first frame update
     void Start()
@@ -44,13 +45,13 @@ public class CollectItem : MonoBehaviour
         // create dicitonary to store items with sample numbers
         inventoryDict = new Dictionary<string, int>(){
             {"Fire", 5},
-            {"Water", 2},
+            {"Water", 0},
             {"CupricChloride", 1},
             {"LithiumChloride", 1},
             {"CalciumChloride", 1},
             {"PotassiumChloride", 1},
             {"SodiumChloride", 1},
-            {"Caesium", 1},
+            {"Caesium", 0},
             {"CalciumOxide", 1},
             {"Bomb", 1},
             {"BlueLight", 1},
@@ -74,6 +75,8 @@ public class CollectItem : MonoBehaviour
         inventoryText = GameObject.Find("InventoryText").GetComponent<Text>();
         // get inventoryCanvas reference
         inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
+
+        invMngr = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
 
         //set the scriptable object to have the inventory dict that will persist across item slots.
         
@@ -108,12 +111,12 @@ public class CollectItem : MonoBehaviour
             // reason for pressing E to pick up: in the future, we would need to place items, and the player may accidentally pick it up if they walked arount it
             if (Input.GetKey(KeyCode.E))
             {
-                Debug.Log("picked up " + pickupItem.name);
+                // Debug.Log("picked up " + pickupItem.name);
                 // add to ItemList
                 PickupList.Add(pickupItem);
                 // also add to dictionary for now
                 inventoryDict[pickupItem.name] += 1;
-                Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);
+                // Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);
                 pickupItem.SetActive(false);
                 pickupItem = null;
                 itemAdded = true;
@@ -134,23 +137,23 @@ public class CollectItem : MonoBehaviour
         
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
-//             inventoryText.text = $@"Inventory: 
-// Fire: {inventoryDict["Fire"]}
-// Water: {inventoryDict["Water"]}
-// CupricChloride: {inventoryDict["CupricChloride"]} 
-// LithiumCloride: {inventoryDict["LithiumChloride"]}
-// CalciumChloride: {inventoryDict["CalciumChloride"]}
-// PotassiumChloride: {inventoryDict["PotassiumChloride"]}
-// SodiumCloride: {inventoryDict["SodiumChloride"]}
-// Caesium: {inventoryDict["Caesium"]}
-// CalciumOxide: {inventoryDict["CalciumOxide"]}
-// Bomb: {inventoryDict["Bomb"]} (Craft: T)
-// BlueLight: {inventoryDict["BlueLight"]} (Craft: Y)
-// RedLight: {inventoryDict["RedLight"]} (Craft: U)
-// OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I)
-// PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O)
-// YellowLight: {inventoryDict["YellowLight"]} (Craft: P)
-// CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
+            inventoryText.text = $@"Inventory: 
+Fire: {inventoryDict["Fire"]}
+Water: {inventoryDict["Water"]}
+CupricChloride: {inventoryDict["CupricChloride"]} 
+LithiumCloride: {inventoryDict["LithiumChloride"]}
+CalciumChloride: {inventoryDict["CalciumChloride"]}
+PotassiumChloride: {inventoryDict["PotassiumChloride"]}
+SodiumCloride: {inventoryDict["SodiumChloride"]}
+Caesium: {inventoryDict["Caesium"]}
+CalciumOxide: {inventoryDict["CalciumOxide"]}
+Bomb: {inventoryDict["Bomb"]} (Craft: T)
+BlueLight: {inventoryDict["BlueLight"]} (Craft: Y)
+RedLight: {inventoryDict["RedLight"]} (Craft: U)
+OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I)
+PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O)
+YellowLight: {inventoryDict["YellowLight"]} (Craft: P)
+CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
         }
         else
         {
@@ -160,18 +163,18 @@ public class CollectItem : MonoBehaviour
 
     // takes in a string of the desired item to craft
     // checks if there is enough raw materials, then crafts it
-    // void Craft(string craftedItem)
-    // {
-    //     string rawItem1 = recipeDict[craftedItem].Item1;
-    //     string rawItem2 = recipeDict[craftedItem].Item2;
-    //     if (inventoryDict[rawItem1] > 0 && inventoryDict[rawItem2] > 0)
-    //     {
-    //         inventoryDict[rawItem1]--;
-    //         inventoryDict[rawItem2]--;
-    //         inventoryDict[craftedItem]++;
-    //     }
+    void Craft(string craftedItem)
+    {
+        string rawItem1 = recipeDict[craftedItem].Item1;
+        string rawItem2 = recipeDict[craftedItem].Item2;
+        if (inventoryDict[rawItem1] > 0 && inventoryDict[rawItem2] > 0)
+        {
+            inventoryDict[rawItem1]--;
+            inventoryDict[rawItem2]--;
+            inventoryDict[craftedItem]++;
+        }
         
-    // }
+    }
 
     // takes in 2 raw materials (order doesn't matter) and performs crafting
     public void Craft(string rawItem1, string rawItem2)
@@ -191,46 +194,56 @@ public class CollectItem : MonoBehaviour
             inventoryDict[rawItem1]--;
             inventoryDict[rawItem2]--;
             inventoryDict[craftedItem]++;
-        }
-        
-        foreach(GameObject item in PickupList){
-            if(item.name == rawItem1){
-                PickupList.Remove(item);
-                break;
+
+            foreach(GameObject item in PickupList){
+                if(item.name == rawItem1){
+                    PickupList.Remove(item);
+                    break;
+                }
+            }
+            foreach(GameObject item in PickupList){
+                if(item.name == rawItem2){
+                    PickupList.Remove(item);
+                    break;
+                }
+            }
+            if(inventoryDict[rawItem1] == 0){
+                //deactivate the sprite for both the place holder and item and deactivate the image
+                invMngr.deactivateSlot(rawItem1);
+            }
+            if (inventoryDict[rawItem2] == 0){
+                invMngr.deactivateSlot(rawItem2);
             }
         }
-        foreach(GameObject item in PickupList){
-            if(item.name == rawItem2){
-                PickupList.Remove(item);
-                break;
-            }
+        else
+        {
+            throw new CustomException("Invalid Crafting Combination");
         }
         
-        inventoryObject.PickupList.Add(GameObject.Find(craftedItem));
-        itemAdded = true;
+        // itemAdded = true;
         //store the updated inventoryDict
     }
 
     // manages the crafting and placing hotkeys for the game
-    // void HotkeyManager()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
-    //     else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
-    //     else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
+    void HotkeyManager()
+    {
+        if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
+        else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
+        else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
+        else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
+        else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
+        else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
+        else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
 
-    //     // soon to come: placing hotkeys
-    // }
+        // soon to come: placing hotkeys
+    }
 
     // Update is called once per frame
     void Update()
     {
         PickObject();
         ToggleInventory();
-        // HotkeyManager();
+        HotkeyManager();
         
     }
 }
