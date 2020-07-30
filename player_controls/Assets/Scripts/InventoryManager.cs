@@ -62,7 +62,8 @@ public class InventoryManager : MonoBehaviour
     }
 
     public List<GameObject> getInventory{
-        get{
+        get
+        {
             return inventoryItems;
         }
     }

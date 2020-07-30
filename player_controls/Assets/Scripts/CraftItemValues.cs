@@ -8,22 +8,22 @@ public class CraftItemValues : ScriptableObject
 {  
     //item image must be disabled at the end
 
-    private Dictionary<string, (Image, Vector2)> startVals = new Dictionary<string, (Image, Vector2)>();
+    private Dictionary<string, (RectTransform, Vector2)> startVals = new Dictionary<string, (RectTransform, Vector2)>();
 
 
-    public void Set(string key, Image image, Vector2 vector2)
+    public void Set(string key, RectTransform trans, Vector2 vector2)
 {
     if (startVals.ContainsKey(key))
     {
-        startVals[key] = (image, vector2);
+        startVals[key] = (trans, vector2);
     }
     else
     {
-        startVals.Add(key, (image, vector2));
+        startVals.Add(key, (trans, vector2));
     }
 }
 
-public (Image, Vector2) Get(string key)
+public (RectTransform, Vector2) Get(string key)
 {
 
     if (startVals.ContainsKey(key))

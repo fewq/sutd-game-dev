@@ -17,7 +17,7 @@ public class DropHandler : MonoBehaviour, IDropHandler
             pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             dropStatus = true;
             // EventManager.onCraftClick
-            itemList.Add(item);
+            itemList.Add(item.InventoryItem);
         }
     }
 

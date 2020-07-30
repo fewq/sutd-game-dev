@@ -15,23 +15,25 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
     
     private Image startImage;
 
-    string itemName;
+    GameObject item;
 
     private CanvasGroup canvasGroup;
 
     [SerializeField]
     private InventoryObject  InventoryList;
-
+    
+    [SerializeField]
     private CraftItemValues craftItemVals;
 
-    private Dictionary<string, (Image, Vector2)> initVals;
+    private Dictionary<string, (RectTransform, Vector2)> initVals = new Dictionary<string, (RectTransform, Vector2)>();
 
     
 
     private void Awake(){
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        itemName = transform.name;
+        item = this.gameObject;
+        print(item.name);
         startPosition = rectTransform.anchoredPosition;
     }
 
@@ -52,8 +54,7 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
         DropHandler.dropStatus = false;
-        InventoryList.ItemName = itemName;
-        startImage = pointer.selectedObject.transform.GetComponent<Image>();
+        InventoryList.InventoryItem = item;
     }
 
     public void OnEndDrag(PointerEventData pointer){
@@ -65,8 +66,8 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         }
         else
         {
-            initVals.Add(itemName, (startImage, startPosition));
-            craftItemVals.Set(itemName, startImage, startPosition);
+            initVals.Add(item.name, (rectTransform, startPosition));
+            craftItemVals.Set(item.name, rectTransform, startPosition);
         }
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;

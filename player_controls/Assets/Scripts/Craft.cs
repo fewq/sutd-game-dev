@@ -34,8 +34,8 @@ public class Craft : MonoBehaviour
         if(itemList.Count == 2)
         {
             
-            var itemIndex1 = System.Convert.ToInt32((itemList[0].Substring(itemList[0].Length - 1)));
-            var itemIndex2 = System.Convert.ToInt32((itemList[1].Substring(itemList[1].Length - 1)));
+            var itemIndex1 = System.Convert.ToInt32((itemList[0].name.Substring(itemList[0].name.Length - 1)));
+            var itemIndex2 = System.Convert.ToInt32((itemList[1].name.Substring(itemList[1].name.Length - 1)));
             
             string item1 = inventoryList[itemIndex1 - 1].name;
             string item2 = inventoryList[itemIndex2 - 1].name;
@@ -47,8 +47,16 @@ public class Craft : MonoBehaviour
 
             var val1 = startVals.Get(item1);
             var val2 = startVals.Get(item2);
-
             
+            var rectTransform1 = val1.Item1;
+            var rectTransform2 = val2.Item1;
+
+            var startPos1 = val1.Item2;
+            var startPos2 = val2.Item2;
+
+            rectTransform1.anchoredPosition = startPos1;
+            rectTransform2.anchoredPosition = startPos2;
+
         }
         else
         {
