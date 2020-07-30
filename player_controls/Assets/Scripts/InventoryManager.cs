@@ -11,6 +11,8 @@ public class InventoryManager : MonoBehaviour
     private List<Image> slotPlaceholders = new List<Image>();
     private List<Image> inventoryImages = new List<Image>();
 
+    private List<Image> sideBarImages = new List<Image>();
+
     //list of items that have been added to the inventory
     //Do you need pickup list or just the items in the inventory?
     private List<GameObject> inventoryItems = new List<GameObject>();
@@ -29,11 +31,22 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        for(int i=1; i<7; i++){
+        for(int i=1; i<9; i++){
             itemPlaceholders.Add(GameObject.FindGameObjectWithTag("Item"+i.ToString()).transform);
             var image = GameObject.FindGameObjectWithTag("Slot"+i.ToString()).transform.GetChild(0).GetComponent<Image>();
+            
             image.enabled = false;
+            
             slotPlaceholders.Add(image);
+        }
+
+        for(int i=1; i<8; i++){
+            var image = GameObject.Find("BarSlot"+i.ToString()).transform.GetChild(1).GetComponent<Image>();
+            var text = GameObject.Find("BarSlot"+i.ToString()).transform.GetChild(0).GetComponent<Text>();
+            image.enabled = false;
+            // image.sprite = GameObject.Find(text.tag)
+            text.text = 0.ToString();
+            sideBarImages.Add(image);
         }
         
         player = GameObject.FindGameObjectWithTag("Player");

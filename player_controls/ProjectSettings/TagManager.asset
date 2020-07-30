@@ -29,6 +29,13 @@ TagManager:
   - Slot6
   - Slot7
   - Slot8
+  - Bomb
+  - BlueLight
+  - PurpleLight
+  - OrangeLight
+  - YellowLight
+  - RedLight
+  - CalciumHydroxide
   layers:
   - Default
   - TransparentFX

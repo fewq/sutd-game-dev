@@ -37,7 +37,7 @@ public class CollectItem : MonoBehaviour
 
     private InventoryManager invMngr;
 
-    private Canvas InventoryBarCanvas;
+    private GameObject InventoryBarCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +80,7 @@ public class CollectItem : MonoBehaviour
 
         invMngr = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
 
-        inventoryCanvas = GameObject.Find("InventoryBar").GetComponent<Canvas>();
+        InventoryBarCanvas = GameObject.Find("InventoryBar");
 
         //set the scriptable object to have the inventory dict that will persist across item slots.
         
@@ -198,6 +198,8 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
             inventoryDict[rawItem1]--;
             inventoryDict[rawItem2]--;
             inventoryDict[craftedItem]++;
+            // craftedItems.Add(GameObject.Find(craftedItem));
+            // GameObject.FindObjectWithTag(craftedItem).text = inventoryDict[craftedItem];
 
             foreach(GameObject item in PickupList){
                 if(item.name == rawItem1){
@@ -224,7 +226,6 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
             throw new CustomException("Invalid Crafting Combination");
         }
         
-        // itemAdded = true;
         //store the updated inventoryDict
     }
 
@@ -240,11 +241,6 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
         else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
 
         // soon to come: placing hotkeys
-    }
-
-    void setInventoryBar()
-    {
-
     }
 
     // Update is called once per frame
