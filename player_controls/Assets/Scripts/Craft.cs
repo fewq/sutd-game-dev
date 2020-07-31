@@ -64,6 +64,8 @@ public class Craft : MonoBehaviour
             rectTransform1.anchoredPosition = startPos1;
             rectTransform2.anchoredPosition = startPos2;
 
+            itemList.Clear();
+
         }
         else
         {
