@@ -199,7 +199,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
             inventoryDict[rawItem2]--;
             inventoryDict[craftedItem]++;
             // craftedItems.Add(GameObject.Find(craftedItem));
-            // GameObject.FindObjectWithTag(craftedItem).text = inventoryDict[craftedItem];
+            GameObject.FindGameObjectWithTag(craftedItem).GetComponent<Text>().text = inventoryDict[craftedItem].ToString();
 
             foreach(GameObject item in PickupList){
                 if(item.name == rawItem1){

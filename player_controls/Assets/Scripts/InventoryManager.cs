@@ -40,16 +40,20 @@ public class InventoryManager : MonoBehaviour
             slotPlaceholders.Add(image);
         }
 
+        player = GameObject.FindGameObjectWithTag("Player");
+        inventoryDict = player.GetComponent<CollectItem>().inventoryDict;
+
+
         for(int i=1; i<8; i++){
             var image = GameObject.Find("BarSlot"+i.ToString()).transform.GetChild(1).GetComponent<Image>();
             var text = GameObject.Find("BarSlot"+i.ToString()).transform.GetChild(0).GetComponent<Text>();
-            image.enabled = false;
+            image.enabled = true;
             // image.sprite = GameObject.Find(text.tag)
             text.text = 0.ToString();
             sideBarImages.Add(image);
         }
         
-        player = GameObject.FindGameObjectWithTag("Player");
+        
 
         foreach(Transform slot in itemPlaceholders){
             Image slotimage = slot.GetComponent<Image>();
@@ -57,7 +61,6 @@ public class InventoryManager : MonoBehaviour
             inventoryImages.Add(slotimage);
         }
         
-        inventoryDict = player.GetComponent<CollectItem>().inventoryDict;
 
     }
     
