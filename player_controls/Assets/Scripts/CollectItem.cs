@@ -31,6 +31,8 @@ public class CollectItem : MonoBehaviour
     // canvas text
     public Text inventoryText;
 
+    public Text inventoryItemsText;
+
     public bool itemAdded = false;
 
     public InventoryObject inventoryObject;
@@ -75,6 +77,8 @@ public class CollectItem : MonoBehaviour
         };
         // get inventoryText Reference
         inventoryText = GameObject.Find("InventoryText").GetComponent<Text>();
+        // get inventoryItemText Reference
+        inventoryItemsText = GameObject.Find("InventoryItemsText").GetComponent<Text>();
         // get inventoryCanvas reference
         inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
 
@@ -83,9 +87,9 @@ public class CollectItem : MonoBehaviour
         InventoryBarCanvas = GameObject.Find("InventoryBar");
 
         //set the scriptable object to have the inventory dict that will persist across item slots.
-        
+
     }
-    
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -127,7 +131,7 @@ public class CollectItem : MonoBehaviour
                 inventoryObject.PickupList = PickupList;
             }
             //update the scriptable object with the lists.
-            
+
         }
     }
 
@@ -138,7 +142,6 @@ public class CollectItem : MonoBehaviour
             inventoryState = !inventoryState;
         }
         if (inventoryState)
-        
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
             inventoryText.text = $@"Inventory: 
@@ -158,6 +161,10 @@ OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I)
 PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O)
 YellowLight: {inventoryDict["YellowLight"]} (Craft: P)
 CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
+
+            inventoryItemsText.text = $@"{inventoryDict["Fire"]}      {inventoryDict["Water"]}      {inventoryDict["CupricChloride"]} 
+{inventoryDict["LithiumChloride"]}      {inventoryDict["CalciumChloride"]}      {inventoryDict["PotassiumChloride"]}
+{inventoryDict["SodiumChloride"]}      {inventoryDict["Caesium"]}      {inventoryDict["CalciumOxide"]}";
         }
         else
         {
@@ -177,7 +184,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
             inventoryDict[rawItem2]--;
             inventoryDict[craftedItem]++;
         }
-        
+
     }
 
     // takes in 2 raw materials (order doesn't matter) and performs crafting
@@ -201,23 +208,29 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
             // craftedItems.Add(GameObject.Find(craftedItem));
             GameObject.FindGameObjectWithTag(craftedItem).GetComponent<Text>().text = inventoryDict[craftedItem].ToString();
 
-            foreach(GameObject item in PickupList){
-                if(item.name == rawItem1){
+            foreach (GameObject item in PickupList)
+            {
+                if (item.name == rawItem1)
+                {
                     PickupList.Remove(item);
                     break;
                 }
             }
-            foreach(GameObject item in PickupList){
-                if(item.name == rawItem2){
+            foreach (GameObject item in PickupList)
+            {
+                if (item.name == rawItem2)
+                {
                     PickupList.Remove(item);
                     break;
                 }
             }
-            if(inventoryDict[rawItem1] == 0){
+            if (inventoryDict[rawItem1] == 0)
+            {
                 //deactivate the sprite for both the place holder and item and deactivate the image
                 invMngr.deactivateSlot(rawItem1);
             }
-            if (inventoryDict[rawItem2] == 0){
+            if (inventoryDict[rawItem2] == 0)
+            {
                 invMngr.deactivateSlot(rawItem2);
             }
         }
@@ -225,7 +238,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
         {
             throw new CustomException("Invalid Crafting Combination");
         }
-        
+
         //store the updated inventoryDict
     }
 
@@ -249,6 +262,6 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
         PickObject();
         ToggleInventory();
         HotkeyManager();
-        
+
     }
 }
