@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: b98d46d4304ebf7409677efd265ded09
+guid: 15fa3dc5b7415458c8a6dcaeb1bed2de
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5991136222262614521
-    second: yellow_torch_0
+      213: -5592575091838856436
+    second: Goblin_idle_left_blue_0
   - first:
-      213: -6798231574632782179
-    second: yellow_torch_1
+      213: -3375972543102466435
+    second: Goblin_idle_left_blue_1
   - first:
-      213: 41923015109426594
-    second: yellow_torch_2
+      213: -5902191613926451870
+    second: Goblin_idle_left_blue_2
   - first:
-      213: 4477384904499254905
-    second: yellow_torch_3
+      213: -6077121803536433507
+    second: Goblin_idle_left_blue_3
+  - first:
+      213: 4920925320431840785
+    second: Goblin_idle_left_blue_4
+  - first:
+      213: -1506411604923001697
+    second: Goblin_idle_left_blue_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -57,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -76,7 +82,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -88,7 +94,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -111,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: yellow_torch_0
+      name: Goblin_idle_left_blue_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 10
-        height: 24
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 706af0729553bdca0800000000000000
-      internalID: -5991136222262614521
+      spriteID: c035f3fa59e2362b0800000000000000
+      internalID: -5592575091838856436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: yellow_torch_1
+      name: Goblin_idle_left_blue_1
       rect:
         serializedVersion: 2
-        x: 19
+        x: 16
         y: 0
-        width: 10
-        height: 23
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d962b25c664d7a1a0800000000000000
-      internalID: -6798231574632782179
+      spriteID: d76c7e4dbd22621d0800000000000000
+      internalID: -3375972543102466435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: yellow_torch_2
+      name: Goblin_idle_left_blue_2
       rect:
         serializedVersion: 2
-        x: 35
+        x: 32
         y: 0
-        width: 10
-        height: 23
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2adb28792c0f49000800000000000000
-      internalID: 41923015109426594
+      spriteID: 265df9f8ff3371ea0800000000000000
+      internalID: -5902191613926451870
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: yellow_torch_3
+      name: Goblin_idle_left_blue_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 48
         y: 0
-        width: 10
-        height: 24
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,8 +194,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 976df5339ddd22e30800000000000000
-      internalID: 4477384904499254905
+      spriteID: d9efd6beae9b9aba0800000000000000
+      internalID: -6077121803536433507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_idle_left_blue_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11ea09ab183aa4440800000000000000
+      internalID: 4920925320431840785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_idle_left_blue_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f94d90b60a6281be0800000000000000
+      internalID: -1506411604923001697
       vertices: []
       indices: 
       edges: []

@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: b98d46d4304ebf7409677efd265ded09
+guid: 02ef687fb18434ac8a7c8e51b2cc7dff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5991136222262614521
-    second: yellow_torch_0
+      213: 472639082831201489
+    second: Goblin_walk_left_orange_0
   - first:
-      213: -6798231574632782179
-    second: yellow_torch_1
+      213: -4077766036511446374
+    second: Goblin_walk_left_orange_1
   - first:
-      213: 41923015109426594
-    second: yellow_torch_2
+      213: -8794236978222050917
+    second: Goblin_walk_left_orange_2
   - first:
-      213: 4477384904499254905
-    second: yellow_torch_3
+      213: -3557577050628642311
+    second: Goblin_walk_left_orange_3
+  - first:
+      213: 3017237102407783087
+    second: Goblin_walk_left_orange_4
+  - first:
+      213: 7548539786239648127
+    second: Goblin_walk_left_orange_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -57,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: yellow_torch_0
+      name: Goblin_walk_left_orange_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 10
-        height: 24
+        width: 16
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 706af0729553bdca0800000000000000
-      internalID: -5991136222262614521
+      spriteID: 1d4ce1fddb62f8600800000000000000
+      internalID: 472639082831201489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: yellow_torch_1
+      name: Goblin_walk_left_orange_1
       rect:
         serializedVersion: 2
-        x: 19
+        x: 16
         y: 0
-        width: 10
-        height: 23
+        width: 16
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d962b25c664d7a1a0800000000000000
-      internalID: -6798231574632782179
+      spriteID: a9a259c056dd867c0800000000000000
+      internalID: -4077766036511446374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: yellow_torch_2
+      name: Goblin_walk_left_orange_2
       rect:
         serializedVersion: 2
-        x: 35
+        x: 32
         y: 0
-        width: 10
-        height: 23
+        width: 16
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2adb28792c0f49000800000000000000
-      internalID: 41923015109426594
+      spriteID: b91587aef0894f580800000000000000
+      internalID: -8794236978222050917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: yellow_torch_3
+      name: Goblin_walk_left_orange_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 48
         y: 0
-        width: 10
-        height: 24
+        width: 16
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,8 +194,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 976df5339ddd22e30800000000000000
-      internalID: 4477384904499254905
+      spriteID: 9f9a2347582f0aec0800000000000000
+      internalID: -3557577050628642311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_walk_left_orange_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa2152c98216fd920800000000000000
+      internalID: 3017237102407783087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin_walk_left_orange_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f71a7b311fcc1c860800000000000000
+      internalID: 7548539786239648127
       vertices: []
       indices: 
       edges: []
