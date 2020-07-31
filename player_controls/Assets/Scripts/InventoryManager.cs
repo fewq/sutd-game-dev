@@ -6,16 +6,14 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance{get; private set;}
-    private List<Transform> itemPlaceholders = new List<Transform>();
 
     private List<Image> slotPlaceholders = new List<Image>();
     private List<Image> inventoryImages = new List<Image>();
 
-    private List<Image> sideBarImages = new List<Image>();
 
     //list of items that have been added to the inventory
     //Do you need pickup list or just the items in the inventory?
-    public List<GameObject> inventoryItems = new List<GameObject>();
+    private List<GameObject> inventoryItems = new List<GameObject>();
     //Should have an event that tells when an item has been added and then update the inventory.
     private GameObject player;
 
@@ -27,77 +25,40 @@ public class InventoryManager : MonoBehaviour
 
     private int itemIndex;
 
+    private List<string> itemList = new List<string> {"Fire", "Water", "CupricChloride", "LithiumChloride", "SodiumChloride", "CalciumChloride", "PotassiumChloride", "CalciumOxide", "Caesium"};
+
     public Dictionary<string, int> inventoryDict;
     // Start is called before the first frame update
     void Awake()
     {
-        for(int i=1; i<10; i++){
-            itemPlaceholders.Add(GameObject.FindGameObjectWithTag("Item"+i.ToString()).transform);
-            var image = GameObject.FindGameObjectWithTag("Slot"+i.ToString()).transform.GetChild(0).GetComponent<Image>();
+        foreach(string item in itemList){
+            var image = GameObject.FindGameObjectWithTag(item).GetComponent<Image>();
             
             image.enabled = false;
             
             slotPlaceholders.Add(image);
         }
-
+        
         player = GameObject.FindGameObjectWithTag("Player");
         inventoryDict = player.GetComponent<CollectItem>().inventoryDict;
 
-
-        for(int i=1; i<8; i++){
-            var image = GameObject.Find("BarSlot"+i.ToString()).transform.GetChild(1).GetComponent<Image>();
-            var text = GameObject.Find("BarSlot"+i.ToString()).transform.GetChild(0).GetComponent<Text>();
-            image.enabled = true;
-            // image.sprite = GameObject.Find(text.tag)
-            text.text = 0.ToString();
-            sideBarImages.Add(image);
-        }
-        
-        
-
-        foreach(Transform slot in itemPlaceholders){
-            Image slotimage = slot.GetComponent<Image>();
-            slotimage.enabled = false;
-            inventoryImages.Add(slotimage);
-        }
         
 
     }
     
     void SetInventory(){
-        for(int j=0; j<inventoryImages.Count; j++){
-            if(!inventoryImages[j].IsActive()){
-                inventoryImages[j].enabled = true;
-                slotPlaceholders[j].enabled = true;
-                //Get the most recent object from the list. This is the actual gameobject item, not placeholder image.
-                //Set the new placeholder image 
-                toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1]; //name refers to the actual item name
-
-                inventoryImages[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
-                slotPlaceholders[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
-
-                //I need something that can remove items from the list when it hits 0 count and add when crafted.
-                inventoryItems.Add(toAdd.gameObject);
-                inventoryObject.PickupList.RemoveAt(inventoryObject.PickupList.Count - 1);
-                break;
-            }
-        }
+        toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1]; //name refers to the actual item name
+        GameObject.FindGameObjectWithTag(toAdd.name).GetComponent<Image>().enabled = true;
+        inventoryItems.Add(toAdd.gameObject);
+        inventoryObject.PickupList.RemoveAt(inventoryObject.PickupList.Count - 1);
+        print("Inv Mgr" + inventoryItems.Count.ToString());
     }
 
-    public void deactivateSlot(string itemName)
-    {
-        foreach(GameObject item in inventoryItems){
-            if(item.name == itemName){
-                itemIndex = inventoryItems.IndexOf(item);
-            }
-        }
-        inventoryImages[itemIndex].enabled = false;
-        slotPlaceholders[itemIndex].enabled = false;
-    }
 
     public List<GameObject> getInventory{
         get
         {
+
             return inventoryItems;
         }
     }

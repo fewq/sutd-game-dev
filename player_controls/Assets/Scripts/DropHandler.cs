@@ -16,7 +16,6 @@ public class DropHandler : MonoBehaviour, IDropHandler
         if(pointerevent.pointerDrag != null){
             pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             dropStatus = true;
-            // EventManager.onCraftClick
             itemList.Add(item.InventoryItem);
         }
     }
@@ -27,12 +26,4 @@ public class DropHandler : MonoBehaviour, IDropHandler
         }
     }
 
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        // itemList = InventoryManager.Instance.getInventory;
-        
-    }
-
-    // Update is called once per frame
 }

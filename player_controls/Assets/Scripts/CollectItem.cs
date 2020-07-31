@@ -48,22 +48,38 @@ public class CollectItem : MonoBehaviour
 
         // create dicitonary to store items with sample numbers
         inventoryDict = new Dictionary<string, int>(){
-            {"Fire", 5},
+            // {"Fire", 5},
+            // {"Water", 0},
+            // {"CupricChloride", 1},
+            // {"LithiumChloride", 1},
+            // {"CalciumChloride", 1},
+            // {"PotassiumChloride", 1},
+            // {"SodiumChloride", 1},
+            // {"Caesium", 0},
+            // {"CalciumOxide", 1},
+            // {"Bomb", 1},
+            // {"BlueLight", 1},
+            // {"RedLight", 1},
+            // {"OrangeLight", 1},
+            // {"PurpleLight", 1},
+            // {"YellowLight", 1},
+            // {"CalciumHydroxide", 1}
+            {"Fire", 0},
             {"Water", 0},
-            {"CupricChloride", 1},
-            {"LithiumChloride", 1},
-            {"CalciumChloride", 1},
-            {"PotassiumChloride", 1},
-            {"SodiumChloride", 1},
+            {"CupricChloride", 0},
+            {"LithiumChloride", 0},
+            {"CalciumChloride", 0},
+            {"PotassiumChloride", 0},
+            {"SodiumChloride", 0},
             {"Caesium", 0},
-            {"CalciumOxide", 1},
-            {"Bomb", 1},
-            {"BlueLight", 1},
-            {"RedLight", 1},
-            {"OrangeLight", 1},
-            {"PurpleLight", 1},
-            {"YellowLight", 1},
-            {"CalciumHydroxide", 1}
+            {"CalciumOxide", 0},
+            {"Bomb", 0},
+            {"BlueLight", 0},
+            {"RedLight", 0},
+            {"OrangeLight", 0},
+            {"PurpleLight", 0},
+            {"YellowLight", 0},
+            {"CalciumHydroxide", 0}
         };
         // create crafting recepie dict
         recipeDict = new Dictionary<string, (string, string)>{
@@ -86,6 +102,8 @@ public class CollectItem : MonoBehaviour
 
         InventoryBarCanvas = GameObject.Find("InventoryBar");
 
+        inventoryObject.PickupList = PickupList;
+
         //set the scriptable object to have the inventory dict that will persist across item slots.
 
     }
@@ -98,12 +116,6 @@ public class CollectItem : MonoBehaviour
         {
             pickupItem = other.gameObject;
         }
-        // irrelevant else statement
-        // else
-        // {
-        //     pickupItem = null;
-        // pickupItem = other.gameObject;
-        // }
     }
 
     // this method removes the pickupItem as a target once the player steps out of the collider
@@ -162,9 +174,11 @@ PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O)
 YellowLight: {inventoryDict["YellowLight"]} (Craft: P)
 CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
 
-            inventoryItemsText.text = $@"{inventoryDict["Fire"]}      {inventoryDict["Water"]}      {inventoryDict["CupricChloride"]} 
-{inventoryDict["LithiumChloride"]}      {inventoryDict["CalciumChloride"]}      {inventoryDict["PotassiumChloride"]}
-{inventoryDict["SodiumChloride"]}      {inventoryDict["Caesium"]}      {inventoryDict["CalciumOxide"]}";
+            inventoryItemsText.text = $@"{inventoryDict["Fire"]}               {inventoryDict["Water"]}              {inventoryDict["CupricChloride"]}
+
+{inventoryDict["LithiumChloride"]}               {inventoryDict["CalciumChloride"]}              {inventoryDict["PotassiumChloride"]}
+
+{inventoryDict["SodiumChloride"]}               {inventoryDict["Caesium"]}              {inventoryDict["CalciumOxide"]}";
         }
         else
         {
@@ -207,6 +221,13 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
             inventoryDict[craftedItem]++;
             // craftedItems.Add(GameObject.Find(craftedItem));
             GameObject.FindGameObjectWithTag(craftedItem).GetComponent<Text>().text = inventoryDict[craftedItem].ToString();
+            if(inventoryDict[rawItem1] == 0){
+                GameObject.FindGameObjectWithTag(rawItem1).GetComponent<Image>().enabled = false;
+            }
+            if(inventoryDict[rawItem2] == 0){
+                GameObject.FindGameObjectWithTag(rawItem2).GetComponent<Image>().enabled = false;
+            }
+            
 
             foreach (GameObject item in PickupList)
             {
@@ -223,15 +244,6 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [)";
                     PickupList.Remove(item);
                     break;
                 }
-            }
-            if (inventoryDict[rawItem1] == 0)
-            {
-                //deactivate the sprite for both the place holder and item and deactivate the image
-                invMngr.deactivateSlot(rawItem1);
-            }
-            if (inventoryDict[rawItem2] == 0)
-            {
-                invMngr.deactivateSlot(rawItem2);
             }
         }
         else

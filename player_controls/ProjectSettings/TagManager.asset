@@ -8,8 +8,6 @@ TagManager:
   - Boulder
   - Silver
   - Item
-  - Item1
-  - Item2
   - Item3
   - Item4
   - Item5
@@ -39,6 +37,16 @@ TagManager:
   - ItemDescription
   - Slot9
   - Item9
+  - Water
+  - Fire
+  - LithiumChloride
+  - Caesium
+  - CalciumOxide
+  - PotassiumChloride
+  - CalciumChloride
+  - CupricChloride
+  - SodiumChloride
+  - Item1
   layers:
   - Default
   - TransparentFX

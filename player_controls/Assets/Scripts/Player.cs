@@ -31,14 +31,6 @@ public class Player : Movement
         
 
     }
-
-    // Update is called once per frame
-    private void FixedUpdate() {
-        
-
-        // xVal = (int) (movement.x);
-        // yVal = (int) (movement.y);
-    }
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");

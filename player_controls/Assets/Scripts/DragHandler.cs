@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEndDragHandler, IBeginDragHandler
+public class DragHandler : MonoBehaviour , IDragHandler, IEndDragHandler, IBeginDragHandler
 {
 
     private RectTransform rectTransform;
@@ -35,13 +35,7 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         startPosition = rectTransform.anchoredPosition;
     }
 
-
-    public void OnPointerDown(PointerEventData pointer){
-        // Debug.Log("Pointer down");
-        // Debug.Log("Position" + pointer.position);
-    }
     public void OnDrag(PointerEventData pointer){
-        // canvasGroup.alpha = 0.1f;
         rectTransform.anchoredPosition += pointer.delta / canvas.scaleFactor;
         DropHandler.dropStatus = false;
     }
@@ -71,14 +65,4 @@ public class DragHandler : MonoBehaviour ,IPointerDownHandler, IDragHandler, IEn
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
     }
-
-
-    private void Update() {
-        // updatePosition();
-
-    }
-    
-
-
-
 }

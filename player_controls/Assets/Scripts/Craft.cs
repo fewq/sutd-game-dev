@@ -8,20 +8,16 @@ public class Craft : MonoBehaviour
 {
     public Button craftButton;
 
-    public InventoryManager inventoryManager;
-
     public Text validCraft;
 
     [SerializeField]
     private CraftItemValues startVals;
 
-    InventoryObject inventoryObject;
-
-    private List<GameObject> inventoryList = new List<GameObject>();
+    public List<GameObject> inventoryList = new List<GameObject>();
     Color originalColor;
     void Start(){
         craftButton.onClick.AddListener(craft);
-        inventoryList = inventoryManager.getInventory;
+        // inventoryList = inventoryManager.getInventory;
         originalColor = validCraft.color;
     }
     // private Item itemList;
@@ -29,7 +25,7 @@ public class Craft : MonoBehaviour
     public void craft()
     {
         var itemList = DropHandler.ItemList;
-        
+        inventoryList = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>().getInventory;
 
         if(itemList.Count == 2)
         {
@@ -37,11 +33,10 @@ public class Craft : MonoBehaviour
             var itemIndex1 = System.Convert.ToInt32((itemList[0].name.Substring(itemList[0].name.Length - 1)));
             var itemIndex2 = System.Convert.ToInt32((itemList[1].name.Substring(itemList[1].name.Length - 1)));
             
-            string item1 = inventoryList[itemIndex1 - 1].name;
-            string item2 = inventoryList[itemIndex2 - 1].name;
+            print(inventoryList.Count);
             try
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<CollectItem>().Craft(item1, item2);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<CollectItem>().Craft(itemList[0].tag, itemList[1].tag);
             }
             
             catch(CustomException ex)

@@ -9,7 +9,6 @@ public class InventoryObject : ScriptableObject
 
     private List<GameObject> pickupList;
 
-    private Dictionary<string, int> inventory;
 
     //Do we really want to put these two together? Maybe separating into 2 objects would be better
     public GameObject InventoryItem{
