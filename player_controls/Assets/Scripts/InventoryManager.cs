@@ -15,7 +15,7 @@ public class InventoryManager : MonoBehaviour
 
     //list of items that have been added to the inventory
     //Do you need pickup list or just the items in the inventory?
-    private List<GameObject> inventoryItems = new List<GameObject>();
+    public List<GameObject> inventoryItems = new List<GameObject>();
     //Should have an event that tells when an item has been added and then update the inventory.
     private GameObject player;
 
@@ -31,7 +31,7 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        for(int i=1; i<9; i++){
+        for(int i=1; i<10; i++){
             itemPlaceholders.Add(GameObject.FindGameObjectWithTag("Item"+i.ToString()).transform);
             var image = GameObject.FindGameObjectWithTag("Slot"+i.ToString()).transform.GetChild(0).GetComponent<Image>();
             
@@ -71,8 +71,8 @@ public class InventoryManager : MonoBehaviour
                 slotPlaceholders[j].enabled = true;
                 //Get the most recent object from the list. This is the actual gameobject item, not placeholder image.
                 //Set the new placeholder image 
-                toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1];
-            
+                toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1]; //name refers to the actual item name
+
                 inventoryImages[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
                 slotPlaceholders[j].sprite = toAdd.transform.GetComponent<SpriteRenderer>().sprite;
 

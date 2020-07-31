@@ -36,6 +36,9 @@ TagManager:
   - YellowLight
   - RedLight
   - CalciumHydroxide
+  - ItemDescription
+  - Slot9
+  - Item9
   layers:
   - Default
   - TransparentFX
