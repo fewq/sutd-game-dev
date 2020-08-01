@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 // using System;
 
 public class Craft : MonoBehaviour
@@ -13,9 +14,10 @@ public class Craft : MonoBehaviour
     [SerializeField]
     private CraftItemValues startVals;
 
-    private List<string> flavour = new List<string>() { "What are you doing???", "Try harder", "Noope", "Try again", "????" };
+    private List<string> flavour = new List<string>() { "What are you doing?", "Try Harder", "Noope", "Don't Give Up!", "????", "This doesn't seem quite right...", "Yikes"};
 
     public List<GameObject> inventoryList = new List<GameObject>();
+
     Color originalColor;
     void Start()
     {
@@ -64,10 +66,17 @@ public class Craft : MonoBehaviour
 
             itemList.Clear();
 
+            //So that the highlight color works when hover over
+            craftButton.enabled = false;
+            craftButton.enabled = true;
+
         }
         else
         {
             StartCoroutine(FadeOutRoutine());
+
+            craftButton.enabled = false;
+            craftButton.enabled = true;
 
         }
 
