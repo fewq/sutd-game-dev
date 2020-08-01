@@ -127,7 +127,7 @@ public class CollectItem : MonoBehaviour
 
     void ToggleInventory()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             inventoryState = !inventoryState;
             print("InventoryState: " + inventoryState);
