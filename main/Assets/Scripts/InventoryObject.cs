@@ -5,18 +5,18 @@ using UnityEngine;
 public class InventoryObject : ScriptableObject
 {
 
-    private string itemName;
+    private GameObject inventoryItem;
 
     private List<GameObject> pickupList;
 
-    private Dictionary<string, int> inventory;
 
-    public string ItemName{
+    //Do we really want to put these two together? Maybe separating into 2 objects would be better
+    public GameObject InventoryItem{
         get{
-            return itemName;
+            return inventoryItem;
         }
         set{
-            itemName = value;
+            inventoryItem = value;
         }
     }
 
@@ -26,15 +26,6 @@ public class InventoryObject : ScriptableObject
         }
         set{
             pickupList = value;
-        }
-    }
-
-    public Dictionary<string, int> Inventory{
-        get{
-            return inventory;
-        }
-        set{
-            inventory = value;
         }
     }
     

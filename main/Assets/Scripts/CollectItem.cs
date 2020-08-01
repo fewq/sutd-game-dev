@@ -30,9 +30,16 @@ public class CollectItem : MonoBehaviour
     // canvas text
     public Text inventoryText;
 
+    // text for raw items
+    public Text inventoryItemsText;
+
     public bool itemAdded = false;
 
     public InventoryObject inventoryObject;
+
+    private InventoryManager invMngr;
+
+    private GameObject InventoryBarCanvas;
 
     public GameObject itemPrefab;
 
@@ -73,8 +80,17 @@ public class CollectItem : MonoBehaviour
         };
         // get inventoryText Reference
         inventoryText = GameObject.Find("InventoryText").GetComponent<Text>();
+        // get inventoryItemText Reference
+        inventoryItemsText = GameObject.Find("InventoryItemsText").GetComponent<Text>();
         // get inventoryCanvas reference
         inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
+
+        invMngr = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+
+        InventoryBarCanvas = GameObject.Find("InventoryBar");
+
+        inventoryObject.PickupList = PickupList;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -84,12 +100,7 @@ public class CollectItem : MonoBehaviour
         {
             pickupItem = other.gameObject;
         }
-        // irrelevant else statement
-        // else
-        // {
-        //     pickupItem = null;
-        // pickupItem = other.gameObject;
-        // }
+
     }
 
     // this method removes the pickupItem as a target once the player steps out of the collider
@@ -117,11 +128,12 @@ public class CollectItem : MonoBehaviour
                 // Destroy(pickupItem);
                 pickupItem = null;
                 itemAdded = true;
+                inventoryObject.PickupList = PickupList;
             }
-
-            //update the scriptable object with the lists.
-            inventoryObject.Inventory = inventoryDict;
-            inventoryObject.PickupList = PickupList;
+            // moved above
+            // //update the scriptable object with the lists.
+            // inventoryObject.Inventory = inventoryDict;
+            // inventoryObject.PickupList = PickupList;
         }
     }
 
@@ -136,22 +148,29 @@ public class CollectItem : MonoBehaviour
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
             inventoryText.text = $@"Inventory: 
-            Fire: {inventoryDict["Fire"]}
-            Water: {inventoryDict["Water"]}
-            CupricChloride: {inventoryDict["CupricChloride"]} 
-            LithiumCloride: {inventoryDict["LithiumChloride"]}
-            CalciumChloride: {inventoryDict["CalciumChloride"]}
-            PotassiumChloride: {inventoryDict["PotassiumChloride"]}
-            SodiumCloride: {inventoryDict["SodiumChloride"]}
-            Caesium: {inventoryDict["Caesium"]}
-            CalciumOxide: {inventoryDict["CalciumOxide"]}
-            Bomb: {inventoryDict["Bomb"]} (Craft: T; Place: F)
-            BlueLight: {inventoryDict["BlueLight"]} (Craft: Y; Place: G)
-            RedLight: {inventoryDict["RedLight"]} (Craft: U; Place: H)
-            OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I; Place: J)
-            PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O; Place: K)
-            YellowLight: {inventoryDict["YellowLight"]} (Craft: P; Place: L)
-            CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
+Fire: {inventoryDict["Fire"]}
+Water: {inventoryDict["Water"]}
+CupricChloride: {inventoryDict["CupricChloride"]} 
+LithiumCloride: {inventoryDict["LithiumChloride"]}
+CalciumChloride: {inventoryDict["CalciumChloride"]}
+PotassiumChloride: {inventoryDict["PotassiumChloride"]}
+SodiumCloride: {inventoryDict["SodiumChloride"]}
+Caesium: {inventoryDict["Caesium"]}
+CalciumOxide: {inventoryDict["CalciumOxide"]}
+Bomb: {inventoryDict["Bomb"]} (Craft: T; Place: F)
+BlueLight: {inventoryDict["BlueLight"]} (Craft: Y; Place: G)
+RedLight: {inventoryDict["RedLight"]} (Craft: U; Place: H)
+OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I; Place: J)
+PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O; Place: K)
+YellowLight: {inventoryDict["YellowLight"]} (Craft: P; Place: L)
+CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
+
+            inventoryItemsText.text = $@"{inventoryDict["Fire"]}              {inventoryDict["Water"]}             {inventoryDict["CupricChloride"]}
+
+{inventoryDict["LithiumChloride"]}              {inventoryDict["CalciumChloride"]}             {inventoryDict["PotassiumChloride"]}
+
+{inventoryDict["SodiumChloride"]}              {inventoryDict["Caesium"]}             {inventoryDict["CalciumOxide"]}";
+
         }
         else
         {
@@ -191,6 +210,38 @@ public class CollectItem : MonoBehaviour
             inventoryDict[rawItem1]--;
             inventoryDict[rawItem2]--;
             inventoryDict[craftedItem]++;
+            // craftedItems.Add(GameObject.Find(craftedItem));
+            GameObject.FindGameObjectWithTag(craftedItem).GetComponent<Text>().text = inventoryDict[craftedItem].ToString();
+            if (inventoryDict[rawItem1] == 0)
+            {
+                GameObject.FindGameObjectWithTag(rawItem1).GetComponent<Image>().enabled = false;
+            }
+            if (inventoryDict[rawItem2] == 0)
+            {
+                GameObject.FindGameObjectWithTag(rawItem2).GetComponent<Image>().enabled = false;
+            }
+
+
+            foreach (GameObject item in PickupList)
+            {
+                if (item.name == rawItem1)
+                {
+                    PickupList.Remove(item);
+                    break;
+                }
+            }
+            foreach (GameObject item in PickupList)
+            {
+                if (item.name == rawItem2)
+                {
+                    PickupList.Remove(item);
+                    break;
+                }
+            }
+        }
+        else
+        {
+            throw new CustomException("Invalid Crafting Combination");
         }
     }
 
