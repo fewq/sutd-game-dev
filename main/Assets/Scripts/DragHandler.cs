@@ -2,78 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
-public class DragHandler : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler, IBeginDragHandler
+public class DragHandler : MonoBehaviour , IDragHandler, IEndDragHandler, IBeginDragHandler
 {
 
     private RectTransform rectTransform;
     [SerializeField]
     private Canvas canvas;
-    Vector3 mOffset;
 
     Vector2 startPosition;
+    
+    private Image startImage;
 
-    string itemName;
+    GameObject item;
 
     private CanvasGroup canvasGroup;
 
-    private bool dropStatus;
+    [SerializeField]
+    private InventoryObject  InventoryList;
 
     [SerializeField]
-    private InventoryObject item;
+    private CraftItemValues craftItemVals;
 
 
+    
 
-    private void Awake()
-    {
+    private void Awake(){
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        itemName = transform.name;
+        item = this.gameObject;
         startPosition = rectTransform.anchoredPosition;
-        print(itemName.ToString() + startPosition.ToString());
     }
 
-
-    public void OnPointerDown(PointerEventData pointer)
-    {
-        // Debug.Log("Pointer down");
-        // Debug.Log("Position" + pointer.position);
-    }
-    public void OnDrag(PointerEventData pointer)
-    {
-        // canvasGroup.alpha = 0.1f;
+    public void OnDrag(PointerEventData pointer){
         rectTransform.anchoredPosition += pointer.delta / canvas.scaleFactor;
         DropHandler.dropStatus = false;
     }
 
-    public void OnBeginDrag(PointerEventData pointer)
-    {
+    //we have to check if the number of items is more than 1 and see if to keep the placeholder.
+    public void OnBeginDrag(PointerEventData pointer){
         transform.SetAsLastSibling();
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
         DropHandler.dropStatus = false;
-        item.ItemName = transform.name;
+        InventoryList.InventoryItem = item;
+        if(DropHandler.ItemList.Contains(item)){
+            DropHandler.ItemList.Remove(item);
+        }
     }
 
-    public void OnEndDrag(PointerEventData pointer)
-    {
-
-        if (!DropHandler.dropStatus)
+    public void OnEndDrag(PointerEventData pointer){
+        
+        if(!DropHandler.dropStatus)
         {
             rectTransform.anchoredPosition = startPosition;
-            print("End position" + startPosition.ToString());
+        }
+        else
+        {
+            craftItemVals.Set(item.name, rectTransform, startPosition);
         }
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
     }
-
-
-    private void Update()
-    {
-        // updatePosition();
-    }
-
-
-
-
 }

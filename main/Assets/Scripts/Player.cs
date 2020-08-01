@@ -111,8 +111,8 @@ public class Player : Movement
         }
         else
         {
-            print(hit.transform.name);
             Debug.Log("Cant move");
+            Debug.Log("Running into " + hit.collider.gameObject.name);
         }
 
     }
