@@ -268,6 +268,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7089042049417455046, guid: aceca70d86b19564db25957be07883b7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 181.12
+      objectReference: {fileID: 0}
     - target: {fileID: 7089042049469368665, guid: aceca70d86b19564db25957be07883b7,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -276,7 +281,37 @@ PrefabInstance:
     - target: {fileID: 7089042049469368668, guid: aceca70d86b19564db25957be07883b7,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -250.99994
+      value: -251
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089042049568528934, guid: aceca70d86b19564db25957be07883b7,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089042049568528934, guid: aceca70d86b19564db25957be07883b7,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089042049568528934, guid: aceca70d86b19564db25957be07883b7,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.70689654
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089042049568528934, guid: aceca70d86b19564db25957be07883b7,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.11294055
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089042049568528934, guid: aceca70d86b19564db25957be07883b7,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089042049568528934, guid: aceca70d86b19564db25957be07883b7,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.20655157
       objectReference: {fileID: 0}
     - target: {fileID: 7089042049568528935, guid: aceca70d86b19564db25957be07883b7,
         type: 3}
