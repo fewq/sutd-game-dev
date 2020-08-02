@@ -669,28 +669,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3014202342180312752}
   m_PrefabAsset: {fileID: 0}
---- !u!68 &847242416
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847242415}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.22538799, y: -0.49259424}
-  - {x: -0.32489485, y: -0.38802403}
-  - {x: -0.3651343, y: 0.09184154}
-  - {x: -0.1126914, y: 0.4601608}
-  - {x: 0.30473536, y: 0.39271742}
-  - {x: 0.28144193, y: -0.50863504}
 --- !u!61 &847242417
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -717,26 +695,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.726707, y: 0.83602333}
   m_EdgeRadius: 0
---- !u!114 &847242418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847242415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4dc7eb6d5c27e34482fc645331b5ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PickupList: []
-  inventoryState: 0
-  inventoryCanvas: {fileID: 0}
-  inventoryText: {fileID: 0}
-  inventoryItemsText: {fileID: 0}
-  itemAdded: 0
-  inventoryObject: {fileID: 11400000, guid: 3507ebe996d2b6b48bd1c344b18ec6ea, type: 2}
-  itemPrefab: {fileID: 0}
 --- !u!4 &857116898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4878221757106824619, guid: ceae868c1fa50ce478474efc5d2b65de,
