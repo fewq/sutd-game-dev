@@ -53,6 +53,10 @@ public class GameManager : Singleton<GameManager>
         {
             RestartGame();
         }
+        else
+        {
+            Debug.Log("Player is dead");
+        }
     }
     public void SetBomb()
     {

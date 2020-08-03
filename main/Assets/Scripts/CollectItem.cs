@@ -147,6 +147,7 @@ public class CollectItem : MonoBehaviour
         if (inventoryState)
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
+            inventoryCanvas.GetComponentInChildren<Canvas>().enabled = true;
             inventoryText.text = $@"Inventory: 
 Fire: {inventoryDict["Fire"]}
 Water: {inventoryDict["Water"]}
@@ -175,6 +176,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         else
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = false;
+            inventoryCanvas.GetComponentInChildren<Canvas>().enabled = false;
         }
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : Movement
 {
-    public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
     Vector2 movement;
@@ -21,17 +20,15 @@ public class Player : Movement
 
     // length of the tile to move, set to 0.1 from unity
     private float tileMovement;
-
-    // Start is called before the first frame update
+ 
     protected override void Start()
     {
-        //tileMovement = GameManager.Instance.gridScale.x/10;
-        tileMovement = 0.1f;
+        tileMovement = GameManager.Instance.gridScale.x / 10;
+        Debug.Log(tileMovement);
         base.Start();
-        // walls = GameObject.FindGameObjectWithTag("Wall").GetComponent<BoxCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-
     }
+    // Start is called before the first frame update
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -78,7 +75,7 @@ public class Player : Movement
             }
 
         }
-
+        Debug.Log(movement);
         if (movement.x != 0 || movement.y != 0)
         {
             movementController(movement.x, movement.y);
