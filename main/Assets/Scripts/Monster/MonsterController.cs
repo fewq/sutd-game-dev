@@ -33,6 +33,9 @@ public class MonsterController : MonoBehaviour
     public float lookRange = 5f;
     private Vector2 sizeOfRaycast;
 
+    public BoxCollider2D monsterFOV;
+    public int monsterFOVRadius = 5;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,9 +45,9 @@ public class MonsterController : MonoBehaviour
         flameInRange = false;
         playerInRange = false;
         rigidbody = GetComponent<Rigidbody2D>();
-
-        seeker = GetComponent<Seeker>();
-        InvokeRepeating("UpdatePath", 0f, repeatInterval);
+        monsterFOV.size = new Vector3(GameManager.Instance.gridScale.x * monsterFOVRadius, GameManager.Instance.gridScale.y * monsterFOVRadius, GameManager.Instance.gridScale.z * monsterFOVRadius);
+        //seeker = GetComponent<Seeker>();
+        //InvokeRepeating("UpdatePath", 0f, repeatInterval);
     }
 
     void UpdatePath()
@@ -68,6 +71,7 @@ public class MonsterController : MonoBehaviour
     {
         playerInRange = PlayerInRange();
     }
+
     void FixedUpdate()
     {
         if (flameInRange)
@@ -158,6 +162,14 @@ public class MonsterController : MonoBehaviour
         animator.SetFloat("Speed", direction.sqrMagnitude);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            ChasePlayer();
+            Debug.Log("Chase Player");
+        }
+    }
     void Stare()
     {
         Debug.Log("Start to stare");
@@ -179,10 +191,11 @@ public class MonsterController : MonoBehaviour
 
         hits = Physics2D.BoxCastAll((Vector2)transform.position, sizeOfRaycast, 0, (Vector2)transform.forward, lookRange);
         Debug.DrawRay(transform.position, transform.forward.normalized * lookRange, Color.red);
-        Debug.Log(hits);
+        //Debug.Log(hits);
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit != null && hit.collider.CompareTag("Player"))
+            Debug.Log(hit.collider.name);
+            if (hit.collider.CompareTag("Player"))
             {
                 Debug.Log("spotted player");
                 return true;
