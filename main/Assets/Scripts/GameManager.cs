@@ -38,25 +38,22 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        if (player)
-        {
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                SetBomb();
-            }
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                SetCAOH2();
-            }
-        }
+        //if (player)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.B))
+        //    {
+        //        SetBomb();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.C))
+        //    {
+        //        SetCAOH2();
+        //    }
+        //}
         if (Input.GetKeyDown(KeyCode.R))
         {
             RestartGame();
         }
-        else
-        {
-            Debug.Log("Player is dead");
-        }
+
     }
     public void SetBomb()
     {

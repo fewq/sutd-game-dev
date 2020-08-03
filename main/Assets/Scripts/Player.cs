@@ -75,7 +75,6 @@ public class Player : Movement
             }
 
         }
-        Debug.Log(movement);
         if (movement.x != 0 || movement.y != 0)
         {
             movementController(movement.x, movement.y);

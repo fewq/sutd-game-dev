@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
@@ -21,6 +22,13 @@ public class Exit : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("ESCAPED!");
+            var currentSceneName = SceneManager.GetActiveScene().name;
+            if (currentSceneName == "Level1")
+            {
+                Debug.Log("Level2");
+                SceneManager.LoadScene("Level2");
+            }
+
         }
     }
 }
