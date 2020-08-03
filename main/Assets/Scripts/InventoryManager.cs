@@ -42,13 +42,13 @@ public class InventoryManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         inventoryDict = player.GetComponent<CollectItem>().inventoryDict;
 
-        
 
     }
     
     void SetInventory(){
         toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1]; //name refers to the actual item name
         GameObject.FindGameObjectWithTag(toAdd.name).GetComponent<Image>().enabled = true;
+
         inventoryItems.Add(toAdd.gameObject);
         inventoryObject.PickupList.RemoveAt(inventoryObject.PickupList.Count - 1);
         print("Inv Mgr" + inventoryItems.Count.ToString());
@@ -68,10 +68,19 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        itemAdded = player.GetComponent<CollectItem>().itemAdded;
-        if(itemAdded){
-            SetInventory();
+        if (player)
+        {
+            itemAdded = player.GetComponent<CollectItem>().itemAdded;
+            if (itemAdded)
+            {
+                SetInventory();
+            }
+            player.GetComponent<CollectItem>().itemAdded = false;
         }
-        player.GetComponent<CollectItem>().itemAdded = false;
+        else
+        {
+            //Debug.Log("Player is dead");
+        }
+
     }
 }

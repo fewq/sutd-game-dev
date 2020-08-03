@@ -40,10 +40,11 @@ public class CollectItem : MonoBehaviour
     private InventoryManager invMngr;
 
     private GameObject InventoryBarCanvas;
+    private GameObject sidebarCanvas;
 
     public GameObject itemPrefab;
 
-
+    private int defaultNumber = 0 ;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,22 +52,22 @@ public class CollectItem : MonoBehaviour
 
         // create dicitonary to store items with sample numbers
         inventoryDict = new Dictionary<string, int>(){
-            {"Fire", 5},
-            {"Water", 2},
-            {"CupricChloride", 1},
-            {"LithiumChloride", 1},
-            {"CalciumChloride", 1},
-            {"PotassiumChloride", 1},
-            {"SodiumChloride", 1},
-            {"Caesium", 1},
-            {"CalciumOxide", 1},
-            {"Bomb", 1},
-            {"BlueLight", 1},
-            {"RedLight", 1},
-            {"OrangeLight", 1},
-            {"PurpleLight", 1},
-            {"YellowLight", 1},
-            {"CalciumHydroxide", 1}
+            {"Fire", defaultNumber},
+            {"Water", defaultNumber},
+            {"CupricChloride", defaultNumber},
+            {"LithiumChloride", defaultNumber},
+            {"CalciumChloride", defaultNumber},
+            {"PotassiumChloride", defaultNumber},
+            {"SodiumChloride", defaultNumber},
+            {"Caesium", defaultNumber},
+            {"CalciumOxide", defaultNumber},
+            {"Bomb", defaultNumber},
+            {"BlueLight", defaultNumber},
+            {"RedLight", defaultNumber},
+            {"OrangeLight", defaultNumber},
+            {"PurpleLight", defaultNumber},
+            {"YellowLight", defaultNumber},
+            {"CalciumHydroxide", defaultNumber}
         };
         // create crafting recepie dict
         recipeDict = new Dictionary<string, (string, string)>{
@@ -88,6 +89,7 @@ public class CollectItem : MonoBehaviour
         invMngr = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
 
         InventoryBarCanvas = GameObject.Find("InventoryBar");
+        sidebarCanvas = GameObject.Find("SideBar");
 
         inventoryObject.PickupList = PickupList;
 
@@ -113,12 +115,14 @@ public class CollectItem : MonoBehaviour
     {
         if (pickupItem != null)
         {
-            // reason for pressing E to pick up: in the future, we would need to place items, and the player may accidentally pick it up if they walked arount it
-            if (Input.GetKey(KeyCode.E))
+            // reason for pressing Z to pick up: in the future, we would need to place items, and the player may accidentally pick it up if they walked arount it
+            if (Input.GetKey(KeyCode.Z))
             {
                 Debug.Log("picked up " + pickupItem.name);
+                GameManager.Instance.PlaySFX("collectitem");
                 // add to PickupList
                 PickupList.Add(pickupItem);
+                Debug.Log(pickupItem);
                 // also add to dictionary for now
                 inventoryDict[pickupItem.name] += 1;
                 Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);
@@ -147,6 +151,7 @@ public class CollectItem : MonoBehaviour
         if (inventoryState)
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
+            sidebarCanvas.GetComponent<Canvas>().enabled = true;
             inventoryText.text = $@"Inventory: 
 Fire: {inventoryDict["Fire"]}
 Water: {inventoryDict["Water"]}
@@ -175,6 +180,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         else
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = false;
+            sidebarCanvas.GetComponent<Canvas>().enabled = false;
         }
     }
 
@@ -250,11 +256,13 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         if (inventoryDict[craftedItem] > 0)
         {
             GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
-            // set the tag
-            item.tag = "Item";
-            // set the name
-            item.name = craftedItem;
-            // TODO: set the sprite
+            if (craftedItem == "Bomb")
+            {
+                GameManager.Instance.SetBomb();
+            }else if(craftedItem == "CalciumHydroxide")
+            {
+                GameManager.Instance.SetCAOH2();
+            }
             inventoryDict[craftedItem]--;
         }
     }
@@ -263,21 +271,21 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
     void HotkeyManager()
     {
         // crafting hotkeys
-        if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
-        else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
-        else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
-        else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
-        else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
-        else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
-        else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
+        //if (Input.GetKeyDown(KeyCode.T)) { Craft("Bomb"); }
+        //else if (Input.GetKeyDown(KeyCode.Y)) { Craft("BlueLight"); }
+        //else if (Input.GetKeyDown(KeyCode.U)) { Craft("RedLight"); }
+        //else if (Input.GetKeyDown(KeyCode.I)) { Craft("OrangeLight"); }
+        //else if (Input.GetKeyDown(KeyCode.O)) { Craft("PurpleLight"); }
+        //else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
+        //else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
         // placing hotkeys
-        else if (Input.GetKeyDown(KeyCode.F)) { Place("Bomb"); }
+        if (Input.GetKeyDown(KeyCode.B)) { Place("Bomb"); }
         else if (Input.GetKeyDown(KeyCode.G)) { Place("BlueLight"); }
         else if (Input.GetKeyDown(KeyCode.H)) { Place("RedLight"); }
         else if (Input.GetKeyDown(KeyCode.J)) { Place("OrangeLight"); }
         else if (Input.GetKeyDown(KeyCode.K)) { Place("PurpleLight"); }
         else if (Input.GetKeyDown(KeyCode.L)) { Place("YellowLight"); }
-        else if (Input.GetKeyDown(KeyCode.Semicolon)) { Place("CalciumHydroxide"); }
+        else if (Input.GetKeyDown(KeyCode.C)) { Place("CalciumHydroxide"); }
     }
 
     // Update is called once per frame

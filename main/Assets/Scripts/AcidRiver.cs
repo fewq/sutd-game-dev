@@ -21,9 +21,11 @@ public class AcidRiver : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("DestroyPlayer");
+            GameManager.Instance.PlaySFX("acidriverkill");
             //Game over sequence here and destroy player object
             //collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
+
         }
         //Kills enemy as well
     }
