@@ -43,7 +43,6 @@ public class Player : Movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         // get inputs from user
-
         if (movement.x != 0)
         {
             Debug.Log("X movement");
@@ -100,6 +99,7 @@ public class Player : Movement
         //animator.SetFloat("Horizontal", movement.x);
         //animator.SetFloat("Vertical", movement.y);
         //animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
+        bool isPlaying = false;
         if (playerMovement(x, y, out hit))
         {
             // base.Move(xVal, yVal, out hit);
@@ -108,15 +108,21 @@ public class Player : Movement
             animator.SetFloat("Vertical", movement.y);
             animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
             Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
+            if (isPlaying == false)
+            {
+                isPlaying = true;
+                GameManager.Instance.PlaySFX("playerwalk");
+            }
 
 
         }
         else
         {
+            //GameManager.Instance.StopSFX("playerwalk");
+            isPlaying = false;
             Debug.Log("Cant move");
             Debug.Log("Running into " + hit.collider.gameObject.name);
         }
-
     }
 
 

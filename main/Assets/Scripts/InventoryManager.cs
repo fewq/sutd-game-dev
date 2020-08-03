@@ -79,7 +79,7 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Player is dead");
+            //Debug.Log("Player is dead");
         }
 
     }

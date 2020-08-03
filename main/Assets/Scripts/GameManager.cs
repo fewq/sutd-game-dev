@@ -21,7 +21,18 @@ public class GameManager : Singleton<GameManager>
     public GameObject CaOH2Prefab;
     private Vector3 playerOriginalPosition;
 
+    public AudioSource bgmPlayer;
+    public AudioSource sfxPlayer;
+
+    public AudioClip acidRiverSFX;
+    public AudioClip boulderBreakSFX;
+    public AudioClip characterWalkSFX;
+    public AudioClip collectItemSFX;
+    public AudioClip neutralizeSFX;
+    public AudioClip placeItemSFX;
+
     public Vector3 gridScale;
+    private bool isWalking = false;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -32,6 +43,7 @@ public class GameManager : Singleton<GameManager>
     {
         player = GameObject.FindWithTag("Player");
         playerOriginalPosition = player.transform.position;
+        bgmPlayer.Play();
 
     }
 
@@ -57,10 +69,10 @@ public class GameManager : Singleton<GameManager>
     }
     public void SetBomb()
     {
+        PlaySFX("placeitem");
         Vector3 worldPos = player.transform.position;
         Vector3Int cell = tilemap_boulder.WorldToCell(worldPos);
         Vector3 cellCenterPos = tilemap_boulder.GetCellCenterWorld(cell);
-
         Instantiate(bombPrefab, cellCenterPos, Quaternion.identity);
     }
     public void Explode(Vector2 worldPos)
@@ -103,12 +115,14 @@ public class GameManager : Singleton<GameManager>
                 {
                     Debug.Log("ItemDestroyed");
                     Destroy(objectCollider.gameObject);
+
                 }
                 if (objectCollider.tag == "Player")
                 {
                     Debug.Log("DestroyPlayer");
                     //Run game over script then run below( or maybe we will just reset the level. we'll see);
                     Destroy(objectCollider.gameObject);
+                    //Might want to add dying sound
                     //objectCollider.gameObject.SetActive(false);
                 }
                 //Might want to make it possible to kill monster as well
@@ -116,6 +130,7 @@ public class GameManager : Singleton<GameManager>
                 if (tile == boulderTile)
                 {
                     tilemap_boulder.SetTile(cell, null);
+                    PlaySFX("boulderbreak");
                 }
             }
 
@@ -127,6 +142,7 @@ public class GameManager : Singleton<GameManager>
             if (tile == acidTile)
             {
                 tilemap_acidriver.SetTile(cell, null);
+                PlaySFX("neutralize");
             }
         }else if(action == "playercheck")
         {
@@ -144,6 +160,7 @@ public class GameManager : Singleton<GameManager>
 
     public void SetCAOH2()
     {
+        PlaySFX("placeitem");
         Vector3 worldPos = player.transform.position;
         Vector3Int cell = tilemap_boulder.WorldToCell(worldPos);
         Vector3 cellCenterPos = tilemap_boulder.GetCellCenterWorld(cell);
@@ -180,4 +197,50 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void PlaySFX(string sfx)
+    {
+        if (sfx == "boulderbreak")
+        {
+            sfxPlayer.PlayOneShot(boulderBreakSFX);
+        }else if(sfx == "neutralize")
+        {
+            sfxPlayer.PlayOneShot(neutralizeSFX);
+        }else if(sfx == "playerwalk")
+        {
+            //sfxPlayer.clip = characterWalkSFX;
+            //sfxPlayer.loop = true;
+            //sfxPlayer.Play();
+            isWalking = true;
+            if (isWalking == false)
+            {
+
+                //sfxPlayer.clip = characterWalkSFX;
+                //sfxPlayer.loop = true;
+                //sfxPlayer.Play();
+                //Debug.Log("walking played");
+            }
+        }else if(sfx == "acidriverkill")
+        {
+            sfxPlayer.PlayOneShot(acidRiverSFX);
+        }else if(sfx == "collectitem")
+        {
+            sfxPlayer.PlayOneShot(collectItemSFX);
+        }else if(sfx == "placeitem")
+        {
+            sfxPlayer.PlayOneShot(placeItemSFX);
+        }
+        else
+        {
+            Debug.Log("SFX asked to played does not exist");
+            Debug.Log(sfx);
+        }
+    }
+    public void StopSFX(string sfx)
+    {
+        //if (sfx == "playerwalk")
+        //{
+        //    sfxPlayer.Stop();
+        //    isWalking = false;
+        //}
+    }
 }

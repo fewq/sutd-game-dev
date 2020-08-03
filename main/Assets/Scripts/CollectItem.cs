@@ -119,6 +119,7 @@ public class CollectItem : MonoBehaviour
             if (Input.GetKey(KeyCode.Z))
             {
                 Debug.Log("picked up " + pickupItem.name);
+                GameManager.Instance.PlaySFX("collectitem");
                 // add to PickupList
                 PickupList.Add(pickupItem);
                 Debug.Log(pickupItem);
