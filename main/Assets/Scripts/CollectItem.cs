@@ -40,6 +40,7 @@ public class CollectItem : MonoBehaviour
     private InventoryManager invMngr;
 
     private GameObject InventoryBarCanvas;
+    private GameObject sidebarCanvas;
 
     public GameObject itemPrefab;
 
@@ -88,6 +89,7 @@ public class CollectItem : MonoBehaviour
         invMngr = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
 
         InventoryBarCanvas = GameObject.Find("InventoryBar");
+        sidebarCanvas = GameObject.Find("SideBar");
 
         inventoryObject.PickupList = PickupList;
 
@@ -147,7 +149,7 @@ public class CollectItem : MonoBehaviour
         if (inventoryState)
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
-            inventoryCanvas.GetComponentInChildren<Canvas>().enabled = true;
+            sidebarCanvas.GetComponent<Canvas>().enabled = true;
             inventoryText.text = $@"Inventory: 
 Fire: {inventoryDict["Fire"]}
 Water: {inventoryDict["Water"]}
@@ -176,7 +178,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         else
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = false;
-            inventoryCanvas.GetComponentInChildren<Canvas>().enabled = false;
+            sidebarCanvas.GetComponent<Canvas>().enabled = false;
         }
     }
 
