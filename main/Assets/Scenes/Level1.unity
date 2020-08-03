@@ -3489,6 +3489,11 @@ PrefabInstance:
       propertyPath: tilemap_acidriver
       value: 
       objectReference: {fileID: 1254480844}
+    - target: {fileID: 580446950353678040, guid: 8e53ab3f5f6686348abab44e4400b071,
+        type: 3}
+      propertyPath: playerWalkSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 67396911db4769f49ac3184a6fd62de4, type: 3}
     - target: {fileID: 580446950353678041, guid: 8e53ab3f5f6686348abab44e4400b071,
         type: 3}
       propertyPath: m_LocalPosition.x

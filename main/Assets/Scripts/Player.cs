@@ -9,17 +9,20 @@ public class Player : Movement
     Vector2 movement;
 
     public LayerMask layer;
-
+    public AudioSource playerWalkAS;
+    public AudioClip playerWalkSFX;
 
     // private int xVal;
 
     // private int yVal;
     private bool playerMoving;
+    private bool isPlaying;
 
     private EdgeCollider2D walls;
 
     // length of the tile to move, set to 0.1 from unity
     private float tileMovement;
+
  
     protected override void Start()
     {
@@ -27,6 +30,9 @@ public class Player : Movement
         Debug.Log(tileMovement);
         base.Start();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        isPlaying = false;
+        playerWalkAS.clip = playerWalkSFX;
+        playerWalkAS.loop = true;
     }
     // Start is called before the first frame update
 
@@ -61,6 +67,7 @@ public class Player : Movement
 
         if (movement.y != 0)
         {
+
             Debug.Log("Y movement");
             movement.x = 0.0f;
             // xVal = 0;
@@ -77,12 +84,19 @@ public class Player : Movement
         if (movement.x != 0 || movement.y != 0)
         {
             movementController(movement.x, movement.y);
+            if (isPlaying == false)
+            {
+                playerWalkAS.Play();
+                isPlaying = true;
+            }
 
         }
 
         if (movement.x == 0 && movement.y == 0)
         {
             animator.SetFloat("Speed", movement.sqrMagnitude);
+            playerWalkAS.Stop();
+            isPlaying = false;
         }
         // this is used to update the player animation
         // this is passed into the animator parameters, which is then used to update the blend tree
@@ -99,7 +113,6 @@ public class Player : Movement
         //animator.SetFloat("Horizontal", movement.x);
         //animator.SetFloat("Vertical", movement.y);
         //animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
-        bool isPlaying = false;
         if (playerMovement(x, y, out hit))
         {
             // base.Move(xVal, yVal, out hit);
@@ -108,20 +121,7 @@ public class Player : Movement
             animator.SetFloat("Vertical", movement.y);
             animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
             Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
-            if (isPlaying == false)
-            {
-                isPlaying = true;
-                GameManager.Instance.PlaySFX("playerwalk");
-            }
 
-
-        }
-        else
-        {
-            //GameManager.Instance.StopSFX("playerwalk");
-            isPlaying = false;
-            Debug.Log("Cant move");
-            Debug.Log("Running into " + hit.collider.gameObject.name);
         }
     }
 

@@ -26,7 +26,6 @@ public class GameManager : Singleton<GameManager>
 
     public AudioClip acidRiverSFX;
     public AudioClip boulderBreakSFX;
-    public AudioClip characterWalkSFX;
     public AudioClip collectItemSFX;
     public AudioClip neutralizeSFX;
     public AudioClip placeItemSFX;
@@ -205,20 +204,6 @@ public class GameManager : Singleton<GameManager>
         }else if(sfx == "neutralize")
         {
             sfxPlayer.PlayOneShot(neutralizeSFX);
-        }else if(sfx == "playerwalk")
-        {
-            //sfxPlayer.clip = characterWalkSFX;
-            //sfxPlayer.loop = true;
-            //sfxPlayer.Play();
-            isWalking = true;
-            if (isWalking == false)
-            {
-
-                //sfxPlayer.clip = characterWalkSFX;
-                //sfxPlayer.loop = true;
-                //sfxPlayer.Play();
-                //Debug.Log("walking played");
-            }
         }else if(sfx == "acidriverkill")
         {
             sfxPlayer.PlayOneShot(acidRiverSFX);
@@ -234,13 +219,5 @@ public class GameManager : Singleton<GameManager>
             Debug.Log("SFX asked to played does not exist");
             Debug.Log(sfx);
         }
-    }
-    public void StopSFX(string sfx)
-    {
-        //if (sfx == "playerwalk")
-        //{
-        //    sfxPlayer.Stop();
-        //    isWalking = false;
-        //}
     }
 }
