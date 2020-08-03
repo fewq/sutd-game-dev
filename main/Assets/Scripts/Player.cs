@@ -4,32 +4,37 @@ using UnityEngine;
 
 public class Player : Movement
 {
-
-    public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
     Vector2 movement;
 
     public LayerMask layer;
-
+    public AudioSource playerWalkAS;
+    public AudioClip playerWalkSFX;
 
     // private int xVal;
 
     // private int yVal;
     private bool playerMoving;
+    private bool isPlaying;
 
     private EdgeCollider2D walls;
 
     // length of the tile to move, set to 0.1 from unity
-    public float tileMovement;
+    private float tileMovement;
 
-    // Start is called before the first frame update
+ 
     protected override void Start()
     {
+        tileMovement = GameManager.Instance.gridScale.x / 10;
+        Debug.Log(tileMovement);
         base.Start();
-        // walls = GameObject.FindGameObjectWithTag("Wall").GetComponent<BoxCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        isPlaying = false;
+        playerWalkAS.clip = playerWalkSFX;
+        playerWalkAS.loop = true;
     }
+    // Start is called before the first frame update
 
     // Update is called once per frame
     private void FixedUpdate()
@@ -44,7 +49,6 @@ public class Player : Movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         // get inputs from user
-
         if (movement.x != 0)
         {
             Debug.Log("X movement");
@@ -63,6 +67,7 @@ public class Player : Movement
 
         if (movement.y != 0)
         {
+
             Debug.Log("Y movement");
             movement.x = 0.0f;
             // xVal = 0;
@@ -76,16 +81,22 @@ public class Player : Movement
             }
 
         }
-
         if (movement.x != 0 || movement.y != 0)
         {
             movementController(movement.x, movement.y);
+            if (isPlaying == false)
+            {
+                playerWalkAS.Play();
+                isPlaying = true;
+            }
 
         }
 
         if (movement.x == 0 && movement.y == 0)
         {
             animator.SetFloat("Speed", movement.sqrMagnitude);
+            playerWalkAS.Stop();
+            isPlaying = false;
         }
         // this is used to update the player animation
         // this is passed into the animator parameters, which is then used to update the blend tree
@@ -99,6 +110,9 @@ public class Player : Movement
     {
         // base.checkMove<T>(x,y);
         RaycastHit2D hit;
+        //animator.SetFloat("Horizontal", movement.x);
+        //animator.SetFloat("Vertical", movement.y);
+        //animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
         if (playerMovement(x, y, out hit))
         {
             // base.Move(xVal, yVal, out hit);
@@ -108,13 +122,7 @@ public class Player : Movement
             animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
             Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
 
-
         }
-        else
-        {
-            Debug.Log("Cant move");
-        }
-
     }
 
 

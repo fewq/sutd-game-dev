@@ -19,7 +19,7 @@ public class FlameChecker : MonoBehaviour
 
     void Start()
     {
-        flameTag = favColor + "Flame";
+        flameTag = favColor+"Light";
         monsterController = GetComponentInParent<MonsterController>();
     }
 

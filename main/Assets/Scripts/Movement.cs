@@ -36,7 +36,7 @@ public abstract class Movement : MonoBehaviour
 
         boxCollider.enabled = true;
 
-        if (hit.transform == null || hit.transform.tag == "Item")
+        if (hit.transform == null || hit.transform.tag == "Item" || hit.transform.tag == "Player" || hit.transform.tag == "Enemy")
         {
             rb2d.MovePosition(transform.position + new Vector3(x, y));
             return true;

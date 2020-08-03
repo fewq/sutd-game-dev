@@ -16,6 +16,7 @@ public class PlayerChecker : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player in range");
+            monsterController.target = collider.gameObject.transform;
             monsterController.playerInRange = true;
         }
     }
