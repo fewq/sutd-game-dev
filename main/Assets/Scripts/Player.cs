@@ -25,10 +25,12 @@ public class Player : Movement
     // length of the tile to move, set to 0.1 from unity
     private float tileMovement;
 
- 
+
+
     protected override void Start()
     {
-        tileMovement = GameManager.Instance.gridScale.x / 10;
+        // edit this for step size
+        tileMovement = GameManager.Instance.gridScale.x;
         Debug.Log(tileMovement);
         base.Start();
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -53,7 +55,7 @@ public class Player : Movement
         // get inputs from user
         if (movement.x != 0)
         {
-            Debug.Log("X movement");
+            // Debug.Log("X movement");
             movement.y = 0.0f;
             // yVal = 0;
             if (movement.x > 0)
@@ -70,7 +72,7 @@ public class Player : Movement
         if (movement.y != 0)
         {
 
-            Debug.Log("Y movement");
+            // Debug.Log("Y movement");
             movement.x = 0.0f;
             // xVal = 0;
             if (movement.y > 0)
@@ -122,7 +124,7 @@ public class Player : Movement
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
             animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
-            Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
+            // Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
 
         }
     }
