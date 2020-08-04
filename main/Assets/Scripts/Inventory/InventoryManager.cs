@@ -55,10 +55,7 @@ public class InventoryManager : MonoBehaviour
         
         
     }
-    
-    void SetInventory(){
-        toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1]; //name refers to the actual item name
-        GameObject.FindGameObjectWithTag(toAdd.name).GetComponent<Image>().enabled = true;
+
 
     public List<GameObject> getInventory{
         get
