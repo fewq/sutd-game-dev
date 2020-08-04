@@ -31,6 +31,10 @@ public class ItemHover : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
         if(gameObject.name == "CraftItem1" || gameObject.name == "CraftItem2" ){
             itemDescription.text = "Crafting Slot";
         }
+        else if(gameObject.name.Contains("BarSlot")){
+            string crafttag = transform.GetChild(0).tag;
+            itemDescription.text = crafttag;
+        }
         else if(collectItem.inventoryDict[tag] > 0){  
             itemDescription.text = "Selected Item: " + GameObject.Find("Item"+index.ToString()).tag;
         }

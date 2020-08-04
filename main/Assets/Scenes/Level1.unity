@@ -5534,6 +5534,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b,
         type: 2}
+    - target: {fileID: 864942689823230482, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.01345703
+      objectReference: {fileID: 0}
+    - target: {fileID: 864942689823230482, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.97308594
+      objectReference: {fileID: 0}
+    - target: {fileID: 864942689823230482, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.000000059604645
+      objectReference: {fileID: 0}
+    - target: {fileID: 864942689823230482, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.9246403
+      objectReference: {fileID: 0}
     - target: {fileID: 3014202340340153316, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}
       propertyPath: m_Name
@@ -5682,6 +5702,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8432629443651556287, guid: 13c70a773d10d784a9610f2f3311070d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8432629445508890394, guid: 13c70a773d10d784a9610f2f3311070d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5791,6 +5816,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InventoryCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548774986659073835, guid: 13c70a773d10d784a9610f2f3311070d,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548774986659073839, guid: 13c70a773d10d784a9610f2f3311070d,
+        type: 3}
+      propertyPath: m_OverrideSorting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548774987317627267, guid: 13c70a773d10d784a9610f2f3311070d,
+        type: 3}
+      propertyPath: m_BlockingObjects
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548774987317627267, guid: 13c70a773d10d784a9610f2f3311070d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c70a773d10d784a9610f2f3311070d, type: 3}

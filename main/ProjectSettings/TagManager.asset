@@ -23,6 +23,34 @@ TagManager:
   - Item8
   - Item4
   - Item1
+  - Water
+  - PotassiumChloride
+  - SodiumChloride
+  - CupricChloride
+  - Caesium
+  - Slot1
+  - Slot2
+  - LithiumChloride
+  - CalciumChloride
+  - Fire
+  - BlueLight
+  - YellowLight
+  - RedLight
+  - CalciumHydroxide
+  - PurpleLight
+  - OrangeLight
+  - Bomb
+  - CalciumOxide
+  - BlueFlame
+  - text1
+  - text2
+  - text4
+  - text3
+  - text5
+  - text6
+  - text7
+  - text8
+  - text9
   layers:
   - Default
   - TransparentFX

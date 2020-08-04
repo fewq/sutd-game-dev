@@ -84,7 +84,7 @@ public class CollectItem : MonoBehaviour
         // get inventoryText Reference
         inventoryText = GameObject.Find("InventoryText").GetComponent<Text>();
         // get inventoryItemText Reference
-        inventoryItemsText = GameObject.Find("InventoryItemsText").GetComponent<Text>();
+        // inventoryItemsText = GameObject.Find("InventoryItemsText").GetComponent<Text>();
         // get inventoryCanvas reference
         inventoryCanvas = GameObject.Find("Inventory").GetComponent<Canvas>();
 
@@ -94,6 +94,8 @@ public class CollectItem : MonoBehaviour
         sidebarCanvas = GameObject.Find("SideBar");
 
         inventoryObject.PickupList = PickupList;
+
+        
 
     }
 
@@ -133,8 +135,21 @@ public class CollectItem : MonoBehaviour
                 // destroy item instead
                 // Destroy(pickupItem);
                 pickupItem = null;
-                itemAdded = true;
+                
                 inventoryObject.PickupList = PickupList;
+
+                int count = 1;
+                foreach(string item in inventoryDict.Keys){
+                    if(item == "Bomb"){
+                        break;
+                    }
+                    // print(GameObject.FindGameObjectWithTag("test").GetComponent<Text>());
+                    Text itemText = GameObject.FindGameObjectWithTag("text"+count.ToString()).GetComponent<Text>();
+                    count += 1;
+                    itemText.text = inventoryDict[item].ToString();
+                }
+                
+                itemAdded = true;
             }
             // moved above
             // //update the scriptable object with the lists.
@@ -171,13 +186,6 @@ OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I; Place: J)
 PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O; Place: K)
 YellowLight: {inventoryDict["YellowLight"]} (Craft: P; Place: L)
 CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
-
-            inventoryItemsText.text = $@"{inventoryDict["Fire"]}              {inventoryDict["Water"]}             {inventoryDict["CupricChloride"]}
-
-{inventoryDict["LithiumChloride"]}              {inventoryDict["CalciumChloride"]}             {inventoryDict["PotassiumChloride"]}
-
-{inventoryDict["SodiumChloride"]}              {inventoryDict["Caesium"]}             {inventoryDict["CalciumOxide"]}";
-
         }
         else
         {
@@ -246,6 +254,17 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
                     break;
                 }
             }
+
+            int count = 1;
+            foreach(string item in inventoryDict.Keys){
+                if(item == "Bomb"){
+                    break;
+                }
+                // print(GameObject.FindGameObjectWithTag("test").GetComponent<Text>());
+                Text itemText = GameObject.FindGameObjectWithTag("text"+count.ToString()).GetComponent<Text>();
+                count += 1;
+                itemText.text = inventoryDict[item].ToString();
+            }
         }
         else
         {
@@ -266,6 +285,7 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
                 GameManager.Instance.SetCAOH2();
             }
             inventoryDict[craftedItem]--;
+            GameObject.FindGameObjectWithTag(craftedItem).GetComponent<Text>().text = inventoryDict[craftedItem].ToString();
         }
     }
 
