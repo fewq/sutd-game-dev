@@ -85,7 +85,6 @@ public class MonsterController : MonoBehaviour
         }
         else
         {
-            exclaimation.SetActive(true);
             yield return new WaitForSeconds(3);
             if (flameInRange)
             {
@@ -108,10 +107,11 @@ public class MonsterController : MonoBehaviour
                     playerInRange = true;
                     playerLocation = player;
                     target = player;
+                    astarAI.CancelLastPath();
                     if (!astarAI.MoveToTarget(player, "player"))
                     {
                         ReturnToSpawnPoint();
-                        exclaimation.SetActive(false);
+                        //exclaimation.SetActive(false);
                     }
                 }
                
@@ -135,10 +135,12 @@ public class MonsterController : MonoBehaviour
             Debug.Log(collision.gameObject.tag);
         }
     }
-    public void Stare()
+    public void Idle()
     {
-        Debug.Log("Start to stare");
-        stare = true;
+        Debug.Log("Start to idle");
+        animator.SetFloat("Horizontal", 0);
+        animator.SetFloat("Vertical", 0);
+        //stare = true;
         animator.SetFloat("Speed", 0);
     }
 
@@ -157,7 +159,7 @@ public class MonsterController : MonoBehaviour
 
     public void PlayerInRange(Transform player)
     {
-
+        exclaimation.SetActive(true);
         StartCoroutine(ChasePlayer(player));
     }
     public void FlameInRange(Transform flame)
@@ -167,5 +169,9 @@ public class MonsterController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
+    }
+    private void OnDestroy()
+    {
+        Destroy(spawnPoint.gameObject);
     }
 }

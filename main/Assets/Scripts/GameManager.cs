@@ -284,24 +284,32 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("Running LookForPlayer");
         RaycastHit2D[] hits;
-        hits = Physics2D.LinecastAll(monster.position, player.transform.position);
-        bool playerFound = false;
-        foreach (RaycastHit2D hit in hits)
+        if (player == null)
         {
-            if (hit.collider.CompareTag("Boulder"))
-            {
-                playerFound = false;
-                break;
-            }
-            if (hit.collider.CompareTag("Player"))
-            {
-                //monster.position = player.transform.position;
-                playerFound = true;
-                break;
-            }
-
+            return false;
         }
-        return playerFound;        
+        else
+        {
+            hits = Physics2D.LinecastAll(monster.position, player.transform.position);
+            bool playerFound = false;
+            foreach (RaycastHit2D hit in hits)
+            {
+                if (hit.collider.CompareTag("Boulder"))
+                {
+                    playerFound = false;
+                    break;
+                }
+                if (hit.collider.CompareTag("Player"))
+                {
+                    //monster.position = player.transform.position;
+                    playerFound = true;
+                    break;
+                }
+
+            }
+            return playerFound;
+        }
+   
 
     }
 

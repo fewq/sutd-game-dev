@@ -23,7 +23,7 @@ public class SpawnPoint : MonoBehaviour
         Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            monsterController.Stare();
+            monsterController.Idle();
         }
     }
 }

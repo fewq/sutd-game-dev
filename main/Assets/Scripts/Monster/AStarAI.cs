@@ -20,7 +20,8 @@ public class AStarAI : MonoBehaviour
     public void Start()
     {
         seeker = GetComponent<Seeker>();
-        //monsterController = GetComponent<MonsterController>();
+        speed = GameManager.Instance.gridScale.x;
+        monsterController = GetComponent<MonsterController>();
         //seeker.StartPath(transform.position, targetPosition.position, OnPathComplete);
     }
 
@@ -85,6 +86,8 @@ public class AStarAI : MonoBehaviour
                     // Set a status variable to indicate that the agent has reached the end of the path.
                     // You can use this to trigger some special code if your game requires that.
                     reachedEndOfPath = true;
+                    //Fix for monster running constantly but not a good fix because when near spawn point, it looks like monster is floating
+                    //monsterController.Idle();
                     break;
                 }
             }
@@ -102,7 +105,7 @@ public class AStarAI : MonoBehaviour
         }
         else
         {
-            speedFactor = 3f;
+            speedFactor = 5f;
         }
 
         //var speedFactor = 5f;
@@ -113,5 +116,9 @@ public class AStarAI : MonoBehaviour
         Vector3 velocity = dir * speed * speedFactor;
         //rb.AddForce(dir, fMode);
         transform.position += velocity * Time.deltaTime;
+    }
+    public void CancelLastPath()
+    {
+        seeker.CancelCurrentPathRequest();
     }
 }
