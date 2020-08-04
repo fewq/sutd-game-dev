@@ -23,31 +23,34 @@ TagManager:
   - Item8
   - Item4
   - Item1
-  - Bomb
-  - PotassiumChloride
-  - Caesium
-  - SodiumChloride
-  - PurpleLight
-  - CalciumChloride
-  - OrangeLight
-  - CalciumHydroxide
-  - RedLight
-  - CalciumOxide
-  - LithiumChloride
   - Water
+  - PotassiumChloride
+  - SodiumChloride
   - CupricChloride
-  - Slot2
-  - BlueLight
-  - Fire
+  - Caesium
   - Slot1
+  - Slot2
+  - LithiumChloride
+  - CalciumChloride
+  - Fire
+  - BlueLight
   - YellowLight
-  - RedFlame
+  - RedLight
+  - CalciumHydroxide
+  - PurpleLight
+  - OrangeLight
+  - Bomb
+  - CalciumOxide
   - BlueFlame
-  - OrangeFlame
-  - PurpleFlame
-  - YellowFlame
-  - Ground
-  - SpawnPoint
+  - text1
+  - text2
+  - text4
+  - text3
+  - text5
+  - text6
+  - text7
+  - text8
+  - text9
   layers:
   - Default
   - TransparentFX

@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23bf13836c6b154bb8424696b939daf, type: 3}
   m_Name: CustomInputMananger
   m_EditorClassIdentifier: 
+  PickUp: 122
+  Inventory: 120
+  DropBomb: 98
+  DropCalciumHydroxide: 99
+  Restart: 114
+  Up: 119
+  Left: 97
+  Down: 115
+  Right: 100

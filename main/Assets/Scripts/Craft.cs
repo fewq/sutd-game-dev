@@ -44,7 +44,7 @@ public class Craft : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Player").GetComponent<CollectItem>().Craft(itemList[0].tag, itemList[1].tag);
             }
 
-            catch (CustomException)
+            catch (CustomException ex)
             {
                 StartCoroutine(FadeOutRoutine());
             }

@@ -35,6 +35,7 @@ public class GameManager : Singleton<GameManager>
     public AudioClip neutralizeSFX;
     public AudioClip placeItemSFX;
 
+    public CustomInputManager customInputManager;
     public Vector3 gridScale;
     private bool isWalking = false;
     // Start is called before the first frame update
@@ -88,6 +89,10 @@ public class GameManager : Singleton<GameManager>
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             SetTorch("Orange");
+        }
+        if (customInputManager.GetKeyDown("Restart"))
+        {
+            RestartGame();
         }
 
     }

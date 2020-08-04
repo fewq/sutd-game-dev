@@ -73,6 +73,7 @@ MonoBehaviour:
   sfxPlayer: {fileID: 8309796803600803840}
   acidRiverSFX: {fileID: 8300000, guid: 87bc52dc699f7d74d8246f1145176a91, type: 3}
   boulderBreakSFX: {fileID: 8300000, guid: f84dfa2436284fd44a86d7d9099e884a, type: 3}
+  characterWalkSFX: {fileID: 8300000, guid: 67396911db4769f49ac3184a6fd62de4, type: 3}
   collectItemSFX: {fileID: 8300000, guid: 84720a40ad45c3849a3b73ae17f1115d, type: 3}
   neutralizeSFX: {fileID: 8300000, guid: ae95bf8628e4d3c4fbcc3d94aec94b86, type: 3}
   placeItemSFX: {fileID: 8300000, guid: 33d9ad6a3c521b642aaef2a861acf686, type: 3}

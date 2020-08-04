@@ -37,11 +37,10 @@ public class InventoryManager : MonoBehaviour
             image.enabled = false;
             
             slotPlaceholders.Add(image);
+            
         }
         
         player = GameObject.FindGameObjectWithTag("Player");
-        inventoryDict = player.GetComponent<CollectItem>().inventoryDict;
-
 
     }
     
@@ -50,10 +49,16 @@ public class InventoryManager : MonoBehaviour
         GameObject.FindGameObjectWithTag(toAdd.name).GetComponent<Image>().enabled = true;
 
         inventoryItems.Add(toAdd.gameObject);
+
         inventoryObject.PickupList.RemoveAt(inventoryObject.PickupList.Count - 1);
         print("Inv Mgr" + inventoryItems.Count.ToString());
+        
+        
     }
-
+    
+    void SetInventory(){
+        toAdd = inventoryObject.PickupList[inventoryObject.PickupList.Count - 1]; //name refers to the actual item name
+        GameObject.FindGameObjectWithTag(toAdd.name).GetComponent<Image>().enabled = true;
 
     public List<GameObject> getInventory{
         get
