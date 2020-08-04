@@ -120,7 +120,6 @@ public class Player : Movement
         if (playerMovement(x, y, out hit))
         {
             // base.Move(xVal, yVal, out hit);
-            // Debug.Log
             animator.SetFloat("Horizontal", movement.x);
             animator.SetFloat("Vertical", movement.y);
             animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));

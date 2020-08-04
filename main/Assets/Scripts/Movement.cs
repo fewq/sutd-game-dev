@@ -36,7 +36,8 @@ public abstract class Movement : MonoBehaviour
 
 
         hit = Physics2D.Linecast(transform.position, transform.position + new Vector3(x, y), layerMask);
-        // Debug.Log("Hit " + hit.ToString());
+        // Debug.Log("Hit " + hit.transform.ToString());
+        
 
         boxCollider.enabled = true;
 
