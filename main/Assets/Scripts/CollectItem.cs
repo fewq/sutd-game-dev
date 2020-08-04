@@ -44,6 +44,8 @@ public class CollectItem : MonoBehaviour
 
     public GameObject itemPrefab;
 
+    public CustomInputManager customInputManager;
+
     private int defaultNumber = 0 ;
     // Start is called before the first frame update
     void Start()
@@ -116,7 +118,7 @@ public class CollectItem : MonoBehaviour
         if (pickupItem != null)
         {
             // reason for pressing Z to pick up: in the future, we would need to place items, and the player may accidentally pick it up if they walked arount it
-            if (Input.GetKey(KeyCode.Z))
+            if (customInputManager.GetKey("PickUp"))
             {
                 Debug.Log("picked up " + pickupItem.name);
                 GameManager.Instance.PlaySFX("collectitem");
@@ -143,7 +145,7 @@ public class CollectItem : MonoBehaviour
 
     void ToggleInventory()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (customInputManager.GetKeyDown("Inventory"))
         {
             inventoryState = !inventoryState;
             print("InventoryState: " + inventoryState);
@@ -279,13 +281,13 @@ CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         //else if (Input.GetKeyDown(KeyCode.P)) { Craft("YellowLight"); }
         //else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
         // placing hotkeys
-        if (Input.GetKeyDown(KeyCode.B)) { Place("Bomb"); }
+        if (customInputManager.GetKeyDown("DropBomb")) { Place("Bomb"); }
         else if (Input.GetKeyDown(KeyCode.G)) { Place("BlueLight"); }
         else if (Input.GetKeyDown(KeyCode.H)) { Place("RedLight"); }
         else if (Input.GetKeyDown(KeyCode.J)) { Place("OrangeLight"); }
         else if (Input.GetKeyDown(KeyCode.K)) { Place("PurpleLight"); }
         else if (Input.GetKeyDown(KeyCode.L)) { Place("YellowLight"); }
-        else if (Input.GetKeyDown(KeyCode.C)) { Place("CalciumHydroxide"); }
+        else if (customInputManager.GetKeyDown("DropCalciumHydroxide")) { Place("CalciumHydroxide"); }
     }
 
     // Update is called once per frame
