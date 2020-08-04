@@ -12,6 +12,8 @@ public class Player : Movement
     public AudioSource playerWalkAS;
     public AudioClip playerWalkSFX;
 
+    public CustomInputManager customInputManager;
+
     // private int xVal;
 
     // private int yVal;
@@ -46,8 +48,8 @@ public class Player : Movement
     }
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = customInputManager.GetAxisRaw("Horizontal");
+        movement.y = customInputManager.GetAxisRaw("Vertical");
         // get inputs from user
         if (movement.x != 0)
         {

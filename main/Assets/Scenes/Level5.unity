@@ -202,6 +202,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 645937106911008855, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: customInputManager
+      value: 
+      objectReference: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b,
+        type: 2}
     - target: {fileID: 3014202340340153316, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}
       propertyPath: m_Name
@@ -277,6 +283,12 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6628361843739180480, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: customInputManager
+      value: 
+      objectReference: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1dc5139d3d2cdf42a0f0df174c98c3d, type: 3}
 --- !u!1001 &269010180
@@ -9623,6 +9635,12 @@ PrefabInstance:
       propertyPath: tilemap_acidriver
       value: 
       objectReference: {fileID: 1254480844}
+    - target: {fileID: 580446950353678040, guid: 8e53ab3f5f6686348abab44e4400b071,
+        type: 3}
+      propertyPath: customInputManager
+      value: 
+      objectReference: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b,
+        type: 2}
     - target: {fileID: 580446950353678041, guid: 8e53ab3f5f6686348abab44e4400b071,
         type: 3}
       propertyPath: m_LocalPosition.x
