@@ -169,23 +169,23 @@ public class CollectItem : MonoBehaviour
         {
             inventoryCanvas.GetComponent<Canvas>().enabled = true;
             sidebarCanvas.GetComponent<Canvas>().enabled = true;
-            inventoryText.text = $@"Inventory: 
-Fire: {inventoryDict["Fire"]}
-Water: {inventoryDict["Water"]}
-CupricChloride: {inventoryDict["CupricChloride"]} 
-LithiumCloride: {inventoryDict["LithiumChloride"]}
-CalciumChloride: {inventoryDict["CalciumChloride"]}
-PotassiumChloride: {inventoryDict["PotassiumChloride"]}
-SodiumCloride: {inventoryDict["SodiumChloride"]}
-Caesium: {inventoryDict["Caesium"]}
-CalciumOxide: {inventoryDict["CalciumOxide"]}
-Bomb: {inventoryDict["Bomb"]} (Craft: T; Place: F)
-BlueLight: {inventoryDict["BlueLight"]} (Craft: Y; Place: G)
-RedLight: {inventoryDict["RedLight"]} (Craft: U; Place: H)
-OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I; Place: J)
-PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O; Place: K)
-YellowLight: {inventoryDict["YellowLight"]} (Craft: P; Place: L)
-CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
+//             inventoryText.text = $@"Inventory: 
+// Fire: {inventoryDict["Fire"]}
+// Water: {inventoryDict["Water"]}
+// CupricChloride: {inventoryDict["CupricChloride"]} 
+// LithiumCloride: {inventoryDict["LithiumChloride"]}
+// CalciumChloride: {inventoryDict["CalciumChloride"]}
+// PotassiumChloride: {inventoryDict["PotassiumChloride"]}
+// SodiumCloride: {inventoryDict["SodiumChloride"]}
+// Caesium: {inventoryDict["Caesium"]}
+// CalciumOxide: {inventoryDict["CalciumOxide"]}
+// Bomb: {inventoryDict["Bomb"]} (Craft: T; Place: F)
+// BlueLight: {inventoryDict["BlueLight"]} (Craft: Y; Place: G)
+// RedLight: {inventoryDict["RedLight"]} (Craft: U; Place: H)
+// OrangeLight: {inventoryDict["OrangeLight"]} (Craft: I; Place: J)
+// PurpleLight: {inventoryDict["PurpleLight"]} (Craft: O; Place: K)
+// YellowLight: {inventoryDict["YellowLight"]} (Craft: P; Place: L)
+// CalciumHydroxide: {inventoryDict["CalciumHydroxide"]} (Craft: [; Place: ;)";
         }
         else
         {

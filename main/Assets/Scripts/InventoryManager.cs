@@ -50,8 +50,6 @@ public class InventoryManager : MonoBehaviour
 
         inventoryItems.Add(toAdd.gameObject);
 
-        
-
         inventoryObject.PickupList.RemoveAt(inventoryObject.PickupList.Count - 1);
         print("Inv Mgr" + inventoryItems.Count.ToString());
         
