@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1803688185
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 5166608728908515687, guid: bcf099610e1092543a26b8c26de94e8c,
     type: 3}
@@ -114,13 +114,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2216706363203355747}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.000000059604645, y: -0.54639286}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -131,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 0.49540395, y: 0.40721428}
   m_EdgeRadius: 0
 --- !u!114 &2216706363203355749
 MonoBehaviour:
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flameDuration: 7
   lightFlameTest: 0
+  color: 
 --- !u!95 &2216706363203355746
 Animator:
   serializedVersion: 3

@@ -19,34 +19,45 @@ public class FlameChecker : MonoBehaviour
 
     void Start()
     {
-        flameTag = favColor + "Flame";
+        flameTag = favColor+"Flame";
+        Debug.Log(flameTag);
         monsterController = GetComponentInParent<MonsterController>();
     }
 
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log("FlameCheck");
+        Debug.Log(collider.tag);
+        Debug.Log(collider.name);
         if (collider.gameObject.CompareTag(flameTag))
         {
             Debug.Log("Flame in range");
-            monsterController.ChaseFlame(collider.gameObject.transform);
+
+            if (GameManager.Instance.LookForFlame(gameObject.transform) == true)
+            {
+                Debug.Log("FLAME FOUND HUE HUE");
+                //monsterController.playerInRange = true;
+                monsterController.FlameInRange(collider.transform);
+                //monsterController.ChaseTarget(collider.transform.position);
+            }
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-        // make sure unlit torches that are in range get registered when they're lit
-        if (!chasing && other.gameObject.CompareTag("UnlitTorch"))
-        {
-            other.gameObject.GetComponent<Rigidbody2D>().WakeUp();
-        }
-        else if (!chasing && other.gameObject.CompareTag(flameTag))
-        {
-            chasing = true;
-            Debug.Log("Flame in range");
-            monsterController.ChaseFlame(other.gameObject.transform);
-        }
-    }
+    //void OnTriggerStay2D(Collider2D other)
+    //{
+    //    // make sure unlit torches that are in range get registered when they're lit
+    //    if (!chasing && other.gameObject.CompareTag("UnlitTorch"))
+    //    {
+    //        other.gameObject.GetComponent<Rigidbody2D>().WakeUp();
+    //    }
+    //    else if (!chasing && other.gameObject.CompareTag(flameTag))
+    //    {
+    //        chasing = true;
+    //        Debug.Log("Flame in range");
+    //        monsterController.ChaseFlame(other.gameObject.transform);
+    //    }
+    //}
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag(flameTag))
@@ -54,6 +65,7 @@ public class FlameChecker : MonoBehaviour
             Debug.Log("Flame no longer in range");
             monsterController.flameInRange = false;
             monsterController.heartExclaimation.SetActive(false);
+            monsterController.ReturnToSpawnPoint();
         }
     }
 }

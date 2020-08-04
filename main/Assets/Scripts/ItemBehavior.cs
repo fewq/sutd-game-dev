@@ -19,6 +19,7 @@ public class ItemBehavior : MonoBehaviour
     void Start()
     {
         string name = gameObject.name;
+        gameObject.transform.localScale = GameManager.Instance.gridScale;
         if (name == "Bomb") { spriteRenderer.sprite = bombSprite; }
         else if (name == "BlueLight") { spriteRenderer.sprite = blueLightSprite; }
         else if (name == "RedLight") { spriteRenderer.sprite = redLightSprite; }

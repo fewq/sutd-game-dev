@@ -10,11 +10,44 @@ TagManager:
   - Floor
   - Enemy
   - UnlitTorch
+  - Inventory
+  - CraftItem2
+  - Item7
+  - Item6
+  - CraftedItem
+  - CraftItem1
+  - Item5
+  - Item3
+  - Item2
+  - Bar
+  - Item8
+  - Item4
+  - Item1
+  - Bomb
+  - PotassiumChloride
+  - Caesium
+  - SodiumChloride
+  - PurpleLight
+  - CalciumChloride
+  - OrangeLight
+  - CalciumHydroxide
+  - RedLight
+  - CalciumOxide
+  - LithiumChloride
+  - Water
+  - CupricChloride
+  - Slot2
+  - BlueLight
+  - Fire
+  - Slot1
+  - YellowLight
+  - RedFlame
   - BlueFlame
   - OrangeFlame
-  - RedFlame
   - PurpleFlame
   - YellowFlame
+  - Ground
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -25,8 +58,8 @@ TagManager:
   - 
   - 
   - Object
-  - 
-  - 
+  - Obstacles
+  - Ground
   - 
   - 
   - 
@@ -66,4 +99,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2401359663
+    locked: 0
+  - name: InventoryLayer
+    uniqueID: 3192635955
     locked: 0

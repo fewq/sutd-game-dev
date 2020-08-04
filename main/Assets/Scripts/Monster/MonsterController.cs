@@ -12,12 +12,14 @@ public class MonsterController : MonoBehaviour
     public GameObject exclaimation;
     public GameObject heartExclaimation;
     // public float moveSpeed = 5f;
-    public float tileMovement;
-    private Rigidbody2D rigidbody;
+    private float tileMovement;
+    private Rigidbody2D rigidBody;
     private Vector2 direction;
     private Transform flameLocation;
+    private Transform playerLocation;
     public bool flameInRange { get; set; }
-    public bool playerInRange { get; set; }
+    //public bool playerInRange { get; set; }
+    public bool playerInRange = false;
     [HideInInspector]
     public bool stare = false;
 
@@ -28,141 +30,142 @@ public class MonsterController : MonoBehaviour
     private Path path;
     private int currentWaypoint = 0;
     private bool reachedPlayer = false;
+    private bool returnToSpawn = true;
     private Seeker seeker;
-    
+    public BoxCollider2D playerCheck;
+    public BoxCollider2D flameCheck;
+    public AStarAI astarAI;
+    // Variables for checking for player
+    public float lookRange = 5f;
+    private Vector2 sizeOfRaycast;
+    public int radius = 5;
+    private BoxCollider2D monsterCollider;
     // Start is called before the first frame update
     void Start()
     {
         // move to spawn point
         transform.position = spawnPoint.position;
+        transform.localScale = GameManager.Instance.gridScale;
         // initialise variables
         flameInRange = false;
         playerInRange = false;
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
+        monsterCollider = GetComponent<BoxCollider2D>();
+        tileMovement = GameManager.Instance.gridScale.x / 10;
 
-        seeker = GetComponent<Seeker>();
-        InvokeRepeating("UpdatePath", 0f, repeatInterval);
+        astarAI = GetComponent<AStarAI>();
     }
 
-    void UpdatePath()
+    IEnumerator ChaseFlame(Transform flame)
     {
-        if (seeker.IsDone()) // don't calculate path again if in the middle of calculating
-        {
-            seeker.StartPath(rigidbody.position, target.position, OnPathComplete);
-        }
-    }
-
-    void OnPathComplete(Path p)
-    {
-        if (!p.error)
-        {
-            path = p;
-            currentWaypoint = 0;
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (flameInRange)
-        {
-            if (!distanceCloserThan(flameLocation.position, 1.5f))
-            {
-                Debug.Log("Chase Flame");
-                ChaseTarget(flameLocation.position);
-            }
-            else if (!stare)
-            {
-                Stare();
-            }
-        }
-
-        else if (playerInRange)
-        {
-            ChasePlayer();
-        }
-        else if (!distanceCloserThan(spawnPoint.position, 0.2f))
-        {
-            ReturnToSpawnPoint();
-        }
-        else
-        {
-            // Idle down
-            animator.SetFloat("Speed", 0);
-            animator.SetFloat("Horizontal", 0f);
-            animator.SetFloat("Vertical", -1f);
-        }
-    }
-
-    private bool distanceCloserThan(Vector3 target, float distance)
-    {
-        return (Mathf.Abs((target - transform.position).magnitude) <= distance);
-    }
-
-    public void ChaseFlame(Transform flame)
-    {
+        Debug.Log("ChaseFlame");
         heartExclaimation.SetActive(true);
         flameLocation = flame;
         flameInRange = true;
-    }
-
-    public void ChasePlayer()
-    {
-        exclaimation.SetActive(true);
-        if (path == null) return;
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedPlayer = true;
-            return;
-        }
-        else
-        {
-            reachedPlayer = false;
-        }
-
-        ChaseTarget((Vector3)path.vectorPath[currentWaypoint]);
-        // Debug.Log("dest: " + path.vectorPath[currentWaypoint]);
-        // update next waypoint if the current one is reached
-        float distance = Vector2.Distance(rigidbody.position, path.vectorPath[currentWaypoint]);
-
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
-        }
-    }
-
-    public void ChaseTarget(Vector3 targetPos)
-    {
-        Debug.Log("Chasing");
-        direction = (targetPos - transform.position);
-        // prevents interpolation between left/right/up/down movement
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-        {
-            direction.y = 0f;
-        }
-        else
-        {
-            direction.x = 0f;
-        }
-        direction.Normalize();
-        direction = direction * tileMovement;
-        rigidbody.MovePosition(rigidbody.position + direction);
-
+        yield return new WaitForSeconds(2);
+        returnToSpawn = false;
+        Debug.Log("Chase Flame");
+        exclaimation.SetActive(false);
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
         animator.SetFloat("Speed", Mathf.Max(1, direction.sqrMagnitude));
+        playerInRange = true;
+        target = flame;
+        if (!astarAI.MoveToTarget(flame, "flame"))
+        {
+            ReturnToSpawnPoint();
+        }
     }
 
-    void Stare()
+    IEnumerator ChasePlayer(Transform player)
+    {
+        if (player == null)
+        {
+
+        }
+        else
+        {
+            exclaimation.SetActive(true);
+            yield return new WaitForSeconds(3);
+            if (flameInRange)
+            {
+                Debug.Log("flameInRange");
+            }
+            else
+            {
+                if(GameManager.Instance.LookForPlayer(gameObject.transform) == true)
+                {
+                    returnToSpawn = false;
+                    Debug.Log("Chase Player");
+                    animator.SetFloat("Horizontal", direction.x);
+                    animator.SetFloat("Vertical", direction.y);
+                    animator.SetFloat("Speed", Mathf.Max(1, direction.sqrMagnitude));
+                    //if (path == null)
+                    //{
+                    //    Debug.Log("PATH IS NULL");
+                    //    yield break;
+                    //}
+                    playerInRange = true;
+                    playerLocation = player;
+                    target = player;
+                    if (!astarAI.MoveToTarget(player, "player"))
+                    {
+                        ReturnToSpawnPoint();
+                        exclaimation.SetActive(false);
+                    }
+                }
+               
+            }
+
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(collision.gameObject);
+            ReturnToSpawnPoint();
+            //ChasePlayer(collision.gameObject.transform);
+            Debug.Log("kill Player");
+        }
+        else
+        {
+            Debug.Log("Debugging Collision");
+            Debug.Log(collision.gameObject.tag);
+        }
+    }
+    public void Stare()
     {
         Debug.Log("Start to stare");
         stare = true;
         animator.SetFloat("Speed", 0);
     }
 
-    void ReturnToSpawnPoint()
+    public void ReturnToSpawnPoint()
     {
         Debug.Log("Returning to spawn point");
+        playerInRange = false;
         // move to spawn point
-        ChaseTarget(spawnPoint.position);
+        astarAI.MoveToTarget(spawnPoint,"spawnpoint");
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Speed", Mathf.Max(1, direction.sqrMagnitude));
+
+        //ChaseTarget(spawnPoint.position);
+    }
+
+    public void PlayerInRange(Transform player)
+    {
+
+        StartCoroutine(ChasePlayer(player));
+    }
+    public void FlameInRange(Transform flame)
+    {
+        StartCoroutine(ChaseFlame(flame));
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
     }
 }
