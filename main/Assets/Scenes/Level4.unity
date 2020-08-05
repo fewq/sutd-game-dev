@@ -436,6 +436,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3092286359615206453, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 9bc84628e26e69f459c4da575dabaddc,
+        type: 2}
     - target: {fileID: 6526515388231481792, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}
       propertyPath: m_Constraints
@@ -11578,6 +11584,12 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 7348897669992943158, guid: 8e53ab3f5f6686348abab44e4400b071,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 9bc84628e26e69f459c4da575dabaddc,
+        type: 2}
+    - target: {fileID: 8309796803600803840, guid: 8e53ab3f5f6686348abab44e4400b071,
         type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 

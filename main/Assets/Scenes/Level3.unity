@@ -550,6 +550,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3092286359615206453, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 9bc84628e26e69f459c4da575dabaddc,
+        type: 2}
     - target: {fileID: 6526515388231481792, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}
       propertyPath: m_Constraints
@@ -9898,7 +9904,7 @@ PrefabInstance:
     - target: {fileID: 8432629445508890398, guid: 13c70a773d10d784a9610f2f3311070d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c70a773d10d784a9610f2f3311070d, type: 3}
@@ -11798,5 +11804,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7348897669992943158, guid: 8e53ab3f5f6686348abab44e4400b071,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 9bc84628e26e69f459c4da575dabaddc,
+        type: 2}
+    - target: {fileID: 8309796803600803840, guid: 8e53ab3f5f6686348abab44e4400b071,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 9bc84628e26e69f459c4da575dabaddc,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e53ab3f5f6686348abab44e4400b071, type: 3}
