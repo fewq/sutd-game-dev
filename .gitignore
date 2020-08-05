@@ -79,3 +79,12 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# AstarPathfinding
+*/Astar*
+*/Assets/AstarPathfindingProject
+test_monster/Assets/_TerrainAutoUpgrade/
+
+test_monster/Assets/_TerrainAutoUpgrade.meta
+
+test_monster/Assets/AstarPathfindingProject.meta

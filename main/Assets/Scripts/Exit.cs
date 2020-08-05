@@ -28,6 +28,26 @@ public class Exit : MonoBehaviour
                 Debug.Log("Level2");
                 SceneManager.LoadScene("Level2");
             }
+            if (currentSceneName == "Level2")
+            {
+                Debug.Log("Level3");
+                SceneManager.LoadScene("Level3");
+            }
+            if (currentSceneName == "Level3")
+            {
+                Debug.Log("Level4");
+                SceneManager.LoadScene("Level4");
+            }
+            if (currentSceneName == "Level4")
+            {
+                Debug.Log("Level5");
+                SceneManager.LoadScene("Level5");
+            }
+            if (currentSceneName == "Level5")
+            {
+                Debug.Log("GAME COMPLETEEEEEEEEEEEE");
+                //SceneManager.LoadScene("Level3");
+            }
 
         }
     }
