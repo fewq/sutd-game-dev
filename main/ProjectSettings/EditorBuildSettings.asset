@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1.unity
     guid: f408ebe9ca7abea4cbe33dab4dc60bc1
   - enabled: 1
+    path: Assets/Scenes/kimha-monster.unity
+    guid: 34cecba1d2c80814488acc5a8d32eac0
+  - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: bf5a77f85f3680e41b6fc2c3bff86763
   - enabled: 1

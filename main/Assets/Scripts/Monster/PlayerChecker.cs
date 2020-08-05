@@ -13,10 +13,24 @@ public class PlayerChecker : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.CompareTag("Player"))
+        if (collider.CompareTag("Player"))
         {
-            Debug.Log("Player in range");
-            monsterController.playerInRange = true;
+            Debug.Log("Look for Player");
+            monsterController.PlayerInRange(GameManager.Instance.ReturnPlayerPosition());
+            //if (GameManager.Instance.LookForPlayer(gameObject.transform) == true)
+            //{
+            //    Debug.Log(monsterController.flameInRange);
+            //    if (!monsterController.flameInRange)
+            //    {
+            //        Debug.Log("PLAYER FOUND HUE HUE");
+            //        //monsterController.playerInRange = true;
+            //        monsterController.PlayerInRange(GameManager.Instance.ReturnPlayerPosition());
+            //    }
+
+            //    //monsterController.ChaseTarget(collider.transform.position);
+            //}
+            //ChasePlayer(collision.gameObject.transform);
+            //Debug.Log("Chase Player");
         }
     }
 

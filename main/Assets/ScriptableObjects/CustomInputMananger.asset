@@ -16,6 +16,11 @@ MonoBehaviour:
   Inventory: 120
   DropBomb: 98
   DropCalciumHydroxide: 99
+  DropBlueLight: 49
+  DropOrangeLight: 50
+  DropPurpleLight: 51
+  DropRedLight: 52
+  DropYellowLight: 53
   Restart: 114
   Up: 119
   Left: 97

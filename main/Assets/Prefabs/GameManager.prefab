@@ -57,16 +57,36 @@ MonoBehaviour:
     type: 3}
   explosionPrefab: {fileID: 6389187618179850839, guid: beee1dbf6cc28574687ab7f2b3ad5423,
     type: 3}
+  neutralizaitonPrefab: {fileID: 2057227570512932501, guid: d198cda5f0eab0e4cb5409040722af1b,
+    type: 3}
   CaOH2Prefab: {fileID: 5521786370850339131, guid: 97ba59a034d12594480ab6a06990fc19,
+    type: 3}
+  redLightPrefab: {fileID: 4583988604262827724, guid: dd84f2896dc1f904f891427c70ba0806,
+    type: 3}
+  yellowLightPrefab: {fileID: 5134028987515276099, guid: ab58904664cb6f64199a074463d6d2cd,
+    type: 3}
+  purpleLightPrefab: {fileID: 1567857223446959922, guid: a344c9f9af043354096ee34e095f5aa3,
+    type: 3}
+  blueLightPrefab: {fileID: 230113690740933860, guid: 3e302c5635ab60c478847b90f1fd5945,
+    type: 3}
+  orangeLightPrefab: {fileID: 2216706363203355747, guid: b75c95c369a545f438e2716a99e9075f,
     type: 3}
   bgmPlayer: {fileID: 7348897669992943158}
   sfxPlayer: {fileID: 8309796803600803840}
   acidRiverSFX: {fileID: 8300000, guid: 87bc52dc699f7d74d8246f1145176a91, type: 3}
   boulderBreakSFX: {fileID: 8300000, guid: f84dfa2436284fd44a86d7d9099e884a, type: 3}
-  characterWalkSFX: {fileID: 8300000, guid: 67396911db4769f49ac3184a6fd62de4, type: 3}
   collectItemSFX: {fileID: 8300000, guid: 84720a40ad45c3849a3b73ae17f1115d, type: 3}
   neutralizeSFX: {fileID: 8300000, guid: ae95bf8628e4d3c4fbcc3d94aec94b86, type: 3}
   placeItemSFX: {fileID: 8300000, guid: 33d9ad6a3c521b642aaef2a861acf686, type: 3}
+  toggleInvSFX: {fileID: 8300000, guid: 2af09ba66994f824580307064526d6c4, type: 3}
+  successCraftSFX: {fileID: 8300000, guid: 1a136594efac76f468396e9341abc3d8, type: 3}
+  failCraftSFX: {fileID: 8300000, guid: d985cc343168a744db8c4f45e54e8678, type: 3}
+  playerScreamSFX: {fileID: 8300000, guid: 60d3bfa5e6a188f44871d8d383821f09, type: 3}
+  goblinLaughSFX: {fileID: 8300000, guid: 04f50c8ff49179448af2ed53165dd0c9, type: 3}
+  goblinDistractedSFX: {fileID: 8300000, guid: 01153626b95e59b4ab2d7fb4dae3d5ea, type: 3}
+  goblinAlertedSFX: {fileID: 8300000, guid: 265354763a7133d4fa08806d1a726f54, type: 3}
+  goblinChaseSFX: {fileID: 8300000, guid: a911e4e2457620e4b8c25bd71c3e64d5, type: 3}
+  customInputManager: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b, type: 2}
   gridScale: {x: 0, y: 0, z: 0}
 --- !u!82 &7348897669992943158
 AudioSource:
