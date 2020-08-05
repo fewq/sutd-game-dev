@@ -32,14 +32,23 @@ public class ItemHover : MonoBehaviour, IPointerExitHandler, IPointerEnterHandle
             itemDescription.text = "Crafting Slot";
         }
         else if(gameObject.name.Contains("BarSlot")){
+            
             string crafttag = transform.GetChild(0).tag;
-            itemDescription.text = crafttag;
-        }
-        else if(collectItem.inventoryDict[tag] > 0){  
-            itemDescription.text = "Selected Item: " + GameObject.Find("Item"+index.ToString()).tag;
+            switch(crafttag){
+                case("Bomb"):
+                    itemDescription.text = crafttag + ": Blow up things in a 3x3 area";
+                    break;
+                case("CalciumHydroxide"):
+                    itemDescription.text = crafttag + ": Strong base that neutralises acid";
+                    break;
+                default:
+                    itemDescription.text = crafttag + ": Provides a good distraction";
+                    break;
+            }
+            // itemDescription.text = crafttag;
         }
         else{
-            itemDescription.text = "No item available in slot";
+            itemDescription.text = "Selected Item: " + GameObject.Find("Item"+index.ToString()).tag;
         }
         
     }
