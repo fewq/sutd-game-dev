@@ -12,6 +12,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueContainer;
     private bool isOpen;
 
+    public GameObject tutorial;
+
 
     private Queue<string> sentences;
     // Start is called before the first frame update
@@ -74,7 +76,9 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue(){
         isOpen = false;
         Debug.Log("End of conversation");
+        tutorial.SetActive(true);
         Hide();
+
     }
 
     void Hide() {
