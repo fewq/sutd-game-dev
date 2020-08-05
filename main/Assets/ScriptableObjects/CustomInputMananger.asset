@@ -17,9 +17,9 @@ MonoBehaviour:
   DropBomb: 98
   DropCalciumHydroxide: 99
   DropBlueLight: 49
-  DropOrangeLight: 50
-  DropPurpleLight: 51
-  DropRedLight: 52
+  DropOrangeLight: 51
+  DropPurpleLight: 52
+  DropRedLight: 50
   DropYellowLight: 53
   Restart: 114
   Up: 119
