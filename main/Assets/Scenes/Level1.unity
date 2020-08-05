@@ -728,6 +728,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 83130703}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &83130705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4165445246356077303, guid: d7a8f619f177f8745beabc725ec91e8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 83130703}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &83130706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83130705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789087fe624c3404c98bccd4fb201285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &112532444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3158,6 +3176,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 713566135}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &713566137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4165445246356077303, guid: d7a8f619f177f8745beabc725ec91e8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 713566135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &713566138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713566137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 789087fe624c3404c98bccd4fb201285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &743688754
 GameObject:
   m_ObjectHideFlags: 0
@@ -5904,7 +5940,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CalciumOxide
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: d7a8f619f177f8745beabc725ec91e8d, type: 3}
 --- !u!4 &995037044 stripped
 Transform:
