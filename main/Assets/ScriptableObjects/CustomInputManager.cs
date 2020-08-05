@@ -41,7 +41,6 @@ public class CustomInputManager : ScriptableObject
             {"Left", Left},
             {"Down", Down},
             {"Right", Right}
-
         };
     }
 

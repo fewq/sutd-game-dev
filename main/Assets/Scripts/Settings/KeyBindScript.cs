@@ -9,7 +9,7 @@ public class KeyBindScript : MonoBehaviour
 {
     public CustomInputManager customInputManager;
 
-    public TextMeshProUGUI up, left, down, right, pickup, inventory, dropBomb, dropCaoh, restart;
+    public TextMeshProUGUI up, left, down, right, pickup, inventory, dropBomb, dropCaoh, restart,droptorchblue, droptorchred, droptorchorange, droptorchpurple, droptorchyellow;
     private GameObject currentKey;
 
     void Start()
@@ -27,6 +27,11 @@ public class KeyBindScript : MonoBehaviour
         dropBomb.SetText(customInputManager.DropBomb.ToString());
         dropCaoh.SetText(customInputManager.DropCalciumHydroxide.ToString());
         restart.SetText(customInputManager.Restart.ToString());
+        droptorchblue.SetText(customInputManager.DropBlueLight.ToString());
+        droptorchred.SetText(customInputManager.DropRedLight.ToString());
+        droptorchorange.SetText(customInputManager.DropOrangeLight.ToString());
+        droptorchpurple.SetText(customInputManager.DropPurpleLight.ToString());
+        droptorchyellow.SetText(customInputManager.DropYellowLight.ToString());
     }
 
     void OnGUI()
@@ -66,6 +71,21 @@ public class KeyBindScript : MonoBehaviour
                         break;
                     case "Restart": 
                         customInputManager.Restart = e.keyCode;
+                        break;
+                    case "Blue": 
+                        customInputManager.DropBlueLight = e.keyCode;
+                        break;
+                    case "Yellow": 
+                        customInputManager.DropYellowLight = e.keyCode;
+                        break;
+                    case "Red": 
+                        customInputManager.DropRedLight = e.keyCode;
+                        break;
+                    case "Orange": 
+                        customInputManager.DropOrangeLight = e.keyCode;
+                        break;
+                    case "Purple": 
+                        customInputManager.DropPurpleLight = e.keyCode;
                         break;
                     default: 
                         Debug.Log("no such key in keymappings" + currentKey.name);
