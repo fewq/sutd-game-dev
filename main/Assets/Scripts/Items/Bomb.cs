@@ -23,6 +23,7 @@ public class Bomb : MonoBehaviour
             //Change GameManager to singleton
             //FindObjectOfType<GameManager>().Explode(transform.position);
             GameManager.Instance.Explode(transform.position);
+            
             Destroy(gameObject);
         }
     }
