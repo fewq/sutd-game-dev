@@ -9,7 +9,7 @@ public class KeyBindScript : MonoBehaviour
 {
     public CustomInputManager customInputManager;
 
-    public TextMeshProUGUI up, left, down, right, pickup, inventory, dropBomb, dropCaoh, restart,droptorchblue, droptorchred, droptorchorange, droptorchpurple, droptorchyellow;
+    public TextMeshProUGUI up, left, down, right, pickup, inventory, dropBomb, dropCaoh, restart, droptorchblue, droptorchred, droptorchorange, droptorchpurple, droptorchyellow;
     private GameObject currentKey;
 
     void Start()
@@ -27,19 +27,24 @@ public class KeyBindScript : MonoBehaviour
         dropBomb.SetText(customInputManager.DropBomb.ToString());
         dropCaoh.SetText(customInputManager.DropCalciumHydroxide.ToString());
         restart.SetText(customInputManager.Restart.ToString());
-        if(customInputManager.DropBlueLight.ToString() == "Alpha1"){
+        if (customInputManager.DropBlueLight.ToString() == "Alpha1")
+        {
             droptorchblue.SetText("1");
         }
-        if(customInputManager.DropOrangeLight.ToString() == "Alpha2"){
+        if (customInputManager.DropOrangeLight.ToString() == "Alpha2")
+        {
             droptorchblue.SetText("2");
         }
-        if(customInputManager.DropPurpleLight.ToString() == "Alpha3"){
+        if (customInputManager.DropPurpleLight.ToString() == "Alpha3")
+        {
             droptorchblue.SetText("3");
         }
-        if(customInputManager.DropRedLight.ToString() == "Alpha4"){
+        if (customInputManager.DropRedLight.ToString() == "Alpha4")
+        {
             droptorchblue.SetText("4");
         }
-        if(customInputManager.DropYellowLight.ToString() == "Alpha5"){
+        if (customInputManager.DropYellowLight.ToString() == "Alpha5")
+        {
             droptorchblue.SetText("5");
         }
     }
@@ -55,49 +60,63 @@ public class KeyBindScript : MonoBehaviour
                 Debug.Log(currentKey.name);
                 switch (currentKey.name)
                 {
-                    case "Up": 
+                    case "Up":
                         customInputManager.Up = e.keyCode;
+                        customInputManager.keyMappings["Up"] = e.keyCode;
                         break;
-                    case "Down": 
+                    case "Down":
                         customInputManager.Down = e.keyCode;
+                        customInputManager.keyMappings["Down"] = e.keyCode;
                         break;
-                    case "Left": 
+                    case "Left":
                         customInputManager.Left = e.keyCode;
+                        customInputManager.keyMappings["Left"] = e.keyCode;
                         break;
-                    case "Right": 
+                    case "Right":
                         customInputManager.Right = e.keyCode;
+                        customInputManager.keyMappings["Right"] = e.keyCode;
                         break;
-                    case "PickUp": 
+                    case "PickUp":
                         customInputManager.PickUp = e.keyCode;
+                        customInputManager.keyMappings["PickUp"] = e.keyCode;
                         break;
-                    case "Inventory": 
+                    case "Inventory":
                         customInputManager.Inventory = e.keyCode;
+                        customInputManager.keyMappings["Inventory"] = e.keyCode;
                         break;
-                    case "DropBomb": 
+                    case "DropBomb":
                         customInputManager.DropBomb = e.keyCode;
+                        customInputManager.keyMappings["DropBomb"] = e.keyCode;
                         break;
-                    case "DropCalciumHydroxide": 
+                    case "DropCalciumHydroxide":
                         customInputManager.DropCalciumHydroxide = e.keyCode;
+                        customInputManager.keyMappings["DropCalciumHydroxide"] = e.keyCode;
                         break;
-                    case "Restart": 
+                    case "Restart":
                         customInputManager.Restart = e.keyCode;
+                        customInputManager.keyMappings["Restart"] = e.keyCode;
                         break;
-                    case "Blue": 
+                    case "Blue":
                         customInputManager.DropBlueLight = e.keyCode;
+                        customInputManager.keyMappings["DropBlueLight"] = e.keyCode;
                         break;
-                    case "Yellow": 
+                    case "Yellow":
                         customInputManager.DropYellowLight = e.keyCode;
+                        customInputManager.keyMappings["DropYellowLight"] = e.keyCode;
                         break;
-                    case "Red": 
+                    case "Red":
                         customInputManager.DropRedLight = e.keyCode;
+                        customInputManager.keyMappings["DropRedLight"] = e.keyCode;
                         break;
-                    case "Orange": 
+                    case "Orange":
                         customInputManager.DropOrangeLight = e.keyCode;
+                        customInputManager.keyMappings["DropOrangeLight"] = e.keyCode;
                         break;
-                    case "Purple": 
+                    case "Purple":
                         customInputManager.DropPurpleLight = e.keyCode;
+                        customInputManager.keyMappings["DropPurpleLight"] = e.keyCode;
                         break;
-                    default: 
+                    default:
                         Debug.Log("no such key in keymappings" + currentKey.name);
                         break;
                 }
