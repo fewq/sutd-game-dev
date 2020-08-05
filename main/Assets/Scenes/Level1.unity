@@ -8088,11 +8088,11 @@ MonoBehaviour:
   dropBomb: {fileID: 482747401}
   dropCaoh: {fileID: 459354510}
   restart: {fileID: 681916689}
-  droptorchblue: {fileID: 0}
-  droptorchred: {fileID: 0}
-  droptorchorange: {fileID: 0}
-  droptorchpurple: {fileID: 0}
-  droptorchyellow: {fileID: 0}
+  droptorchblue: {fileID: 1462477835}
+  droptorchred: {fileID: 1410162978}
+  droptorchorange: {fileID: 1403119717}
+  droptorchpurple: {fileID: 1930905580}
+  droptorchyellow: {fileID: 1829288609}
 --- !u!114 &1437166440
 MonoBehaviour:
   m_ObjectHideFlags: 0
