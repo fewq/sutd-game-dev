@@ -76,8 +76,10 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue(){
         isOpen = false;
         Debug.Log("End of conversation");
-        tutorial.SetActive(true);
         Hide();
+        if(tutorial != null){
+            tutorial.SetActive(true);
+        }
 
     }
 
