@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject bombPrefab;
     private GameObject player;
     public GameObject explosionPrefab;
+    public GameObject neutralizaitonPrefab;
     public GameObject CaOH2Prefab;
     public GameObject redLightPrefab;
     public GameObject yellowLightPrefab;
@@ -34,6 +35,9 @@ public class GameManager : Singleton<GameManager>
     public AudioClip collectItemSFX;
     public AudioClip neutralizeSFX;
     public AudioClip placeItemSFX;
+    public AudioClip toggleInvSFX;
+    public AudioClip successCraftSFX;
+    public AudioClip failCraftSFX;
 
     public AudioClip playerScreamSFX;
     public AudioClip goblinLaughSFX;
@@ -72,30 +76,30 @@ public class GameManager : Singleton<GameManager>
         //        SetCAOH2();
         //    }
         //}
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RestartGame();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetTorch("Red");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetTorch("Yellow");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SetTorch("Purple");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SetTorch("Blue");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            SetTorch("Orange");
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    RestartGame();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    SetTorch("Red");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    SetTorch("Yellow");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    SetTorch("Purple");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    SetTorch("Blue");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //{
+        //    SetTorch("Orange");
+        //}
         if (customInputManager.GetKeyDown("Restart"))
         {
             RestartGame();
@@ -156,6 +160,7 @@ public class GameManager : Singleton<GameManager>
                 if (objectCollider.tag == "Player")
                 {
                     Debug.Log("DestroyPlayer");
+                    PlaySFX("playerscream");
                     //Run game over script then run below( or maybe we will just reset the level. we'll see);
                     Destroy(objectCollider.gameObject);
                     //Might want to add dying sound
@@ -180,7 +185,9 @@ public class GameManager : Singleton<GameManager>
                 tilemap_acidriver.SetTile(cell, null);
                 PlaySFX("neutralize");
             }
-        }else if(action == "playercheck")
+            Instantiate(neutralizaitonPrefab, pos, Quaternion.identity, grid.transform);
+        }
+        else if(action == "playercheck")
         {
             //if detect boulder, return false
             //If detect player return true, else return false
@@ -298,6 +305,14 @@ public class GameManager : Singleton<GameManager>
         }else if(sfx == "goblinchase")
         {
             sfxPlayer.PlayOneShot(goblinChaseSFX);
+        }else if(sfx == "toggleinv")
+        {
+            sfxPlayer.PlayOneShot(toggleInvSFX);
+        }else if(sfx == "successcraft"){
+            sfxPlayer.PlayOneShot(successCraftSFX);
+        }else if(sfx == "failcraft")
+        {
+            sfxPlayer.PlayOneShot(failCraftSFX);
         }
         else
         {

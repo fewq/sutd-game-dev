@@ -9,7 +9,7 @@ public class KeyBindScript : MonoBehaviour
 {
     public CustomInputManager customInputManager;
 
-    public TextMeshProUGUI up, left, down, right, pickup, inventory, dropBomb, dropCaoh, restart;
+    public TextMeshProUGUI up, left, down, right, pickup, inventory, dropBomb, dropCaoh, restart,droptorchblue, droptorchred, droptorchorange, droptorchpurple, droptorchyellow;
     private GameObject currentKey;
 
     void Start()
@@ -27,6 +27,21 @@ public class KeyBindScript : MonoBehaviour
         dropBomb.SetText(customInputManager.DropBomb.ToString());
         dropCaoh.SetText(customInputManager.DropCalciumHydroxide.ToString());
         restart.SetText(customInputManager.Restart.ToString());
+        if(customInputManager.DropBlueLight.ToString() == "Alpha1"){
+            droptorchblue.SetText("1");
+        }
+        if(customInputManager.DropOrangeLight.ToString() == "Alpha2"){
+            droptorchblue.SetText("2");
+        }
+        if(customInputManager.DropPurpleLight.ToString() == "Alpha3"){
+            droptorchblue.SetText("3");
+        }
+        if(customInputManager.DropRedLight.ToString() == "Alpha4"){
+            droptorchblue.SetText("4");
+        }
+        if(customInputManager.DropYellowLight.ToString() == "Alpha5"){
+            droptorchblue.SetText("5");
+        }
     }
 
     void OnGUI()
@@ -66,6 +81,21 @@ public class KeyBindScript : MonoBehaviour
                         break;
                     case "Restart": 
                         customInputManager.Restart = e.keyCode;
+                        break;
+                    case "Blue": 
+                        customInputManager.DropBlueLight = e.keyCode;
+                        break;
+                    case "Yellow": 
+                        customInputManager.DropYellowLight = e.keyCode;
+                        break;
+                    case "Red": 
+                        customInputManager.DropRedLight = e.keyCode;
+                        break;
+                    case "Orange": 
+                        customInputManager.DropOrangeLight = e.keyCode;
+                        break;
+                    case "Purple": 
+                        customInputManager.DropPurpleLight = e.keyCode;
                         break;
                     default: 
                         Debug.Log("no such key in keymappings" + currentKey.name);

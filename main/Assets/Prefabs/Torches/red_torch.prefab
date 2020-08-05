@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6039809888600573632}
   m_Layer: 0
   m_Name: red_torch
-  m_TagString: RedFlame
+  m_TagString: RedLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

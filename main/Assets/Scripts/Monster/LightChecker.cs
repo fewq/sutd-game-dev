@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlameChecker : MonoBehaviour
+public class LightChecker : MonoBehaviour
 {
     public enum favColors
     {
@@ -19,7 +19,7 @@ public class FlameChecker : MonoBehaviour
 
     void Start()
     {
-        flameTag = favColor+"Flame";
+        flameTag = favColor+"Light";
         Debug.Log(flameTag);
         monsterController = GetComponentInParent<MonsterController>();
     }

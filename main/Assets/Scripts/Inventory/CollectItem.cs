@@ -164,6 +164,7 @@ public class CollectItem : MonoBehaviour
         {
             inventoryState = !inventoryState;
             print("InventoryState: " + inventoryState);
+            GameManager.Instance.PlaySFX("toggleinv");
         }
         if (inventoryState)
         {
@@ -265,9 +266,11 @@ public class CollectItem : MonoBehaviour
                 count += 1;
                 itemText.text = inventoryDict[item].ToString();
             }
+            GameManager.Instance.PlaySFX("successcraft");
         }
         else
         {
+            GameManager.Instance.PlaySFX("failcraft");
             throw new CustomException("Invalid Crafting Combination");
         }
     }
@@ -283,6 +286,25 @@ public class CollectItem : MonoBehaviour
             }else if(craftedItem == "CalciumHydroxide")
             {
                 GameManager.Instance.SetCAOH2();
+            }
+            else if (craftedItem == "BlueLight")
+            {
+                GameManager.Instance.SetTorch("Blue");
+            }else if(craftedItem == "OrangeLight")
+            {
+                GameManager.Instance.SetTorch("Orange");
+            }
+            else if (craftedItem == "PurpleLight")
+            {
+                GameManager.Instance.SetTorch("Purple");
+            }
+            else if (craftedItem == "RedLight")
+            {
+                GameManager.Instance.SetTorch("Red");
+            }
+            else if (craftedItem == "YellowLight")
+            {
+                GameManager.Instance.SetTorch("Yellow");
             }
             inventoryDict[craftedItem]--;
             GameObject.FindGameObjectWithTag(craftedItem).GetComponent<Text>().text = inventoryDict[craftedItem].ToString();
@@ -302,11 +324,11 @@ public class CollectItem : MonoBehaviour
         //else if (Input.GetKeyDown(KeyCode.LeftBracket)) { Craft("CalciumHydroxide"); }
         // placing hotkeys
         if (customInputManager.GetKeyDown("DropBomb")) { Place("Bomb"); }
-        else if (Input.GetKeyDown(KeyCode.G)) { Place("BlueLight"); }
-        else if (Input.GetKeyDown(KeyCode.H)) { Place("RedLight"); }
-        else if (Input.GetKeyDown(KeyCode.J)) { Place("OrangeLight"); }
-        else if (Input.GetKeyDown(KeyCode.K)) { Place("PurpleLight"); }
-        else if (Input.GetKeyDown(KeyCode.L)) { Place("YellowLight"); }
+        else if (customInputManager.GetKeyDown("DropBlueLight")) { Place("BlueLight"); }
+        else if (customInputManager.GetKeyDown("DropRedLight")) { Place("RedLight"); }
+        else if (customInputManager.GetKeyDown("DropOrangeLight")) { Place("OrangeLight"); }
+        else if (customInputManager.GetKeyDown("DropPurpleLight")) { Place("PurpleLight"); }
+        else if (customInputManager.GetKeyDown("DropYellowLight")) { Place("YellowLight"); }
         else if (customInputManager.GetKeyDown("DropCalciumHydroxide")) { Place("CalciumHydroxide"); }
     }
 
