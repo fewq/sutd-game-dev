@@ -35,6 +35,12 @@ public class GameManager : Singleton<GameManager>
     public AudioClip neutralizeSFX;
     public AudioClip placeItemSFX;
 
+    public AudioClip playerScreamSFX;
+    public AudioClip goblinLaughSFX;
+    public AudioClip goblinDistractedSFX;
+    public AudioClip goblinAlertedSFX;
+    public AudioClip goblinChaseSFX;
+
     public CustomInputManager customInputManager;
     public Vector3 gridScale;
     private bool isWalking = false;
@@ -277,6 +283,21 @@ public class GameManager : Singleton<GameManager>
         }else if(sfx == "placeitem")
         {
             sfxPlayer.PlayOneShot(placeItemSFX);
+        }else if(sfx == "playerscream")
+        {
+            sfxPlayer.PlayOneShot(playerScreamSFX);
+        }else if(sfx == "goblinlaugh")
+        {
+            sfxPlayer.PlayOneShot(goblinLaughSFX);
+        }else if(sfx == "goblinalerted")
+        {
+            sfxPlayer.PlayOneShot(goblinAlertedSFX);
+        }else if(sfx == "goblindistracted")
+        {
+            sfxPlayer.PlayOneShot(goblinDistractedSFX);
+        }else if(sfx == "goblinchase")
+        {
+            sfxPlayer.PlayOneShot(goblinChaseSFX);
         }
         else
         {

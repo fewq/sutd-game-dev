@@ -40,6 +40,10 @@ public class MonsterController : MonoBehaviour
     private Vector2 sizeOfRaycast;
     public int radius = 5;
     private BoxCollider2D monsterCollider;
+
+    private bool isAlerted = false;
+    private bool hasChased = false;
+    private bool isDistracted = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +66,11 @@ public class MonsterController : MonoBehaviour
         heartExclaimation.SetActive(true);
         flameLocation = flame;
         flameInRange = true;
+        if (isDistracted == false)
+        {
+            GameManager.Instance.PlaySFX("goblindistracted");
+            isDistracted = true;
+        }
         yield return new WaitForSeconds(2);
         returnToSpawn = false;
         Debug.Log("Chase Flame");
@@ -85,6 +94,11 @@ public class MonsterController : MonoBehaviour
         }
         else
         {
+            if (isAlerted == false)
+            {
+                GameManager.Instance.PlaySFX("goblinalerted");
+                isAlerted = true;
+            }
             yield return new WaitForSeconds(3);
             if (flameInRange)
             {
@@ -94,6 +108,7 @@ public class MonsterController : MonoBehaviour
             {
                 if(GameManager.Instance.LookForPlayer(gameObject.transform) == true)
                 {
+
                     returnToSpawn = false;
                     Debug.Log("Chase Player");
                     animator.SetFloat("Horizontal", direction.x);
@@ -104,9 +119,15 @@ public class MonsterController : MonoBehaviour
                     //    Debug.Log("PATH IS NULL");
                     //    yield break;
                     //}
+                    if(hasChased == false)
+                    {
+                        GameManager.Instance.PlaySFX("goblinchase");
+                        hasChased = true;
+                    }
                     playerInRange = true;
                     playerLocation = player;
                     target = player;
+
                     astarAI.CancelLastPath();
                     if (!astarAI.MoveToTarget(player, "player"))
                     {
@@ -124,6 +145,7 @@ public class MonsterController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            GameManager.Instance.PlaySFX("goblinlaugh");
             Destroy(collision.gameObject);
             ReturnToSpawnPoint();
             //ChasePlayer(collision.gameObject.transform);
@@ -148,6 +170,9 @@ public class MonsterController : MonoBehaviour
     {
         Debug.Log("Returning to spawn point");
         playerInRange = false;
+        isAlerted = false;
+        isDistracted = false;
+        hasChased = false;
         // move to spawn point
         astarAI.MoveToTarget(spawnPoint,"spawnpoint");
         animator.SetFloat("Horizontal", direction.x);
@@ -169,9 +194,5 @@ public class MonsterController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
-    }
-    private void OnDestroy()
-    {
-        Destroy(spawnPoint.gameObject);
     }
 }

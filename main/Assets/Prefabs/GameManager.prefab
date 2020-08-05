@@ -73,10 +73,15 @@ MonoBehaviour:
   sfxPlayer: {fileID: 8309796803600803840}
   acidRiverSFX: {fileID: 8300000, guid: 87bc52dc699f7d74d8246f1145176a91, type: 3}
   boulderBreakSFX: {fileID: 8300000, guid: f84dfa2436284fd44a86d7d9099e884a, type: 3}
-  characterWalkSFX: {fileID: 8300000, guid: 67396911db4769f49ac3184a6fd62de4, type: 3}
   collectItemSFX: {fileID: 8300000, guid: 84720a40ad45c3849a3b73ae17f1115d, type: 3}
   neutralizeSFX: {fileID: 8300000, guid: ae95bf8628e4d3c4fbcc3d94aec94b86, type: 3}
   placeItemSFX: {fileID: 8300000, guid: 33d9ad6a3c521b642aaef2a861acf686, type: 3}
+  playerScreamSFX: {fileID: 8300000, guid: 60d3bfa5e6a188f44871d8d383821f09, type: 3}
+  goblinLaughSFX: {fileID: 8300000, guid: 04f50c8ff49179448af2ed53165dd0c9, type: 3}
+  goblinDistractedSFX: {fileID: 8300000, guid: 01153626b95e59b4ab2d7fb4dae3d5ea, type: 3}
+  goblinAlertedSFX: {fileID: 8300000, guid: 265354763a7133d4fa08806d1a726f54, type: 3}
+  goblinChaseSFX: {fileID: 8300000, guid: a911e4e2457620e4b8c25bd71c3e64d5, type: 3}
+  customInputManager: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b, type: 2}
   gridScale: {x: 0, y: 0, z: 0}
 --- !u!82 &7348897669992943158
 AudioSource:

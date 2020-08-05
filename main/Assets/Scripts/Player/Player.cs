@@ -128,6 +128,10 @@ public class Player : Movement
 
         }
     }
+    private void OnDestroy()
+    {
+        GameManager.Instance.PlaySFX("playerscream");
+    }
 
 
 }

@@ -560,6 +560,12 @@ PrefabInstance:
       propertyPath: inventoryCanvas
       value: 
       objectReference: {fileID: 1478324214}
+    - target: {fileID: 6628361843739180480, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
+        type: 3}
+      propertyPath: customInputManager
+      value: 
+      objectReference: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1dc5139d3d2cdf42a0f0df174c98c3d, type: 3}
 --- !u!4 &123318192 stripped
@@ -11726,6 +11732,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5134028987515276099, guid: ab58904664cb6f64199a074463d6d2cd,
         type: 3}
+    - target: {fileID: 580446950353678040, guid: 8e53ab3f5f6686348abab44e4400b071,
+        type: 3}
+      propertyPath: customInputManager
+      value: 
+      objectReference: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b,
+        type: 2}
     - target: {fileID: 580446950353678041, guid: 8e53ab3f5f6686348abab44e4400b071,
         type: 3}
       propertyPath: m_LocalPosition.x
