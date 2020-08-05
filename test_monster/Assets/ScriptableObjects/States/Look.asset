@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b122725e68a54f4ab757ebf1ffecda7, type: 3}
+  m_Name: Look
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: 061d4eeb864e13f428a326a52c8603ef, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: ef14448ceec8a8e468b1925b8bb85824, type: 2}
+    trueState: {fileID: 11400000, guid: 994ff01e50f40a748b5c658e7f1aa4f8, type: 2}
+    falseState: {fileID: 11400000, guid: 97ab876966b0d334cb052d6d774540ab, type: 2}
+  - decision: {fileID: 11400000, guid: c79e57bd2eac15941a6c624df4e17cea, type: 2}
+    trueState: {fileID: 11400000, guid: 228972bec4726e04cbbed7054183bb9f, type: 2}
+    falseState: {fileID: 11400000, guid: 97ab876966b0d334cb052d6d774540ab, type: 2}
+  sceneGizmoColor: {r: 0.9896414, g: 1, b: 0.07058824, a: 1}

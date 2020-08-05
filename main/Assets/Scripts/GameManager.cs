@@ -18,7 +18,13 @@ public class GameManager : Singleton<GameManager>
     public GameObject bombPrefab;
     private GameObject player;
     public GameObject explosionPrefab;
+    public GameObject neutralizaitonPrefab;
     public GameObject CaOH2Prefab;
+    public GameObject redLightPrefab;
+    public GameObject yellowLightPrefab;
+    public GameObject purpleLightPrefab;
+    public GameObject blueLightPrefab;
+    public GameObject orangeLightPrefab;
     private Vector3 playerOriginalPosition;
 
     public AudioSource bgmPlayer;
@@ -29,6 +35,15 @@ public class GameManager : Singleton<GameManager>
     public AudioClip collectItemSFX;
     public AudioClip neutralizeSFX;
     public AudioClip placeItemSFX;
+    public AudioClip toggleInvSFX;
+    public AudioClip successCraftSFX;
+    public AudioClip failCraftSFX;
+
+    public AudioClip playerScreamSFX;
+    public AudioClip goblinLaughSFX;
+    public AudioClip goblinDistractedSFX;
+    public AudioClip goblinAlertedSFX;
+    public AudioClip goblinChaseSFX;
 
     public CustomInputManager customInputManager;
     public Vector3 gridScale;
@@ -61,6 +76,30 @@ public class GameManager : Singleton<GameManager>
         //        SetCAOH2();
         //    }
         //}
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    RestartGame();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    SetTorch("Red");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    SetTorch("Yellow");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    SetTorch("Purple");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    SetTorch("Blue");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //{
+        //    SetTorch("Orange");
+        //}
         if (customInputManager.GetKeyDown("Restart"))
         {
             RestartGame();
@@ -75,6 +114,7 @@ public class GameManager : Singleton<GameManager>
         Vector3 cellCenterPos = tilemap_boulder.GetCellCenterWorld(cell);
         Instantiate(bombPrefab, cellCenterPos, Quaternion.identity);
     }
+
     public void Explode(Vector2 worldPos)
     {
         Vector3Int originCell = tilemap_boulder.WorldToCell(worldPos);
@@ -120,6 +160,7 @@ public class GameManager : Singleton<GameManager>
                 if (objectCollider.tag == "Player")
                 {
                     Debug.Log("DestroyPlayer");
+                    PlaySFX("playerscream");
                     //Run game over script then run below( or maybe we will just reset the level. we'll see);
                     Destroy(objectCollider.gameObject);
                     //Might want to add dying sound
@@ -144,7 +185,9 @@ public class GameManager : Singleton<GameManager>
                 tilemap_acidriver.SetTile(cell, null);
                 PlaySFX("neutralize");
             }
-        }else if(action == "playercheck")
+            Instantiate(neutralizaitonPrefab, pos, Quaternion.identity, grid.transform);
+        }
+        else if(action == "playercheck")
         {
             //if detect boulder, return false
             //If detect player return true, else return false
@@ -186,6 +229,39 @@ public class GameManager : Singleton<GameManager>
 
     }
 
+    public void SetTorch(string color)
+    {
+        PlaySFX("placeitem");
+        Vector3 worldPos = player.transform.position;
+        Vector3Int cell = tilemap_boulder.WorldToCell(worldPos);
+        Vector3 cellCenterPos = tilemap_boulder.GetCellCenterWorld(cell);
+        if (color == "Red")
+        {
+            Instantiate(redLightPrefab, cellCenterPos, Quaternion.identity);
+        }
+        else if(color == "Yellow")
+        {
+            Instantiate(yellowLightPrefab, cellCenterPos, Quaternion.identity);
+        }
+        else if (color == "Purple")
+        {
+            Instantiate(purpleLightPrefab, cellCenterPos, Quaternion.identity);
+        }
+        else if (color == "Blue")
+        {
+            Instantiate(blueLightPrefab, cellCenterPos, Quaternion.identity);
+        }
+        else if (color == "Orange")
+        {
+            Instantiate(orangeLightPrefab, cellCenterPos, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("Error in color: " + color);
+        }
+        
+    }
+
     public bool CheckForPlayer(Vector2 worldPos)
     {
         //true for player there, false for player not there
@@ -214,11 +290,98 @@ public class GameManager : Singleton<GameManager>
         }else if(sfx == "placeitem")
         {
             sfxPlayer.PlayOneShot(placeItemSFX);
+        }else if(sfx == "playerscream")
+        {
+            sfxPlayer.PlayOneShot(playerScreamSFX);
+        }else if(sfx == "goblinlaugh")
+        {
+            sfxPlayer.PlayOneShot(goblinLaughSFX);
+        }else if(sfx == "goblinalerted")
+        {
+            sfxPlayer.PlayOneShot(goblinAlertedSFX);
+        }else if(sfx == "goblindistracted")
+        {
+            sfxPlayer.PlayOneShot(goblinDistractedSFX);
+        }else if(sfx == "goblinchase")
+        {
+            sfxPlayer.PlayOneShot(goblinChaseSFX);
+        }else if(sfx == "toggleinv")
+        {
+            sfxPlayer.PlayOneShot(toggleInvSFX);
+        }else if(sfx == "successcraft"){
+            sfxPlayer.PlayOneShot(successCraftSFX);
+        }else if(sfx == "failcraft")
+        {
+            sfxPlayer.PlayOneShot(failCraftSFX);
         }
         else
         {
             Debug.Log("SFX asked to played does not exist");
             Debug.Log(sfx);
         }
+    }
+
+    public bool LookForPlayer(Transform monster)
+    {
+        Debug.Log("Running LookForPlayer");
+        RaycastHit2D[] hits;
+        if (player == null)
+        {
+            return false;
+        }
+        else
+        {
+            hits = Physics2D.LinecastAll(monster.position, player.transform.position);
+            bool playerFound = false;
+            foreach (RaycastHit2D hit in hits)
+            {
+                if (hit.collider.CompareTag("Boulder"))
+                {
+                    playerFound = false;
+                    break;
+                }
+                if (hit.collider.CompareTag("Player"))
+                {
+                    //monster.position = player.transform.position;
+                    playerFound = true;
+                    break;
+                }
+
+            }
+            return playerFound;
+        }
+   
+
+    }
+
+    public Transform ReturnPlayerPosition()
+    {
+        return player.transform;
+    }
+
+
+    public bool LookForFlame(Transform monster)
+    {
+        Debug.Log("Running LookForPlayer");
+        RaycastHit2D[] hits;
+        hits = Physics2D.LinecastAll(monster.position, player.transform.position);
+        bool flameFound = false;
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.CompareTag("Boulder"))
+            {
+                flameFound = false;
+                break;
+            }
+            if (hit.collider.CompareTag("Player"))
+            {
+                //monster.position = player.transform.position;
+                flameFound = true;
+                break;
+            }
+
+        }
+        return flameFound;
+
     }
 }
