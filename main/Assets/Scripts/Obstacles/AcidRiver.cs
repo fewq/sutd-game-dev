@@ -26,6 +26,8 @@ public class AcidRiver : MonoBehaviour
             //Game over sequence here and destroy player object
             //collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
+            
+            GameObject.Find("GameManager").GetComponent<GameManager>().RestartGame();
 
             
         }

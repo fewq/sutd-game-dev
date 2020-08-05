@@ -20,6 +20,9 @@ public class Explosion : MonoBehaviour
         if (countdown <= 0f)
         {
             Destroy(gameObject);
+            if(gameObject.tag == "Player"){
+                GameObject.Find("GameManager").GetComponent<GameManager>().RestartGame();
+            }
         }
     }
 }
