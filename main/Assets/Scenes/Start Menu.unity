@@ -171,14 +171,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15294118, g: 0.13333334, b: 0.16078432, a: 0.392}
+  m_Color: {r: 0.14117648, g: 0.08235294, b: 0.16862746, a: 0.7176471}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2846,7 +2846,7 @@ VideoPlayer:
   m_GameObject: {fileID: 921177657}
   m_Enabled: 1
   m_VideoClip: {fileID: 32900000, guid: 72d442d602bdddb4389cc21938e07cad, type: 3}
-  m_TargetCameraAlpha: 0.72
+  m_TargetCameraAlpha: 0.321
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 868215105}
   m_TargetTexture: {fileID: 0}
@@ -2868,7 +2868,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
-  m_Looping: 0
+  m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
 --- !u!1 &1059814019
@@ -4168,7 +4168,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 773573897}
   m_HandleRect: {fileID: 1583303384}
   m_Direction: 0
-  m_MinValue: -50
+  m_MinValue: -40
   m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 0
