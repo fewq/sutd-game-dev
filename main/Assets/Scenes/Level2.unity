@@ -121,18 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &384389 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2864900382651939469, guid: 8901296a627219a4eb73afb7da8c2209,
-    type: 3}
-  m_PrefabInstance: {fileID: 2047491471}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3252919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4888,6 +4876,11 @@ MonoBehaviour:
   dropBomb: {fileID: 77139560}
   dropCaoh: {fileID: 184146936}
   restart: {fileID: 1472775755}
+  droptorchblue: {fileID: 0}
+  droptorchred: {fileID: 0}
+  droptorchorange: {fileID: 0}
+  droptorchpurple: {fileID: 0}
+  droptorchyellow: {fileID: 0}
 --- !u!114 &890468028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5072,7 +5065,7 @@ GameObject:
   - component: {fileID: 1017240918}
   m_Layer: 8
   m_Name: Boulders
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9526,6 +9519,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8432629445508890398, guid: 13c70a773d10d784a9610f2f3311070d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c70a773d10d784a9610f2f3311070d, type: 3}
 --- !u!1 &2000784434
@@ -9616,7 +9614,7 @@ GameObject:
   - component: {fileID: 2011171938}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10721,12 +10719,12 @@ PrefabInstance:
     - target: {fileID: 3014202340340153318, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.46
+      value: 8.476
       objectReference: {fileID: 0}
     - target: {fileID: 3014202340340153318, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.61
+      value: 4.481
       objectReference: {fileID: 0}
     - target: {fileID: 3014202340340153318, guid: e1dc5139d3d2cdf42a0f0df174c98c3d,
         type: 3}

@@ -35,7 +35,7 @@ public abstract class Movement : MonoBehaviour
         boxCollider.enabled = false; //set current object's collider to be false so that it doesnt intefere with line
 
 
-        hit = Physics2D.Linecast(transform.position, transform.position + new Vector3(x, y), layerMask);
+        hit = Physics2D.Linecast(transform.position, transform.position + new Vector3(x, y));
 
         boxCollider.enabled = true;
 
@@ -47,6 +47,7 @@ public abstract class Movement : MonoBehaviour
             // new movement method
             if (coroutineMoveRunning == false)
             {
+                if (hit.transform == null) Debug.Log("Player moving into null ");
                 if (hit.transform != null) Debug.Log("Player moving into gameobject with tag of " + hit.transform.tag);
                 StartCoroutine(coroutineMove(x, y));
             }
