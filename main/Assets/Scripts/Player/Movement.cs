@@ -70,7 +70,6 @@ public abstract class Movement : MonoBehaviour
         coroutineMoveRunning = false;
         // Debug.Log("Finished coroutineMove");
         //Debug.Log("Cant move");
-        return false;    }
 
 }
 
