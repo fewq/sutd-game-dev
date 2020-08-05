@@ -46,7 +46,7 @@ public class Exit : MonoBehaviour
             if (currentSceneName == "Level5")
             {
                 Debug.Log("GAME COMPLETEEEEEEEEEEEE");
-                //SceneManager.LoadScene("Level3");
+                SceneManager.LoadScene("Cutscene_Outro");
             }
 
         }
