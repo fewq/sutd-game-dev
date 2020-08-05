@@ -11,6 +11,11 @@ public class CustomInputManager : ScriptableObject
     public KeyCode Inventory;
     public KeyCode DropBomb;
     public KeyCode DropCalciumHydroxide;
+    public KeyCode DropBlueLight;
+    public KeyCode DropOrangeLight;
+    public KeyCode DropPurpleLight;
+    public KeyCode DropRedLight;
+    public KeyCode DropYellowLight;
     public KeyCode Restart;
     public KeyCode Up;
     public KeyCode Left;
@@ -26,11 +31,17 @@ public class CustomInputManager : ScriptableObject
             {"Inventory", Inventory},
             {"DropBomb", DropBomb},
             {"DropCalciumHydroxide", DropCalciumHydroxide},
+            {"DropBlueLight", DropBlueLight},
+            {"DropOrangeLight", DropOrangeLight},
+            {"DropPurpleLight", DropPurpleLight},
+            {"DropRedLight", DropRedLight},
+            {"DropYellowLight", DropYellowLight},
             {"Restart", Restart},
             {"Up", Up},
             {"Left", Left},
             {"Down", Down},
             {"Right", Right}
+
         };
     }
 

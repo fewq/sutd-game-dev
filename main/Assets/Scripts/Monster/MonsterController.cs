@@ -145,6 +145,7 @@ public class MonsterController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            GameManager.Instance.PlaySFX("playerscream");
             GameManager.Instance.PlaySFX("goblinlaugh");
             Destroy(collision.gameObject);
             ReturnToSpawnPoint();

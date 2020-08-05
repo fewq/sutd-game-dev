@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2216706363203355746}
   m_Layer: 0
   m_Name: orange_torch
-  m_TagString: OrangeFlame
+  m_TagString: OrangeLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

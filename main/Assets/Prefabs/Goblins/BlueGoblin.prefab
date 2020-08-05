@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7594031343038696747}
   - component: {fileID: 8917742356412001100}
   m_Layer: 0
-  m_Name: FlameChecker
+  m_Name: LightChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 5291491779422067202}
   - component: {fileID: 6748883296415702159}
   m_Layer: 0
-  m_Name: FlameSpotted
+  m_Name: LightSpotted
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
