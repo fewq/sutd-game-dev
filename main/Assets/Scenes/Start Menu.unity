@@ -549,7 +549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drop Blue Light
+  m_text: Drop blue light
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e, type: 2}
   m_sharedMaterial: {fileID: 3162503675181229455, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e,
@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drop Purple Light
+  m_text: Drop purple light
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e, type: 2}
   m_sharedMaterial: {fileID: 3162503675181229455, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e,
@@ -1899,7 +1899,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drop Yellow Light
+  m_text: Drop yellow light
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e, type: 2}
   m_sharedMaterial: {fileID: 3162503675181229455, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e,
@@ -2863,7 +2863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drop Red Light
+  m_text: Drop red light
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e, type: 2}
   m_sharedMaterial: {fileID: 3162503675181229455, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e,
@@ -6542,7 +6542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drop Orange Light
+  m_text: Drop orange light
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e, type: 2}
   m_sharedMaterial: {fileID: 3162503675181229455, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e,
