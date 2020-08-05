@@ -27,11 +27,21 @@ public class KeyBindScript : MonoBehaviour
         dropBomb.SetText(customInputManager.DropBomb.ToString());
         dropCaoh.SetText(customInputManager.DropCalciumHydroxide.ToString());
         restart.SetText(customInputManager.Restart.ToString());
-        droptorchblue.SetText(customInputManager.DropBlueLight.ToString());
-        droptorchred.SetText(customInputManager.DropRedLight.ToString());
-        droptorchorange.SetText(customInputManager.DropOrangeLight.ToString());
-        droptorchpurple.SetText(customInputManager.DropPurpleLight.ToString());
-        droptorchyellow.SetText(customInputManager.DropYellowLight.ToString());
+        if(customInputManager.DropBlueLight.ToString() == "Alpha1"){
+            droptorchblue.SetText("1");
+        }
+        if(customInputManager.DropOrangeLight.ToString() == "Alpha2"){
+            droptorchblue.SetText("2");
+        }
+        if(customInputManager.DropPurpleLight.ToString() == "Alpha3"){
+            droptorchblue.SetText("3");
+        }
+        if(customInputManager.DropRedLight.ToString() == "Alpha4"){
+            droptorchblue.SetText("4");
+        }
+        if(customInputManager.DropYellowLight.ToString() == "Alpha5"){
+            droptorchblue.SetText("5");
+        }
     }
 
     void OnGUI()
