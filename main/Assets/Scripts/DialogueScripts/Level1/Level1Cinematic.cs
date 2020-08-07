@@ -13,8 +13,8 @@ public class Level1Cinematic : MonoBehaviour
         {
             this.GetComponents<DialogueTrigger>()[0].TriggerDialogue(); //Intro Dialogue
             dialogueState.SpokeOnLevel1 = true;
+            CaoNotEncounteredYet = true;
         }
-        CaoNotEncounteredYet = true;
     }
 
     public void onCaOFound()
