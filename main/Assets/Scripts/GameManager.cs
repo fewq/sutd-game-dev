@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject grid;
     public Tilemap tilemap_boulder;
     public Tilemap tilemap_acidriver;
-    public Tile acidTile;
+    public AnimatedTile acidTile;
     public Tile boulderTile;
     public Tile caesiumTile;
     public Tile CaOTile;
@@ -179,7 +179,9 @@ public class GameManager : Singleton<GameManager>
         }
         else if(action == "neutralize")
         {
-            Tile tile = tilemap_acidriver.GetTile<Tile>(cell);
+            AnimatedTile tile = tilemap_acidriver.GetTile<AnimatedTile>(cell);
+            Debug.Log("NEUTRALIZING");
+            Debug.Log(tile);
             if (tile == acidTile)
             {
                 tilemap_acidriver.SetTile(cell, null);
