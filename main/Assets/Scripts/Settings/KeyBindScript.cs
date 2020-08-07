@@ -18,20 +18,20 @@ public class KeyBindScript : MonoBehaviour
     }
     private void DisplayControlTexts()
     {
-        up.SetText(customInputManager.Up.ToString());
-        down.SetText(customInputManager.Down.ToString());
-        left.SetText(customInputManager.Left.ToString());
-        right.SetText(customInputManager.Right.ToString());
-        pickup.SetText(customInputManager.PickUp.ToString());
-        inventory.SetText(customInputManager.Inventory.ToString());
-        dropBomb.SetText(customInputManager.DropBomb.ToString());
-        dropCaoh.SetText(customInputManager.DropCalciumHydroxide.ToString());
-        restart.SetText(customInputManager.Restart.ToString());
-        droptorchblue.SetText(customInputManager.DropBlueLight.ToString());
-        droptorchorange.SetText(customInputManager.DropOrangeLight.ToString());
-        droptorchpurple.SetText(customInputManager.DropPurpleLight.ToString());
-        droptorchred.SetText(customInputManager.DropRedLight.ToString());
-        droptorchyellow.SetText(customInputManager.DropYellowLight.ToString());
+        up.SetText(customInputManager.GetString("Up"));
+        down.SetText(customInputManager.GetString("Down"));
+        left.SetText(customInputManager.GetString("Left"));
+        right.SetText(customInputManager.GetString("Right"));
+        pickup.SetText(customInputManager.GetString("PickUp"));
+        inventory.SetText(customInputManager.GetString("Inventory"));
+        dropBomb.SetText(customInputManager.GetString("DropBomb"));
+        dropCaoh.SetText(customInputManager.GetString("DropCalciumHydroxide"));
+        restart.SetText(customInputManager.GetString("Restart"));
+        droptorchblue.SetText(customInputManager.GetString("DropBlueLight"));
+        droptorchorange.SetText(customInputManager.GetString("DropOrangeLight"));
+        droptorchpurple.SetText(customInputManager.GetString("DropPurpleLight"));
+        droptorchred.SetText(customInputManager.GetString("DropRedLight"));
+        droptorchyellow.SetText(customInputManager.GetString("DropYellowLight"));
     }
 
     void OnGUI()
@@ -41,7 +41,7 @@ public class KeyBindScript : MonoBehaviour
             Event e = Event.current;
             if (e.isKey)
             {
-                currentKey.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = e.keyCode.ToString();
+                currentKey.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = customInputManager.GetStringFromKeycode(e.keyCode);
                 Debug.Log(currentKey.name);
                 switch (currentKey.name)
                 {
