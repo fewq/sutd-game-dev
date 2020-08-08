@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Level2Dialogues : MonoBehaviour
 {
+    public DialogueState dialogueState;
+
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponents<DialogueTrigger>()[0].TriggerDialogue(); //Intro Dialogue
+        if (!dialogueState.SpokeOnLevel2)
+        {
+            this.GetComponents<DialogueTrigger>()[0].TriggerDialogue(); //Intro Dialogue
+            dialogueState.SpokeOnLevel2 = true;
+        }
     }
-
 }

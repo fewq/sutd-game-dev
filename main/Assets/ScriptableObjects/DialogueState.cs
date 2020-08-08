@@ -6,9 +6,15 @@ using UnityEngine;
 public class DialogueState : ScriptableObject
 {
     public bool SpokeOnLevel1;
+    public bool SpokeOnLevel2;
 
-    public void Reset()
+    public void ResetLevel1()
     {
         SpokeOnLevel1 = false;
+    }
+
+    public void ResetLevel2()
+    {
+        SpokeOnLevel2 = false;
     }
 }
