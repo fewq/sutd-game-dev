@@ -204,7 +204,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7107439, y: 0.8760332}
+  m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0.02
 --- !u!82 &3092286359615206453
 AudioSource:
