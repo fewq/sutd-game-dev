@@ -5,11 +5,14 @@ using UnityEngine;
 public class AcidRiver : MonoBehaviour
 {
 
-    bool playerDeathCoroutineCheck;
+    private bool playerDeathCoroutineCheck;
+    public Canvas deathCanvas;
     // Start is called before the first frame update
     void Start()
     {
         playerDeathCoroutineCheck = false;
+        deathCanvas = GameObject.Find("DeathCanvas").GetComponent<Canvas>();
+        deathCanvas.GetComponent<Canvas>().enabled = false;
     }
 
     // Update is called once per frame
@@ -53,11 +56,12 @@ public class AcidRiver : MonoBehaviour
         // play the player death animation
         collision.gameObject.GetComponent<Animator>().SetBool("Death", true);
         // add delay before destroying player and restarting game
-        yield return new WaitForSeconds(0.5f);
-        // TODO: show the death text
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
+        // show the death canvas
+        deathCanvas.GetComponent<Canvas>().enabled = true;
+        yield return new WaitForSeconds(0.7f);
         // restart game
-        collision.gameObject.SetActive(false);
+        collision.enabled = true;
         Destroy(collision.gameObject);
         playerDeathCoroutineCheck = true;
         GameObject.Find("GameManager").GetComponent<GameManager>().RestartGame();
