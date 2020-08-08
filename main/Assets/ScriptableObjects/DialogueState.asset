@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 061e489d5697b8c42ae198c25584fd28, type: 3}
   m_Name: DialogueState
   m_EditorClassIdentifier: 
-  SpokeOnLevel1: 1
+  SpokeOnLevel1: 0
