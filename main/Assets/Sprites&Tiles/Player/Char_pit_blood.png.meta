@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 742d2b998cd1ff548a45836ee84066b5
+guid: c7eab75345a5a4e4ab8a19e8aa0a79b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 518573817447878411
-    second: Char_pit_fall_0
+      213: 4779727345306647444
+    second: Char_pit_blood_0
   - first:
-      213: 7177826826094325675
-    second: Char_pit_fall_1
+      213: 3269257171833118964
+    second: Char_pit_blood_1
   - first:
-      213: 2482647822664328221
-    second: Char_pit_fall_2
+      213: 5409155714041845874
+    second: Char_pit_blood_2
   - first:
-      213: -1024527002591432769
-    second: Char_pit_fall_3
-  - first:
-      213: 3346042997903586273
-    second: Char_pit_fall_4
-  - first:
-      213: 5171410102528284188
-    second: Char_pit_fall_5
+      213: 4028807558566079554
+    second: Char_pit_blood_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -117,7 +111,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Char_pit_fall_0
+      name: Char_pit_blood_0
       rect:
         serializedVersion: 2
         x: 3
@@ -131,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0f8cc2b328523700800000000000000
-      internalID: 518573817447878411
+      spriteID: 49b393c42b0055240800000000000000
+      internalID: 4779727345306647444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_pit_fall_1
+      name: Char_pit_blood_1
       rect:
         serializedVersion: 2
         x: 19
@@ -152,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baf2f94f773cc9360800000000000000
-      internalID: 7177826826094325675
+      spriteID: 4f0e286931cbe5d20800000000000000
+      internalID: 3269257171833118964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_pit_fall_2
+      name: Char_pit_blood_2
       rect:
         serializedVersion: 2
         x: 36
@@ -173,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d14ed448a03247220800000000000000
-      internalID: 2482647822664328221
+      spriteID: 2781d36867e211b40800000000000000
+      internalID: 5409155714041845874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Char_pit_fall_3
+      name: Char_pit_blood_3
       rect:
         serializedVersion: 2
         x: 52
@@ -194,50 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbfedbb8e1628c1f0800000000000000
-      internalID: -1024527002591432769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Char_pit_fall_4
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 1
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e3f935e0688f6e20800000000000000
-      internalID: 3346042997903586273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Char_pit_fall_5
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 1
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c169015c61a84c740800000000000000
-      internalID: 5171410102528284188
+      spriteID: 24c6db4012339e730800000000000000
+      internalID: 4028807558566079554
       vertices: []
       indices: 
       edges: []

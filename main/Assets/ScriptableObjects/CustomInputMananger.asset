@@ -22,7 +22,7 @@ MonoBehaviour:
   DropRedLight: 50
   DropYellowLight: 53
   Restart: 114
-  Up: 119
-  Left: 97
-  Down: 115
-  Right: 100
+  Up: 273
+  Left: 276
+  Down: 274
+  Right: 275

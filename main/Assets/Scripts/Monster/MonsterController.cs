@@ -56,7 +56,7 @@ public class MonsterController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         monsterCollider = GetComponent<BoxCollider2D>();
         tileMovement = GameManager.Instance.gridScale.x / 10;
-
+        //monsterMovement = GetComponent<MonsterMovement>();
         astarAI = GetComponent<AStarAI>();
     }
 
@@ -90,7 +90,7 @@ public class MonsterController : MonoBehaviour
     {
         if (player == null)
         {
-
+            ReturnToSpawnPoint();
         }
         else
         {
@@ -106,7 +106,7 @@ public class MonsterController : MonoBehaviour
             }
             else
             {
-                if(GameManager.Instance.LookForPlayer(gameObject.transform) == true)
+                if (GameManager.Instance.LookForPlayer(gameObject.transform) == true)
                 {
 
                     returnToSpawn = false;
@@ -119,7 +119,7 @@ public class MonsterController : MonoBehaviour
                     //    Debug.Log("PATH IS NULL");
                     //    yield break;
                     //}
-                    if(hasChased == false)
+                    if (hasChased == false)
                     {
                         GameManager.Instance.PlaySFX("goblinchase");
                         hasChased = true;
@@ -127,7 +127,15 @@ public class MonsterController : MonoBehaviour
                     playerInRange = true;
                     playerLocation = player;
                     target = player;
-
+                    //List<Vector3> path = GameManager.Instance.PathFind(transform,player);
+                    //Debug.Log("Path found is");
+                    //Debug.Log(path);
+                    //for (int i = 0; i < path.Count; i++)
+                    //{
+                    //    Debug.Log(path[i].x);
+                    //    Debug.Log(path[i].y);
+                    //}
+                    //monsterMovement.SetMovement(path);
                     astarAI.CancelLastPath();
                     if (!astarAI.MoveToTarget(player, "player"))
                     {
@@ -135,7 +143,7 @@ public class MonsterController : MonoBehaviour
                         //exclaimation.SetActive(false);
                     }
                 }
-               
+
             }
 
         }
@@ -145,12 +153,13 @@ public class MonsterController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.PlaySFX("playerscream");
-            GameManager.Instance.PlaySFX("goblinlaugh");
-            Destroy(collision.gameObject);
+            // GameManager.Instance.PlaySFX("playerscream");
+            // GameManager.Instance.PlaySFX("goblinlaugh");
+            // Destroy(collision.gameObject);
             ReturnToSpawnPoint();
             //ChasePlayer(collision.gameObject.transform);
             Debug.Log("kill Player");
+            collision.gameObject.GetComponent<Player>().playerDeath("goblin");
         }
         else
         {
@@ -175,7 +184,7 @@ public class MonsterController : MonoBehaviour
         isDistracted = false;
         hasChased = false;
         // move to spawn point
-        astarAI.MoveToTarget(spawnPoint,"spawnpoint");
+        astarAI.MoveToTarget(spawnPoint, "spawnpoint");
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
         animator.SetFloat("Speed", Mathf.Max(1, direction.sqrMagnitude));
@@ -185,15 +194,23 @@ public class MonsterController : MonoBehaviour
 
     public void PlayerInRange(Transform player)
     {
-        exclaimation.SetActive(true);
-        StartCoroutine(ChasePlayer(player));
+        if (playerInRange)
+        {
+
+        }
+        else
+        {
+            exclaimation.SetActive(true);
+            StartCoroutine(ChasePlayer(player));
+        }
+
     }
     public void FlameInRange(Transform flame)
     {
         StartCoroutine(ChaseFlame(flame));
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
+    //}
 }

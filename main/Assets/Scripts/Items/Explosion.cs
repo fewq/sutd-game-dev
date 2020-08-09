@@ -20,8 +20,9 @@ public class Explosion : MonoBehaviour
         if (countdown <= 0f)
         {
             Destroy(gameObject);
-            
-            if(GameObject.Find("Player") == null){
+
+            if (GameObject.Find("Player") == null)
+            {
                 GameObject.Find("GameManager").GetComponent<GameManager>().RestartGame();
             }
         }

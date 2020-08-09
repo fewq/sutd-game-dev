@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 447654329689126476}
   - component: {fileID: 447654329689126467}
   - component: {fileID: 4956178088885132800}
-  - component: {fileID: 949159504827617919}
   - component: {fileID: 949159504827617916}
   - component: {fileID: 949159504827617917}
   m_Layer: 0
@@ -148,25 +147,15 @@ MonoBehaviour:
   animator: {fileID: 447654329689126467}
   exclaimation: {fileID: 2551300471458725122}
   heartExclaimation: {fileID: 7874301568807404183}
-  moveSpeed: 8
+  playerInRange: 0
   stare: 0
   target: {fileID: 0}
   nextWaypointDistance: 1
+  playerCheck: {fileID: 0}
+  flameCheck: {fileID: 0}
+  astarAI: {fileID: 0}
   lookRange: 0
---- !u!114 &949159504827617919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447654329689126466}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 0}
+  radius: 5
 --- !u!114 &949159504827617916
 MonoBehaviour:
   m_ObjectHideFlags: 0

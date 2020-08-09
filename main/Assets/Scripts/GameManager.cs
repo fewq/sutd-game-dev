@@ -9,7 +9,8 @@ public class GameManager : Singleton<GameManager>
     public GameObject grid;
     public Tilemap tilemap_boulder;
     public Tilemap tilemap_acidriver;
-    public Tile acidTile;
+    public Tilemap tilemap_bg;
+    public AnimatedTile acidTile;
     public Tile boulderTile;
     public Tile caesiumTile;
     public Tile CaOTile;
@@ -48,6 +49,7 @@ public class GameManager : Singleton<GameManager>
     public CustomInputManager customInputManager;
     public Vector3 gridScale;
     private bool isWalking = false;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -74,6 +76,10 @@ public class GameManager : Singleton<GameManager>
         //    if (Input.GetKeyDown(KeyCode.C))
         //    {
         //        SetCAOH2();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.T))
+        //    {
+        //        SetTorch("Blue");
         //    }
         //}
         //if (Input.GetKeyDown(KeyCode.R))
@@ -145,7 +151,7 @@ public class GameManager : Singleton<GameManager>
             pos = tilemap_acidriver.GetCellCenterWorld(cell);
         }
 
-        Collider2D objectCollider = Physics2D.OverlapBox(new Vector2(pos.x, pos.y), new Vector2(gridScale.x,gridScale.y), 0f);
+        Collider2D objectCollider = Physics2D.OverlapBox(new Vector2(pos.x, pos.y), new Vector2(gridScale.x, gridScale.y), 0f);
 
         if (action == "explode")
         {
@@ -160,11 +166,12 @@ public class GameManager : Singleton<GameManager>
                 if (objectCollider.tag == "Player")
                 {
                     Debug.Log("DestroyPlayer");
-                    PlaySFX("playerscream");
+                    // PlaySFX("playerscream");
                     //Run game over script then run below( or maybe we will just reset the level. we'll see);
-                    Destroy(objectCollider.gameObject);
+                    // Destroy(objectCollider.gameObject);
                     //Might want to add dying sound
                     //objectCollider.gameObject.SetActive(false);
+                    objectCollider.gameObject.GetComponent<Player>().playerDeath("bomb");
                 }
                 //Might want to make it possible to kill monster as well
                 Tile tile = tilemap_boulder.GetTile<Tile>(cell);
@@ -177,9 +184,11 @@ public class GameManager : Singleton<GameManager>
 
             Instantiate(explosionPrefab, pos, Quaternion.identity, grid.transform);
         }
-        else if(action == "neutralize")
+        else if (action == "neutralize")
         {
-            Tile tile = tilemap_acidriver.GetTile<Tile>(cell);
+            AnimatedTile tile = tilemap_acidriver.GetTile<AnimatedTile>(cell);
+            Debug.Log("NEUTRALIZING");
+            Debug.Log(tile);
             if (tile == acidTile)
             {
                 tilemap_acidriver.SetTile(cell, null);
@@ -187,11 +196,12 @@ public class GameManager : Singleton<GameManager>
             }
             Instantiate(neutralizaitonPrefab, pos, Quaternion.identity, grid.transform);
         }
-        else if(action == "playercheck")
+        else if (action == "playercheck")
         {
             //if detect boulder, return false
             //If detect player return true, else return false
-        }else if (action == "bouldercheck")
+        }
+        else if (action == "bouldercheck")
         {
             //true if got boulder, false if got no boulder
         }
@@ -199,7 +209,7 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-      
+
 
     public void SetCAOH2()
     {
@@ -239,7 +249,7 @@ public class GameManager : Singleton<GameManager>
         {
             Instantiate(redLightPrefab, cellCenterPos, Quaternion.identity);
         }
-        else if(color == "Yellow")
+        else if (color == "Yellow")
         {
             Instantiate(yellowLightPrefab, cellCenterPos, Quaternion.identity);
         }
@@ -259,7 +269,7 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.Log("Error in color: " + color);
         }
-        
+
     }
 
     public bool CheckForPlayer(Vector2 worldPos)
@@ -278,39 +288,52 @@ public class GameManager : Singleton<GameManager>
         if (sfx == "boulderbreak")
         {
             sfxPlayer.PlayOneShot(boulderBreakSFX);
-        }else if(sfx == "neutralize")
+        }
+        else if (sfx == "neutralize")
         {
             sfxPlayer.PlayOneShot(neutralizeSFX);
-        }else if(sfx == "acidriverkill")
+        }
+        else if (sfx == "acidriverkill")
         {
             sfxPlayer.PlayOneShot(acidRiverSFX);
-        }else if(sfx == "collectitem")
+        }
+        else if (sfx == "collectitem")
         {
             sfxPlayer.PlayOneShot(collectItemSFX);
-        }else if(sfx == "placeitem")
+        }
+        else if (sfx == "placeitem")
         {
             sfxPlayer.PlayOneShot(placeItemSFX);
-        }else if(sfx == "playerscream")
+        }
+        else if (sfx == "playerscream")
         {
             sfxPlayer.PlayOneShot(playerScreamSFX);
-        }else if(sfx == "goblinlaugh")
+        }
+        else if (sfx == "goblinlaugh")
         {
             sfxPlayer.PlayOneShot(goblinLaughSFX);
-        }else if(sfx == "goblinalerted")
+        }
+        else if (sfx == "goblinalerted")
         {
             sfxPlayer.PlayOneShot(goblinAlertedSFX);
-        }else if(sfx == "goblindistracted")
+        }
+        else if (sfx == "goblindistracted")
         {
             sfxPlayer.PlayOneShot(goblinDistractedSFX);
-        }else if(sfx == "goblinchase")
+        }
+        else if (sfx == "goblinchase")
         {
             sfxPlayer.PlayOneShot(goblinChaseSFX);
-        }else if(sfx == "toggleinv")
+        }
+        else if (sfx == "toggleinv")
         {
             sfxPlayer.PlayOneShot(toggleInvSFX);
-        }else if(sfx == "successcraft"){
+        }
+        else if (sfx == "successcraft")
+        {
             sfxPlayer.PlayOneShot(successCraftSFX);
-        }else if(sfx == "failcraft")
+        }
+        else if (sfx == "failcraft")
         {
             sfxPlayer.PlayOneShot(failCraftSFX);
         }
@@ -350,7 +373,7 @@ public class GameManager : Singleton<GameManager>
             }
             return playerFound;
         }
-   
+
 
     }
 
@@ -384,4 +407,5 @@ public class GameManager : Singleton<GameManager>
         return flameFound;
 
     }
+
 }
