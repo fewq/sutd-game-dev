@@ -60,6 +60,7 @@ public class GameManager : Singleton<GameManager>
     {
         player = GameObject.FindWithTag("Player");
         playerOriginalPosition = player.transform.position;
+        bgmPlayer.loop = true;
         bgmPlayer.Play();
 
     }

@@ -161,6 +161,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: OrangeGoblin
       objectReference: {fileID: 0}
+    - target: {fileID: 8917742356412001100, guid: d8025c3c54af6af4ea4b905dafde1517,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8917742356412001100, guid: d8025c3c54af6af4ea4b905dafde1517,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8025c3c54af6af4ea4b905dafde1517, type: 3}
 --- !u!4 &5225849348278089082 stripped
