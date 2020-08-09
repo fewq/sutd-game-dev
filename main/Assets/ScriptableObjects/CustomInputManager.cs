@@ -6,7 +6,6 @@ using System;
 [CreateAssetMenu(fileName = "CustomInputMananger", order = 51)]
 public class CustomInputManager : ScriptableObject
 {
-    public KeyCode PickUp;
     public KeyCode Inventory;
     public KeyCode DropBomb;
     public KeyCode DropCalciumHydroxide;
@@ -26,7 +25,6 @@ public class CustomInputManager : ScriptableObject
     {
         keyMappings = new Dictionary<string, KeyCode>()
         {
-            {"PickUp", PickUp},
             {"Inventory", Inventory},
             {"DropBomb", DropBomb},
             {"DropCalciumHydroxide", DropCalciumHydroxide},
@@ -45,7 +43,7 @@ public class CustomInputManager : ScriptableObject
 
     public bool GetKeyDown(string key)
     {
-        Debug.Log("GetKeyDown: " + key + keyMappings[key].ToString());
+        // Debug.Log("GetKeyDown: " + key + keyMappings[key].ToString());
         return Input.GetKeyDown(keyMappings[key]);
     }
 

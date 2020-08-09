@@ -9,7 +9,7 @@ public class KeyBindScript : MonoBehaviour
 {
     public CustomInputManager customInputManager;
 
-    public TextMeshProUGUI up, left, down, right, pickup, inventory, dropBomb, dropCaoh, restart, droptorchblue, droptorchred, droptorchorange, droptorchpurple, droptorchyellow;
+    public TextMeshProUGUI up, left, down, right,  inventory, dropBomb, dropCaoh, restart, droptorchblue, droptorchred, droptorchorange, droptorchpurple, droptorchyellow;
     private GameObject currentKey;
 
     void Start()
@@ -22,7 +22,6 @@ public class KeyBindScript : MonoBehaviour
         down.SetText(customInputManager.GetString("Down"));
         left.SetText(customInputManager.GetString("Left"));
         right.SetText(customInputManager.GetString("Right"));
-        pickup.SetText(customInputManager.GetString("PickUp"));
         inventory.SetText(customInputManager.GetString("Inventory"));
         dropBomb.SetText(customInputManager.GetString("DropBomb"));
         dropCaoh.SetText(customInputManager.GetString("DropCalciumHydroxide"));
@@ -60,10 +59,6 @@ public class KeyBindScript : MonoBehaviour
                     case "Right":
                         customInputManager.Right = e.keyCode;
                         customInputManager.keyMappings["Right"] = e.keyCode;
-                        break;
-                    case "PickUp":
-                        customInputManager.PickUp = e.keyCode;
-                        customInputManager.keyMappings["PickUp"] = e.keyCode;
                         break;
                     case "Inventory":
                         customInputManager.Inventory = e.keyCode;
