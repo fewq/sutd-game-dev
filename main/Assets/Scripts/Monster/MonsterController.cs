@@ -44,7 +44,6 @@ public class MonsterController : MonoBehaviour
     private bool isAlerted = false;
     private bool hasChased = false;
     private bool isDistracted = false;
-    private MonsterMovement monsterMovement;
     // Start is called before the first frame update
     void Start()
     {

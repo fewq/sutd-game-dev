@@ -50,8 +50,6 @@ public class GameManager : Singleton<GameManager>
     public Vector3 gridScale;
     private bool isWalking = false;
 
-    private PathFind pathFinder;
-    private CreateNodesFromTilemaps nodeCreator;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -61,8 +59,6 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        pathFinder = GetComponent<PathFind>();
-        nodeCreator = GetComponent<CreateNodesFromTilemaps>();
         playerOriginalPosition = player.transform.position;
         bgmPlayer.Play();
 
@@ -71,21 +67,21 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        if (player)
-        {
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                SetBomb();
-            }
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                SetCAOH2();
-            }
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                SetTorch("Blue");
-            }
-        }
+        //if (player)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.B))
+        //    {
+        //        SetBomb();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.C))
+        //    {
+        //        SetCAOH2();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.T))
+        //    {
+        //        SetTorch("Blue");
+        //    }
+        //}
         //if (Input.GetKeyDown(KeyCode.R))
         //{
         //    RestartGame();
