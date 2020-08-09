@@ -7,7 +7,7 @@ using Pathfinding;
 /* Determines monster movement logic */
 public class MonsterController : MonoBehaviour
 {
-    public Transform spawnPoint;
+    private Vector3 ogPosition;
     public Animator animator;
     public GameObject exclaimation;
     public GameObject heartExclaimation;
@@ -30,7 +30,7 @@ public class MonsterController : MonoBehaviour
     private Path path;
     private int currentWaypoint = 0;
     private bool reachedPlayer = false;
-    private bool returnToSpawn = true;
+    private bool returnToSpawn = false;
     private Seeker seeker;
     public BoxCollider2D playerCheck;
     public BoxCollider2D flameCheck;
@@ -56,6 +56,7 @@ public class MonsterController : MonoBehaviour
         playerInRange = false;
         rigidBody = GetComponent<Rigidbody2D>();
         monsterCollider = GetComponent<BoxCollider2D>();
+        ogPosition = transform.position;
         //transform.localScale = new Vector3(GameManager.Instance.gridScale.x / 10, GameManager.Instance.gridScale.y / 10); 
         tileMovement = GameManager.Instance.gridScale.x / 10;
         //monsterMovement = GetComponent<MonsterMovement>();
@@ -64,28 +65,32 @@ public class MonsterController : MonoBehaviour
 
     IEnumerator ChaseFlame(Transform flame)
     {
-        Debug.Log("ChaseFlame");
-        heartExclaimation.SetActive(true);
-        flameLocation = flame;
-        flameInRange = true;
-        if (isDistracted == false)
+        if (!returnToSpawn)
         {
-            GameManager.Instance.PlaySFX("goblindistracted");
-            isDistracted = true;
+            Debug.Log("ChaseFlame");
+            heartExclaimation.SetActive(true);
+            flameLocation = flame;
+            flameInRange = true;
+            if (isDistracted == false)
+            {
+                GameManager.Instance.PlaySFX("goblindistracted");
+                isDistracted = true;
+            }
+            yield return new WaitForSeconds(2);
+            //returnToSpawn = false;
+            Debug.Log("Chase Flame");
+            exclaimation.SetActive(false);
+            animator.SetFloat("Horizontal", direction.x);
+            animator.SetFloat("Vertical", direction.y);
+            animator.SetFloat("Speed", Mathf.Max(1, direction.sqrMagnitude));
+            playerInRange = true;
+            target = flame;
+            if (!astarAI.MoveToTarget(flame.position, "flame"))
+            {
+                ReturnToSpawnPoint();
+            }
         }
-        yield return new WaitForSeconds(2);
-        returnToSpawn = false;
-        Debug.Log("Chase Flame");
-        exclaimation.SetActive(false);
-        animator.SetFloat("Horizontal", direction.x);
-        animator.SetFloat("Vertical", direction.y);
-        animator.SetFloat("Speed", Mathf.Max(1, direction.sqrMagnitude));
-        playerInRange = true;
-        target = flame;
-        if (!astarAI.MoveToTarget(flame, "flame"))
-        {
-            ReturnToSpawnPoint();
-        }
+
     }
 
     IEnumerator ChasePlayer(Transform player)
@@ -101,7 +106,7 @@ public class MonsterController : MonoBehaviour
                 GameManager.Instance.PlaySFX("goblinalerted");
                 isAlerted = true;
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
             if (flameInRange)
             {
                 Debug.Log("flameInRange");
@@ -139,7 +144,7 @@ public class MonsterController : MonoBehaviour
                     //}
                     //monsterMovement.SetMovement(path);
                     astarAI.CancelLastPath();
-                    if (!astarAI.MoveToTarget(player, "player"))
+                    if (!astarAI.MoveToTarget(player.position, "player"))
                     {
                         ReturnToSpawnPoint();
                         //exclaimation.SetActive(false);
@@ -186,7 +191,7 @@ public class MonsterController : MonoBehaviour
         isDistracted = false;
         hasChased = false;
         // move to spawn point
-        astarAI.MoveToTarget(spawnPoint, "spawnpoint");
+        astarAI.MoveToTarget(ogPosition, "spawnpoint");
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
         animator.SetFloat("Speed", Mathf.Max(1, direction.sqrMagnitude));
@@ -210,6 +215,7 @@ public class MonsterController : MonoBehaviour
     public void FlameInRange(Transform flame)
     {
         StartCoroutine(ChaseFlame(flame));
+
     }
     //private void OnDrawGizmos()
     //{

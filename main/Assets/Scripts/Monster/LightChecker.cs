@@ -13,7 +13,7 @@ public class LightChecker : MonoBehaviour
         Purple = 5
     }
     public favColors favColor;
-    private MonsterController monsterController;
+    public MonsterController monsterController;
     private string flameTag;
     private bool chasing;
 
@@ -21,7 +21,7 @@ public class LightChecker : MonoBehaviour
     {
         flameTag = favColor+"Light";
         Debug.Log(flameTag);
-        monsterController = GetComponentInParent<MonsterController>();
+        //monsterController = GetComponentInParent<MonsterController>();
     }
 
 

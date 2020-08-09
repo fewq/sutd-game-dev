@@ -9,7 +9,6 @@ TagManager:
   - Item
   - Floor
   - Enemy
-  - UnlitTorch
   - Inventory
   - CraftItem2
   - Item7
@@ -41,7 +40,6 @@ TagManager:
   - OrangeLight
   - Bomb
   - CalciumOxide
-  - BlueFlame
   - text1
   - text2
   - text4
@@ -51,6 +49,10 @@ TagManager:
   - text7
   - text8
   - text9
+  - SpawnPoint
+  - PlayerChecker
+  - LightChecker
+  - AcidRiver
   layers:
   - Default
   - TransparentFX

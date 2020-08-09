@@ -41,8 +41,8 @@ public class Player : Movement
 
         // death stuff
         playerDeathCoroutineCheck = false;
-        deathCanvas = GameObject.Find("DeathCanvas").GetComponent<Canvas>();
-        deathCanvas.GetComponent<Canvas>().enabled = false;
+        //deathCanvas = GameObject.Find("DeathCanvas").GetComponent<Canvas>();
+        //deathCanvas.GetComponent<Canvas>().enabled = false;
     }
     // Start is called before the first frame update
 
@@ -117,11 +117,11 @@ public class Player : Movement
     public void movementController(float x, float y)
     {
         // base.checkMove<T>(x,y);
-        RaycastHit2D hit;
+        //RaycastHit2D hit;
         //animator.SetFloat("Horizontal", movement.x);
         //animator.SetFloat("Vertical", movement.y);
         //animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
-        if (playerMovement(x, y, out hit))
+        if (playerMovement(x, y))
         {
             // base.Move(xVal, yVal, out hit);
             animator.SetFloat("Horizontal", movement.x);
@@ -132,6 +132,7 @@ public class Player : Movement
             //Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
 
         }
+
     }
 
     public void playerDeath(string deathMethod)

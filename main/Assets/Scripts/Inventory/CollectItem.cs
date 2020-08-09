@@ -104,9 +104,13 @@ public class CollectItem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // might need to check that this has an "item" tag in the future with "other.tag" since there will be acid rivers
-        if (pickupItem == null)
+        if (other.CompareTag("Item"))
         {
             pickupItem = other.gameObject;
+        }
+        else
+        {
+            //Debug.Log(other);
         }
 
     }

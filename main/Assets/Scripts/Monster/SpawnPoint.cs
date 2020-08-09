@@ -23,6 +23,7 @@ public class SpawnPoint : MonoBehaviour
         //Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("RETURN TO SPAWN U BEECH");
             monsterController.Idle();
         }
     }
