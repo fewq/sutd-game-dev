@@ -48,13 +48,15 @@ public class MonsterController : MonoBehaviour
     void Start()
     {
         // move to spawn point
-        transform.position = spawnPoint.position;
-        transform.localScale = GameManager.Instance.gridScale;
+        
+        //transform.position = spawnPoint.position;
+        //transform.localScale = GameManager.Instance.gridScale;
         // initialise variables
         flameInRange = false;
         playerInRange = false;
         rigidBody = GetComponent<Rigidbody2D>();
         monsterCollider = GetComponent<BoxCollider2D>();
+        //transform.localScale = new Vector3(GameManager.Instance.gridScale.x / 10, GameManager.Instance.gridScale.y / 10); 
         tileMovement = GameManager.Instance.gridScale.x / 10;
         //monsterMovement = GetComponent<MonsterMovement>();
         astarAI = GetComponent<AStarAI>();
@@ -99,7 +101,7 @@ public class MonsterController : MonoBehaviour
                 GameManager.Instance.PlaySFX("goblinalerted");
                 isAlerted = true;
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(0.5f);
             if (flameInRange)
             {
                 Debug.Log("flameInRange");
