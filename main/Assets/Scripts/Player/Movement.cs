@@ -53,7 +53,7 @@ public abstract class Movement : MonoBehaviour
                 if (hit.transform == null || hit.transform.tag == "Enemy" || hit.transform.CompareTag("SpawnPoint"))
                 {
                     Debug.Log("Move");
-                    StartCoroutine(coroutineMove(x, y));
+
                 }
                 else
                 {
@@ -61,7 +61,7 @@ public abstract class Movement : MonoBehaviour
                 }
                 //Debug.Log("Player moving into null ");
                 //if (hit.transform != null) 
-
+                StartCoroutine(coroutineMove(x, y));
             }
             return true;
         }
