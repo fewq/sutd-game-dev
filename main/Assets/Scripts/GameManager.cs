@@ -9,6 +9,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject grid;
     public Tilemap tilemap_boulder;
     public Tilemap tilemap_acidriver;
+    public Tilemap tilemap_bg;
     public AnimatedTile acidTile;
     public Tile boulderTile;
     public Tile caesiumTile;
@@ -48,6 +49,7 @@ public class GameManager : Singleton<GameManager>
     public CustomInputManager customInputManager;
     public Vector3 gridScale;
     private bool isWalking = false;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -74,6 +76,10 @@ public class GameManager : Singleton<GameManager>
         //    if (Input.GetKeyDown(KeyCode.C))
         //    {
         //        SetCAOH2();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.T))
+        //    {
+        //        SetTorch("Blue");
         //    }
         //}
         //if (Input.GetKeyDown(KeyCode.R))
@@ -401,4 +407,5 @@ public class GameManager : Singleton<GameManager>
         return flameFound;
 
     }
+
 }
