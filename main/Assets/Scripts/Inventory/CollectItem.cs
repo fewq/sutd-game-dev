@@ -48,6 +48,8 @@ public class CollectItem : MonoBehaviour
 
     private int defaultNumber = 0 ;
     // Start is called before the first frame update
+
+    private List<string> rawItems = new List<string>() {"Caesium", "Fire", "Water", "CupricChloride", "LithiumChloride", "CalciumChloride", "SodiumChloride", "CalciumOxide", "PotassiumChloride"};
     void Start()
     {
         playerCollider = gameObject.GetComponent<BoxCollider2D>();
@@ -117,40 +119,38 @@ public class CollectItem : MonoBehaviour
 
     void PickObject()
     {
-        if (pickupItem != null)
+        if (pickupItem != null && rawItems.Contains(pickupItem.name))
         {
             // reason for pressing Z to pick up: in the future, we would need to place items, and the player may accidentally pick it up if they walked arount it
-            if (customInputManager.GetKey("PickUp"))
-            {
-                Debug.Log("picked up " + pickupItem.name);
-                GameManager.Instance.PlaySFX("collectitem");
-                // add to PickupList
-                PickupList.Add(pickupItem);
-                Debug.Log(pickupItem);
-                // also add to dictionary for now
-                inventoryDict[pickupItem.name] += 1;
-                Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);
-                // deactivate item
-                pickupItem.SetActive(false);
-                // destroy item instead
-                // Destroy(pickupItem);
-                pickupItem = null;
-                
-                inventoryObject.PickupList = PickupList;
+            Debug.Log("picked up " + pickupItem.name);
+            GameManager.Instance.PlaySFX("collectitem");
+            // add to PickupList
+            PickupList.Add(pickupItem);
+            Debug.Log(pickupItem);
+            // also add to dictionary for now
+            inventoryDict[pickupItem.name] += 1;
+            Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);
+            // deactivate item
+            pickupItem.SetActive(false);
+            // destroy item instead
+            // Destroy(pickupItem);
+            pickupItem = null;
+            
+            inventoryObject.PickupList = PickupList;
 
-                int count = 1;
-                foreach(string item in inventoryDict.Keys){
-                    if(item == "Bomb"){
-                        break;
-                    }
-                    // print(GameObject.FindGameObjectWithTag("test").GetComponent<Text>());
-                    Text itemText = GameObject.FindGameObjectWithTag("text"+count.ToString()).GetComponent<Text>();
-                    count += 1;
-                    itemText.text = inventoryDict[item].ToString();
+            int count = 1;
+            foreach(string item in inventoryDict.Keys){
+                if(item == "Bomb"){
+                    break;
                 }
-                
-                itemAdded = true;
+                // print(GameObject.FindGameObjectWithTag("test").GetComponent<Text>());
+                Text itemText = GameObject.FindGameObjectWithTag("text"+count.ToString()).GetComponent<Text>();
+                count += 1;
+                itemText.text = inventoryDict[item].ToString();
             }
+            
+            itemAdded = true;
+            // }
             // moved above
             // //update the scriptable object with the lists.
             // inventoryObject.Inventory = inventoryDict;
