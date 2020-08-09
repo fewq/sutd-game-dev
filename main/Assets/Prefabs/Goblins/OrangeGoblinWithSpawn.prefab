@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 418877861609468658}
   - component: {fileID: 2442110694520677230}
   - component: {fileID: 4686564336112517335}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: PlayerChecker
   m_TagString: PlayerChecker
   m_Icon: {fileID: 0}
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3418d3a1db448874b8df0bdde44cf731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterController: {fileID: 753351010516852020}
 --- !u!1 &4783271207846586603
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ GameObject:
   - component: {fileID: 3264506468411120088}
   - component: {fileID: 3097612024158911221}
   - component: {fileID: 4061588875177172114}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: LightChecker
   m_TagString: LightChecker
   m_Icon: {fileID: 0}
@@ -196,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   favColor: 4
+  monsterController: {fileID: 753351010516852020}
 --- !u!61 &4061588875177172114
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -460,7 +462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153085f26b1c89440a3bc447a0d6df7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
   animator: {fileID: 5225849348278089079}
   exclaimation: {fileID: 7916091418715504182}
   heartExclaimation: {fileID: 2590892465033200035}

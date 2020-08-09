@@ -68,45 +68,45 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        if (player)
-        {
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                SetBomb();
-            }
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                SetCAOH2();
-            }
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                SetTorch("Blue");
-            }
-        }
-        //if (Input.GetKeyDown(KeyCode.R))
+        //if (player)
         //{
-        //    RestartGame();
+        //    if (Input.GetKeyDown(KeyCode.B))
+        //    {
+        //        SetBomb();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.C))
+        //    {
+        //        SetCAOH2();
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.T))
+        //    {
+        //        SetTorch("Blue");
+        //    }
         //}
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetTorch("Blue");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetTorch("Red");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SetTorch("Orange");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SetTorch("Purple");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            SetTorch("Yellow");
-        }
+        ////if (Input.GetKeyDown(KeyCode.R))
+        ////{
+        ////    RestartGame();
+        ////}
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    SetTorch("Blue");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    SetTorch("Red");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    SetTorch("Orange");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    SetTorch("Purple");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //{
+        //    SetTorch("Yellow");
+        //}
 
         if (Input.GetKeyDown(KeyCode.F1))
         {

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8381653517249075823}
   - component: {fileID: 1753710287884164559}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: PlayerSpotted
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 5573716056105854966}
   - component: {fileID: 5397819068242773211}
   - component: {fileID: 6361796262959096508}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: LightChecker
   m_TagString: LightChecker
   m_Icon: {fileID: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   favColor: 1
+  monsterController: {fileID: 7665261453770842906}
 --- !u!61 &6361796262959096508
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -164,7 +165,7 @@ GameObject:
   - component: {fileID: 2646219997765559305}
   - component: {fileID: 2646219997765559306}
   - component: {fileID: 2646219997765559307}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: YellowGoblinWithSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +265,7 @@ GameObject:
   - component: {fileID: 6278114914061278008}
   - component: {fileID: 1751066707939423929}
   - component: {fileID: 338224322483284536}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: YellowGoblin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -390,7 +391,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153085f26b1c89440a3bc447a0d6df7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
   animator: {fileID: 2923390474265480025}
   exclaimation: {fileID: 995173861048090648}
   heartExclaimation: {fileID: 4891112153567920013}
@@ -481,7 +481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7702469479437685746}
   - component: {fileID: 9089201981416609151}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: LightSpotted
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 7333035968607898844}
   - component: {fileID: 4751320500169268544}
   - component: {fileID: 2386361346377187065}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: PlayerChecker
   m_TagString: PlayerChecker
   m_Icon: {fileID: 0}
@@ -622,3 +622,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3418d3a1db448874b8df0bdde44cf731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterController: {fileID: 7665261453770842906}
