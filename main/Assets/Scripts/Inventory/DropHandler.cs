@@ -13,11 +13,11 @@ public class DropHandler : MonoBehaviour, IDropHandler
     public InventoryObject item;
 
     public void OnDrop(PointerEventData pointerevent){
-        if(pointerevent.pointerDrag != null){
-            pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
-            dropStatus = true;
-            itemList.Add(item.InventoryItem);
-        }
+        // if(pointerevent.pointerDrag != null){
+        //     pointerevent.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        //     dropStatus = true;
+        //     itemList.Add(item.InventoryItem);
+        // }
     }
 
     public static List<GameObject> ItemList{

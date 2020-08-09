@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class DragHandler : MonoBehaviour , IDragHandler, IEndDragHandler, IBeginDragHandler
+public class DragHandler : MonoBehaviour , IDragHandler, IEndDragHandler, IBeginDragHandler, IPointerClickHandler
 {
 
     private RectTransform rectTransform;
@@ -57,6 +57,10 @@ public class DragHandler : MonoBehaviour , IDragHandler, IEndDragHandler, IBegin
         if(!DropHandler.dropStatus)
         {
             rectTransform.anchoredPosition = startPosition;
+            List<GameObject> itemSelected = GameObject.Find("OnClickManager").GetComponent<ClickManager>().itemSelected;
+            if(itemSelected.Contains(item)){
+                itemSelected.Remove(item);
+            }
         }
         else
         {
@@ -64,5 +68,26 @@ public class DragHandler : MonoBehaviour , IDragHandler, IEndDragHandler, IBegin
         }
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+    }
+
+    public void OnPointerClick(PointerEventData pointer){
+        if (pointer.button == PointerEventData.InputButton.Right){
+            if(ClickManager.ItemList.Count == 2){
+                return;
+            }
+            GameObject.Find("OnClickManager").GetComponent<ClickManager>().changeItemPos(item);
+            craftItemVals.Set(item.name, rectTransform, startPosition);
+
+        }
+    }
+
+    
+    
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        // clickCraft();
     }
 }
