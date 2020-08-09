@@ -46,7 +46,7 @@ public class CustomInputManager : ScriptableObject
 
     public bool GetKeyDown(string key)
     {
-        Debug.Log("GetKeyDown: " + key + keyMappings[key].ToString());
+        //Debug.Log("GetKeyDown: " + key + keyMappings[key].ToString());
         return Input.GetKeyDown(keyMappings[key]);
     }
 

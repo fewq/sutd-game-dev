@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 40870285}
   - component: {fileID: -1086524507586417177}
   - component: {fileID: 5944012286333715353}
-  - component: {fileID: -4354272166218738975}
   m_Layer: 0
   m_Name: BlueGoblin
   m_TagString: Enemy
@@ -297,34 +296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextWaypointDistance: 3
   reachedEndOfPath: 0
---- !u!114 &-4354272166218738975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800080216313234088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
 --- !u!1 &3333822372866640360
 GameObject:
   m_ObjectHideFlags: 0

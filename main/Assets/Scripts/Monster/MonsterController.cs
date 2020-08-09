@@ -44,6 +44,7 @@ public class MonsterController : MonoBehaviour
     private bool isAlerted = false;
     private bool hasChased = false;
     private bool isDistracted = false;
+    private MonsterMovement monsterMovement;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +57,7 @@ public class MonsterController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         monsterCollider = GetComponent<BoxCollider2D>();
         tileMovement = GameManager.Instance.gridScale.x / 10;
-
+        //monsterMovement = GetComponent<MonsterMovement>();
         astarAI = GetComponent<AStarAI>();
     }
 
@@ -90,7 +91,7 @@ public class MonsterController : MonoBehaviour
     {
         if (player == null)
         {
-
+            ReturnToSpawnPoint();
         }
         else
         {
@@ -127,7 +128,15 @@ public class MonsterController : MonoBehaviour
                     playerInRange = true;
                     playerLocation = player;
                     target = player;
-
+                    //List<Vector3> path = GameManager.Instance.PathFind(transform,player);
+                    //Debug.Log("Path found is");
+                    //Debug.Log(path);
+                    //for (int i = 0; i < path.Count; i++)
+                    //{
+                    //    Debug.Log(path[i].x);
+                    //    Debug.Log(path[i].y);
+                    //}
+                    //monsterMovement.SetMovement(path);
                     astarAI.CancelLastPath();
                     if (!astarAI.MoveToTarget(player, "player"))
                     {
@@ -151,6 +160,7 @@ public class MonsterController : MonoBehaviour
             ReturnToSpawnPoint();
             //ChasePlayer(collision.gameObject.transform);
             Debug.Log("kill Player");
+            ReturnToSpawnPoint();
         }
         else
         {
@@ -185,15 +195,23 @@ public class MonsterController : MonoBehaviour
 
     public void PlayerInRange(Transform player)
     {
-        exclaimation.SetActive(true);
-        StartCoroutine(ChasePlayer(player));
+        if (playerInRange)
+        {
+
+        }
+        else
+        {
+            exclaimation.SetActive(true);
+            StartCoroutine(ChasePlayer(player));
+        }
+
     }
     public void FlameInRange(Transform flame)
     {
         StartCoroutine(ChaseFlame(flame));
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
+    //}
 }

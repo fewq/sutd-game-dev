@@ -25,7 +25,7 @@ public class Player : Movement
     // length of the tile to move, set to 0.1 from unity
     private float tileMovement;
 
-
+    
 
     protected override void Start()
     {
@@ -123,7 +123,7 @@ public class Player : Movement
             animator.SetFloat("Speed", Mathf.Max(1, movement.sqrMagnitude));
             // Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
             //Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
-            Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
+            //Debug.Log("dX: " + movement.x + " dY: " + movement.y + " dV: " + movement.sqrMagnitude);
 
         }
     }

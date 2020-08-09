@@ -19,8 +19,8 @@ public class SpawnPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerEnter2D SpawnPoint");
-        Debug.Log(collision.gameObject.tag);
+        //Debug.Log("OnTriggerEnter2D SpawnPoint");
+        //Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Enemy"))
         {
             monsterController.Idle();
