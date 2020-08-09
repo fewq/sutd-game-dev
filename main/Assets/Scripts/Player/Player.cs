@@ -25,7 +25,8 @@ public class Player : Movement
     // length of the tile to move, set to 0.1 from unity
     private float tileMovement;
 
-
+    private bool playerDeathCoroutineCheck;
+    public Canvas deathCanvas;
 
     protected override void Start()
     {
@@ -37,6 +38,11 @@ public class Player : Movement
         isPlaying = false;
         playerWalkAS.clip = playerWalkSFX;
         playerWalkAS.loop = true;
+
+        // death stuff
+        playerDeathCoroutineCheck = false;
+        deathCanvas = GameObject.Find("DeathCanvas").GetComponent<Canvas>();
+        deathCanvas.GetComponent<Canvas>().enabled = false;
     }
     // Start is called before the first frame update
 
@@ -127,4 +133,39 @@ public class Player : Movement
 
         }
     }
+
+    public void playerDeath(string deathMethod)
+    {
+        if (playerDeathCoroutineCheck == false) StartCoroutine(PlayerDeathCoroutine(deathMethod));
+    }
+
+    IEnumerator PlayerDeathCoroutine(string deathMethod)
+    {
+        Debug.Log("Player death coroutine from: " + deathMethod);
+        playerDeathCoroutineCheck = true;
+        if (deathMethod == "acid" || deathMethod == "bomb")
+        {
+            animator.SetBool("Death1", true);
+        }
+        else if (deathMethod == "goblin")
+        {
+            animator.SetBool("Death2", true);
+        }
+        // play audio
+        // stuff before restart
+        GameManager.Instance.PlaySFX("playerscream");
+        if (deathMethod == "acid") GameManager.Instance.PlaySFX("acidriverkill");
+        if (deathMethod == "goblin") GameManager.Instance.PlaySFX("goblinlaugh");
+        // play the player death animation
+        // add delay before destroying player and restarting game
+        yield return new WaitForSeconds(0.3f);
+        // show the death canvas
+        deathCanvas.GetComponent<Canvas>().enabled = true;
+        yield return new WaitForSeconds(0.7f);
+        // restart game
+        Destroy(gameObject);
+        playerDeathCoroutineCheck = false;
+        GameObject.Find("GameManager").GetComponent<GameManager>().RestartGame();
+    }
+
 }
