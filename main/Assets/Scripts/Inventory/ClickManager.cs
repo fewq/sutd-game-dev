@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ClickManager : MonoBehaviour
 {
-    public List<GameObject> itemSelected = new List<GameObject>();
-    private static List<GameObject> itemList = new List<GameObject>();
+    private static Dictionary<GameObject, string> itemSelected = new Dictionary<GameObject, string>(); //manages the locks for the crafting slots.
+    private static List<GameObject> itemList = new List<GameObject>(); //stores picked up items to be used for crafting
     private bool item1;
-    public LayerMask layerMask;
     private bool item2;
 
     
@@ -17,37 +16,39 @@ public class ClickManager : MonoBehaviour
         if(itemSelected.Count == 2){
             return;
         }
-        if(itemList.Count == 0){
+        if(itemList.Count == 0){ //reset the slot locks
             item1 = false;
             item2 = false;
+            // itemSelected.Clear();
         }
+        //create like a locking system such that only the empty slots get filled with the item
         invObj.InventoryItem = item; //sets the item in the scriptable object to be used by clickmanager
         if(!item1){
-            Debug.Log("item1");
             item.GetComponent<RectTransform>().anchoredPosition = GameObject.Find("CraftItem1").GetComponent<RectTransform>().anchoredPosition;
 
-            itemSelected.Add(item);
+            itemSelected[item] = "item1";
+            Debug.Log(item.name);
             itemList.Add(item);
             item1 = true;
         }
         else if (!item2){
-            
             item.GetComponent<RectTransform>().anchoredPosition = GameObject.Find("CraftItem2").GetComponent<RectTransform>().anchoredPosition;
             itemList.Add(item);
-            itemSelected.Add(item);
+            itemSelected[item] = "item2";
             item2 = true;
             
         }
+    }
 
-        if(item1 && item2){
-            itemSelected.Clear();
+    public void ItemBoolSet(int index){
+        if(index == 1){
+            item1 = false;
+        }
+        if(index == 2){
+            item2 = false;
         }
     }
-        
 
-
-
-    
 
     public static List<GameObject> ItemList{
         get{
@@ -55,10 +56,9 @@ public class ClickManager : MonoBehaviour
         }
     }
 
-
-
-    // Update is called once per frame
-    void Update()
-    {
+    public static Dictionary<GameObject, string> ItemSelected{
+        get{
+            return itemSelected;
+        }
     }
 }

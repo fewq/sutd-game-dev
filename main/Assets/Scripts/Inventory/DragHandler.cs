@@ -37,7 +37,6 @@ public class DragHandler : MonoBehaviour , IDragHandler, IEndDragHandler, IBegin
 
     public void OnDrag(PointerEventData pointer){
         rectTransform.anchoredPosition += pointer.delta / canvas.scaleFactor;
-        DropHandler.dropStatus = false;
     }
 
     //we have to check if the number of items is more than 1 and see if to keep the placeholder.
@@ -45,38 +44,41 @@ public class DragHandler : MonoBehaviour , IDragHandler, IEndDragHandler, IBegin
         transform.SetAsLastSibling();
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
-        DropHandler.dropStatus = false;
         InventoryList.InventoryItem = item;
-        if(DropHandler.ItemList.Contains(item)){
-            DropHandler.ItemList.Remove(item);
-        }
     }
 
     public void OnEndDrag(PointerEventData pointer){
         
-        if(!DropHandler.dropStatus)
-        {
-            rectTransform.anchoredPosition = startPosition;
-            List<GameObject> itemSelected = GameObject.Find("OnClickManager").GetComponent<ClickManager>().itemSelected;
-            if(itemSelected.Contains(item)){
-                itemSelected.Remove(item);
+        rectTransform.anchoredPosition = startPosition;
+        if(ClickManager.ItemList.Contains(item)){
+            string slot = ClickManager.ItemSelected[item];
+            ClickManager.ItemList.Remove(item); //Removes item from crafting list if we undrag it
+            craftItemVals.Remove(item.name); //remove from crafting items dictionary
+            if(slot == "item1"){
+                GameObject.Find("OnClickManager").GetComponent<ClickManager>().ItemBoolSet(1); //release the item lock\
+                print("item1 released");
+                ClickManager.ItemSelected.Remove(item);
             }
+            if(slot == "item2"){
+                GameObject.Find("OnClickManager").GetComponent<ClickManager>().ItemBoolSet(2); //release the item lock
+                print("item2 released");
+                ClickManager.ItemSelected.Remove(item);
+            }
+            
+            
         }
-        else
-        {
-            craftItemVals.Set(item.name, rectTransform, startPosition);
-        }
+        
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
     }
 
     public void OnPointerClick(PointerEventData pointer){
         if (pointer.button == PointerEventData.InputButton.Right){
-            if(ClickManager.ItemList.Count == 2){
+            if(ClickManager.ItemList.Count == 2){ //don't be sneaky
                 return;
             }
             GameObject.Find("OnClickManager").GetComponent<ClickManager>().changeItemPos(item);
-            craftItemVals.Set(item.name, rectTransform, startPosition);
+            craftItemVals.Set(item.name, rectTransform, startPosition); //set vals for returning image to start position aft craft
 
         }
     }

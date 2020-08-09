@@ -65,7 +65,8 @@ public class Craft : MonoBehaviour
             rectTransform2.anchoredPosition = startPos2;
 
             itemList.Clear();
-            
+            ClickManager.ItemSelected.Clear();
+
 
             //So that the highlight color works when hover over
             craftButton.enabled = false;
