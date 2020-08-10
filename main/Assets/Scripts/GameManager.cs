@@ -58,6 +58,7 @@ public class GameManager : Singleton<GameManager>
     }
     void Start()
     {
+        
         player = GameObject.FindWithTag("Player");
         playerOriginalPosition = player.transform.position;
         bgmPlayer.loop = true;
@@ -83,10 +84,10 @@ public class GameManager : Singleton<GameManager>
         //        SetTorch("Blue");
         //    }
         //}
-        ////if (Input.GetKeyDown(KeyCode.R))
-        ////{
-        ////    RestartGame();
-        ////}
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    RestartGame();
+        //}
         //if (Input.GetKeyDown(KeyCode.Alpha1))
         //{
         //    SetTorch("Blue");

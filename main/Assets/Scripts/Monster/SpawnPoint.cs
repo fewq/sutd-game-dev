@@ -8,7 +8,7 @@ public class SpawnPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monsterController = GetComponentInChildren<MonsterController>();
+        //monsterController = GetComponentInChildren<MonsterController>();
     }
 
     // Update is called once per frame

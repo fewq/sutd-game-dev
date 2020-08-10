@@ -127,7 +127,7 @@ public class CollectItem : MonoBehaviour
         {
             // reason for pressing Z to pick up: in the future, we would need to place items, and the player may accidentally pick it up if they walked arount it
             Debug.Log("picked up " + pickupItem.name);
-            GameManager.Instance.PlaySFX("collectitem");
+            
             // add to PickupList
             PickupList.Add(pickupItem);
             Debug.Log(pickupItem);
@@ -136,6 +136,7 @@ public class CollectItem : MonoBehaviour
             Debug.Log("inventoryDict entry -> " + pickupItem.name + ": " + inventoryDict[pickupItem.name]);
             // deactivate item
             pickupItem.SetActive(false);
+            GameManager.Instance.PlaySFX("collectitem");
             // destroy item instead
             // Destroy(pickupItem);
             pickupItem = null;

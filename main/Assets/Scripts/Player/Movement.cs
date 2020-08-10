@@ -34,12 +34,12 @@ public abstract class Movement : MonoBehaviour
     {
 
         var boxCollider = gameObject.GetComponent<BoxCollider2D>();
-        boxCollider.enabled = false; //set current object's collider to be false so that it doesnt intefere with line
+        // boxCollider.enabled = false; //set current object's collider to be false so that it doesnt intefere with line
 
 
         RaycastHit2D hit = Physics2D.Linecast(transform.position, transform.position + new Vector3(x, y),Physics.DefaultRaycastLayers,0.1f,Mathf.Infinity);
 
-        boxCollider.enabled = true;
+        // boxCollider.enabled = true;
         Vector3 currentPos = transform.position;
         // last check of untagged is for acid rivers, if not they don't kill the player
         if (hit.transform == null || hit.transform.tag == "Item"  || hit.transform.tag == "AcidRiver" || hit.transform.tag == "SpawnPoint") //|| hit.transform.tag == "Player"

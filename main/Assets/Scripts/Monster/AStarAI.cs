@@ -13,7 +13,7 @@ public class AStarAI : MonoBehaviour
     private float speed = 1f;
     private MonsterController monsterController;
     public float nextWaypointDistance = 3;
-
+    private string targetName;
     private int currentWaypoint = 0;
     public bool reachedEndOfPath;
     // Start is called before the first frame update
@@ -36,6 +36,7 @@ public class AStarAI : MonoBehaviour
             path = p;
 
             currentWaypoint = 0;
+            Debug.Log("PATH COMPLETED");
         }
     }
     public bool MoveToTarget(Vector3 target, string loc)
@@ -43,6 +44,7 @@ public class AStarAI : MonoBehaviour
         if (loc == "spawnpoint")
         {
             toSpawn = true;
+            targetName = "spawnpoint";
         }
         else
         {
@@ -50,12 +52,14 @@ public class AStarAI : MonoBehaviour
         }
         if (target == null)
         {
+            Debug.Log("NULL TARGET BRO");
+
             return false;
         }
         else
         {
             Debug.Log("MovetoTarget: " + target);
-
+            targetName = loc;
             seeker.StartPath(transform.position, target, OnPathComplete);
             return true;
         }
@@ -87,6 +91,14 @@ public class AStarAI : MonoBehaviour
                     // You can use this to trigger some special code if your game requires that.
                     reachedEndOfPath = true;
                     //Fix for monster running constantly but not a good fix because when near spawn point, it looks like monster is floating
+                    //if (targetName == "player")
+                    //{
+                    //    monsterController.PlayerInRange(GameManager.Instance.ReturnPlayerPosition());
+                    //}else if(targetName == "spawnpoint")
+                    //{
+                    //    monsterController.ReturnToSpawnPoint();
+                    //}
+
                     //monsterController.Idle();
                     break;
                 }

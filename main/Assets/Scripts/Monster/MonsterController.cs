@@ -7,7 +7,7 @@ using Pathfinding;
 /* Determines monster movement logic */
 public class MonsterController : MonoBehaviour
 {
-    private Vector3 ogPosition;
+    public Transform spawnPoint;
     public Animator animator;
     public GameObject exclaimation;
     public GameObject heartExclaimation;
@@ -31,6 +31,7 @@ public class MonsterController : MonoBehaviour
     private int currentWaypoint = 0;
     private bool reachedPlayer = false;
     private bool returnToSpawn = false;
+    private bool atSpawn = true;
     private Seeker seeker;
     public BoxCollider2D playerCheck;
     public BoxCollider2D flameCheck;
@@ -48,7 +49,7 @@ public class MonsterController : MonoBehaviour
     void Start()
     {
         // move to spawn point
-        
+        //spawnPoint = GetComponentInParent<Transform>();
         //transform.position = spawnPoint.position;
         //transform.localScale = GameManager.Instance.gridScale;
         // initialise variables
@@ -56,8 +57,8 @@ public class MonsterController : MonoBehaviour
         playerInRange = false;
         rigidBody = GetComponent<Rigidbody2D>();
         monsterCollider = GetComponent<BoxCollider2D>();
-        ogPosition = transform.position;
-        //transform.localScale = new Vector3(GameManager.Instance.gridScale.x / 10, GameManager.Instance.gridScale.y / 10); 
+        transform.position = spawnPoint.position;
+        //transform.localScale = new Vector3(GameManager.Instance.gridScale.x , GameManager.Instance.gridScale.y ); 
         tileMovement = GameManager.Instance.gridScale.x / 10;
         //monsterMovement = GetComponent<MonsterMovement>();
         astarAI = GetComponent<AStarAI>();
@@ -65,18 +66,19 @@ public class MonsterController : MonoBehaviour
 
     IEnumerator ChaseFlame(Transform flame)
     {
-        if (!returnToSpawn)
+        if (atSpawn)
         {
             Debug.Log("ChaseFlame");
             heartExclaimation.SetActive(true);
             flameLocation = flame;
             flameInRange = true;
+            atSpawn = false;
             if (isDistracted == false)
             {
                 GameManager.Instance.PlaySFX("goblindistracted");
                 isDistracted = true;
             }
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             //returnToSpawn = false;
             Debug.Log("Chase Flame");
             exclaimation.SetActive(false);
@@ -95,6 +97,7 @@ public class MonsterController : MonoBehaviour
 
     IEnumerator ChasePlayer(Transform player)
     {
+
         if (player == null)
         {
             ReturnToSpawnPoint();
@@ -143,12 +146,14 @@ public class MonsterController : MonoBehaviour
                     //    Debug.Log(path[i].y);
                     //}
                     //monsterMovement.SetMovement(path);
-                    astarAI.CancelLastPath();
+                    //astarAI.CancelLastPath();
                     if (!astarAI.MoveToTarget(player.position, "player"))
                     {
                         ReturnToSpawnPoint();
                         //exclaimation.SetActive(false);
                     }
+
+
                 }
 
             }
@@ -181,6 +186,11 @@ public class MonsterController : MonoBehaviour
         animator.SetFloat("Vertical", 0);
         //stare = true;
         animator.SetFloat("Speed", 0);
+        playerInRange = false;
+        isAlerted = false;
+        isDistracted = false;
+        hasChased = false;
+        returnToSpawn = true;
     }
 
     public void ReturnToSpawnPoint()
@@ -190,8 +200,11 @@ public class MonsterController : MonoBehaviour
         isAlerted = false;
         isDistracted = false;
         hasChased = false;
+        returnToSpawn = true;
+        Debug.Log("SpawnPoint: " + spawnPoint.position);
+        Debug.Log("CurrentPosition: " + transform.position);
         // move to spawn point
-        astarAI.MoveToTarget(ogPosition, "spawnpoint");
+        astarAI.MoveToTarget(spawnPoint.position, "spawnpoint");
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
         animator.SetFloat("Speed", Mathf.Max(1, direction.sqrMagnitude));
