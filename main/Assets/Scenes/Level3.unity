@@ -15833,7 +15833,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 7567335897535996333, guid: 099f5b3b6e9dcec4ba6c9f78c3f80159, type: 3}
       - {fileID: 6118587610413286070, guid: 099f5b3b6e9dcec4ba6c9f78c3f80159, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -18, y: -7, z: 0}
@@ -15873,7 +15873,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 7567335897535996333, guid: 099f5b3b6e9dcec4ba6c9f78c3f80159, type: 3}
       - {fileID: 6118587610413286070, guid: 099f5b3b6e9dcec4ba6c9f78c3f80159, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -13, y: -7, z: 0}
@@ -15913,7 +15913,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 7567335897535996333, guid: 099f5b3b6e9dcec4ba6c9f78c3f80159, type: 3}
       - {fileID: 6118587610413286070, guid: 099f5b3b6e9dcec4ba6c9f78c3f80159, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 1, y: -7, z: 0}
@@ -15985,7 +15985,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 7567335897535996333, guid: 099f5b3b6e9dcec4ba6c9f78c3f80159, type: 3}
       - {fileID: 6118587610413286070, guid: 099f5b3b6e9dcec4ba6c9f78c3f80159, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -14, y: -4, z: 0}
@@ -16908,6 +16908,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 9bc84628e26e69f459c4da575dabaddc, type: 2}
+  customInputManager: {fileID: 0}
+  volSlider: {fileID: 0}
 --- !u!1 &1436390915
 GameObject:
   m_ObjectHideFlags: 0
@@ -17257,7 +17259,7 @@ PrefabInstance:
     - target: {fileID: 8432629445508890398, guid: 13c70a773d10d784a9610f2f3311070d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13c70a773d10d784a9610f2f3311070d, type: 3}
