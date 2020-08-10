@@ -9,7 +9,7 @@ public class KeyBindScript : MonoBehaviour
 {
     public CustomInputManager customInputManager;
 
-    public TextMeshProUGUI up, left, down, right,  inventory, dropBomb, dropCaoh, restart, droptorchblue, droptorchred, droptorchorange, droptorchpurple, droptorchyellow;
+    public TextMeshProUGUI up, left, down, right, inventory, dropBomb, dropCaoh, restart, droptorchblue, droptorchred, droptorchorange, droptorchpurple, droptorchyellow;
     private GameObject currentKey;
 
     void Start()
@@ -40,9 +40,15 @@ public class KeyBindScript : MonoBehaviour
             Event e = Event.current;
             if (e.isKey)
             {
-                if (customInputManager.usedKeyCodes.ContainsKey(e.keyCode)) 
+                if (customInputManager.usedKeyCodes.ContainsKey(e.keyCode))
                 {
-                    Debug.Log("This key is already being used");
+                    // var existingkeys = "";
+                    // foreach (KeyValuePair<KeyCode, bool> key in customInputManager.usedKeyCodes)
+                    // {
+                    //     existingkeys = existingkeys + " " + key.Key;
+                    // }
+                    // Debug.Log("Existing keys " + existingkeys);
+                    // Debug.Log("This key is already being used");
                     return;
                 }
                 currentKey.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = customInputManager.GetStringFromKeycode(e.keyCode);
@@ -71,7 +77,7 @@ public class KeyBindScript : MonoBehaviour
                         customInputManager.keyMappings["Right"] = e.keyCode;
                         break;
                     case "Inventory":
-                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["Up"], e.keyCode);
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["Inventory"], e.keyCode);
                         customInputManager.Inventory = e.keyCode;
                         customInputManager.keyMappings["Inventory"] = e.keyCode;
                         break;

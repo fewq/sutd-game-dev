@@ -45,13 +45,14 @@ public class CustomInputManager : ScriptableObject
         usedKeyCodes = new Dictionary<KeyCode, bool>(){};
         foreach(KeyValuePair<string, KeyCode> keyMapping in keyMappings)
         {
-            usedKeyCodes[keyMapping.Value] = true;
+            usedKeyCodes.Add(keyMapping.Value,true);
         }
     }
 
 
     public void updateExistingKeyBinding(KeyCode existing, KeyCode newKey)
     {
+        Debug.Log("Updating keys from " + existing + " to " + newKey);
         usedKeyCodes.Remove(existing);   
         usedKeyCodes.Add(newKey, true);
     }
