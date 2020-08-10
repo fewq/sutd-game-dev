@@ -9,10 +9,10 @@ public class Level1Cinematic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!dialogueState.SpokeOnLevel1)
+        if (!dialogueState.DialoguePlayedOnLevel1)
         {
             this.GetComponents<DialogueTrigger>()[0].TriggerDialogue(); //Intro Dialogue
-            dialogueState.SpokeOnLevel1 = true;
+            dialogueState.DialoguePlayedOnLevel1 = true;
             CaoNotEncounteredYet = true;
         }
     }
