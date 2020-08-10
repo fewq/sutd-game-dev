@@ -38,7 +38,7 @@ public class Player : Movement
         isPlaying = false;
         playerWalkAS.clip = playerWalkSFX;
         playerWalkAS.loop = true;
-
+        transform.localScale = new Vector3(GameManager.Instance.gridScale.x, GameManager.Instance.gridScale.y );
         // death stuff
         playerDeathCoroutineCheck = false;
         //deathCanvas = GameObject.Find("DeathCanvas").GetComponent<Canvas>();
