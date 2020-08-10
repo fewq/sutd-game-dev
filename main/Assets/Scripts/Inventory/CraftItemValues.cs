@@ -36,5 +36,16 @@ public (RectTransform, Vector2) Get(string key)
     }
 
 }
+public void Remove(string key)
+{
+    if (startVals.ContainsKey(key))
+    {
+        startVals.Remove(key);
+    }
+    else
+    {
+        return;
+    }
+}
 
 }
