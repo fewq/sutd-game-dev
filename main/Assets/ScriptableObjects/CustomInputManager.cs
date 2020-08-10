@@ -19,6 +19,7 @@ public class CustomInputManager : ScriptableObject
     public KeyCode Left;
     public KeyCode Down;
     public KeyCode Right;
+    public float Volume;
     public Dictionary<string, KeyCode> keyMappings;
 
     public void OnEnable()

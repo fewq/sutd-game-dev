@@ -3415,6 +3415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 9bc84628e26e69f459c4da575dabaddc, type: 2}
+  customInputManager: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b, type: 2}
+  volSlider: {fileID: 1096230452631144716}
 --- !u!114 &1096230452294744278
 MonoBehaviour:
   m_ObjectHideFlags: 0
