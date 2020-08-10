@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update(){
         if(isOpen){
-            if(Input.GetKeyDown("return")){
+            if(Input.GetKeyDown("return") || Input.GetMouseButton(0)){
                 DisplayNextSentence();
             }
         }
