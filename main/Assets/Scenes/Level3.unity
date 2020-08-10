@@ -1421,7 +1421,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Goblins will be attracted to the correct torches around its 7x7 radius.
+  m_text: "Goblins will be attracted to the correct torches around its 9x9 radius.
     \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e, type: 2}
@@ -13596,6 +13596,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7429754762141229609, guid: e4aa6805c02504f468c83a59f2bd6b83,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -94.8999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4aa6805c02504f468c83a59f2bd6b83, type: 3}
 --- !u!114 &1009481645 stripped
@@ -17622,6 +17627,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8432629443651556286, guid: 13c70a773d10d784a9610f2f3311070d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -251.00049
+      objectReference: {fileID: 0}
     - target: {fileID: 8432629445508890394, guid: 13c70a773d10d784a9610f2f3311070d,
         type: 3}
       propertyPath: m_LocalPosition.x
