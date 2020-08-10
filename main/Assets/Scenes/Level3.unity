@@ -975,7 +975,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4/6
+  m_text: 5/6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e, type: 2}
   m_sharedMaterial: {fileID: 3162503675181229455, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e,
@@ -1421,7 +1421,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Goblins will be attracted to the correct torches around its 7x7 radius.
+  m_text: "Goblins will be attracted to the correct torches around its 9x9 radius.
     \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e, type: 2}
@@ -6277,7 +6277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7431588840688952608, guid: f146a5aa656824b49aaa16c20796732f,
+  m_Sprite: {fileID: 3057354636665793194, guid: 3a0f94fbf621e4a3b94d5272e9fd4653,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -13451,6 +13451,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3203958107566640698, guid: e4aa6805c02504f468c83a59f2bd6b83,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLevel3
+      objectReference: {fileID: 0}
     - target: {fileID: 7429754761064922538, guid: e4aa6805c02504f468c83a59f2bd6b83,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -13590,6 +13595,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429754762141229609, guid: e4aa6805c02504f468c83a59f2bd6b83,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -94.8999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4aa6805c02504f468c83a59f2bd6b83, type: 3}
@@ -16899,7 +16909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0d8096a00deed4190afe17e8faae12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerAtStart: 1
+  dialogueState: {fileID: 11400000, guid: 9b6939b63abf299439a8a4bf3eed0f7f, type: 2}
+  level: 2
   dialogue:
     sentences:
     - 'Is that a purple goblin?!
@@ -17616,6 +17627,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8432629443651556286, guid: 13c70a773d10d784a9610f2f3311070d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -251.00049
+      objectReference: {fileID: 0}
     - target: {fileID: 8432629445508890394, guid: 13c70a773d10d784a9610f2f3311070d,
         type: 3}
       propertyPath: m_LocalPosition.x
