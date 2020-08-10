@@ -179,6 +179,17 @@ public class MonsterController : MonoBehaviour
             Debug.Log(collision.gameObject.tag);
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().playerDeath("goblin");
+        }
+
+    }
+
+
     public void Idle()
     {
         Debug.Log("Start to idle");
