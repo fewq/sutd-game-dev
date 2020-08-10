@@ -1,9 +1,6 @@
-# sutd-game-dev
-SUTD 50.033 Foundations of Game Design and Development group 11
-
-[Google Drive folder](https://drive.google.com/drive/folders/1Ud1KXlZMb4KVLvRn-s2iMxtHzPWAjqoB)
-
-[Huanan's assets](https://raou.itch.io/dungeon-tileset-top-down-rpg/download/HN20XEELIig7SfJjNAmdglDbppSTP83Ty6HsTNIc)
+# ChemCraft
+### SUTD 50.033 Foundations of Game Design and Development Group 11
+ChemCraft is a top-down 2D puzzle game set in a dungeon that makes use of chemistry concepts. It distinguishes itself from existing games in the market through having its solutions based on chemistry reactions between items collected within the level.
 
 ### Git command workflow for working in /main
 1. Switch to master with `git checkout master`
