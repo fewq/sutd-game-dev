@@ -48,6 +48,7 @@ MonoBehaviour:
   grid: {fileID: 0}
   tilemap_boulder: {fileID: 0}
   tilemap_acidriver: {fileID: 0}
+  tilemap_bg: {fileID: 0}
   acidTile: {fileID: 11400000, guid: 3bb89cf47d18c734bb99d4ef860ef878, type: 2}
   boulderTile: {fileID: 11400000, guid: 4bbe336bc4e6ad446b9d8a2fc0603e59, type: 2}
   caesiumTile: {fileID: 11400000, guid: 6204c899e7e285a4a89b421c9fa37a77, type: 2}
@@ -73,6 +74,11 @@ MonoBehaviour:
     type: 3}
   bgmPlayer: {fileID: 7348897669992943158}
   sfxPlayer: {fileID: 8309796803600803840}
+  levelOneBGM: {fileID: 8300000, guid: 8d94d3772279b3e408da60b9509dae3f, type: 3}
+  levelTwoBGM: {fileID: 8300000, guid: 09ef0bbd8bb74bc4482dff23117eadfc, type: 3}
+  levelThreeBGM: {fileID: 8300000, guid: 0eb8c6b895d6621469d77c5332ab8bcd, type: 3}
+  levelFourBGM: {fileID: 8300000, guid: 335999b54a1767148b4bcf22e39457be, type: 3}
+  levelFiveBGM: {fileID: 8300000, guid: c132b9e36faf2eb4d8d606aa3da344a8, type: 3}
   acidRiverSFX: {fileID: 8300000, guid: 87bc52dc699f7d74d8246f1145176a91, type: 3}
   boulderBreakSFX: {fileID: 8300000, guid: f84dfa2436284fd44a86d7d9099e884a, type: 3}
   collectItemSFX: {fileID: 8300000, guid: 84720a40ad45c3849a3b73ae17f1115d, type: 3}
@@ -86,6 +92,7 @@ MonoBehaviour:
   goblinDistractedSFX: {fileID: 8300000, guid: 01153626b95e59b4ab2d7fb4dae3d5ea, type: 3}
   goblinAlertedSFX: {fileID: 8300000, guid: 265354763a7133d4fa08806d1a726f54, type: 3}
   goblinChaseSFX: {fileID: 8300000, guid: a911e4e2457620e4b8c25bd71c3e64d5, type: 3}
+  goblinDeathSFX: {fileID: 8300000, guid: e56aa1295278d124d804859587d348d9, type: 3}
   customInputManager: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b, type: 2}
   gridScale: {x: 0, y: 0, z: 0}
 --- !u!82 &7348897669992943158

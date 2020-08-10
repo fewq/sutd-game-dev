@@ -45,6 +45,7 @@ public class GameManager : Singleton<GameManager>
     public AudioClip goblinDistractedSFX;
     public AudioClip goblinAlertedSFX;
     public AudioClip goblinChaseSFX;
+    public AudioClip goblinDeathSFX;
 
     public CustomInputManager customInputManager;
     public Vector3 gridScale;
@@ -133,6 +134,11 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.Log("Level5");
             SceneManager.LoadScene("Level5");
+        }
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            Debug.Log("GameComplete!");
+            SceneManager.LoadScene("Cutscene_Outro");
         }
         if (customInputManager.GetKeyDown("Restart"))
         {
@@ -351,6 +357,9 @@ public class GameManager : Singleton<GameManager>
         else if (sfx == "goblinchase")
         {
             sfxPlayer.PlayOneShot(goblinChaseSFX);
+        }else if (sfx == "goblindeath")
+        {
+            sfxPlayer.PlayOneShot(goblinDeathSFX);
         }
         else if (sfx == "toggleinv")
         {

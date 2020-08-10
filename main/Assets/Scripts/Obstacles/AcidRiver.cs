@@ -43,6 +43,7 @@ public class AcidRiver : MonoBehaviour
         {
             Debug.Log("DestroyEnemy");
             Destroy(collision.gameObject);
+            GameManager.Instance.PlaySFX("goblindeath");
         }
         //Kills enemy as well
     }
