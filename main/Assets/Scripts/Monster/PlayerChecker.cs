@@ -17,20 +17,7 @@ public class PlayerChecker : MonoBehaviour
         {
             Debug.Log("Look for Player");
             monsterController.PlayerInRange(GameManager.Instance.ReturnPlayerPosition());
-            //if (GameManager.Instance.LookForPlayer(gameObject.transform) == true)
-            //{
-            //    Debug.Log(monsterController.flameInRange);
-            //    if (!monsterController.flameInRange)
-            //    {
-            //        Debug.Log("PLAYER FOUND HUE HUE");
-            //        //monsterController.playerInRange = true;
-            //        monsterController.PlayerInRange(GameManager.Instance.ReturnPlayerPosition());
-            //    }
 
-            //    //monsterController.ChaseTarget(collider.transform.position);
-            //}
-            //ChasePlayer(collision.gameObject.transform);
-            //Debug.Log("Chase Player");
         }
     }
 

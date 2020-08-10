@@ -49,18 +49,13 @@ public class MonsterController : MonoBehaviour
     void Start()
     {
         // move to spawn point
-        //spawnPoint = GetComponentInParent<Transform>();
-        //transform.position = spawnPoint.position;
-        //transform.localScale = GameManager.Instance.gridScale;
+        transform.position = spawnPoint.position;
         // initialise variables
         flameInRange = false;
         playerInRange = false;
         rigidBody = GetComponent<Rigidbody2D>();
         monsterCollider = GetComponent<BoxCollider2D>();
-        transform.position = spawnPoint.position;
-        //transform.localScale = new Vector3(GameManager.Instance.gridScale.x , GameManager.Instance.gridScale.y ); 
         tileMovement = GameManager.Instance.gridScale.x / 10;
-        //monsterMovement = GetComponent<MonsterMovement>();
         astarAI = GetComponent<AStarAI>();
     }
 
@@ -109,7 +104,7 @@ public class MonsterController : MonoBehaviour
                 GameManager.Instance.PlaySFX("goblinalerted");
                 isAlerted = true;
             }
-            yield return new WaitForSeconds(0.1f);
+            
             if (flameInRange)
             {
                 Debug.Log("flameInRange");
@@ -124,11 +119,6 @@ public class MonsterController : MonoBehaviour
                     animator.SetFloat("Horizontal", direction.x);
                     animator.SetFloat("Vertical", direction.y);
                     animator.SetFloat("Speed", Mathf.Max(1, direction.sqrMagnitude));
-                    //if (path == null)
-                    //{
-                    //    Debug.Log("PATH IS NULL");
-                    //    yield break;
-                    //}
                     if (hasChased == false)
                     {
                         GameManager.Instance.PlaySFX("goblinchase");
@@ -137,20 +127,11 @@ public class MonsterController : MonoBehaviour
                     playerInRange = true;
                     playerLocation = player;
                     target = player;
-                    //List<Vector3> path = GameManager.Instance.PathFind(transform,player);
-                    //Debug.Log("Path found is");
-                    //Debug.Log(path);
-                    //for (int i = 0; i < path.Count; i++)
-                    //{
-                    //    Debug.Log(path[i].x);
-                    //    Debug.Log(path[i].y);
-                    //}
-                    //monsterMovement.SetMovement(path);
-                    //astarAI.CancelLastPath();
+      
                     if (!astarAI.MoveToTarget(player.position, "player"))
                     {
                         ReturnToSpawnPoint();
-                        //exclaimation.SetActive(false);
+                        
                     }
 
 
@@ -159,6 +140,7 @@ public class MonsterController : MonoBehaviour
             }
 
         }
+        yield return null;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -212,8 +194,7 @@ public class MonsterController : MonoBehaviour
         isDistracted = false;
         hasChased = false;
         returnToSpawn = true;
-        Debug.Log("SpawnPoint: " + spawnPoint.position);
-        Debug.Log("CurrentPosition: " + transform.position);
+        exclaimation.SetActive(false);
         // move to spawn point
         astarAI.MoveToTarget(spawnPoint.position, "spawnpoint");
         animator.SetFloat("Horizontal", direction.x);
@@ -241,8 +222,5 @@ public class MonsterController : MonoBehaviour
         StartCoroutine(ChaseFlame(flame));
 
     }
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawCube(transform.position, new Vector3(lookRange,lookRange,lookRange));
-    //}
+
 }

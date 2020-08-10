@@ -1,6 +1,5 @@
-# ChemCraft
-### SUTD 50.033 Foundations of Game Design and Development Group 11
-ChemCraft is a top-down 2D puzzle game set in a dungeon that makes use of chemistry concepts. It distinguishes itself from existing games in the market through having its solutions based on chemistry reactions between items collected within the level.
+## Git notes for the team brought over from previous README
+
 
 ### Git command workflow for working in /main
 1. Switch to master with `git checkout master`

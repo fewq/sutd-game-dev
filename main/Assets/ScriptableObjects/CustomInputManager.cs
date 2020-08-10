@@ -52,7 +52,7 @@ public class CustomInputManager : ScriptableObject
 
     public void updateExistingKeyBinding(KeyCode existing, KeyCode newKey)
     {
-        Debug.Log("Updating keys from " + existing + " to " + newKey);
+        // Debug.Log("Updating keys from " + existing + " to " + newKey);
         usedKeyCodes.Remove(existing);   
         usedKeyCodes.Add(newKey, true);
     }
