@@ -40,59 +40,78 @@ public class KeyBindScript : MonoBehaviour
             Event e = Event.current;
             if (e.isKey)
             {
+                if (customInputManager.usedKeyCodes.ContainsKey(e.keyCode)) 
+                {
+                    Debug.Log("This key is already being used");
+                    return;
+                }
                 currentKey.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = customInputManager.GetStringFromKeycode(e.keyCode);
                 Debug.Log(currentKey.name);
                 switch (currentKey.name)
                 {
                     case "Up":
                         customInputManager.Up = e.keyCode;
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["Up"], e.keyCode);
                         customInputManager.keyMappings["Up"] = e.keyCode;
                         break;
                     case "Down":
                         customInputManager.Down = e.keyCode;
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["Down"], e.keyCode);
                         customInputManager.keyMappings["Down"] = e.keyCode;
                         break;
                     case "Left":
                         customInputManager.Left = e.keyCode;
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["Left"], e.keyCode);
                         customInputManager.keyMappings["Left"] = e.keyCode;
                         break;
                     case "Right":
                         customInputManager.Right = e.keyCode;
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["Right"], e.keyCode);
+
                         customInputManager.keyMappings["Right"] = e.keyCode;
                         break;
                     case "Inventory":
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["Up"], e.keyCode);
                         customInputManager.Inventory = e.keyCode;
                         customInputManager.keyMappings["Inventory"] = e.keyCode;
                         break;
                     case "DropBomb":
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["DropBomb"], e.keyCode);
                         customInputManager.DropBomb = e.keyCode;
                         customInputManager.keyMappings["DropBomb"] = e.keyCode;
                         break;
                     case "DropCalciumHydroxide":
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["DropCalciumHydroxide"], e.keyCode);
                         customInputManager.DropCalciumHydroxide = e.keyCode;
                         customInputManager.keyMappings["DropCalciumHydroxide"] = e.keyCode;
                         break;
                     case "Restart":
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["Restart"], e.keyCode);
                         customInputManager.Restart = e.keyCode;
                         customInputManager.keyMappings["Restart"] = e.keyCode;
                         break;
                     case "DropBlueLight":
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["DropBlueLight"], e.keyCode);
                         customInputManager.DropBlueLight = e.keyCode;
                         customInputManager.keyMappings["DropBlueLight"] = e.keyCode;
                         break;
                     case "DropYellowLight":
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["DropYellowLight"], e.keyCode);
                         customInputManager.DropYellowLight = e.keyCode;
                         customInputManager.keyMappings["DropYellowLight"] = e.keyCode;
                         break;
                     case "DropRedLight":
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["DropRedLight"], e.keyCode);
                         customInputManager.DropRedLight = e.keyCode;
                         customInputManager.keyMappings["DropRedLight"] = e.keyCode;
                         break;
                     case "DropOrangeLight":
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["DropOrangeLight"], e.keyCode);
                         customInputManager.DropOrangeLight = e.keyCode;
                         customInputManager.keyMappings["DropOrangeLight"] = e.keyCode;
                         break;
                     case "DropPurpleLight":
+                        customInputManager.updateExistingKeyBinding(customInputManager.keyMappings["DropPurpleLight"], e.keyCode);
                         customInputManager.DropPurpleLight = e.keyCode;
                         customInputManager.keyMappings["DropPurpleLight"] = e.keyCode;
                         break;

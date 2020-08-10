@@ -21,6 +21,7 @@ public class CustomInputManager : ScriptableObject
     public KeyCode Right;
     public float Volume;
     public Dictionary<string, KeyCode> keyMappings;
+    public Dictionary<KeyCode, bool> usedKeyCodes;
 
     public void OnEnable()
     {
@@ -40,6 +41,19 @@ public class CustomInputManager : ScriptableObject
             {"Down", Down},
             {"Right", Right}
         };
+
+        usedKeyCodes = new Dictionary<KeyCode, bool>(){};
+        foreach(KeyValuePair<string, KeyCode> keyMapping in keyMappings)
+        {
+            usedKeyCodes[keyMapping.Value] = true;
+        }
+    }
+
+
+    public void updateExistingKeyBinding(KeyCode existing, KeyCode newKey)
+    {
+        usedKeyCodes.Remove(existing);   
+        usedKeyCodes.Add(newKey, true);
     }
 
     public bool GetKeyDown(string key)
