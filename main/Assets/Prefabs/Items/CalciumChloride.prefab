@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5470724464303402806}
   - component: {fileID: 5470724464303402807}
   - component: {fileID: 5470724464303402804}
+  - component: {fileID: 7612715509069812438}
   m_Layer: 0
   m_Name: CalciumChloride
   m_TagString: Item
@@ -109,3 +110,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7612715509069812438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470724464303402801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d9cdfbaaafa4de6a8d3330f3dd418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

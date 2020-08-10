@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6051060062009793668}
   - component: {fileID: 6051060062009793669}
   - component: {fileID: 6051060062009793666}
+  - component: {fileID: -6928763794034775366}
   m_Layer: 0
   m_Name: Caesium
   m_TagString: Item
@@ -108,3 +109,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-6928763794034775366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051060062009793671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d9cdfbaaafa4de6a8d3330f3dd418d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
