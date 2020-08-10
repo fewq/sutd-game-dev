@@ -56,55 +56,58 @@ public class Player : Movement
     }
     void Update()
     {
-        movement.x = customInputManager.GetAxisRaw("Horizontal");
-        movement.y = customInputManager.GetAxisRaw("Vertical");
-        // get inputs from user
-        if (movement.x != 0)
+        if (playerDeathCoroutineCheck == false)
         {
-            movement.y = 0.0f;
-            // yVal = 0;
-            if (movement.x > 0)
+            movement.x = customInputManager.GetAxisRaw("Horizontal");
+            movement.y = customInputManager.GetAxisRaw("Vertical");
+            // get inputs from user
+            if (movement.x != 0)
             {
-                movement.x = tileMovement;
-            }
-            else
-            {
-                movement.x = -tileMovement;
-            }
-            // movement.x = 0.3f;
-        }
-
-        if (movement.y != 0)
-        {
-
-            movement.x = 0.0f;
-            // xVal = 0;
-            if (movement.y > 0)
-            {
-                movement.y = tileMovement;
-            }
-            else
-            {
-                movement.y = -tileMovement;
+                movement.y = 0.0f;
+                // yVal = 0;
+                if (movement.x > 0)
+                {
+                    movement.x = tileMovement;
+                }
+                else
+                {
+                    movement.x = -tileMovement;
+                }
+                // movement.x = 0.3f;
             }
 
-        }
-        if (movement.x != 0 || movement.y != 0)
-        {
-            movementController(movement.x, movement.y);
-            if (isPlaying == false)
+            if (movement.y != 0)
             {
-                playerWalkAS.Play();
-                isPlaying = true;
+
+                movement.x = 0.0f;
+                // xVal = 0;
+                if (movement.y > 0)
+                {
+                    movement.y = tileMovement;
+                }
+                else
+                {
+                    movement.y = -tileMovement;
+                }
+
+            }
+            if (movement.x != 0 || movement.y != 0)
+            {
+                movementController(movement.x, movement.y);
+                if (isPlaying == false)
+                {
+                    playerWalkAS.Play();
+                    isPlaying = true;
+                }
+
             }
 
-        }
-
-        if (movement.x == 0 && movement.y == 0)
-        {
-            animator.SetFloat("Speed", movement.sqrMagnitude);
-            playerWalkAS.Stop();
-            isPlaying = false;
+            if (movement.x == 0 && movement.y == 0)
+            {
+                animator.SetFloat("Speed", movement.sqrMagnitude);
+                playerWalkAS.Stop();
+                isPlaying = false;
+            }
         }
         // this is used to update the player animation
         // this is passed into the animator parameters, which is then used to update the blend tree
