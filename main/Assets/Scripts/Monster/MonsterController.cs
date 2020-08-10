@@ -104,7 +104,7 @@ public class MonsterController : MonoBehaviour
                 GameManager.Instance.PlaySFX("goblinalerted");
                 isAlerted = true;
             }
-            yield return new WaitForSeconds(0.1f);
+            
             if (flameInRange)
             {
                 Debug.Log("flameInRange");
@@ -140,6 +140,7 @@ public class MonsterController : MonoBehaviour
             }
 
         }
+        yield return null;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

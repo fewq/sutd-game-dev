@@ -113,14 +113,14 @@ public class AStarAI : MonoBehaviour
         float speedFactor;
         if (toSpawn)
         {
-            speedFactor = reachedEndOfPath ? Mathf.Sqrt(distanceToWaypoint / nextWaypointDistance) : 1f;
+            speedFactor = 1f; //reachedEndOfPath ? Mathf.Sqrt(distanceToWaypoint / nextWaypointDistance) : 
         }
         else
         {
             speedFactor = 8f;
         }
 
-        //var speedFactor = 5f;
+        // speedFactor = 8f;
         // Direction to the next waypoint
         // Normalize it so that it has a length of 1 world unit
         Vector3 dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
