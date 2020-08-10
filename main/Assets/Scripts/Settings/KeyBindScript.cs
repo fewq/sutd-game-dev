@@ -76,23 +76,23 @@ public class KeyBindScript : MonoBehaviour
                         customInputManager.Restart = e.keyCode;
                         customInputManager.keyMappings["Restart"] = e.keyCode;
                         break;
-                    case "Blue":
+                    case "DropBlueLight":
                         customInputManager.DropBlueLight = e.keyCode;
                         customInputManager.keyMappings["DropBlueLight"] = e.keyCode;
                         break;
-                    case "Yellow":
+                    case "DropYellowLight":
                         customInputManager.DropYellowLight = e.keyCode;
                         customInputManager.keyMappings["DropYellowLight"] = e.keyCode;
                         break;
-                    case "Red":
+                    case "DropRedLight":
                         customInputManager.DropRedLight = e.keyCode;
                         customInputManager.keyMappings["DropRedLight"] = e.keyCode;
                         break;
-                    case "Orange":
+                    case "DropOrangeLight":
                         customInputManager.DropOrangeLight = e.keyCode;
                         customInputManager.keyMappings["DropOrangeLight"] = e.keyCode;
                         break;
-                    case "Purple":
+                    case "DropPurpleLight":
                         customInputManager.DropPurpleLight = e.keyCode;
                         customInputManager.keyMappings["DropPurpleLight"] = e.keyCode;
                         break;
