@@ -90,6 +90,8 @@ public class CustomInputManager : ScriptableObject
         if (str.Length < 6) return str; // shortest switch case below has at least 6 chars 
         switch (str)
         {
+            case "Alpha0":
+                return "0";
             case "Alpha1":
                 return "1";
             case "Alpha2":
