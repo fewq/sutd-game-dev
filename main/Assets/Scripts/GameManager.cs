@@ -70,76 +70,6 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        //if (player)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.B))
-        //    {
-        //        SetBomb();
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.C))
-        //    {
-        //        SetCAOH2();
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.T))
-        //    {
-        //        SetTorch("Blue");
-        //    }
-        //}
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    RestartGame();
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha1))
-        //{
-        //    SetTorch("Blue");
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha2))
-        //{
-        //    SetTorch("Red");
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    SetTorch("Orange");
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha4))
-        //{
-        //    SetTorch("Purple");
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha5))
-        //{
-        //    SetTorch("Yellow");
-        //}
-
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            Debug.Log("Level1");
-            SceneManager.LoadScene("Level1");
-        }
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            Debug.Log("Level2");
-            SceneManager.LoadScene("Level2");
-        }
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            Debug.Log("Level3");
-            SceneManager.LoadScene("Level3");
-        }
-        if (Input.GetKeyDown(KeyCode.F4))
-        {
-            Debug.Log("Level4");
-            SceneManager.LoadScene("Level4");
-        }
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            Debug.Log("Level5");
-            SceneManager.LoadScene("Level5");
-        }
-        if (Input.GetKeyDown(KeyCode.F6))
-        {
-            Debug.Log("GameComplete!");
-            SceneManager.LoadScene("Cutscene_Outro");
-        }
         if (customInputManager.GetKeyDown("Restart"))
         {
             RestartGame();
@@ -200,11 +130,6 @@ public class GameManager : Singleton<GameManager>
                 if (objectCollider.tag == "Player")
                 {
                     Debug.Log("DestroyPlayer");
-                    // PlaySFX("playerscream");
-                    //Run game over script then run below( or maybe we will just reset the level. we'll see);
-                    // Destroy(objectCollider.gameObject);
-                    //Might want to add dying sound
-                    //objectCollider.gameObject.SetActive(false);
                     objectCollider.gameObject.GetComponent<Player>().playerDeath("bomb");
                 }
                 //Might want to make it possible to kill monster as well
@@ -229,15 +154,6 @@ public class GameManager : Singleton<GameManager>
                 PlaySFX("neutralize");
             }
             Instantiate(neutralizaitonPrefab, pos, Quaternion.identity, grid.transform);
-        }
-        else if (action == "playercheck")
-        {
-            //if detect boulder, return false
-            //If detect player return true, else return false
-        }
-        else if (action == "bouldercheck")
-        {
-            //true if got boulder, false if got no boulder
         }
         return true;
     }

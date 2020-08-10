@@ -8,7 +8,6 @@ public class SpawnPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //monsterController = GetComponentInChildren<MonsterController>();
     }
 
     // Update is called once per frame
@@ -19,11 +18,9 @@ public class SpawnPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("OnTriggerEnter2D SpawnPoint");
-        //Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("RETURN TO SPAWN U BEECH");
+            Debug.Log("RETURN TO SPAWN ");
             monsterController.Idle();
         }
     }
