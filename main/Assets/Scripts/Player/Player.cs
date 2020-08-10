@@ -41,8 +41,8 @@ public class Player : Movement
         transform.localScale = new Vector3(GameManager.Instance.gridScale.x, GameManager.Instance.gridScale.y );
         // death stuff
         playerDeathCoroutineCheck = false;
-        //deathCanvas = GameObject.Find("DeathCanvas").GetComponent<Canvas>();
-        //deathCanvas.GetComponent<Canvas>().enabled = false;
+        deathCanvas = GameObject.Find("DeathCanvas").GetComponent<Canvas>();
+        deathCanvas.GetComponent<Canvas>().enabled = false;
     }
     // Start is called before the first frame update
 
