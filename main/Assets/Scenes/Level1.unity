@@ -578,7 +578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drag and drop picked items to craft new combinations
+  m_text: Right click on picked items to craft new combinations
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e, type: 2}
   m_sharedMaterial: {fileID: 3162503675181229455, guid: 3b3599c05d2b1dd4386e63e7cdac2d4e,

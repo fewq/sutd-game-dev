@@ -29,7 +29,8 @@ public class Craft : MonoBehaviour
     //Need to find the count of the items
     public void craft()
     {
-        var itemList = DropHandler.ItemList;
+        // var itemList = DropHandler.ItemList;
+        var itemList = ClickManager.ItemList;
         inventoryList = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>().getInventory;
 
         if (itemList.Count == 2)
@@ -38,7 +39,6 @@ public class Craft : MonoBehaviour
             var itemIndex1 = System.Convert.ToInt32((itemList[0].name.Substring(itemList[0].name.Length - 1)));
             var itemIndex2 = System.Convert.ToInt32((itemList[1].name.Substring(itemList[1].name.Length - 1)));
 
-            print(inventoryList.Count);
             try
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<CollectItem>().Craft(itemList[0].tag, itemList[1].tag);
@@ -60,11 +60,13 @@ public class Craft : MonoBehaviour
 
             var startPos1 = val1.Item2;
             var startPos2 = val2.Item2;
-
+            
             rectTransform1.anchoredPosition = startPos1;
             rectTransform2.anchoredPosition = startPos2;
 
             itemList.Clear();
+            ClickManager.ItemSelected.Clear();
+
 
             //So that the highlight color works when hover over
             craftButton.enabled = false;
