@@ -74,7 +74,7 @@ public class DragHandler : MonoBehaviour , IDragHandler, IEndDragHandler, IBegin
 
     public void OnPointerClick(PointerEventData pointer){
         if (pointer.button == PointerEventData.InputButton.Right){
-            if(ClickManager.ItemList.Count == 2){ //don't be sneaky
+            if(ClickManager.ItemList.Count == 2 || ClickManager.ItemList.Contains(item)){ //don't be sneaky
                 return;
             }
             GameObject.Find("OnClickManager").GetComponent<ClickManager>().changeItemPos(item);
