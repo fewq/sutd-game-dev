@@ -14,31 +14,7 @@ public class Exit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            Debug.Log("Level1");
-            SceneManager.LoadScene("Level1");
-        }
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            Debug.Log("Level2");
-            SceneManager.LoadScene("Level2");
-        }
-        if (Input.GetKeyDown(KeyCode.F3))
-        {
-            Debug.Log("Level3");
-            SceneManager.LoadScene("Level3");
-        }
-        if (Input.GetKeyDown(KeyCode.F4))
-        {
-            Debug.Log("Level4");
-            SceneManager.LoadScene("Level4");
-        }
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            Debug.Log("Level5");
-            SceneManager.LoadScene("Level5");
-        }
+
 
     }
 

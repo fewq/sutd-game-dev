@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8917742356412001100}
   m_Layer: 0
   m_Name: LightChecker
-  m_TagString: Untagged
+  m_TagString: LightChecker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 186199623767504649}
   m_Layer: 0
   m_Name: PlayerChecker
-  m_TagString: Untagged
+  m_TagString: PlayerChecker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -31,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3014202340340153316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.48, y: -0.48, z: 0}
-  m_LocalScale: {x: 0.99, y: 0.99, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   playerWalkAS: {fileID: 3092286359615206453}
   playerWalkSFX: {fileID: 8300000, guid: 67396911db4769f49ac3184a6fd62de4, type: 3}
   customInputManager: {fileID: 11400000, guid: a27fec9a5396bf247b67b5569548537b, type: 2}
+  deathCanvas: {fileID: 0}
 --- !u!95 &4170520575121802942
 Animator:
   serializedVersion: 3
@@ -193,7 +194,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020661175, y: 0.014757916}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}

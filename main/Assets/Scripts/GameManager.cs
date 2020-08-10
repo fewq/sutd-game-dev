@@ -83,30 +83,56 @@ public class GameManager : Singleton<GameManager>
         //        SetTorch("Blue");
         //    }
         //}
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    RestartGame();
-        //}
+        ////if (Input.GetKeyDown(KeyCode.R))
+        ////{
+        ////    RestartGame();
+        ////}
         //if (Input.GetKeyDown(KeyCode.Alpha1))
-        //{
-        //    SetTorch("Red");
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha2))
-        //{
-        //    SetTorch("Yellow");
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha3))
-        //{
-        //    SetTorch("Purple");
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha4))
         //{
         //    SetTorch("Blue");
         //}
-        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    SetTorch("Red");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
         //{
         //    SetTorch("Orange");
         //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    SetTorch("Purple");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha5))
+        //{
+        //    SetTorch("Yellow");
+        //}
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            Debug.Log("Level1");
+            SceneManager.LoadScene("Level1");
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            Debug.Log("Level2");
+            SceneManager.LoadScene("Level2");
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            Debug.Log("Level3");
+            SceneManager.LoadScene("Level3");
+        }
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            Debug.Log("Level4");
+            SceneManager.LoadScene("Level4");
+        }
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            Debug.Log("Level5");
+            SceneManager.LoadScene("Level5");
+        }
         if (customInputManager.GetKeyDown("Restart"))
         {
             RestartGame();
@@ -152,7 +178,7 @@ public class GameManager : Singleton<GameManager>
             pos = tilemap_acidriver.GetCellCenterWorld(cell);
         }
 
-        Collider2D objectCollider = Physics2D.OverlapBox(new Vector2(pos.x, pos.y), new Vector2(gridScale.x, gridScale.y), 0f);
+        Collider2D objectCollider = Physics2D.OverlapBox(new Vector2(pos.x, pos.y), new Vector2(gridScale.x,gridScale.y), 0f);
 
         if (action == "explode")
         {
@@ -161,7 +187,7 @@ public class GameManager : Singleton<GameManager>
                 if (objectCollider.tag == "Item")
                 {
                     Debug.Log("ItemDestroyed");
-                    Destroy(objectCollider.gameObject);
+                    //Destroy(objectCollider.gameObject);
 
                 }
                 if (objectCollider.tag == "Player")
@@ -239,7 +265,6 @@ public class GameManager : Singleton<GameManager>
         InteractCell(originCell + new Vector3Int(1, -1, 0), "neutralize");
 
     }
-
     public void SetTorch(string color)
     {
         PlaySFX("placeitem");

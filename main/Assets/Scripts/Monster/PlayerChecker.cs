@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerChecker : MonoBehaviour
 {
-    private MonsterController monsterController;
+    public MonsterController monsterController;
     private bool playerInRange;
     void Start()
     {
-        monsterController = GetComponentInParent<MonsterController>();
+
     }
 
     void OnTriggerEnter2D(Collider2D collider)

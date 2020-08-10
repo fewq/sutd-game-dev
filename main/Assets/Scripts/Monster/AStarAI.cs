@@ -38,7 +38,7 @@ public class AStarAI : MonoBehaviour
             currentWaypoint = 0;
         }
     }
-    public bool MoveToTarget(Transform target, string loc)
+    public bool MoveToTarget(Vector3 target, string loc)
     {
         if (loc == "spawnpoint")
         {
@@ -54,9 +54,9 @@ public class AStarAI : MonoBehaviour
         }
         else
         {
-            Debug.Log("MovetoTarget: " + target.position);
+            Debug.Log("MovetoTarget: " + target);
 
-            seeker.StartPath(transform.position, target.position, OnPathComplete);
+            seeker.StartPath(transform.position, target, OnPathComplete);
             return true;
         }
 
