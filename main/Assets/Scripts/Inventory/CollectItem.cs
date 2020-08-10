@@ -46,6 +46,8 @@ public class CollectItem : MonoBehaviour
 
     public CustomInputManager customInputManager;
 
+    public Text naughtyText;
+
     private int defaultNumber = 0 ;
     // Start is called before the first frame update
 
@@ -195,6 +197,7 @@ public class CollectItem : MonoBehaviour
         }
         else
         {
+            naughtyText.text = "";
             inventoryCanvas.GetComponent<Canvas>().enabled = false;
             sidebarCanvas.GetComponent<Canvas>().enabled = false;
         }
@@ -282,7 +285,7 @@ public class CollectItem : MonoBehaviour
 
     public void Place(string craftedItem)
     {
-        if (inventoryDict[craftedItem] > 0)
+        if (inventoryDict[craftedItem] > 0 && !inventoryState)
         {
             GameObject item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
             if (craftedItem == "Bomb")
@@ -313,6 +316,9 @@ public class CollectItem : MonoBehaviour
             }
             inventoryDict[craftedItem]--;
             GameObject.FindGameObjectWithTag(craftedItem).GetComponent<Text>().text = inventoryDict[craftedItem].ToString();
+        }
+        else if(inventoryState){
+            naughtyText.text = "CLOSE THE INVENTORY >:(";
         }
     }
 

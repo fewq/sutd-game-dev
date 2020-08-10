@@ -26,16 +26,22 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countdown -= Time.deltaTime;
-        StartCoroutine(flashingBomb());
-        if (countdown <= 0f)
-        {
-            Debug.Log("EKUSUPLOSION!");
-            //Change GameManager to singleton
-            //FindObjectOfType<GameManager>().Explode(transform.position);
-            GameManager.Instance.Explode(transform.position);
-            
-            Destroy(gameObject);
-        }
+        
+            countdown -= Time.deltaTime;
+            if(GameObject.Find("Player").GetComponent<CollectItem>().inventoryState){
+                countdown = 2f;
+                return;
+            }
+            StartCoroutine(flashingBomb());
+            if (countdown <= 0f)
+            {
+                Debug.Log("EKUSUPLOSION!");
+                //Change GameManager to singleton
+                //FindObjectOfType<GameManager>().Explode(transform.position);
+                GameManager.Instance.Explode(transform.position);
+                
+                Destroy(gameObject);
+            }
     }
+        
 }
