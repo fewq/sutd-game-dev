@@ -105,7 +105,7 @@ public class AStarAI : MonoBehaviour
         }
         else
         {
-            speedFactor = 5f;
+            speedFactor = 8f;
         }
 
         //var speedFactor = 5f;
